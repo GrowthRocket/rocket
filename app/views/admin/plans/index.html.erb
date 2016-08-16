@@ -1,0 +1,48 @@
+  <h1 class="text-center">全部方案</h1>
+<div class="pull-right">
+    <%= link_to("新增方案",   new_admin_plan_path, class: "btn btn-primary")  %>
+</div>
+<table class="table table-boldered">
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                方案名称
+            </th>
+            <th>
+                方案详情
+            </th>
+            <th>
+                操作
+            </th>
+            <th>
+                创建时间
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @plans.each do |plan| %>
+        <tr>
+            <td>
+                #
+            </td>
+            <td>
+                <%= link_to(plan.title, plan_path(plan)) %>
+            </td>
+            <td>
+                <%= plan.description %>
+            </td>
+            <td>
+                <%= link_to("编辑", edit_admin_plan_path(plan), class: "btn btn-default" )%>
+
+                <%= link_to("删除", admin_plan_path(plan), method: :delete,  class: "btn btn-default" , data: {confirm: "确认删除该方案么?"}) %>
+            </td>
+            <td>
+                <%= plan.created_at %>
+            </td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
