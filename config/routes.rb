@@ -6,11 +6,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :orders
+    resources :projects
+    resources :plans
   end
 
   namespace :account do
-    resources :projects
-    resources :plans
     resources :order do
       member do
         post :pay_with_alipay
