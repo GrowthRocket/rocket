@@ -1,59 +1,31 @@
-<h1>筹款方案管理面板</h1>
-
-  <h1 class="text-center">  <%= link_to(@project.name, projects_path) %></h1>
+<h1><%= link_to(@project.name, plans_path) %> 筹款方案管理</h1>
 <div class="pull-right">
     <%= link_to("新增方案",   new_admin_project_plan_path(@project), class: "btn btn-warning")  %>
 </div>
 <table class="table table-boldered" , style="width: 100%; table-layout: fixed;">
     <thead>
         <tr>
-            <th>
-                #
-            </th>
-
-            <th>
-                方案名称
-            </th>
-
-            <th>
-                方案详情
-            </th>
-            <th>
-                方案价格
-            </th>
-            <th>
-                操作
-            </th>
-            <th>
-                创建时间
-            </th>
-
+            <th width="5%">ID</th>
+            <th >方案名称</th>
+            <th >方案详情</th>
+            <th >方案价格</th>
+            <th >操作</th>
+            <th >创建时间</th>
         </tr>
     </thead>
     <tbody>
         <%  @plans.each do |plan| %>
         <tr>
-            <td>
-                #
+            <td><%= plan.id %></td>
+            <td><%= link_to(plan.title, plan_path(plan)) %></td>
+            <td style="white-space: nowrap; overflow: hidden;"><%= plan.description %>
             </td>
-
-            <td>
-                <%= link_to(plan.title, plan_path(plan)) %>
-            </td>
-            <td style="white-space: nowrap; overflow: hidden;">
-                <%= plan.description %>
-            </td>
-            <td>
-                <%= plan.price %>元
-            </td>
+            <td><%= plan.price %>元</td>
             <td>
                 <%= link_to("编辑", edit_admin_project_plan_path(plan.project, plan), class: "btn btn-xs btn-info" )%>
-
                 <%= link_to("删除", admin_project_plan_path(plan.project,plan), method: :delete,  class: "btn btn-xs btn-danger" , data: {confirm: "确认删除该方案么?"}) %>
             </td>
-            <td>
-                <%= plan.created_at %>
-            </td>
+            <td><%= plan.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
         </tr>
         <% end %>
     </tbody>

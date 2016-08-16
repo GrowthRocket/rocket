@@ -8,6 +8,7 @@
   <% if @savetype == 1 %>
     <%= f.submit "创建项目", class: "btn btn-success" %>
   <% else %>
-    <%= f.submit "编辑项目", class: "btn btn-info" %>
+  <%= link_to("放弃更新", admin_projects_path, class: "btn btn-default" ) %>
+    <%= f.submit "提交更新", class: "btn btn-info" %>
   <% end %>
 <% end %>
