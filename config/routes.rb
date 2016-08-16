@@ -4,5 +4,11 @@ Rails.application.routes.draw do
 
   resources :welcome
 
-  root 'welcome#index'
+  root 'admin/plans#index'
+
+  namespace :admin do
+    resources :plans
+  end
+
+ resources :plans 
 end
