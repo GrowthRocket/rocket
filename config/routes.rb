@@ -6,8 +6,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :orders
-    resources :projects
-    resources :plans
+    resources :projects do
+      resources :plans
+    end
   end
 
   namespace :account do
@@ -21,6 +22,6 @@ Rails.application.routes.draw do
 
   root 'projects#index'
 
-  resources :projects
+  resources :projects 
   resources :plans
 end
