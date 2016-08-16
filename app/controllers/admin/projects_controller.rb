@@ -1,6 +1,7 @@
 class Admin::ProjectsController < ApplicationController
   # before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy]
-
+  layout 'admin'
+  
   def index
     @projects = Project.all
   end

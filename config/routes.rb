@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :orders
+    resources :projects
+    resources :accounts
+    resources :plans
   end
 
   namespace :account do
