@@ -1,42 +1,36 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
-    <div class="navbar-header"><button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#jdmenu" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a href="/" class="navbar-brand">Rocket</a>
+    <!-- Brand and toggle get grouped for mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Rocket</a>
     </div>
 
-    <div class="nav collapse navbar-collapse" id="rocketmenu">
-      <ul class="nav navbar-nav navbar-right">
-
-        <% if current_user && current_user.admin? %>
-        <% else %>
-          <li>
-
-
-          </li>
-        <% end %>
-
-        <% if !current_user %>
-        <li><%= link_to("注册", new_user_registration_path ) %></li>
-        <li><%= link_to("登录", new_user_session_path) %></li>
-        <% else %>
-        <li class="dropdown">
-          <a href="" class="dropdown-toglle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.email %><span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><%= link_to("退出", destroy_user_session_path, method: :delete) %></li>
-          </ul>
-        </li>
-        <% end %>
-      </ul>
-      <form class="navbar-form navbar-right" role="search">
-      <div class="form-group">
-        <input type="text" class="form-control" placeholder="查找您感兴趣的项目">
-      </div>
-      <button type="submit" class="btn btn-default">搜索</button>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+              <% if !current_user %>
+                <li><%= link_to("注册", new_user_registration_path) %> </li>
+                <li><%= link_to("登录", new_user_session_path) %></li>
+              <% else %>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Hello! <%= current_user.email %>
+                  <b class="caret"></b>
+                  </a>
+                <ul class="dropdown-menu">
+                  <% if current_user.admin? %>
+                    <li> <%= link_to("管理员", "#") %> </li>
+                  <% end %>
+                    <li> <%= link_to("退出", destroy_user_session_path, method: :delete, :data => { :confirm => "You really want to logout?" }) %> </li>
+                </ul>
+              </li>
+              <% end %>
+            </ul>
+            <form class="navbar-form navbar-right" role="search">
+              <button type="button" class="btn btn-primary">发起项目</button>
+            </form>
+        </div>
+        <!-- /.navbar-collapse -->
     </div>
-  </div>
+    <!-- /.container-fluid -->
 </nav>
