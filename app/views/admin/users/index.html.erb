@@ -4,7 +4,9 @@
       <tr>
         <td>#</td>
         <td>用户名</td>
+        <td>姓名</td>
         <td>创建时间</td>
+        <td>管理</td>
       </tr>
     </thead>
     <tbody>
@@ -12,7 +14,9 @@
     <tr>
       <td> <%= user.id %></td>
       <td> <%= user.email %></td>
+      <td> <%= user.user_name %></td>
       <td><%= user.created_at %></td>
+      <td><%= link_to("Edit", edit_admin_user_path(user), :class => "btn btn-xs btn-info") %></td>
     </tr>
     <% end %>
   </tbody>
