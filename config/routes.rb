@@ -4,13 +4,12 @@ Rails.application.routes.draw do
 
   resources :welcome
 
-  resources :plans
-
   namespace :admin do
     resources :orders
   end
 
   namespace :account do
+    resources :projects
     resources :plans
     resources :order do
       member do
@@ -20,5 +19,8 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'welcome#index'
+  root 'projects#index'
+
+  resources :projects
+  resources :plans
 end

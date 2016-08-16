@@ -11,8 +11,6 @@
 
     <div class="nav collapse navbar-collapse" id="jdmenu">
       <ul class="nav navbar-nav navbar-right">
-
-
         <% if !current_user %>
         <li><%= link_to("Sign up", new_user_registration_path ) %></li>
         <li><%= link_to("Log in", new_user_session_path) %></li>
