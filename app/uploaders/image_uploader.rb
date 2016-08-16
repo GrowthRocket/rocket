@@ -36,6 +36,13 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   process :resize_to_fit => [50, 50]
   # end
 
+  def default_url
+    # "/images/fallback/" + [thumb, "avatar.jpg"].compact.join('_')
+    "/images/default_pic.jpg"
+  end
+
+  process resize_to_fit: [990, 618]
+
   version :thumb do
     process resize_to_fill: [132, 80]
   end
@@ -44,16 +51,12 @@ class ImageUploader < CarrierWave::Uploader::Base
     process resize_to_fill: [660, 400]
   end
 
-  version :big do
-    process resize_to_fill: [1320, 800]
-  end
-
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   # def extension_white_list
   #   %w(jpg jpeg gif png)
   # end
-  
+
   def extension_white_list
     %w(jpg jpeg gif png)
    end

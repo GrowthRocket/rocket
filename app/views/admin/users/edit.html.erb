@@ -1,0 +1,6 @@
+<h1> Edit a user </h1>
+<%= simple_form_for [:admin,@user] do |f| %>
+<%= f.input :user_name %>
+<%= f.input :email %>
+<%= f.submit "Submit" %>
+<% end %>

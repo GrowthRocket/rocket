@@ -1,14 +1,3 @@
-<h1>
-编辑众筹项目
-</h1>
-<%#= render "form" %>
-<%= simple_form_for [:admin, @project] do |f| %>
+<h1>编辑众筹项目</h1>
 
-  <%= f.input :name, :label =>"项目名称" %>
-  <%= f.input :description, :label =>"项目描述" %>
-
-  <%= f.input :image, :label =>"主题图片" %>
-
-  <%= f.submit "编辑项目", class: "btn btn-info" %>
-
-<% end %>
+<%= render "form" %>
