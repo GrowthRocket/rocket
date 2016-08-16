@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :orders
     resources :projects
     resources :plans
+    resources :users
   end
 
   namespace :account do
@@ -23,4 +24,5 @@ Rails.application.routes.draw do
 
   resources :projects
   resources :plans
+
 end
