@@ -30,6 +30,22 @@ ActiveRecord::Schema.define(version: 20160816045314) do
     t.integer  "price"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.integer  "total_price"
+    t.integer  "plan_id"
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.string   "creator_name"
+    t.string   "backer_name"
+    t.integer  "price"
+    t.integer  "quantity"
+    t.string   "payment_method"
+    t.string   "token"
+    t.string   "aasm_state",     default: "order_placed"
+    t.integer  "user_id"
+    t.index ["aasm_state"], name: "index_orders_on_aasm_state"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
