@@ -25,7 +25,7 @@ class Admin::PlansController < ApplicationController
     @plan = Plan.new(plan_params)
     @plan.project = @project
     if @plan.save
-      redirect_to admin_project_plans_path, notice: "筹款方案新建成功"
+      redirect_to admin_project_plans_path, notice: "您已成功新建筹款方案。"
     else
       render :new
     end
@@ -42,7 +42,7 @@ class Admin::PlansController < ApplicationController
 
     @plan = Plan.find(params[:id])
     if @plan.update(plan_params)
-      redirect_to admin_project_plans_path, notice: "筹款方案更新成功"
+      redirect_to admin_project_plans_path, notice: "您已成功更新筹款方案。"
     else
       render :edit
     end
