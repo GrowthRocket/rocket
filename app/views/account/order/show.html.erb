@@ -1,0 +1,58 @@
+<div class="col-sm-12 col-md-12 col-lg-12">
+  <h1>Plan List</h1>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <td>creator Name</td>
+        <td>Price</td>
+        <td>Quantity</td>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: "plan_items", object: @order, as: "item"%>
+    </tbody>
+  </table>
+</div>
+
+<div class="col-sm-12 col-md-12 col-lg-12 text-right">
+  <p>
+      总计：$ <%= @order.total_price %>
+  </p>
+</div>
+
+<div class="col-sm-12 col-md-12 col-lg-12">
+  <h1>Order Info</h1>
+  <table class="table table-striped table-bordered">
+    <tr>
+      <td>Backer</td>
+    </tr>
+    <tr>
+      <td>
+        <address>
+          <strong>Full Name</strong><br>
+          <%= @order.backer_name %>
+        </address>
+      </td>
+    </tr>
+    <tr>
+      <td>Creator</td>
+    </tr>
+    <tr>
+      <td>
+        <address>
+          <strong>Full Name</strong><br>
+          <%= @order.creator_name %>
+        </address>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="pull-right">
+  <% if @order.paid? %>
+    <%= link_to("Already Paid", "javascript:void(0);", class: "btn btn-default pull-right", disabled: "disabled") %>
+  <% else %>
+    <%= link_to("Use Alipay", pay_with_alipay_account_order_path(@order.token), method: :post, class: "btn btn-primary") %>
+    <%= link_to("Use WeChat", pay_with_wechat_account_order_path(@order.token), method: :post, class: "btn btn-success") %>
+  <% end %>
+</div>

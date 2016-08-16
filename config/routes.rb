@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     resources :projects do
       resources :plans
     end
+    resources :users
+
   end
 
   namespace :account do
@@ -22,6 +24,7 @@ Rails.application.routes.draw do
 
   root 'projects#index'
 
-  resources :projects 
+  resources :projects
   resources :plans
+
 end
