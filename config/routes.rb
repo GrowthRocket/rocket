@@ -4,10 +4,14 @@ Rails.application.routes.draw do
 
   resources :welcome
 
-  resources :projects
   namespace :admin do
     resources :projects
+    resources :plans
   end
 
   root 'projects#index'
+
+  resources :projects
+  resources :plans
+
 end
