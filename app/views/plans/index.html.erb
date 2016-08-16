@@ -1,6 +1,7 @@
 
 <h1>支持方案详情</h1>
 
+<h3>请选择您要支持的方案：</h3>
 
 <div class="container-fluid">
   <div class="row">
@@ -8,19 +9,17 @@
     <div class="pull-right">
       <% @plans.each do |plan| %>
       <div class="col-xs-12 col-sm-4 col-md-8-offset-4">
-          <h4><%= project.name %></h4>
-          <p><%= project.description %></p>
-          请选择您要支持的方案：
-          <p><%= project.plan %></p>
+        <p>
+          <%= plan.title %>
+        </p>
+        <p>
+          <%= plan.description %>
+        </p>
+        <p>
+          <%= link_to("支持项目", new_account_order_path(:plan_id => plan.id), :class => "btn btn-success" ) %>
+        </p>
       </div>
-      <%= link_to("支持项目", new_account_order_path(:plan_id => plan.id), :class => "btn btn-success" ) %>
       <% end %>
-
-
-      <!-- <div style="margin-top: 50px;">
-              <h4>请扫下面的二维码进行付款</h4>
- <p style="text-align: center;"><img style="width: 100%" src="images/QRcode.png"></img></p>
-</div> -->
     </div>
   </div>
 </div>

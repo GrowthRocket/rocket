@@ -21,7 +21,7 @@ class Admin::ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     if @project.save
-      redirect_to projects_path
+      redirect_to admin_projects_path
     else
       render :new
     end
@@ -30,7 +30,7 @@ class Admin::ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
     if @project.update(project_params)
-      redirect_to projects_path, notice: "Update successfully"
+      redirect_to admin_projects_path, notice: "项目更新成功"
     else
       render :edit
     end
@@ -39,7 +39,7 @@ class Admin::ProjectsController < ApplicationController
   def destroy
     @project = Project.find(params[:id])
     @project.destroy
-    redirect_to projects_path, alert: "Project deleted!"
+    redirect_to :back, alert: "项目删除成功"
   end
 
   private

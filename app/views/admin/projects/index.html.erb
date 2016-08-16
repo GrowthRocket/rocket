@@ -6,6 +6,7 @@
   <thead>
   <tr>
     <th>众筹项目</th>
+    <th>方案数量</th>
     <th>概览</th>
     <th>操作</th>
   </tr>
@@ -16,6 +17,9 @@
     <td>
       <%= link_to(project.name, "#",) %>
       <%#= link_to(image_tag(project.imgage_url(:small)), project_path(project),) %>
+    </td>
+    <td>
+      <%= link_to(project.plans.count, admin_project_plans_path(project)) %>
     </td>
     <td>
       <%= project.description %>
