@@ -1,10 +1,10 @@
 <%= simple_form_for [:admin, @project] do |f| %>
 
-  <%= f.input :name %>
-  <%= f.input :description %>
+  <%= f.input :name, :label =>"项目名称" %>
+  <%= f.input :description, :label =>"项目描述" %>
 
-  <%= f.input :image %>
+  <%= f.input :image, :label =>"主题图片" %>
 
 
-  <%= f.submit  class: "btn btn-primary" %>
+  <%= f.submit "创建项目", class: "btn btn-primary" %>
 <% end %>
