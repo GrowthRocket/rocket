@@ -1,11 +1,12 @@
 <h1>众筹项目管理面板</h1>
 <div class="pull-right">
-  <%= link_to("新增众筹项目", new_admin_project_path, :class => "btn btn-success" ) %>
+  <%= link_to("新建众筹项目", new_admin_project_path, :class => "btn btn-success" ) %>
 </div>
 <table class="table table-boldered">
   <thead>
   <tr>
-    <th>众筹项目</th>
+    <th>ID</th>
+    <th colspan="2">众筹项目</th>
     <th>方案数量</th>
     <th>概览</th>
     <th>操作</th>
@@ -15,8 +16,13 @@
   <% @projects.each do |project| %>
   <tr>
     <td>
-      <%= link_to(project.name, "#",) %>
-      <%#= link_to(image_tag(project.imgage_url(:small)), project_path(project),) %>
+      <%= project.id %>
+    </td>
+    <td>
+      <%= link_to(project.name, project_path(project)) %>
+    </td>
+    <td>
+    <%= link_to(image_tag(project.image.thumb), project_path(project),) %>
     </td>
     <td>
       <%= link_to(project.plans.count, admin_project_plans_path(project)) %>

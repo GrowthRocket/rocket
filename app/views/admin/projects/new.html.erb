@@ -1,3 +1,13 @@
-<h1>新增众筹项目</h1>
+<h1>新建众筹项目</h1>
 
-<%= render "form" %>
+<%#= render "form" %>
+<%= simple_form_for [:admin, @project] do |f| %>
+
+  <%= f.input :name, :label =>"项目名称" %>
+  <%= f.input :description, :label =>"项目描述" %>
+
+  <%= f.input :image, :label =>"主题图片" %>
+
+  <%= f.submit "创建项目", class: "btn btn-success" %>
+
+<% end %>
