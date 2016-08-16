@@ -36,6 +36,11 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   process :resize_to_fit => [50, 50]
   # end
 
+  def default_url
+    # "/images/fallback/" + [thumb, "avatar.jpg"].compact.join('_')
+    "/images/default_pic.jpg"
+  end
+
   process resize_to_fit: [800, 800]
 
   version :thumb do
