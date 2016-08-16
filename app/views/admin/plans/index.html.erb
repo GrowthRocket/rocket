@@ -2,7 +2,7 @@
 <div class="pull-right">
     <%= link_to("新增方案",   new_admin_plan_path, class: "btn btn-primary")  %>
 </div>
-<table class="table table-boldered">
+<table class="table table-boldered" , style="width: 100%; table-layout: fixed;">
     <thead>
         <tr>
             <th>
@@ -13,6 +13,9 @@
             </th>
             <th>
                 方案详情
+            </th>
+            <th>
+                方案价格
             </th>
             <th>
                 操作
@@ -31,8 +34,11 @@
             <td>
                 <%= link_to(plan.title, plan_path(plan)) %>
             </td>
-            <td>
+            <td style="white-space: nowrap; overflow: hidden;">
                 <%= plan.description %>
+            </td>
+            <td>
+                <%= plan.price %>元
             </td>
             <td>
                 <%= link_to("编辑", edit_admin_plan_path(plan), class: "btn btn-default" )%>
