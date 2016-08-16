@@ -1,12 +1,13 @@
 class Admin::ProjectsController < ApplicationController
   # before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy]
   layout 'admin'
-  
+
   def index
     @projects = Project.all
   end
 
   def new
+    @savetype = 1
     @project = Project.new
   end
 
@@ -15,6 +16,7 @@ class Admin::ProjectsController < ApplicationController
   end
 
   def edit
+    @savetype = 2
     @project = Project.find(params[:id])
   end
 

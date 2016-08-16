@@ -7,7 +7,7 @@ class Account::OrderController < ApplicationController
 
   def show
     @order = current_user.orders.find_by_token(params[:id])
-    render "admin/orders/show"
+    # render "admin/orders/show"
   end
 
   def new
