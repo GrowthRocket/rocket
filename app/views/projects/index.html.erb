@@ -1,0 +1,22 @@
+
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>品名</th>
+      <th>叙述</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+
+        <td><%= link_to(project.name, project_path(project)) %></td>
+        <td><%= project.description %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
