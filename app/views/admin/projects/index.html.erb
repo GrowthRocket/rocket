@@ -15,7 +15,7 @@
   <% @projects.each do |project| %>
   <tr>
     <td>
-      <%= link_to(project.name, "#",) %>
+      <%= link_to(project.name, project_path(project)) %>
       <%#= link_to(image_tag(project.imgage_url(:small)), project_path(project),) %>
     </td>
     <td>
