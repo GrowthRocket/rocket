@@ -1,0 +1,26 @@
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-8-offset-1">
+      <h1> <%= @project.title %> </h1>
+        <p class="thumbnail">
+          <%#= image_tag(@project.image_url(:large)) if @project.image %>
+        </p>
+      </div>
+
+    <div class="col-xs-12 col-sm-5 col-md-8-offset-1">
+    <div class="pull-right">
+        <%= link_to("支持项目", "#", :method => :post, :class => "btn btn-success" ) %>
+    </div>
+  </div>
+</div>
+</div>
+
+<hr>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-12 col-sm-9 col-md-8-offset-1">
+        <p><%#= simple_format(@project.description) %></p>
+      </div>
+    </div>
+  </div>
