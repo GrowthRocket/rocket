@@ -4,12 +4,11 @@
    <img style="width:100%" src="/images/Creator.png"></img>
   </div>
       <div class="row">
-        <%# @projects.each do |project| %>
+        <% @projects.each do |project| %>
         <div class="col-xs-12 col-sm-4 col-md-8-offset-4">
-            <h4><%#= projdct.title %></h4>
-            <p><%#= projdct.description %></p>
+            <h4><%= link_to(project.name, project_path(project)) %></h4>
+            <p><%= projdct.description %></p>
         </div>
-        <%# end %>
+        <% end %>
       </div>
-
 </div>

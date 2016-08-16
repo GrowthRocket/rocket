@@ -1,10 +1,9 @@
 <div class="container-fluid">
-
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-8-offset-1">
-      <h1> <%= @project.title %> </h1>
+      <h1> <%= @project.name %> </h1>
         <p class="thumbnail">
-          <%#= image_tag(@project.image_url(:large)) if @project.image %>
+          <%= image_tag(@project.image_url(:medium)) %>
         </p>
       </div>
 
@@ -20,7 +19,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-xs-12 col-sm-9 col-md-8-offset-1">
-        <p><%#= simple_format(@project.description) %></p>
+        <p><%= simple_format(@project.description) %></p>
       </div>
     </div>
   </div>

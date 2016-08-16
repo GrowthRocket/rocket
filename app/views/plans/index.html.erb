@@ -4,15 +4,16 @@
   <div class="row">
     <div class="col-xs-12 col-sm-5 col-md-8-offset-1">
     <div class="pull-right">
-      <%# @projects.each do |project| %>
+      <% @projects.each do |project| %>
       <div class="col-xs-12 col-sm-4 col-md-8-offset-4">
-          <h4><%#= projdct.title %></h4>
-          <p><%#= projdct.description %></p>
-          <p><%#= projdct.plan %></p>
-
+          <h4><%= projdct.name %></h4>
+          <p><%= projdct.description %></p>
+          请选择您要支持的方案：
+          <p><%= projdct.plan %></p>
       </div>
-      <%# end %>
-        <%= link_to("支持TA", "#", :method => :post, :class => "btn btn-success" ) %>
+      <% end %>
+      <h4>请扫下面的二维码进行付款</h4>
+        <div>
     </div>
   </div>
 </div>

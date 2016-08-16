@@ -4,5 +4,23 @@ Rails.application.routes.draw do
 
   resources :welcome
 
-  root 'welcome#index'
+  namespace :admin do
+    resources :orders
+  end
+
+  namespace :account do
+    resources :projects
+    resources :plans
+    resources :order do
+      member do
+        post :pay_with_alipay
+        post :pay_with_wechat
+      end
+    end
+  end
+
+  root 'projects#index'
+
+  resources :projects
+  resources :plans
 end
