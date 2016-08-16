@@ -1,6 +1,7 @@
 class Admin::PlansController < ApplicationController
   # before_action :authenticate_user!
   # before_action :require_is_admin
+  layout 'admin'
 
   def index
     @project = Project.find(params[:project_id])
