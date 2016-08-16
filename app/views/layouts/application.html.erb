@@ -9,11 +9,14 @@
   </head>
 
   <body style="background-image: url(/images/Body_bg.png);">
+
     <div class="container-fluid">
       <%= render "common/navbar" %>
       <%= render "common/flashes" %>
       <%= yield %>
     </div>
+
     <%= render "common/footer" %>
+    
   </body>
 </html>
