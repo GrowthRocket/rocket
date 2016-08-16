@@ -57,6 +57,8 @@ class Order < ApplicationRecord
 
   end
 
+  validates :backer_name, presence: true
+
   before_create :generate_token
 
   def generate_token
