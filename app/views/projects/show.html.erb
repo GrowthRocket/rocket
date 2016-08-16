@@ -1,0 +1,28 @@
+
+<table class="table">
+  <thead>
+    <tr>
+      <!-- <th>#</th>
+      <th>品名</th>
+      <th>叙述</th>
+      <th>库存</th>
+      <th>价格</th>
+      <th>选项</th>
+      <th>创建日期</th> -->
+    </tr>
+  </thead>
+
+  <tbody>
+
+      <tr>
+        <td><%= image_tag(@project.image_url(:medium)) %></td>
+        <td>
+          <h2><%= @project.name %></h2>
+          <p><%= simple_format(@project.description) %></p>
+
+
+        </td>
+      </tr>
+
+  </tbody>
+</table>

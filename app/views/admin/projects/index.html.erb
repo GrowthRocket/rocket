@@ -1,0 +1,32 @@
+<div class="pull-right">
+  <%= link_to("Add a project", new_admin_project_path, class: "btn btn-info") %>
+</div>
+
+<br><br>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>项目名称</th>
+      <th>叙述</th>
+      <th>选项</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+
+        <td><%= link_to(project.name, project_path(project)) %></td>
+        <td><%= project.description %></td>
+
+        <td>
+          <%= link_to("Edit", edit_admin_project_path(project)) %> |
+          <%= link_to("Destroy", admin_project_path(project),
+                      method: :delete, data: { confirm: "Sure?" })  %>
+        </td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
