@@ -1,37 +1,26 @@
-<h1 class="text-center">全部方案</h1>
-<table class="table table-boldered", style="width: 100%; table-layout: fixed;">
-  <thead>
-      <tr  style="white-space: nowrap; ">
-          <th>
-              #
-          </th>
-          <th>
-              方案名称
-          </th>
-          <th>
-              方案详情
-          </th>
-          <th >
-              方案价格
-          </th>
-      </tr>
-  </thead>
-  <tbody>
+
+<h1>支持方案详情</h1>
+
+<h3>请选择您要支持的方案：</h3>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-5 col-md-8-offset-1">
+    <div class="pull-right">
       <% @plans.each do |plan| %>
-      <tr>
-          <td>
-              #
-          </td>
-          <td>
-              <%= link_to(plan.title, plan_path(plan)) %>
-          </td>
-          <td style="white-space: nowrap; overflow: hidden;">
-              <%= plan.description %>
-          </td>
-          <td >
-              <%= plan.price %>元
-          </td>
-      </tr>
+      <div class="col-xs-12 col-sm-4 col-md-8-offset-4">
+        <p>
+          <%= plan.title %>
+        </p>
+        <p>
+          <%= plan.description %>
+        </p>
+        <p>
+          <%= link_to("支持项目", new_account_order_path(:plan_id => plan.id), :class => "btn btn-success" ) %>
+        </p>
+      </div>
       <% end %>
-  </tbody>
-</table>
+    </div>
+  </div>
+</div>
+</div>

@@ -1,6 +1,8 @@
-  <h1 class="text-center">全部方案</h1>
+<h1>众筹项目支持方案管理面板</h1>
+
+  <h1 class="text-center">  <%= link_to(@project.name, projects_path) %></h1>
 <div class="pull-right">
-    <%= link_to("新增方案",   new_admin_plan_path, class: "btn btn-primary")  %>
+    <%= link_to("新增方案",   new_admin_project_plan_path(@project), class: "btn btn-warning")  %>
 </div>
 <table class="table table-boldered" , style="width: 100%; table-layout: fixed;">
     <thead>
@@ -8,9 +10,11 @@
             <th>
                 #
             </th>
+
             <th>
                 方案名称
             </th>
+
             <th>
                 方案详情
             </th>
@@ -23,14 +27,16 @@
             <th>
                 创建时间
             </th>
+
         </tr>
     </thead>
     <tbody>
-        <% @plans.each do |plan| %>
+        <%  @plans.each do |plan| %>
         <tr>
             <td>
                 #
             </td>
+
             <td>
                 <%= link_to(plan.title, plan_path(plan)) %>
             </td>
@@ -41,9 +47,9 @@
                 <%= plan.price %>元
             </td>
             <td>
-                <%= link_to("编辑", edit_admin_plan_path(plan), class: "btn btn-default" )%>
+                <%= link_to("编辑", edit_admin_project_plan_path(plan.project, plan), class: "btn btn-xs btn-info" )%>
 
-                <%= link_to("删除", admin_plan_path(plan), method: :delete,  class: "btn btn-default" , data: {confirm: "确认删除该方案么?"}) %>
+                <%= link_to("删除", admin_project_plan_path(plan.project,plan), method: :delete,  class: "btn btn-xs btn-danger" , data: {confirm: "确认删除该方案么?"}) %>
             </td>
             <td>
                 <%= plan.created_at %>
