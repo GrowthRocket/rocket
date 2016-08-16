@@ -29,12 +29,6 @@ class Account::OrderController < ApplicationController
     end
   end
 
-  private
-
-  def order_params
-    params.require(:order).permit(:plan_id, :backer_name, :price, :quantity)
-  end
-
   def pay_with_alipay
     order = current_user.orders.find_by_token(params[:id])
     if order.pay!("Alipay")
@@ -54,4 +48,12 @@ class Account::OrderController < ApplicationController
     end
     redirect_to account_order_path(order.token)
   end
+
+  private
+
+  def order_params
+    params.require(:order).permit(:plan_id, :backer_name, :price, :quantity)
+  end
+
+
 end
