@@ -13,9 +13,9 @@
           请选择您要支持的方案：
           <p><%= project.plan %></p>
       </div>
+      <%= link_to("支持项目", new_account_order_path(:plan_id => plan.id), :class => "btn btn-success" ) %>
       <% end %>
 
-      <%= link_to("支持项目", "#", :class => "btn btn-success" ) %>
 
       <!-- <div style="margin-top: 50px;">
               <h4>请扫下面的二维码进行付款</h4>
