@@ -3,7 +3,7 @@ class Admin::OrdersController < ApplicationController
   layout 'admin'
 
   def index
-    @orders = Orders.all
+    @orders = Order.all
   end
 
   def show
