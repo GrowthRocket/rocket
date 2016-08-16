@@ -1,10 +1,12 @@
+
 <h1>支持方案详情</h1>
+
 
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-12 col-sm-5 col-md-8-offset-1">
     <div class="pull-right">
-      <% @projects.each do |project| %>
+      <% @plans.each do |plan| %>
       <div class="col-xs-12 col-sm-4 col-md-8-offset-4">
           <h4><%= project.name %></h4>
           <p><%= project.description %></p>
@@ -12,8 +14,10 @@
           <p><%= project.plan %></p>
       </div>
       <% end %>
-      <h4>请扫下面的二维码进行付款</h4>
-        <div>
+      <div style="margin-top: 50px;">
+              <h4>请扫下面的二维码进行付款</h4>
+ <p style="text-align: center;"><img style="width: 100%" src="images/QRcode.png"></img></p>
+</div>
     </div>
   </div>
 </div>
