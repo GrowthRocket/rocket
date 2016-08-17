@@ -7,6 +7,7 @@ class Plan < ApplicationRecord
   validates :plan_goal, presence: true
   validates :plan_goal, numericality: { greater_than: 0 }
   belongs_to :project
+  has_many :orders
 end
 
 # == Schema Information

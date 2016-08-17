@@ -15,11 +15,10 @@ Rails.application.routes.draw do
     end
     resources :users do
       member do
-      post :promote
-      post :demote
+        post :promote
+        post :demote
+      end
     end
-  end
-
   end
 
   namespace :account do
@@ -32,11 +31,13 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :plans do
+    resources :orders
+  end
+
   root 'projects#index'
 
   resources :projects do
     resources :plans
   end
-
-
 end
