@@ -1,6 +1,6 @@
 <tr>
   <td>
-    订单号：<%= link_to(item.token, admin_order_path(item.token)) %>
+    订单号：<%= link_to(item.token,  account_order_path(item.token)) %>
     <%= render_order_state(item) %>
     <br>
   </td>
