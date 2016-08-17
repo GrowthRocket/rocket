@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :user
   belongs_to :project
+  belongs_to :plan
 
   before_create :calculate_total
 

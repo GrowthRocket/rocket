@@ -18,11 +18,7 @@ class OrdersController < ApplicationController
 
     if @order.save
 
-      @project.fund_progress += @order.total_price
-      @project.backer_quantity += 1
-      @plan.plan_progress += 1
-      @project.save
-      @plan.save
+      FundingService.new(@order).add!
 
       flash[:notice] = "感谢您对本项目的支持！"
       redirect_to account_order_path(@order.token)
