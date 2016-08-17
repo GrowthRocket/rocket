@@ -18,8 +18,8 @@ class Plan < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
   validates :price, presence: true
-  validates :price, numericality: {greater_than: 0}
+  validates :price, numericality: { greater_than: 0 }
   validates :plan_goal, presence: true
-  validates :plan_goal, numericality: {greater_than: 0}
+  validates :plan_goal, numericality: { greater_than: 0 }
   belongs_to :project
 end

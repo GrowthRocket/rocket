@@ -17,19 +17,19 @@
 
 class Project < ApplicationRecord
   validates :name, presence: true
-  validates :fund_goal, numericality: {greater_than: 0}
+  validates :fund_goal, numericality: { greater_than: 0 }
 
   mount_uploader :image, ImageUploader
   has_many :plans
 
-  scope :published, -> { where(:is_hidden => false)}
+  scope :published, -> { where(is_hidden: false) }
   def publish!
     self.is_hidden = false
-    self.save
+    save
   end
 
   def hide!
     self.is_hidden = true
-    self.save
+    save
   end
 end
