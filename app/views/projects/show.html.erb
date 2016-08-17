@@ -12,7 +12,9 @@
       <h3>已筹到</h3>
       <h3>¥ <%= @project.fund_progress %></h3>
       <h5>当前已支持 <%= number_with_precision(@project.fund_progress.to_f / @project.fund_goal * 100, :precision => 2) %>%</h5>
-        <%= link_to("支持项目", plans_path(id: @project), :class => "btn btn-success" ) %>
+      <h5>当前已有 <%= @project.backer_quantity %> 人支持</h5>
+      <%= link_to("支持项目", plans_path(id: @project), :class => "btn btn-success" ) %>
+
     </div>
   </div>
 </div>

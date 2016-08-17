@@ -6,4 +6,10 @@ module Admin::ProjectsHelper
       content_tag(:label, "已发布")
     end
   end
+
+  def render_project_backers_quantity(project)
+    
+
+  end
+
 end
