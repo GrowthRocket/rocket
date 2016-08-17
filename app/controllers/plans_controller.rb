@@ -1,6 +1,7 @@
 class PlansController < ApplicationController
   def index
-    @plans = Plan.all
+    @project = Project.find(params[:id])
+    @plans = @project.plans
   end
 
   def show
