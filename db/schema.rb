@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160816093912) do
+ActiveRecord::Schema.define(version: 20160817014910) do
 
   create_table "orders", force: :cascade do |t|
     t.integer  "total_price"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20160816093912) do
     t.string   "token"
     t.string   "aasm_state",     default: "order_placed"
     t.integer  "user_id"
+    t.integer  "project_id"
     t.index ["aasm_state"], name: "index_orders_on_aasm_state"
   end
 

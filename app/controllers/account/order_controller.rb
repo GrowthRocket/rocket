@@ -11,7 +11,7 @@ class Account::OrderController < ApplicationController
 
   def new
     plan = Plan.find(params[:plan_id])
-    @order = Order.new(price: plan.price, quantity: plan.quantity)
+    @order = Order.new(price: plan.price, quantity: plan.quantity, project_id: plan.project_id)
   end
 
   def create
@@ -51,7 +51,7 @@ class Account::OrderController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:plan_id, :backer_name, :price, :quantity)
+    params.require(:order).permit(:plan_id, :backer_name, :price, :quantity, :project_id)
   end
 
 
