@@ -1,12 +1,15 @@
 <tr>
-  <td>
+  <td colspan="6">
     订单号：<%= link_to(item.token, admin_order_path(item.token)) %>
     <%= render_order_state(item) %>
     <br>
   </td>
+</tr>
+<tr>
+  <td>项目发起者：<%= item.creator_name %></td>
   <td><%= item.price %></td>
   <td><%= item.quantity%></td>
-  <td><%= item.total_price %></td>
+  <td>¥<%= item.total_price %></td>
   <td><%= render_order_created_at(item.created_at) %></td>
   <td>
     <% if !current_user.admin? %>

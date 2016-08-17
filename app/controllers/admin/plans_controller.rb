@@ -15,8 +15,8 @@ class Admin::PlansController < ApplicationController
 
   def new
     @project = Project.find(params[:project_id])
-
     @plan = Plan.new
+    @savetype = 1
 
   end
 
@@ -27,14 +27,16 @@ class Admin::PlansController < ApplicationController
     if @plan.save
       redirect_to admin_project_plans_path, notice: "您已成功新建筹款方案。"
     else
+      @savetype = 1
       render :new
     end
   end
 
   def edit
     @project = Project.find(params[:project_id])
-
     @plan = Plan.find(params[:id])
+    @savetype = 2
+
   end
 
   def update

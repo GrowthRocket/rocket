@@ -25,6 +25,7 @@ class Admin::ProjectsController < ApplicationController
     if @project.save
       redirect_to admin_projects_path
     else
+      @savetype = 1
       render :new
     end
   end
