@@ -1,20 +1,20 @@
 class ProjectsController < ApplicationController
 
   def index
-    @projects = Project.all
+    @projects = Project.published
   end
 
   def show
     @project = Project.find(params[:id])
-    orders = Order.find_by_project_id(@project.project_id)
+    orders = Order.all.where(project_id: @project.id)
     @total_price = 0
     @progress = 0
-    orders.each do |order|
-      @total_price += order.total_price
+    if !orders.nil?
+      orders.each do |order|
+        @total_price += order.total_price
+      end
+      @progress = @total_price.to_f / @project.total_price * 100
     end
-
-    @progress = @total_price / @project.total_price
-
   end
 
 end

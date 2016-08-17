@@ -11,8 +11,8 @@
       <h1> <%= @project.name %> </h1>
       <h3>已筹到</h3>
       <h3>¥ <%= @total_price %></h3>
-      <h5>当前已支持 <%= @progress %>%</h5>
-        <%= link_to("支持项目", plans_path, :class => "btn btn-success" ) %>
+      <h5>当前已支持 <%= number_with_precision(@progress, :precision => 2) %>%</h5>
+        <%= link_to("支持项目", plans_path(id: @project), :class => "btn btn-success" ) %>
     </div>
   </div>
 </div>
@@ -23,7 +23,7 @@
     <div class="row">
       <div class="col-xs-12 col-sm-9 col-md-8-offset-1">
         <p><%= simple_format(@project.description) %></p>
-        <p>筹款目标：<%= @project.total_price %></p>
+        <p>筹款目标：<%= @project.fund_goal %></p>
       </div>
     </div>
   </div>
