@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160817075705) do
+ActiveRecord::Schema.define(version: 20160817082433) do
 
   create_table "orders", force: :cascade do |t|
     t.integer  "total_price"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20160817075705) do
     t.integer  "price"
     t.integer  "project_id"
     t.integer  "plan_goal"
-    t.integer  "plan_progress"
+    t.integer  "plan_progress", default: 0
   end
 
   create_table "projects", force: :cascade do |t|
