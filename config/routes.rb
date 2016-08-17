@@ -9,7 +9,12 @@ Rails.application.routes.draw do
     resources :projects do
       resources :plans
     end
-    resources :users
+    resources :users do
+      member do
+      post :promote
+      post :demote
+    end
+  end
 
   end
 

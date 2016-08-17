@@ -29,7 +29,20 @@ class Admin::UsersController < ApplicationController
       render :edit
     end
   end
+  def promote
+    @user = User.find(params[:id])
+    @user.is_admin = true
+    @user.save
+    redirect_to :back, notice: "Promote Admin Success!"
+  end
 
+
+  def demote
+    @user = User.find(params[:id])
+    @user.is_admin = false
+    @user.save
+    redirect_to :back, alert: "Demote Admin Success"
+  end
   private
 
   def user_params
