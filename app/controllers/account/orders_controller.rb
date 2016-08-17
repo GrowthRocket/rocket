@@ -20,8 +20,11 @@ class Account::OrdersController < ApplicationController
     @order.user = current_user
     plan = Plan.find(@order.plan_id)
     @order.project_id = plan.project_id
-    @order.total_price = @order.price * @order.quantity
+    total_price = @order.price * @order.quantity
+    @order.total_price = total_price
     if @order.save
+      project = Project.find(@order.project_id)
+      project.fund_progress += total_price
       flash[:notice] = "感谢您对本项目的支持！"
       redirect_to account_order_path(@order.token)
     else
