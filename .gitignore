@@ -26,5 +26,5 @@ public/uploads/*
 /config/application.yml
 
 /erd.pdf
-
+／public/.DS_Store
 /.DS_Store
