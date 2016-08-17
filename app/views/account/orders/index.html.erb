@@ -1,17 +1,17 @@
-<div class="col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-md-offset-3">
-  <table class="table table-bordered table-hover">
+<h3>我的支持记录</h3>
+
+<table class="table table-boldered">
     <thead>
       <tr>
-        <td>Plan</td>
-        <td>Price</td>
-        <td>Quantity</td>
-        <td>TotalPrice</td>
-        <td>Created At</td>
-        <td>Operation</td>
+        <th>众筹方案</th>
+        <th>方案价格</th>
+        <th>支持数量</th>
+        <th>合计金额</th>
+        <th>订单时间</th>
+        <th>操作</th>
       </tr>
     </thead>
     <tbody>
       <%= render partial: "order_item", collection: @orders, as: "item" %>
     </tbody>
   </table>
-</div>
