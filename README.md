@@ -43,3 +43,21 @@
 * 常问问题并不可耻（别担心，你不是在浪费同事时间）。没有什么比不问问题更糟糕的了。
 * 你盖的东西，是会被「真的人」使用，而会会影响到「真的使用​​者」。
 * 为自己的作品自豪
+
+
+## Admin 账户
+a:admin@gmail.com
+p:111111
+
+## User 账户
+a:user1@gmail.com
+p:111111
+
+a:user1@gmail.com
+p:111111
+
+a:user2@gmail.com
+p:111111
+
+a:user3@gmail.com
+p:111111

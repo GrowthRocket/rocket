@@ -14,7 +14,6 @@
             <p>已筹到 ¥ <%= project.fund_progress %> </p>
             <p>当前已支持 <%= number_with_precision(project.fund_progress.to_f / project.fund_goal * 100, :precision => 2) %>%</p>
             <p>当前已有 <%= project.backer_quantity %> 人支持</p>
-
         </div>
         <% end %>
       </div>
