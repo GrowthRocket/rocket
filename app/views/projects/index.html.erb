@@ -11,7 +11,10 @@
           <%= link_to(image_tag(project.image.show), project_path(project), class: "thumbnail") %>
             <h2><%= link_to(project.name, project_path(project)) %></h2>
             <p><%= project.description %></p>
-            <p><%= project.fund_goal %></p>
+            <p>已筹到 ¥ <%= project.fund_progress %> </p>
+            <p>当前已支持 <%= number_with_precision(project.fund_progress.to_f / project.fund_goal * 100, :precision => 2) %>%</p>
+            <p>当前已有 <%= project.backer_quantity %> 人支持</p>
+
         </div>
         <% end %>
       </div>
