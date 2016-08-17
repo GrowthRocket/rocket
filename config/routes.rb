@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     resources :orders
     resources :projects do
       resources :plans
+      member do
+        post :publish
+        post :hide
+      end
     end
     resources :users
 

@@ -47,10 +47,24 @@ class Admin::ProjectsController < ApplicationController
     redirect_to :back, alert: "项目删除成功"
   end
 
+  def publish
+    @project = Project.find(params[:id])
+    @project.publish!
+    redirect_to :back
+  end
+
+  def hide
+    @project = Project.find(params[:id])
+    @project.hide!
+    redirect_to :back
+  end
+
+
+
   private
 
   def project_params
-    params.require(:project).permit(:name, :description, :user_id, :total_price, :image)
+    params.require(:project).permit(:name, :description, :user_id, :total_price, :image, :is_hidden)
   end
   #
 end
