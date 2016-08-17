@@ -1,6 +1,13 @@
 class Order < ApplicationRecord
   belongs_to :user
   belongs_to :project
+
+  before_create :calculate_total
+
+  def calculate_total
+    self.total_price = quantity * price
+  end
+
   include AASM
 
   aasm do

@@ -16,13 +16,9 @@ class OrdersController < ApplicationController
 
     @order.project = @project
 
-    total_price = @order.price * @order.quantity
-
-    @order.total_price = total_price
-
     if @order.save
       project = Project.find(@order.project_id)
-      project.fund_progress += total_price
+      project.fund_progress += @order.total_price
       project.backer_quantity += 1
       @plan.plan_progress += 1
       project.save
