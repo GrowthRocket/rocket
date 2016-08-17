@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   end
 
   namespace :account do
+    resources :users
     resources :order do
       member do
         post :pay_with_alipay
