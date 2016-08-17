@@ -9,7 +9,7 @@
             <th >方案名称</th>
             <th >方案详情</th>
             <th >方案价格</th>
-            <th >已购数</th>
+
             <th >进度</th>
             <th >操作</th>
             <th >创建时间</th>
@@ -23,12 +23,11 @@
             <td style="white-space: nowrap; overflow: hidden;"><%= plan.description %>
             </td>
             <td><%= plan.price %>元</td>
-            <td><%= plan.plan_goal %>个</td>
+
+
             <td>
-              plan_progress @大神
-            </td>
-            <td>
-              百分比 @大神
+               <%= plan.plan_progress %>/ <%= plan.plan_goal %>
+              <%#= number_with_precision(plan.plan_progress.to_f/plan.plan_goal * 100, precision: 2) %>
             </td>
             <td>
                 <%= link_to("编辑", edit_admin_project_plan_path(plan.project, plan), class: "btn btn-xs btn-info" )%>
