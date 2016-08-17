@@ -20,10 +20,10 @@ class Admin::OrdersController < ApplicationController
     @order.user = current_user
     @order.total_price = @order.price * @order.quantity
     if @order.save
-      flash[:notice] = "Successfully created one order."
-      redirect_to admin_order_path(@order.token)
+      flash[:notice] = "感谢您对本项目的支持！"
+      redirect_to account_order_path(@order.token)
     else
-      flash[:notice] = "Faild to  creat one order."
+      flash[:notice] = "创建订单失败，请再次尝试。"
       redirect_back(fallback_location: root_path)
     end
   end

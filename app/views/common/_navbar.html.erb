@@ -17,17 +17,20 @@
                   <b class="caret"></b>
                   </a>
                 <ul class="dropdown-menu">
-                  <%# if current_user.admin? %>
+                  <% if current_user.admin? %>
                     <li> <%= link_to("管理员面板", admin_projects_path,) %> </li>
-                  <%# end %>
+                  <% end %>
+                  <% if current_user %>
+                    <li> <%= link_to("我支持的项目", account_order_index_path) %> </li>
+                  <% end %>
                     <li> <%= link_to("退出", destroy_user_session_path, method: :delete, :data => { :confirm => "确定退出登录吗?" }) %> </li>
                 </ul>
               </li>
               <% end %>
             </ul>
-            <form class="navbar-form navbar-right" role="search">
+            <!-- <form class="navbar-form navbar-right" role="search">
               <button type="button" class="btn btn-success">发起项目</button>
-            </form>
+            </form> -->
         </div>
         <!-- /.navbar-collapse -->
     </div>

@@ -7,6 +7,7 @@ class Admin::ProjectsController < ApplicationController
   end
 
   def new
+    @savetype = 1
     @project = Project.new
   end
 
@@ -15,6 +16,7 @@ class Admin::ProjectsController < ApplicationController
   end
 
   def edit
+    @savetype = 2
     @project = Project.find(params[:id])
   end
 
