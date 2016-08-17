@@ -7,7 +7,6 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     orders = Order.all.where(project_id: @project.id)
-    puts "-------------"
     @total_price = 0
     @progress = 0
     if !orders.nil?
