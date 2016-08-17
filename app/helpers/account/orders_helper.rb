@@ -1,2 +1,2 @@
-module Account::OrderHelper
+module Account::OrdersHelper
 end
