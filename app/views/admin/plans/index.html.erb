@@ -9,6 +9,7 @@
             <th >方案名称</th>
             <th >方案详情</th>
             <th >方案价格</th>
+            <th >方案目标数量</th>
             <th >操作</th>
             <th >创建时间</th>
         </tr>
@@ -21,6 +22,7 @@
             <td style="white-space: nowrap; overflow: hidden;"><%= plan.description %>
             </td>
             <td><%= plan.price %>元</td>
+            <td><%= plan.plan_goal %>个</td>
             <td>
                 <%= link_to("编辑", edit_admin_project_plan_path(plan.project, plan), class: "btn btn-xs btn-info" )%>
                 <%= link_to("删除", admin_project_plan_path(plan.project,plan), method: :delete,  class: "btn btn-xs btn-danger" , data: {confirm: "确认删除该方案么?"}) %>
