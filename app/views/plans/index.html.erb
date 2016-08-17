@@ -9,11 +9,15 @@
     <div class="pull-right">
       <% @plans.each do |plan| %>
       <div class="col-xs-12 col-sm-4 col-md-8-offset-4">
+
         <p>
           <%= plan.title %>
         </p>
         <p>
           <%= plan.description %>
+        </p>
+        <p>
+          限额 xxx位 | 剩余xxxx位 @大神
         </p>
         <p>
           <%= link_to("支持#{plan.price}元", new_account_order_path(:plan_id => plan.id), :class => "btn btn-success" ) %>
