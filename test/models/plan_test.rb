@@ -11,6 +11,8 @@
 #  price         :integer
 #  project_id    :integer
 #  plan_goal     :integer
+#  plan_progress :integer          default(0)
+#
 
 #  plan_progress :integer          default(0)
 #

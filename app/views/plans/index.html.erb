@@ -16,11 +16,11 @@
         <p>
           <%= plan.description %>
         </p>
-        <p> 
+        <p>
           限额 <%= plan.plan_goal %>位 | 剩余<%= plan.plan_goal - plan.plan_progress %>位
         </p>
         <p>
-          <%= link_to("支持#{plan.price}元", new_account_order_path(:plan_id => plan.id), :class => "btn btn-success" ) %>
+          <%= link_to("支持#{plan.price}元", new_plan_order_path(plan), :class => "btn btn-success" ) %>
         </p>
       </div>
       <% end %>

@@ -1,3 +1,15 @@
+
+class Plan < ApplicationRecord
+  validates :title, presence: true
+  validates :description, presence: true
+  validates :price, presence: true
+  validates :price, numericality: { greater_than: 0 }
+  validates :plan_goal, presence: true
+  validates :plan_goal, numericality: { greater_than: 0 }
+  belongs_to :project
+  has_many :orders
+end
+
 # == Schema Information
 #
 # Table name: plans
@@ -13,13 +25,3 @@
 #  plan_goal     :integer
 #  plan_progress :integer          default(0)
 #
-
-class Plan < ApplicationRecord
-  validates :title, presence: true
-  validates :description, presence: true
-  validates :price, presence: true
-  validates :price, numericality: {greater_than: 0}
-  validates :plan_goal, presence: true
-  validates :plan_goal, numericality: {greater_than: 0}
-  belongs_to :project
-end

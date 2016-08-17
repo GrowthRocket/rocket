@@ -1,26 +1,14 @@
-# == Schema Information
-#
-# Table name: orders
-#
-#  id             :integer          not null, primary key
-#  total_price    :integer
-#  plan_id        :integer
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
-#  creator_name   :string
-#  backer_name    :string
-#  price          :integer
-#  quantity       :integer
-#  payment_method :string
-#  token          :string
-#  aasm_state     :string           default("order_placed")
-#  user_id        :integer
-#  project_id     :integer
-#
-
 class Order < ApplicationRecord
   belongs_to :user
   belongs_to :project
+  belongs_to :plan
+
+  before_create :calculate_total
+
+  def calculate_total
+    self.total_price = quantity * price
+  end
+
   include AASM
 
   aasm do
@@ -60,7 +48,6 @@ class Order < ApplicationRecord
     event :apply_good_return do
       transitions from: :shipped, to: :appling_good_return
     end
-
   end
 
   validates :backer_name, presence: true
@@ -72,12 +59,34 @@ class Order < ApplicationRecord
   end
 
   def pay!(payment_method)
-    if !self.paid?
-      self.update_column(:payment_method, payment_method)
-      self.make_payment!
+    unless paid?
+      update_column(:payment_method, payment_method)
+      make_payment!
       # OrderMailer.notify_order_placed(self).deliver!
     end
   end
-
-
 end
+
+# == Schema Information
+#
+# Table name: orders
+#
+#  id             :integer          not null, primary key
+#  total_price    :integer
+#  plan_id        :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  creator_name   :string
+#  backer_name    :string
+#  price          :integer
+#  quantity       :integer
+#  payment_method :string
+#  token          :string
+#  aasm_state     :string           default("order_placed")
+#  user_id        :integer
+#  project_id     :integer
+#
+# Indexes
+#
+#  index_orders_on_aasm_state  (aasm_state)
+#
