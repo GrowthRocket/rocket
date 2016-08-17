@@ -12,7 +12,7 @@
       <h3>已筹到</h3>
       <h3>¥ <%= @total_price %></h3>
       <h5>当前已支持 <%= @progress %>%</h5>
-        <%= link_to("支持项目", plans_path, :class => "btn btn-success" ) %>
+        <%= link_to("支持项目", project_plans_path(@project), :class => "btn btn-success" ) %>
     </div>
   </div>
 </div>
