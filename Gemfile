@@ -43,6 +43,7 @@ gem 'figaro'
 gem 'aasm'
 gem "fog"
 gem "awesome_rails_console"
+gem "trix"
 
 
 group :development, :test do

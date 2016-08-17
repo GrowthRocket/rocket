@@ -1,4 +1,4 @@
-<h1>用户管理面板</h1>
+<h3>用户个人信息</h3>
 
 <table class="table table-boldered">
   <thead>
@@ -29,14 +29,7 @@
       <%#= render_user_level(user) %>
     </td>
     <td>
-      <%= link_to("编辑用户信息", edit_admin_user_path(user), :class => "btn btn-xs btn-info") %>
-    </td>
-     <td>
-      <% if !user.is_admin %>
-        <%= link_to("设为管理员", promote_admin_user_path(user) , :method => :post, :class => "btn btn-xs btn-danger") %>
-      <% else %>
-        <%= link_to("降为非管理员", demote_admin_user_path(user) , :method => :post, :class => "btn btn-xs btn-success") %>
-      <% end %>
+      <%= link_to("编辑用户信息", edit_account_user_path(user), :class => "btn btn-xs btn-info") %>
     </td>
   </tr>
   <% end %>
