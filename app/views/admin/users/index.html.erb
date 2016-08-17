@@ -33,9 +33,9 @@
     </td>
      <td>
       <% if !user.is_admin %>
-        <%= link_to("Set As Admin", promote_admin_user_path(user) , :method => :post, :class => "btn btn-xs btn-danger") %>
+        <%= link_to("设为管理员", promote_admin_user_path(user) , :method => :post, :class => "btn btn-xs btn-danger") %>
       <% else %>
-        <%= link_to("Set As User", demote_admin_user_path(user) , :method => :post, :class => "btn btn-xs btn-success") %>
+        <%= link_to("降为非管理员", demote_admin_user_path(user) , :method => :post, :class => "btn btn-xs btn-success") %>
       <% end %>
     </td>
   </tr>
