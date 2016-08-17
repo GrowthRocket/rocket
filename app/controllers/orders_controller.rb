@@ -17,11 +17,11 @@ class OrdersController < ApplicationController
     @order.project = @project
 
     if @order.save
-      project = Project.find(@order.project_id)
-      project.fund_progress += @order.total_price
-      project.backer_quantity += 1
+
+      @project.fund_progress += @order.total_price
+      @project.backer_quantity += 1
       @plan.plan_progress += 1
-      project.save
+      @project.save
       @plan.save
 
       flash[:notice] = "感谢您对本项目的支持！"
