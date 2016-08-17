@@ -6,3 +6,19 @@
 * 随时随地保持公德心，才是好队友
 
 # 开发用帐号
+
+### Admin
+
+a: admin@gmail.com
+p: 111111
+
+### User
+
+a: user1@gmail.com
+p: 1111111
+
+a: user2@gmail.com
+p: 1111111
+
+a: user3@gmail.com
+p: 1111111
