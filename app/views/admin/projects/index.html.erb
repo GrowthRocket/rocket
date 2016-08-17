@@ -1,13 +1,17 @@
 <h1>众筹项目管理面板</h1>
 <div class="pull-right">
-  <%= link_to("新增众筹项目", new_admin_project_path, :class => "btn btn-success" ) %>
+  <%= link_to("新建众筹项目", new_admin_project_path, :class => "btn btn-success" ) %>
 </div>
 <table class="table table-boldered">
   <thead>
   <tr>
+    <th>ID</th>
     <th>众筹项目</th>
     <th>方案数量</th>
-    <th>概览</th>
+    <th>筹款目标</th>
+    <th>支持人数</th>
+    <th>进度</th>
+    <th>状态</th>
     <th>操作</th>
   </tr>
 </thead>
@@ -15,19 +19,37 @@
   <% @projects.each do |project| %>
   <tr>
     <td>
+      <%= project.id %>
+    </td>
+    <td>
       <%= link_to(project.name, project_path(project)) %>
-      <%#= link_to(image_tag(project.imgage_url(:small)), project_path(project),) %>
+      <br />
+      <img src="<%= project.image.thumb %>" width="120" height="90">
     </td>
     <td>
       <%= link_to(project.plans.count, admin_project_plans_path(project)) %>
     </td>
     <td>
-      <%= project.description %>
+      ¥<%= project.fund_goal %>
+    </td>
+    <td>
+      <%= project.backer_quantity %> 人
+    </td>
+    <td>
+      <%= number_with_precision(project.fund_progress.to_f / project.fund_goal * 100, :precision => 2) %>
+    </td>
+    <td>
+      <%= render_project_status(project) %>
     </td>
     <td>
       <%= link_to("编辑项目", edit_admin_project_path(project), :class => "btn btn-xs btn-info") %>
-      <%= link_to("管理支持方案", admin_project_plans_path(project), :class => "btn btn-xs btn-warning") %>
+      <%= link_to("管理筹款方案", admin_project_plans_path(project), :class => "btn btn-xs btn-warning") %>
       <%= link_to("删除", admin_project_path(project), :method => :delete, :data => { :confirm => "删除项目后不可恢复，您确定要删除吗?" }, :class => "btn btn-xs btn-danger") %>
+      <% if project.is_hidden %>
+        <%= link_to("发布", publish_admin_project_path(project),method: :post ,:class => "btn btn-xs btn-default") %>
+      <% else %>
+        <%= link_to("下架", hide_admin_project_path(project),method: :post, :class => "btn btn-xs btn-default") %>
+      <% end %>
     </td>
   </tr>
   <% end %>

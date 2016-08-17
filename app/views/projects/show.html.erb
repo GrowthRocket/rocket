@@ -1,15 +1,19 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-8-offset-1">
-      <h1> <%= @project.name %> </h1>
         <p class="thumbnail">
-          <%= image_tag(@project.image.medium) %>
+          <%= image_tag(@project.image.show) %>
         </p>
       </div>
 
     <div class="col-xs-12 col-sm-5 col-md-8-offset-1">
     <div class="pull-right">
-        <%= link_to("支持项目", plans_path, :class => "btn btn-success" ) %>
+      <h1> <%= @project.name %> </h1>
+      <h3>已筹到 ¥ <%= @project.fund_progress %> </h3>
+      <h3>筹款目标 ¥ <%= @project.fund_goal %></h3>
+      <h5>当前已支持 <%= number_with_precision(@project.fund_progress.to_f / @project.fund_goal * 100, :precision => 2) %>%</h5>
+      <h5>当前已有 <%= @project.backer_quantity %> 人支持</h5>
+      <%= link_to("支持项目", project_plans_path(@project), :class => "btn btn-success" ) %>
     </div>
   </div>
 </div>

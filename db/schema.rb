@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160816093912) do
+ActiveRecord::Schema.define(version: 20160817082433) do
 
   create_table "orders", force: :cascade do |t|
     t.integer  "total_price"
@@ -25,17 +25,20 @@ ActiveRecord::Schema.define(version: 20160816093912) do
     t.string   "token"
     t.string   "aasm_state",     default: "order_placed"
     t.integer  "user_id"
+    t.integer  "project_id"
     t.index ["aasm_state"], name: "index_orders_on_aasm_state"
   end
 
   create_table "plans", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.integer  "quantity",    default: 1
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "quantity",      default: 1
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.integer  "price"
     t.integer  "project_id"
+    t.integer  "plan_goal"
+    t.integer  "plan_progress", default: 0
   end
 
   create_table "projects", force: :cascade do |t|
@@ -43,8 +46,12 @@ ActiveRecord::Schema.define(version: 20160816093912) do
     t.text     "description"
     t.integer  "user_id"
     t.string   "image"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "fund_goal"
+    t.boolean  "is_hidden",       default: true
+    t.integer  "fund_progress",   default: 0
+    t.integer  "backer_quantity", default: 0
   end
 
   create_table "users", force: :cascade do |t|

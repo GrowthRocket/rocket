@@ -1,0 +1,11 @@
+<div class="col-sm-12 col-md-3 col-md-offset-3 col-lg-4 col-md-offset-3">
+
+<h3> 修改我的资料 </h3>
+<%= simple_form_for [:account,@user] do |f| %>
+<%= f.input :user_name, :label =>"用户名" %>
+<%= f.input :email, :readonly => true, :label =>"邮箱地址" %>
+<%= link_to("放弃更新", account_users_path, class: "btn btn-xs btn-default" ) %>
+<%= f.submit "提交更新", class: "btn btn-xs btn-info" %>
+<% end %>
+
+</div>

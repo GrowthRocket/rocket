@@ -1,5 +1,6 @@
 class Admin::ProjectsController < ApplicationController
-  # before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy]
+  before_action :authenticate_user!
+  before_action :require_is_admin
   layout 'admin'
 
   def index
@@ -25,6 +26,7 @@ class Admin::ProjectsController < ApplicationController
     if @project.save
       redirect_to admin_projects_path
     else
+      @savetype = 1
       render :new
     end
   end
@@ -40,14 +42,30 @@ class Admin::ProjectsController < ApplicationController
 
   def destroy
     @project = Project.find(params[:id])
+    plans = @project.plans
+    plans.destroy
     @project.destroy
     redirect_to :back, alert: "项目删除成功"
   end
 
+  def publish
+    @project = Project.find(params[:id])
+    @project.publish!
+    redirect_to :back
+  end
+
+  def hide
+    @project = Project.find(params[:id])
+    @project.hide!
+    redirect_to :back
+  end
+
+
+
   private
 
   def project_params
-    params.require(:project).permit(:name, :description, :user_id, :image)
+    params.require(:project).permit(:name, :description, :user_id, :fund_goal, :image, :is_hidden)
   end
   #
 end

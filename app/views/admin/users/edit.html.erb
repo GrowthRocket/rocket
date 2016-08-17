@@ -1,6 +1,7 @@
-<h1> Edit a user </h1>
+<h1> 编辑用户信息 </h1>
 <%= simple_form_for [:admin,@user] do |f| %>
-<%= f.input :user_name %>
-<%= f.input :email %>
-<%= f.submit "Submit" %>
+<%= f.input :user_name, :label =>"用户名" %>
+<%= f.input :email, :readonly => true, :label =>"邮箱地址" %>
+<%= link_to("放弃更新", admin_users_path, class: "btn btn-default" ) %>
+<%= f.submit "提交更新", class: "btn btn-info" %>
 <% end %>

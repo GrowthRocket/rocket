@@ -1,15 +1,19 @@
-<h2>Forgot your password?</h2>
+<div class="col-sm-12 col-md-3 col-md-offset-3 col-lg-4 col-md-offset-3">
+
+<h2>忘记密码?</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+    <%= f.input :email, required: true, label: false, autofocus: true , :placeholder => "请输入您的邮箱地址" %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
+    <%= f.button :submit, "发送恢复密码链接到邮箱",:class => "btn btn-success"   %>
   </div>
 <% end %>
-
+<br />
 <%= render "devise/shared/links" %>
+<br />
+</div>

@@ -1,0 +1,25 @@
+<div class="col-sm-12 col-md-3 col-md-offset-3 col-lg-4 col-md-offset-3">
+<h3>我的资料</h3>
+
+<table class="table table-boldered">
+  <tbody>
+    <tr>
+    <th >用户名</th>
+     <td><%= @user.user_name %></td>
+   </tr>
+    <tr>
+    <th>电子邮箱</th>
+    <td><%= @user.email %></td>
+    </tr>
+    <tr>
+    <th>注册时间</th>
+    <td><%= @user.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
+    </tr>
+    <tr>
+    <th>我的身份</th>
+    <td>众筹人 ／ 支持者<%#= render_user_level(user) %></td>
+    </tr>
+</tbody>
+</table>
+<%= link_to("修改我的资料", edit_account_user_path(@user), :class => "btn btn-xs btn-info") %>
+</div>

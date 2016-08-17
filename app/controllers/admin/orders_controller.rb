@@ -1,5 +1,6 @@
 class Admin::OrdersController < ApplicationController
   before_action :authenticate_user!
+  before_action :require_is_admin
   layout 'admin'
 
   def index
@@ -11,19 +12,22 @@ class Admin::OrdersController < ApplicationController
   end
 
   def new
-    @order = Order.new()
+    plan = Plan.find(params[:plan_id])
+    @order = Order.new(price: plan.price, quantity: plan.quantity, project_id: plan.project_id)
   end
 
   def create
     @order = Order.new(order_params)
-    @order.creator_name = current_user.email
+    @order.creator_name = current_user.user_name
     @order.user = current_user
+    plan = Plan.find(@order.plan_id)
+    @order.project_id = plan.project_id
     @order.total_price = @order.price * @order.quantity
-    if @order.save
-      flash[:notice] = "Successfully created one order."
-      redirect_to admin_order_path(@order.token)
+    if @order.save!
+      flash[:notice] = "感谢您对本项目的支持！"
+      redirect_to account_order_path(@order.token)
     else
-      flash[:notice] = "Faild to  creat one order."
+      flash[:notice] = "创建订单失败，请再次尝试。"
       redirect_back(fallback_location: root_path)
     end
   end

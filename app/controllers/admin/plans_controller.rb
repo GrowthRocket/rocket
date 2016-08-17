@@ -1,6 +1,6 @@
 class Admin::PlansController < ApplicationController
-  # before_action :authenticate_user!
-  # before_action :require_is_admin
+  before_action :authenticate_user!
+  before_action :require_is_admin
   layout 'admin'
 
   def index
@@ -8,15 +8,11 @@ class Admin::PlansController < ApplicationController
     @plans = @project.plans
   end
 
-  def show
-    @project = Project.find(params[:project_id])
-    @plan = Plan.find(params[:id])
-  end
 
   def new
     @project = Project.find(params[:project_id])
-
     @plan = Plan.new
+    @savetype = 1
 
   end
 
@@ -25,16 +21,18 @@ class Admin::PlansController < ApplicationController
     @plan = Plan.new(plan_params)
     @plan.project = @project
     if @plan.save
-      redirect_to admin_project_plans_path, notice: "筹款方案新建成功"
+      redirect_to admin_project_plans_path, notice: "您已成功新建筹款方案。"
     else
+      @savetype = 1
       render :new
     end
   end
 
   def edit
     @project = Project.find(params[:project_id])
-
     @plan = Plan.find(params[:id])
+    @savetype = 2
+
   end
 
   def update
@@ -42,14 +40,13 @@ class Admin::PlansController < ApplicationController
 
     @plan = Plan.find(params[:id])
     if @plan.update(plan_params)
-      redirect_to admin_project_plans_path, notice: "筹款方案更新成功"
+      redirect_to admin_project_plans_path, notice: "您已成功更新筹款方案。"
     else
       render :edit
     end
   end
 
   def destroy
-    # @project = Project.find(params[:project_id])
 
     @plan = Plan.find(params[:id])
     @plan.destroy
@@ -60,7 +57,7 @@ class Admin::PlansController < ApplicationController
   private
 
   def plan_params
-    params.require(:plan).permit(:title, :description, :price)
+    params.require(:plan).permit(:title, :description, :price, :plan_goal)
   end
 
 end

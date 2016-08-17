@@ -1,4 +1,5 @@
-source 'https://rubygems.org'
+#source 'https://rubygems.org'
+source 'https://ruby.taobao.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -43,6 +44,7 @@ gem 'figaro'
 gem 'aasm'
 gem "fog"
 gem "awesome_rails_console"
+gem "trix"
 
 
 group :development, :test do

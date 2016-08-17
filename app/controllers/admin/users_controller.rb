@@ -1,4 +1,6 @@
 class Admin::UsersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :require_is_admin
   layout 'admin'
 
   def index
@@ -24,12 +26,25 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to admin_user_path
+      redirect_to admin_users_path
     else
       render :edit
     end
   end
+  def promote
+    @user = User.find(params[:id])
+    @user.is_admin = true
+    @user.save
+    redirect_to :back, notice: "成功设为管理员!"
+  end
 
+
+  def demote
+    @user = User.find(params[:id])
+    @user.is_admin = false
+    @user.save
+    redirect_to :back, alert: "已降为非管理员！"
+  end
   private
 
   def user_params
