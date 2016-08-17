@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160817014910) do
+ActiveRecord::Schema.define(version: 20160817034506) do
 
   create_table "orders", force: :cascade do |t|
     t.integer  "total_price"
@@ -44,9 +44,12 @@ ActiveRecord::Schema.define(version: 20160817014910) do
     t.text     "description"
     t.integer  "user_id"
     t.string   "image"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.integer  "total_price", default: 0
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "fund_goal",       default: 0
+    t.boolean  "is_hidden",       default: true
+    t.integer  "fund_progress"
+    t.integer  "backer_quantity", default: 0
   end
 
   create_table "users", force: :cascade do |t|
