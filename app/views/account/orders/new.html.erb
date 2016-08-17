@@ -1,16 +1,11 @@
 <div class="col-sm-12 col-md-12 col-ld-6 col-ld-offset-3">
   <%= simple_form_for [:account, @order] do |f|%>
     <div class="form-group">
-      <%= f.input :backer_name, input_html:{class: "form-control"}, placeholder: "请填写您的姓名" %>
-      <%= f.input :price, input_html: {class: "form-control", :readonly => true, value: @order.price }, placeholder: "请填写价格"%>
-      <%= f.input :quantity, input_html: {class: "form-control", :readonly => true, value: @order.quantity },  placeholder: "请填写数量" %>
+      <%= f.input :backer_name, :label =>"支持者", input_html:{class: "form-control"}, placeholder: "请填写您的姓名" %>
+      <%= f.input :price, :label =>"筹款方案金额", input_html: {class: "form-control", :readonly => true, value: @order.price }, placeholder: "请填写价格"%>
+      <%= f.input :quantity, :label =>"支持份数", input_html: {class: "form-control", :readonly => true, value: @order.quantity },  placeholder: "请填写数量" %>
       <%= f.input :plan_id, :as => :hidden, :input_html => { :value => @order.plan_id } %>
-      <%= f.submit "Submit", class: "btn btn-primary", data: {disable_with: "Submitting.."} %>
+      <%= f.submit "提交订单", class: "btn btn-success", data: {disable_with: "Submitting.."} %>
     </div>
-
   <% end %>
-      <!-- <div style="margin-top: 50px;">
-          <h4>请扫下面的二维码进行付款</h4>
-          <p style="text-align: center;"><img style="width: 100%" src="images/QRcode.png"></img></p>
-      </div> -->
 </div>
