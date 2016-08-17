@@ -1,19 +1,4 @@
-# == Schema Information
-#
-# Table name: projects
-#
-#  id              :integer          not null, primary key
-#  name            :string
-#  description     :text
-#  user_id         :integer
-#  image           :string
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  fund_goal       :integer
-#  is_hidden       :boolean          default(TRUE)
-#  fund_progress   :integer          default(0)
-#  backer_quantity :integer          default(0)
-#
+
 
 class Project < ApplicationRecord
   validates :name, presence: true
@@ -33,3 +18,20 @@ class Project < ApplicationRecord
     save
   end
 end
+
+# == Schema Information
+#
+# Table name: projects
+#
+#  id              :integer          not null, primary key
+#  name            :string
+#  description     :text
+#  user_id         :integer
+#  image           :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  fund_goal       :integer
+#  is_hidden       :boolean          default(TRUE)
+#  fund_progress   :integer          default(0)
+#  backer_quantity :integer          default(0)
+#
