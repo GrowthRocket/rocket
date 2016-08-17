@@ -38,7 +38,7 @@
       <%= project.backer_quantity %>
     </td>
     <td>
-      <%= project.fund_progress %>
+      <%= number_with_precision(project.fund_progress.to_f / project.fund_goal * 100, :precision => 2) %>
     </td>
     <td>
       <%= project.description %>
