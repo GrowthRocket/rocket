@@ -11,11 +11,8 @@
 #  price         :integer
 #  project_id    :integer
 #  plan_goal     :integer
-<<<<<<< HEAD
-#  plan_progress :integer
-=======
+
 #  plan_progress :integer          default(0)
->>>>>>> master
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
