@@ -11,15 +11,18 @@ class Admin::OrdersController < ApplicationController
   end
 
   def new
-    @order = Order.new()
+    plan = Plan.find(params[:plan_id])
+    @order = Order.new(price: plan.price, quantity: plan.quantity, project_id: plan.project_id)
   end
 
   def create
     @order = Order.new(order_params)
-    @order.creator_name = current_user.email
+    @order.creator_name = current_user.user_name
     @order.user = current_user
+    plan = Plan.find(@order.plan_id)
+    @order.project_id = plan.project_id
     @order.total_price = @order.price * @order.quantity
-    if @order.save
+    if @order.save!
       flash[:notice] = "感谢您对本项目的支持！"
       redirect_to account_order_path(@order.token)
     else
