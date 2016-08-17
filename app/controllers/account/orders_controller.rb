@@ -25,6 +25,7 @@ class Account::OrdersController < ApplicationController
     if @order.save
       project = Project.find(@order.project_id)
       project.fund_progress += total_price
+      project.backer_quantity += 1
       flash[:notice] = "感谢您对本项目的支持！"
       redirect_to account_order_path(@order.token)
     else
