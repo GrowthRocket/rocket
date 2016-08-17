@@ -17,6 +17,10 @@
 #  user_id        :integer
 #  project_id     :integer
 #
+# Indexes
+#
+#  index_orders_on_aasm_state  (aasm_state)
+#
 
 require 'test_helper'
 
