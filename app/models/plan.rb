@@ -2,14 +2,16 @@
 #
 # Table name: plans
 #
-#  id          :integer          not null, primary key
-#  title       :string
-#  description :text
-#  quantity    :integer          default(1)
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  price       :integer
-#  project_id  :integer
+#  id            :integer          not null, primary key
+#  title         :string
+#  description   :text
+#  quantity      :integer          default(1)
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  price         :integer
+#  project_id    :integer
+#  plan_goal     :integer
+#  plan_progress :integer          default(0)
 #
 
 class Plan < ApplicationRecord
@@ -17,5 +19,7 @@ class Plan < ApplicationRecord
   validates :description, presence: true
   validates :price, presence: true
   validates :price, numericality: {greater_than: 0}
+  validates :plan_goal, presence: true
+  validates :plan_goal, numericality: {greater_than: 0}
   belongs_to :project
 end

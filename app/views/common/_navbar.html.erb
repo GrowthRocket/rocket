@@ -23,6 +23,7 @@
                   <% if current_user %>
                     <%#= link_to("我支持的项目", account_orders_path) %>
                     <li> <%= link_to("个人中心", account_users_path) %> </li>
+
                   <% end %>
                     <li> <%= link_to("退出", destroy_user_session_path, method: :delete, :data => { :confirm => "确定退出登录吗?" }) %> </li>
                 </ul>
