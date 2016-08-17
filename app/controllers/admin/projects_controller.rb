@@ -41,6 +41,8 @@ class Admin::ProjectsController < ApplicationController
 
   def destroy
     @project = Project.find(params[:id])
+    plans = @project.plans
+    plans.destroy
     @project.destroy
     redirect_to :back, alert: "项目删除成功"
   end
@@ -48,7 +50,7 @@ class Admin::ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :description, :user_id, :image)
+    params.require(:project).permit(:name, :description, :user_id, :total_price, :image)
   end
   #
 end
