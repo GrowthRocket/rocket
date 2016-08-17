@@ -1,6 +1,6 @@
 class Admin::PlansController < ApplicationController
-  # before_action :authenticate_user!
-  # before_action :require_is_admin
+  before_action :authenticate_user!
+  before_action :require_is_admin
   layout 'admin'
 
   def index
@@ -8,10 +8,6 @@ class Admin::PlansController < ApplicationController
     @plans = @project.plans
   end
 
-  def show
-    @project = Project.find(params[:project_id])
-    @plan = Plan.find(params[:id])
-  end
 
   def new
     @project = Project.find(params[:project_id])
@@ -51,7 +47,6 @@ class Admin::PlansController < ApplicationController
   end
 
   def destroy
-    # @project = Project.find(params[:project_id])
 
     @plan = Plan.find(params[:id])
     @plan.destroy

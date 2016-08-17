@@ -4,7 +4,5 @@ class PlansController < ApplicationController
     @plans = @project.plans
   end
 
-  def show
-    @plan = Plan.find(params[:id])
-  end
+
 end
