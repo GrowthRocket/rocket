@@ -16,7 +16,7 @@ class Account::OrderController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @order.creator_name = current_user.email
+    @order.creator_name = current_user.name
     @order.user = current_user
     @order.total_price = @order.price * @order.quantity
     if @order.save
