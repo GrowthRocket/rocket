@@ -1,4 +1,4 @@
-<h1><%= link_to(@project.name, plans_path(id: @project)) %> 筹款方案管理</h1>
+<h1><%= link_to(@project.name,  project_plans_path(@project)) %> 筹款方案管理</h1>
 <div class="pull-right">
     <%= link_to("新增方案",   new_admin_project_plan_path(@project), class: "btn btn-warning")  %>
 </div>
