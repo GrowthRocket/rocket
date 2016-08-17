@@ -13,7 +13,7 @@ class ProjectsController < ApplicationController
       orders.each do |order|
         @total_price += order.total_price
       end
-      @progress = @total_price.to_f / @project.total_price * 100
+      @progress = @total_price.to_f / @project.fund_goal * 100
     end
   end
 
