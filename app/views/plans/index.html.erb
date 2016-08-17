@@ -16,7 +16,7 @@
           <%= plan.description %>
         </p>
         <p>
-          <%= link_to("支持项目", new_account_order_path(:plan_id => plan.id), :class => "btn btn-success" ) %>
+          <%= link_to("支持#{plan.price}元", new_account_order_path(:plan_id => plan.id), :class => "btn btn-success" ) %>
         </p>
       </div>
       <% end %>
