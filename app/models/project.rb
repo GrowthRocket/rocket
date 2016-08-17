@@ -9,9 +9,9 @@
 #  image           :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  fund_goal       :integer          default(0)
+#  fund_goal       :integer
 #  is_hidden       :boolean          default(TRUE)
-#  fund_progress   :integer
+#  fund_progress   :integer          default(0)
 #  backer_quantity :integer          default(0)
 #
 
