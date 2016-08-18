@@ -22,7 +22,9 @@
       <%= index + 1 %>
     </td>
     <td>
-      <%= link_to(project.name, project_path(project)) %>
+
+        <%= link_to(project.name, project_path(project)) %>
+      
       <br />
       <img src="<%= project.image.thumb %>">
     </td>
