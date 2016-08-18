@@ -19,26 +19,26 @@ end
 puts "User account created."
 
 create_project = for i in 1..5 do
-  Project.create!([name: "Poject no.#{i}", description: "我有一个好项目 #{i} 真的很不错", user_id: 1, fund_goal: 10000 * i, is_hidden: "false", fund_progress: 3 * i * 100,
+  Project.create!([name: "Poject no.#{i}", description: "我有一个好项目 #{i} 真的很不错", user_id: 1, fund_goal: 10000 * i, is_hidden: "false", fund_progress: 600 * i,
   backer_quantity: 3 ])
 end
 
 puts "10 Public Project created."
 
 create_plan1 = for i in 1..3 do
-  Plan.create!([title: "A Plan on.#{i}", description: "这是 A 的 第#{i} 个赞助方案", quantity:10, price: 100, project_id: 1, plan_goal: 100, plan_progress: 1])
+  Plan.create!([title: "A Plan on.#{i}", description: "这是 A 的 第#{i} 个赞助方案", quantity:1, price: 100 * i, project_id: 1, plan_goal: 100, plan_progress: 1, backer_quantity: 1])
 end
 create_plan2 = for i in 1..3 do
-  Plan.create!([title: "B Plan on.#{i}", description: "这是 B 的第 #{i} 个赞助方案", quantity:10, price: 200, project_id: 2, plan_goal: 200, plan_progress: 1])
+  Plan.create!([title: "B Plan on.#{i}", description: "这是 B 的第 #{i} 个赞助方案", quantity:1, price: 200 * i, project_id: 2, plan_goal: 200, plan_progress: 1, backer_quantity: 1])
 end
 create_plan3 = for i in 1..3 do
-  Plan.create!([title: "C Plan on.#{i}", description: "这是 C 的第 #{i} 个赞助方案", quantity:10, price: 300, project_id: 3, plan_goal: 300, plan_progress: 1])
+  Plan.create!([title: "C Plan on.#{i}", description: "这是 C 的第 #{i} 个赞助方案", quantity:1, price: 300 * i, project_id: 3, plan_goal: 300, plan_progress: 1, backer_quantity: 1])
 end
 create_plan4 = for i in 1..3 do
-  Plan.create!([title: "D Plan on.#{i}", description: "这是 D 的第 #{i} 个赞助方案", quantity:10, price: 400, project_id: 4, plan_goal: 400, plan_progress: 1])
+  Plan.create!([title: "D Plan on.#{i}", description: "这是 D 的第 #{i} 个赞助方案", quantity:1, price: 400 * i, project_id: 4, plan_goal: 400, plan_progress: 1, backer_quantity: 1])
 end
 create_plan5 = for i in 1..3 do
-  Plan.create!([title: "E Plan on.#{i}", description: "这是 E 的第 #{i} 个赞助方案", quantity:10, price: 500, project_id: 5, plan_goal: 500, plan_progress: 1])
+  Plan.create!([title: "E Plan on.#{i}", description: "这是 E 的第 #{i} 个赞助方案", quantity:1, price: 500 * i, project_id: 5, plan_goal: 500, plan_progress: 1, backer_quantity: 1])
 end
 
 puts "Plan auto create is done."
@@ -46,28 +46,28 @@ puts "Plan auto create is done."
 i = 1
 
 create_order1 = for j in 1..3 do
-    Order.create!([total_price: 100, plan_id: j, creator_name:"user#{i}", backer_name: "backer#{i}", price: 100, quantity: 1, payment_method: "Alipay", aasm_state: "paid", user_id:i+1, project_id:1])
+    Order.create!([total_price: 100 * i, plan_id: j, creator_name:"user#{i}", backer_name: "backer#{i}", price: 100 * i, quantity: 1, payment_method: "Alipay", aasm_state: "paid", user_id:i+1, project_id:1])
     i = i + 1
 end
 
 i = 1
 create_order2 = for j in 4..6 do
-    Order.create!([total_price: 200, plan_id: j, creator_name:"user#{i}", backer_name: "backer#{i}", price: 200, quantity: 1, payment_method: "Alipay", aasm_state: "paid", user_id:i+1, project_id:2])
+    Order.create!([total_price: 200 * i, plan_id: j, creator_name:"user#{i}", backer_name: "backer#{i}", price: 200 * i, quantity: 1, payment_method: "Alipay", aasm_state: "paid", user_id:i+1, project_id:2])
     i = i + 1
 end
 i = 1
 create_order3 = for j in 7..9 do
-    Order.create!([total_price: 300, plan_id: j, creator_name:"user#{i}", backer_name: "backer#{i}", price: 300, quantity: 1, payment_method: "WeChat", aasm_state: "paid", user_id:i+1, project_id:3])
+    Order.create!([total_price: 300 * i, plan_id: j, creator_name:"user#{i}", backer_name: "backer#{i}", price: 300 * i, quantity: 1, payment_method: "WeChat", aasm_state: "paid", user_id:i+1, project_id:3])
     i = i + 1
 end
 i = 1
 create_order4 = for j in 10..12 do
-    Order.create!([total_price: 400, plan_id: j, creator_name:"user#{i}", backer_name: "backer#{i}", price: 400, quantity: 1, payment_method: "WeChat", aasm_state: "paid", user_id:i+1, project_id:4])
+    Order.create!([total_price: 400 * i, plan_id: j, creator_name:"user#{i}", backer_name: "backer#{i}", price: 400 * i, quantity: 1, payment_method: "WeChat", aasm_state: "paid", user_id:i+1, project_id:4])
     i = i + 1
 end
 i = 1
 create_order5 = for j in 13..15 do
-    Order.create!([total_price: 500, plan_id: j, creator_name:"user#{i}", backer_name: "backer#{i}", price: 500, quantity: 1, payment_method: "WeChat", aasm_state: "paid", user_id:i+1, project_id:5])
+    Order.create!([total_price: 500 * i, plan_id: j, creator_name:"user#{i}", backer_name: "backer#{i}", price: 500 * i, quantity: 1, payment_method: "WeChat", aasm_state: "paid", user_id:i+1, project_id:5])
     i = i + 1
 end
 
