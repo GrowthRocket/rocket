@@ -3,9 +3,9 @@ class Plan < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
   validates :price, presence: true
-  validates :price, numericality: { greater_than: 0 }
+  validates :price, numericality: { greater_than: 0, less_than: 1000000 }
   validates :plan_goal, presence: true
-  validates :plan_goal, numericality: { greater_than: 0 }
+  validates :plan_goal, numericality: { greater_than: 0, less_than: 1000000 }
   belongs_to :project
   has_many :orders
 end

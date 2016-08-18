@@ -22,9 +22,11 @@
       <%= index + 1 %>
     </td>
     <td>
-      <%= link_to(project.name, project_path(project)) %>
+
+        <%= link_to(project.name, project_path(project)) %>
+      
       <br />
-      <img src="<%= project.image.thumb %>" width="120" height="90">
+      <img src="<%= project.image.thumb %>">
     </td>
     <td>
       <%= link_to(project.plans.count, account_project_plans_path(project)) %>
@@ -45,11 +47,6 @@
       <%= link_to("编辑项目", edit_account_project_path(project), :class => "btn btn-xs btn-info") %>
       <%= link_to("管理筹款方案", account_project_plans_path(project), :class => "btn btn-xs btn-warning") %>
       <%= link_to("删除", account_project_path(project), :method => :delete, :data => { :confirm => "删除项目后不可恢复，您确定要删除吗?" }, :class => "btn btn-xs btn-danger") %>
-      <% if project.is_hidden %>
-        <%= link_to("发布", publish_account_project_path(project),method: :post ,:class => "btn btn-xs btn-default") %>
-      <% else %>
-        <%= link_to("下架", hide_account_project_path(project),method: :post, :class => "btn btn-xs btn-default") %>
-      <% end %>
     </td>
   </tr>
   <% end %>
