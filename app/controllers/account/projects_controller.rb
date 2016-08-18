@@ -1,10 +1,9 @@
-class Admin::ProjectsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :require_is_admin
-  layout 'admin'
+class Account::ProjectsController < ApplicationController
+  # before_action :authenticate_user!
+  layout 'user'
 
   def index
-    @projects = Project.all
+    @projects = current_user.projects
   end
 
   def new
@@ -23,9 +22,9 @@ class Admin::ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-    @project.user =current_user
+    @project.user = current_user
     if @project.save
-      redirect_to admin_projects_path
+      redirect_to account_projects_path, notice: "项目创建成功"
     else
       @savetype = 1
       render :new
@@ -35,7 +34,7 @@ class Admin::ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
     if @project.update(project_params)
-      redirect_to admin_projects_path, notice: "项目更新成功"
+      redirect_to account_projects_path, notice: "项目更新成功"
     else
       render :edit
     end

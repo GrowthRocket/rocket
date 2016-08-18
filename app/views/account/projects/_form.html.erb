@@ -1,0 +1,15 @@
+<%= simple_form_for [:account, @project] do |f| %>
+
+  <%= f.input :name, :label =>"项目名称" %>
+  <%= f.trix_editor :description, :label =>"项目描述" %>
+  <%= f.input :fund_goal, :label =>"筹款目标" %>
+  <%= f.input :is_hidden %>
+  <%= f.input :image, :label =>"主题图片" %>
+
+  <% if @savetype == 1 %>
+    <%= f.submit "创建项目", class: "btn btn-success" %>
+  <% else %>
+  <%= link_to("放弃更新", account_projects_path, class: "btn btn-default" ) %>
+    <%= f.submit "提交更新", class: "btn btn-info" %>
+  <% end %>
+<% end %>
