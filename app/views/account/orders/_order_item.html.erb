@@ -1,25 +1,46 @@
 
 
-<tr>
-  <td><%= item.project.name %></td>
-  <td><%= item.project.description %></td>
-</tr>
+<div class="panel panel-default">
+  <div class="panel-heading" role="tab" id="heading<%= item_iteration.index %>">
+    <h4 class="panel-title">
+      <% if item_iteration.index == 0 %>
+          <a role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapse<%= item_iteration.index %>" aria-expanded="true" aria-controls="#collapse<%= item_iteration.index %>">
+            <%= item.project.name%>
+          </a>
+      <% else %>
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapse<%= item_iteration.index %>" aria-expanded="false" aria-controls="#collapse<%= item_iteration.index %>">
+          <%= item.project.name%>
+        </a>
+      <% end %>
+    </h4>
+  </div>
+  <% if item_iteration.index == 0 %>
+    <div id="collapse<%= item_iteration.index %>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading<%= item_iteration.index %>">
+  <% else %>
+    <div id="collapse<%= item_iteration.index %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%= item_iteration.index %>">
+  <% end %>
+    <div class="paenl-body">
+        <%= item.project.description %>
+    </div>
+  </div>
+</div>
 
-<tr>
-  <td>
-    订单号：<%= link_to(item.token,  account_order_path(item.token)) %>
-    <%= render_order_state(item) %>
-    <br>
-  </td>
-  <td><%= item.price %></td>
-  <td><%= item.quantity%></td>
-  <td><%= item.total_price %></td>
-  <td><%= render_order_created_at(item.created_at) %></td>
-  <td>
-    <% if !current_user.admin? %>
-      <%= render_order_operation(item) %>
-    <% else %>
-      <%= render_order_operation_admin(item) %>
-    <% end %>
-  </td>
-</tr>
+
+<script>
+  $(function() {
+    bindShowOrder(<%= @orders.size %>)
+  })
+
+  function bindShowOrder(ordersize) {
+    for(i=0; i<ordersize; i++) {
+      $( "#heading" + i ).bind('click',function() {
+        // alert( "Handler for .click() called.");
+        console.log("2")
+      });
+    }
+  }
+
+  function showOrders() {
+
+  }
+</script>

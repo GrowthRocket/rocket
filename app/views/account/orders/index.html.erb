@@ -1,44 +1,9 @@
-<h3>我的支持记录</h3>
-
-<table class="table table-boldered">
-    <thead>
-      <tr>
-        <th>众筹项目</th>
-        <th>项目简介</th>
-      </tr>
-    </thead>
-    <tbody>
-      <%= @orders.inspect %>
-      <%= render partial: "order_item", collection: @orders, as: "item" %>
-    </tbody>
-  </table>
-
-
-  <div class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true">
-  <% @orders.each_with_index do |order, index| %>
-      <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="heading<%= index %>">
-          <h4 class="panel-title">
-            <% if index == 0 %>
-                <a role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapse<%= index %>" aria-expanded="true" aria-controls="#collapse<%= index %>">
-                  <%= order.project.name%>
-                </a>
-            <% else %>
-              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapse<%= index %>" aria-expanded="false" aria-controls="#collapse<%= index %>">
-                <%= order.project.name%>
-              </a>
-            <% end %>
-          </h4>
-        </div>
-        <% if index == 0 %>
-          <div id="collapse<%= index %>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading<%= index %>">
-        <% else %>
-          <div id="collapse<%= index %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%= index %>">
-        <% end %>
-          <div class="paenl-body">
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetic
-          </div>
-        </div>
-      </div>
-  <% end %>
+<h3>我支持的项目</h3>
+<div class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true">
+  <%= render partial: "order_item", collection: @orders, as: "item" %>
 </div>
+
+
+  <%# @orders.each_with_index do |order, index| %>
+
+  <%# end %>
