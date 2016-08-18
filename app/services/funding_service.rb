@@ -8,10 +8,20 @@ class FundingService
 
   def add!
     @project.fund_progress += @order.total_price
-    if @user.orders.where(id: @order).empty?
+    # @user.orders.where("orders_count = ? AND locked = ?", params[:orders], false)
+    if @user.orders.where(project_id: @order.project, aasm_state: "paid").empty?
       @project.backer_quantity += 1
     end
     @project.save
+
+    if @user.orders.where(plan_id: @order.plan, aasm_state: "paid").empty?
+      @plan.backer_quantity += 1
+      puts "----------------------"
+    else
+      @p = @user.orders.where(plan_id: @order.plan)
+      puts "+++++++++++++++++++++++"
+      puts "#{@p.inspect}"
+    end
 
     @plan.plan_progress += 1
     @plan.save
