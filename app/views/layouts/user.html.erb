@@ -15,10 +15,13 @@
             <div class="row">
               <div class="col-md-2">
                 <ul class="nav nav-pills nav-stacked" style="max-width: 300px; padding-top:20px;">
-                   <li class="active"><%= link_to("我的资料",  account_users_path, ) %> </li>
-                    <li class="active"><%= link_to("我发起的项目", account_projects_path) %> </li>
-                   <li class="active"><%= link_to("我的支持记录", account_orders_path,) %> </li>
-
+                  <% if current_user.is_admin? %>
+                      <li class="active"><%= link_to("我的资料",  account_users_path, ) %> </li>
+                  <% else %>
+                      <li class="active"><%= link_to("我的资料",  account_users_path, ) %> </li>
+                      <li class="active"><%= link_to("我发起的项目", account_projects_path) %> </li>
+                      <li class="active"><%= link_to("我的支持记录", account_orders_path,) %> </li>
+                  <% end %>
                 </ul>
               </div>
 
