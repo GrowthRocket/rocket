@@ -6,6 +6,24 @@ class Account::OrdersController < ApplicationController
     @orders = current_user.orders.all.group(:project_id)
   end
 
+  def show_orders_for_one_project
+    @order = current_user.orders.find(params[:id])
+    @project = Project.find(@order.project.id)
+    @plans = @project.plans
+    orders = []
+    unless @plans.nil?
+      @plans.each do |plan|
+        unless plan.orders.nil?
+          plan.orders.each do |order|
+            puts "#{order.inspect}"
+            orders.push(order)
+          end
+        end
+      end
+    end
+    render json: orders
+  end
+
   def show
     @order = current_user.orders.find_by_token(params[:id])
   end
