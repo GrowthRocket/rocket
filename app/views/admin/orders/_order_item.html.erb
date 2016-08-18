@@ -7,15 +7,16 @@
 </tr>
 <tr>
   <td>项目发起者：<%= item.creator_name %></td>
-  <td><%= item.price %></td>
-  <td><%= item.quantity%></td>
+  <td>¥<%= item.price %></td>
+  <td>x<%= item.quantity%></td>
   <td>¥<%= item.total_price %></td>
   <td><%= render_order_created_at(item.created_at) %></td>
   <td>
-    <% if !current_user.admin? %>
-      <%= render_order_operation(item) %>
-    <% else %>
-      <%= render_order_operation_admin(item) %>
-    <% end %>
+    <%# if !current_user.admin? %>
+      <%#= render_order_operation(item) %>
+    <%# else %>
+      <%#= render_order_operation_admin(item) %>
+    <%# end %>
+    <%= link_to("查看", admin_order_path(item.token)) %>
   </td>
 </tr>
