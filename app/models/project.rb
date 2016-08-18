@@ -6,6 +6,7 @@ class Project < ApplicationRecord
 
   mount_uploader :image, ImageUploader
   has_many :plans
+  belongs_to :user
 
   scope :published, -> { where(is_hidden: false) }
   def publish!
