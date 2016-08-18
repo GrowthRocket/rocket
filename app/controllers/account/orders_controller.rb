@@ -3,7 +3,7 @@ class Account::OrdersController < ApplicationController
   layout 'user'
 
   def index
-    @orders = current_user.orders.all
+    @orders = current_user.orders.all.group(:project_id)
   end
 
   def show
