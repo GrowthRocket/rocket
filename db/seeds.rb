@@ -26,19 +26,19 @@ end
 puts "10 Public Project created."
 
 create_plan1 = for i in 1..3 do
-  Plan.create!([title: "A Plan on.#{i}", description: "这是 A 的 第#{i} 个赞助方案", quantity:1, price: 100 * i, project_id: 1, plan_goal: 100, plan_progress: 1])
+  Plan.create!([title: "A Plan on.#{i}", description: "这是 A 的 第#{i} 个赞助方案", quantity:1, price: 100 * i, project_id: 1, plan_goal: 100, plan_progress: 1, backer_quantity: 1])
 end
 create_plan2 = for i in 1..3 do
-  Plan.create!([title: "B Plan on.#{i}", description: "这是 B 的第 #{i} 个赞助方案", quantity:1, price: 200 * i, project_id: 2, plan_goal: 200, plan_progress: 1])
+  Plan.create!([title: "B Plan on.#{i}", description: "这是 B 的第 #{i} 个赞助方案", quantity:1, price: 200 * i, project_id: 2, plan_goal: 200, plan_progress: 1, backer_quantity: 1])
 end
 create_plan3 = for i in 1..3 do
-  Plan.create!([title: "C Plan on.#{i}", description: "这是 C 的第 #{i} 个赞助方案", quantity:1, price: 300 * i, project_id: 3, plan_goal: 300, plan_progress: 1])
+  Plan.create!([title: "C Plan on.#{i}", description: "这是 C 的第 #{i} 个赞助方案", quantity:1, price: 300 * i, project_id: 3, plan_goal: 300, plan_progress: 1, backer_quantity: 1])
 end
 create_plan4 = for i in 1..3 do
-  Plan.create!([title: "D Plan on.#{i}", description: "这是 D 的第 #{i} 个赞助方案", quantity:1, price: 400 * i, project_id: 4, plan_goal: 400, plan_progress: 1])
+  Plan.create!([title: "D Plan on.#{i}", description: "这是 D 的第 #{i} 个赞助方案", quantity:1, price: 400 * i, project_id: 4, plan_goal: 400, plan_progress: 1, backer_quantity: 1])
 end
 create_plan5 = for i in 1..3 do
-  Plan.create!([title: "E Plan on.#{i}", description: "这是 E 的第 #{i} 个赞助方案", quantity:1, price: 500 * i, project_id: 5, plan_goal: 500, plan_progress: 1])
+  Plan.create!([title: "E Plan on.#{i}", description: "这是 E 的第 #{i} 个赞助方案", quantity:1, price: 500 * i, project_id: 5, plan_goal: 500, plan_progress: 1, backer_quantity: 1])
 end
 
 puts "Plan auto create is done."

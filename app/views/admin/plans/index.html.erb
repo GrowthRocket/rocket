@@ -26,7 +26,9 @@
 
             <td><%= plan.backer_quantity %></td>
             <td>
-               <%= plan.plan_progress %>/ <%= plan.plan_goal %>
+              <%= number_with_precision(plan.plan_progress.to_f / plan.plan_goal * 100, :precision => 2) %>
+              %
+               <!-- <%#= plan.plan_progress %>/ <#%= plan.plan_goal %> -->
               <%#= number_with_precision(plan.plan_progress.to_f/plan.plan_goal * 100, precision: 2) %>
             </td>
             <td>
