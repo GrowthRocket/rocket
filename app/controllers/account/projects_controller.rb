@@ -4,6 +4,7 @@ class Account::ProjectsController < ApplicationController
 
   def index
     @projects = current_user.projects
+  
   end
 
   def new
@@ -33,6 +34,7 @@ class Account::ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
+    @project.is_hidden = true
     if @project.update(project_params)
       redirect_to account_projects_path, notice: "项目更新成功"
     else

@@ -1,18 +1,89 @@
-<tr>
-  <td>
-    订单号：<%= link_to(item.token,  account_order_path(item.token)) %>
-    <%= render_order_state(item) %>
-    <br>
-  </td>
-  <td><%= item.price %></td>
-  <td><%= item.quantity%></td>
-  <td><%= item.total_price %></td>
-  <td><%= render_order_created_at(item.created_at) %></td>
-  <td>
-    <% if !current_user.admin? %>
-      <%= render_order_operation(item) %>
-    <% else %>
-      <%= render_order_operation_admin(item) %>
-    <% end %>
-  </td>
-</tr>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading" role="tab" id="heading<%= item_iteration.index %>">
+    <h4 class="panel-title">
+      <% if item_iteration.index == 0 %>
+          <a role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapse<%= item_iteration.index %>" aria-expanded="true" aria-controls="#collapse<%= item_iteration.index %>">
+            <%= item.project.name%>
+          </a>
+      <% else %>
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapse<%= item_iteration.index %>" aria-expanded="false" aria-controls="#collapse<%= item_iteration.index %>">
+          <%= item.project.name%>
+        </a>
+      <% end %>
+    </h4>
+  </div>
+  <% if item_iteration.index == 0 %>
+    <div id="collapse<%= item_iteration.index %>" orderId="<%= item.id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%= item_iteration.index %>">
+  <% else %>
+    <div id="collapse<%= item_iteration.index %>" orderId="<%= item.id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%= item_iteration.index %>">
+  <% end %>
+    <div class="paenl-body">
+        <p><%= item.project.description %></p>
+        <div class="orderInfo"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+var tmp = 1
+  $(function() {
+    bindShowOrder(<%= @orders.size %>)
+  })
+
+  function bindShowOrder(ordersize) {
+    for(i=0; i<ordersize; i++) {
+      $('#collapse' + i).on('shown.bs.collapse', function (event) {
+        event.stopPropagation();
+        if(tmp == 1) {
+          var orderId = $(this).attr("orderId");
+          showOrders(orderId, $(this))
+          tmp ++;
+        }
+      })
+      $('#collapse' + i).on('hidden.bs.collapse', function (event) {
+        event.stopPropagation();
+        if(tmp != 1) {
+          tmp = 1;
+        }
+      })
+    }
+  }
+
+  function showOrders(orderId, panel) {
+    panel.find("div.orderInfo").empty();
+    $.ajax({
+      url: "/account/orders/" + orderId + "/show_orders_for_one_project",
+      method: "post",
+      dataType: "json",
+      success: function(data){
+        var content = "";
+        if(data.length > 0) {
+          content = "<table class='table table-stripe'> <thead><th>#</th><th>订单编号</th><th>合计金额</th><th>下单时间</th></thead><tbody>"
+          $.each(data, function(index, item) {
+            content += "<tr>" +
+              "<td>" + (index + 1) + "</td>" +
+              "<td>" + "<a href='/account/orders/"+item.token+"'>" + item.token +"</a>" +
+              render_order_state(item) +  "</td>" +
+              "<td>" + item.total_price + "</td>" +
+              "<td>" + "<%= render_order_created_at(item.created_at) %>" + "</td>"
+            "</tr>";
+          })
+          content += "</tbody></table>"
+        }
+        panel.find("div.orderInfo").append(content)
+      }
+    });
+  }
+
+  function render_order_state(order) {
+    var content = "";
+    if (order.aasm_state == "order_placed") {
+      content += "<span class='label label-warning'>待支付</span>";
+    } else {
+      content += "<span class='label label-success'>已支付</span>";
+    }
+    return content;
+  }
+</script>

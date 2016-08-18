@@ -1,17 +1,9 @@
-<h3>我的支持记录</h3>
+<h3>我支持的项目</h3>
+<div class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true">
+  <%= render partial: "order_item", collection: @orders, as: "item" %>
+</div>
 
-<table class="table table-boldered">
-    <thead>
-      <tr>
-        <th>众筹方案</th>
-        <th>方案价格</th>
-        <th>支持数量</th>
-        <th>合计金额</th>
-        <th>订单时间</th>
-        <th>操作</th>
-      </tr>
-    </thead>
-    <tbody>
-      <%= render partial: "order_item", collection: @orders, as: "item" %>
-    </tbody>
-  </table>
+
+  <%# @orders.each_with_index do |order, index| %>
+
+  <%# end %>
