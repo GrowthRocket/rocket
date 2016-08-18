@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for mobile display -->
     <div class="navbar-header">
-      <a class="navbar-brand" href="/">人才火箭</a>
+      <h1><a class="navbar-brand" href="/">人才火箭</a></h1>
     </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -21,9 +21,7 @@
                     <li> <%= link_to("管理员面板", admin_projects_path,) %> </li>
                   <% end %>
                   <% if current_user %>
-                    <%#= link_to("我支持的项目", account_orders_path) %>
                     <li> <%= link_to("个人中心", account_users_path) %> </li>
-
                   <% end %>
                     <li> <%= link_to("退出", destroy_user_session_path, method: :delete, :data => { :confirm => "确定退出登录吗?" }) %> </li>
                 </ul>
