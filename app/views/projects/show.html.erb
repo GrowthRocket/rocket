@@ -1,12 +1,12 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-8-offset-1">
+    <div class="col-md-6 col-md-offset-0">
         <p class="thumbnail">
           <%= image_tag(@project.image.show) %>
         </p>
       </div>
 
-    <div class="col-xs-12 col-sm-5 col-md-8-offset-1">
+    <div class="col-md-6">
     <div class="pull-right">
       <h1> <%= @project.name %> </h1>
       <h3>已筹到 ¥ <%= @project.fund_progress %> </h3>
@@ -20,7 +20,7 @@
 </div>
 
 <hr>
-  <div class="container-fluid">
+  <div class="container-fluid well">
     <div class="row">
       <div class="col-xs-12 col-sm-9 col-md-8-offset-1">
         <p><%= simple_format(@project.description) %></p>
