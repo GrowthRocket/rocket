@@ -1,4 +1,4 @@
-<h1>我发起的项目</h1>
+<h2>我发起的项目</h2>
 <div class="pull-right">
   <%= link_to("新建众筹项目", new_account_project_path, class: "btn btn-success" ) %>
 </div>
@@ -24,7 +24,7 @@
     <td>
 
         <%= link_to(project.name, project_path(project)) %>
-      
+
       <br />
       <img src="<%= project.image.thumb %>">
     </td>
