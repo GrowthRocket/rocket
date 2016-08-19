@@ -37,8 +37,8 @@
                 人
             </td>
             <td>
-                <%= number_with_precision(project.fund_progress.to_f / project.fund_goal * 100, :precision => 2) %>
-                %
+                <%= render_project_funding_progress(project) %>
+
             </td>
             <td>
                 <%= render_project_status(project) %>
