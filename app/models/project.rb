@@ -2,7 +2,7 @@
 
 class Project < ApplicationRecord
   validates :name, presence: true
-  validates :fund_goal, numericality: { greater_than: 0 }
+  validates :fund_goal, numericality: { greater_than: 0, less_than: 1000000 }
 
   mount_uploader :image, ImageUploader
   has_many :plans

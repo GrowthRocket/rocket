@@ -3,7 +3,25 @@ class Account::OrdersController < ApplicationController
   layout 'user'
 
   def index
-    @orders = current_user.orders.all
+    @orders = current_user.orders.all.group(:project_id)
+  end
+
+  def show_orders_for_one_project
+    @order = current_user.orders.find(params[:id])
+    @project = Project.find(@order.project.id)
+    @plans = @project.plans
+    orders = []
+    unless @plans.nil?
+      @plans.each do |plan|
+        unless plan.orders.nil?
+          plan.orders.where(user_id: current_user).each do |order|
+            puts "#{order.inspect}"
+            orders.push(order)
+          end
+        end
+      end
+    end
+    render json: orders
   end
 
   def show

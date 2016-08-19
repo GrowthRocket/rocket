@@ -1,13 +1,15 @@
 <div class="container-fluid">
+  <div class="row">
   <div class="thumbnail">
-   <!-- <img style="width:100%" src="/images/Creator.png"></img> !-->
-   <div class="well">
+   <img style="width:100%" src="/images/Creator.png"></img> 
+   <!-- <div class="well">
      這裏擺 Hero Image （暫時不能妨礙開發工作）
-   </div>
+   </div> -->
+ </div>
   </div>
       <div class="row">
         <% @projects.each do |project| %>
-        <div class="col-xs-12 col-sm-4 col-md-8-offset-4">
+        <div class="col-md-6 col-md-offset-0 well">
           <%= link_to(image_tag(project.image.show), project_path(project), class: "thumbnail") %>
             <h2><%= link_to(project.name, project_path(project)) %></h2>
             <p><%= simple_format(project.description) %></p>
