@@ -5,10 +5,9 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-xs-12 col-sm-5 col-md-8-offset-1">
-    <div class="pull-right">
-      <% @plans.each do |plan| %>
-      <div class="col-xs-12 col-sm-4 col-md-8-offset-4">
+    <% @plans.each do |plan| %>
+
+    <div class="well">
 
         <p>
           <%= plan.title %>
@@ -22,11 +21,11 @@
         <p>
           <%= link_to("支持#{plan.price}元", new_plan_order_path(plan), :class => "btn btn-success" ) %>
         </p>
+
       </div>
       <% end %>
-    </div>
-  </div>
 </div>
 </div>
+
 <!-- 样式参考 -->
 <!-- <img style="width:100%" src="/uploads/18.png"></img> -->
