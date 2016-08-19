@@ -27,7 +27,7 @@
                 <img src="<%= project.image.thumb %>" width="120" height="90">
             </td>
             <td>
-                <%= link_to(project.plans.count, account_project_plans_path(project)) %>
+                <%= link_to(project.plans_count, account_project_plans_path(project)) %>
             </td>
             <td>
                 ¥<%= project.fund_goal %>
