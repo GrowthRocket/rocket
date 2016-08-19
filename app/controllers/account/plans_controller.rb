@@ -17,7 +17,8 @@ class Account::PlansController < ApplicationController
     @plan = Plan.new(plan_params)
     @plan.project = @project
     if @plan.save
-      redirect_to account_project_plans_path, notice: "您已成功新建筹款方案。"
+      flash[:notice] = "您已成功新建筹款方案。"
+      redirect_to account_project_plans_path
     else
       render :new
     end
@@ -33,7 +34,8 @@ class Account::PlansController < ApplicationController
 
     @plan = Plan.find(params[:id])
     if @plan.update(plan_params)
-      redirect_to account_project_plans_path, notice: "您已成功更新筹款方案。"
+      flash[:notice] = "您已成功更新筹款方案。"
+      redirect_to account_project_plans_path
     else
       render :edit
     end
@@ -42,7 +44,8 @@ class Account::PlansController < ApplicationController
   def destroy
     @plan = Plan.find(params[:id])
     @plan.destroy
-    redirect_to :back, alert: "筹款方案删除成功"
+    flash[:alert] = "筹款方案删除成功"
+    redirect_to :back
   end
 
   private

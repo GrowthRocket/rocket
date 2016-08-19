@@ -1,13 +1,12 @@
 class Account::ProjectsController < ApplicationController
   before_action :authenticate_user!
-  layout 'user'
+  layout "user"
 
   def index
     @projects = current_user.projects
   end
 
   def new
-    @savetype = 1
     @project = Project.new
   end
 
@@ -16,7 +15,6 @@ class Account::ProjectsController < ApplicationController
   end
 
   def edit
-    @savetype = 2
     @project = Project.find(params[:id])
   end
 
@@ -24,9 +22,8 @@ class Account::ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @project.user = current_user
     if @project.save
-      redirect_to account_projects_path, notice: '项目创建成功'
+      redirect_to account_projects_path, notice: "项目创建成功"
     else
-      @savetype = 1
       render :new
     end
   end
@@ -35,7 +32,8 @@ class Account::ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @project.is_hidden = true
     if @project.update(project_params)
-      redirect_to account_projects_path, notice: '项目更新成功'
+      flash[:notice] = "项目更新成功"
+      redirect_to account_projects_path
     else
       render :edit
     end
@@ -46,7 +44,8 @@ class Account::ProjectsController < ApplicationController
     plans = @project.plans
     plans.destroy
     @project.destroy
-    redirect_to :back, alert: '项目删除成功'
+    flash[:alert] = "项目删除成功"
+    redirect_to :back
   end
 
   def publish
