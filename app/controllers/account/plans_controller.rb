@@ -1,6 +1,6 @@
 class Account::PlansController < ApplicationController
   before_action :authenticate_user!
-  layout 'user'
+  layout "user"
 
   def index
     @project = Project.find(params[:project_id])
@@ -10,7 +10,6 @@ class Account::PlansController < ApplicationController
   def new
     @project = Project.find(params[:project_id])
     @plan = Plan.new
-    @savetype = 1
   end
 
   def create
@@ -18,9 +17,8 @@ class Account::PlansController < ApplicationController
     @plan = Plan.new(plan_params)
     @plan.project = @project
     if @plan.save
-      redirect_to account_project_plans_path, notice: '您已成功新建筹款方案。'
+      redirect_to account_project_plans_path, notice: "您已成功新建筹款方案。"
     else
-      @savetype = 1
       render :new
     end
   end
@@ -28,7 +26,6 @@ class Account::PlansController < ApplicationController
   def edit
     @project = Project.find(params[:project_id])
     @plan = Plan.find(params[:id])
-    @savetype = 2
   end
 
   def update
@@ -36,7 +33,7 @@ class Account::PlansController < ApplicationController
 
     @plan = Plan.find(params[:id])
     if @plan.update(plan_params)
-      redirect_to account_project_plans_path, notice: '您已成功更新筹款方案。'
+      redirect_to account_project_plans_path, notice: "您已成功更新筹款方案。"
     else
       render :edit
     end
@@ -45,7 +42,7 @@ class Account::PlansController < ApplicationController
   def destroy
     @plan = Plan.find(params[:id])
     @plan.destroy
-    redirect_to :back, alert: '筹款方案删除成功'
+    redirect_to :back, alert: "筹款方案删除成功"
   end
 
   private
