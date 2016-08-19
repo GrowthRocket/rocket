@@ -11,21 +11,21 @@
 
         <div class="container-fluid">
             <%= render "common/navbar" %>
-            <%= render "common/flashes" %>
             <div class="row">
-              <div class="col-md-2">
-                <ul class="nav nav-pills nav-stacked" style="max-width: 300px; padding-top:20px;">
-                  <% if current_user.is_admin? %>
-                      <li class="active"><%= link_to("我的资料",  account_users_path, ) %> </li>
-                  <% else %>
-                      <li class="active"><%= link_to("我的资料",  account_users_path, ) %> </li>
-                      <li class="active"><%= link_to("我发起的项目", account_projects_path) %> </li>
-                      <li class="active"><%= link_to("我的支持记录", account_orders_path,) %> </li>
-                  <% end %>
+            <%= render "common/flashes" %>
+              <div class="col-md-8 col-md-offset-2">
+                <ul class="nav nav-tabs">
+                  <%# if current_user.is_admin? %>
+                      <!-- <li class="active"><%#= link_to("我的资料",  account_users_path, ) %> </li> -->
+                  <%# else %>
+                      <li  role="presentation" class="active"><%= link_to("我的资料",  account_users_path, ) %> </li>
+                      <li  role="presentation" class="active"><%= link_to("我发起的项目", account_projects_path) %> </li>
+                      <li  role="presentation" class="active"><%= link_to("我的支持记录", account_orders_path,) %> </li>
+                  <%# end %>
                 </ul>
               </div>
 
-              <div class="col-md-10">
+              <div class="col-md-8 col-md-offset-2">
                 <%= yield %>
               </div>
         </div>
