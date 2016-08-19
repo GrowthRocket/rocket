@@ -13,7 +13,7 @@ class Account::PlansController < ApplicationController
   end
 
   def create
-    @project = Project.find(params[:project_id])
+    @project = current_user.projects.find(params[:project_id])
     @plan = Plan.new(plan_params)
     @plan.project = @project
     if @plan.save
@@ -25,12 +25,12 @@ class Account::PlansController < ApplicationController
   end
 
   def edit
-    @project = Project.find(params[:project_id])
+    @project = urrent_user.projects.find(params[:project_id])
     @plan = Plan.find(params[:id])
   end
 
   def update
-    @project = Project.find(params[:project_id])
+    @project = urrent_user.projects.find(params[:project_id])
 
     @plan = Plan.find(params[:id])
     if @plan.update(plan_params)
