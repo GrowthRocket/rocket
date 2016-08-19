@@ -7,7 +7,7 @@ class Account::ProjectsController < ApplicationController
   end
 
   def new
-    @project = Project.new
+    @project = current_user.projects.build
   end
 
   def show
@@ -19,8 +19,7 @@ class Account::ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new(project_params)
-    @project.user = current_user
+    @project = current_user.projects.build(project_params)
     if @project.save
       redirect_to account_projects_path, notice: "项目创建成功"
     else
@@ -29,7 +28,7 @@ class Account::ProjectsController < ApplicationController
   end
 
   def update
-    @project = Project.find(params[:id])
+    @project = current_user.projects.find(params[:id])
     @project.is_hidden = true
     if @project.update(project_params)
       flash[:notice] = "项目更新成功"
@@ -40,7 +39,7 @@ class Account::ProjectsController < ApplicationController
   end
 
   def destroy
-    @project = Project.find(params[:id])
+    @project = current_user.projects.find(params[:id])
     plans = @project.plans
     plans.destroy
     @project.destroy
@@ -49,13 +48,13 @@ class Account::ProjectsController < ApplicationController
   end
 
   def publish
-    @project = Project.find(params[:id])
+    @project = current_user.projects.find(params[:id])
     @project.publish!
     redirect_to :back
   end
 
   def hide
-    @project = Project.find(params[:id])
+    @project = current_user.projects.find(params[:id])
     @project.hide!
     redirect_to :back
   end
