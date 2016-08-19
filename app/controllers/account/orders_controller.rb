@@ -14,7 +14,7 @@ class Account::OrdersController < ApplicationController
     unless @plans.nil?
       @plans.each do |plan|
         unless plan.orders.nil?
-          plan.orders.each do |order|
+          plan.orders.where(user_id: current_user).each do |order|
             puts "#{order.inspect}"
             orders.push(order)
           end
