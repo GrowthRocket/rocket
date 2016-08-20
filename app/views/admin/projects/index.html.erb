@@ -24,9 +24,7 @@
             <td>
                 <%= link_to(project.name, project_path(project)) %>
                 <br/>
-
                 <%= render_project_image(project,:thumb) %>
-
             </td>
             <td>
                 <%= link_to(project.plans_count, account_project_plans_path(project)) %>
