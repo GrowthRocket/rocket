@@ -1,6 +1,6 @@
 class Account::OrdersController < ApplicationController
   before_action :authenticate_user!
-  layout 'user'
+  layout "user"
 
   def index
     @orders = current_user.orders.all.group(:project_id)
@@ -8,20 +8,12 @@ class Account::OrdersController < ApplicationController
 
   def show_orders_for_one_project
     @order = current_user.orders.find(params[:id])
-    @project = Project.find(@order.project.id)
+    @project = @order.project
     @plans = @project.plans
-    orders = []
-    unless @plans.nil?
-      @plans.each do |plan|
-        unless plan.orders.nil?
-          plan.orders.each do |order|
-            puts "#{order.inspect}"
-            orders.push(order)
-          end
-        end
-      end
-    end
-    render json: orders
+
+    @orders = current_user.orders.where(project_id: @project.id)
+
+    render json: @orders
   end
 
   def show
@@ -30,7 +22,7 @@ class Account::OrdersController < ApplicationController
 
   def pay_with_alipay
     @order = current_user.orders.find_by_token(params[:id])
-    if @order.pay!('Alipay')
+    if @order.pay!("Alipay")
       flash[:notice] = "您已成功付款，再次感谢您的支持！"
       OrderMailer.notify_order_placed(@order).deliver!
     else
@@ -41,7 +33,7 @@ class Account::OrdersController < ApplicationController
 
   def pay_with_wechat
     @order = current_user.orders.find_by_token(params[:id])
-    if @order.pay!('WeChat')
+    if @order.pay!("WeChat")
       flash[:notice] = "您已成功付款，再次感谢您的支持！"
       OrderMailer.notify_order_placed(@order).deliver!
     else

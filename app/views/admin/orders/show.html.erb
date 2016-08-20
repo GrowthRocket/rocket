@@ -37,10 +37,10 @@
 <div class="pull-right">
   <% if @order.paid? %>
   <% if @order.payment_method == 'alipay' %>
-  <%= link_to("您已使用支付宝支付", "#", :class => "btn btn-info disabled") %>
+  <%= link_to("已使用支付宝支付", "#", :class => "btn btn-info disabled") %>
   <% else %>
   <% @order.payment_method == 'wechat' %>
-  <%= link_to("您已使用微信支付", "#", :class => "btn btn-success disabled") %>
+  <%= link_to("已使用微信支付", "#", :class => "btn btn-success disabled") %>
   <% end %>
 <% else %>
     <%= link_to("支付宝支付", pay_with_alipay_account_order_path(@order.token), method: :post, class: "btn btn-primary") %>

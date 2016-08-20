@@ -1,54 +1,54 @@
-<h1>我发起的项目</h1>
+<h2>我发起的项目</h2>
 <div class="pull-right">
-  <%= link_to("新建众筹项目", new_account_project_path, class: "btn btn-success" ) %>
+    <%= link_to("新建众筹项目", new_account_project_path, :class => "btn btn-success" ) %>
 </div>
 <table class="table table-boldered">
-  <thead>
-  <tr>
-    <th>#</th>
-    <th>众筹项目</th>
-    <th>方案数量</th>
-    <th>筹款目标</th>
-    <th>支持人数</th>
-    <th>进度</th>
-    <th>状态</th>
-    <th>操作</th>
-  </tr>
-</thead>
-<tbody>
-  <% @projects.each_with_index do |project, index| %>
-  <tr>
-    <td>
-      <%= index + 1 %>
-    </td>
-    <td>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>众筹项目</th>
+            <th>方案数量</th>
+            <th>筹款目标</th>
+            <th>支持人数</th>
+            <th>进度</th>
+            <th>状态</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @projects.each do |project| %>
+        <tr>
+            <td>
+                <%= project.id %>
+            </td>
+            <td>
+                <%= link_to(project.name, project_path(project)) %>
+                <br/>
+                <img src="<%= project.image.thumb %>" width="120" height="90">
+            </td>
+            <td>
+                <%= link_to(project.plans_count, account_project_plans_path(project)) %>
+            </td>
+            <td>
+                ¥<%= project.fund_goal %>
+            </td>
+            <td>
+                <%= project.backer_quantity %>
+                人
+            </td>
+            <td>
+                <%= render_project_funding_progress(project) %>
 
-        <%= link_to(project.name, project_path(project)) %>
-      
-      <br />
-      <img src="<%= project.image.thumb %>">
-    </td>
-    <td>
-      <%= link_to(project.plans.count, account_project_plans_path(project)) %>
-    </td>
-    <td>
-      ¥<%= project.fund_goal %>
-    </td>
-    <td>
-      <%= project.backer_quantity %> 人
-    </td>
-    <td>
-      <%= number_with_precision(project.fund_progress.to_f / project.fund_goal * 100, :precision => 2) %> %
-    </td>
-    <td>
-      <%= render_project_status(project) %>
-    </td>
-    <td>
-      <%= link_to("编辑项目", edit_account_project_path(project), :class => "btn btn-xs btn-info") %>
-      <%= link_to("管理筹款方案", account_project_plans_path(project), :class => "btn btn-xs btn-warning") %>
-      <%= link_to("删除", account_project_path(project), :method => :delete, :data => { :confirm => "删除项目后不可恢复，您确定要删除吗?" }, :class => "btn btn-xs btn-danger") %>
-    </td>
-  </tr>
-  <% end %>
-</tbody>
+            </td>
+            <td>
+                <%= render_project_status(project) %>
+            </td>
+            <td>
+                <%= link_to("编辑项目", edit_account_project_path(project), :class => "btn btn-xs btn-info") %>
+                <%= link_to("管理筹款方案", account_project_plans_path(project), :class => "btn btn-xs btn-warning") %>
+                <%= link_to("删除", account_project_path(project), :method => :delete, :data => { :confirm => "删除项目后不可恢复，您确定要删除吗?" }, :class => "btn btn-xs btn-danger") %>
+            </td>
+        </tr>
+        <% end %>
+    </tbody>
 </table>

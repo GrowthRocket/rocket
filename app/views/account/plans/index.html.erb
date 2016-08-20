@@ -9,7 +9,7 @@
             <th >方案名称</th>
             <th >方案详情</th>
             <th >方案价格</th>
-
+            <th >支持人数</th>
             <th >进度</th>
             <th >操作</th>
             <th >创建时间</th>
@@ -20,13 +20,14 @@
         <tr>
             <td><%= plan.id %></td>
             <td><%= plan.title %></td>
-            <td style="white-space: nowrap; overflow: hidden;"><%= plan.description %>
-            </td>
+            <td><%= truncate(plan.description, length: 10, separator: ' ') %></td>
+
             <td><%= plan.price %>元</td>
 
 
             <td>
-               <%= plan.plan_progress %>/ <%= plan.plan_goal %>
+              <%= number_with_precision(plan.plan_progress.to_f / plan.plan_goal * 100, :precision => 2) %>
+              %
               <%#= number_with_precision(plan.plan_progress.to_f/plan.plan_goal * 100, precision: 2) %>
             </td>
             <td>
