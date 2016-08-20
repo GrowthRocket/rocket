@@ -27,7 +27,7 @@
                 <img src="<%= project.image.thumb %>" width="120" height="90">
             </td>
             <td>
-                <%= link_to(project.plans.count, account_project_plans_path(project)) %>
+                <%= link_to(project.plans_count, account_project_plans_path(project)) %>
             </td>
             <td>
                 ¥<%= project.fund_goal %>
@@ -37,8 +37,8 @@
                 人
             </td>
             <td>
-                <%= number_with_precision(project.fund_progress.to_f / project.fund_goal * 100, :precision => 2) %>
-                %
+                <%= render_project_funding_progress(project) %>
+
             </td>
             <td>
                 <%= render_project_status(project) %>

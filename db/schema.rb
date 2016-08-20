@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160818171112) do
+ActiveRecord::Schema.define(version: 20160819021638) do
 
   create_table "orders", force: :cascade do |t|
     t.integer  "total_price"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20160818171112) do
     t.boolean  "is_hidden",       default: true
     t.integer  "fund_progress",   default: 0
     t.integer  "backer_quantity", default: 0
+    t.integer  "plans_count",     default: 0
   end
 
   create_table "users", force: :cascade do |t|

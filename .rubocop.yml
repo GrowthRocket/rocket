@@ -1,0 +1,99 @@
+AllCops:
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  Exclude:
+    - db/schema.rb
+    - vendor/**/*
+  ExtraDetails: true
+  TargetRubyVersion: 2.3
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Rails:
+  Enabled: true
+
+Style/AutoResourceCleanup:
+  Enabled: true
+
+Style/BlockDelimiters:
+  EnforcedStyle: braces_for_chaining
+
+Style/CollectionMethods:
+  Enabled: true
+
+Style/Documentation:
+  Enabled: false
+
+Style/DotPosition:
+  EnforcedStyle: leading
+
+Style/FirstArrayElementLineBreak:
+  Enabled: true
+
+Style/FirstHashElementLineBreak:
+  Enabled: true
+
+Style/FirstMethodArgumentLineBreak:
+  Enabled: true
+
+Style/FirstMethodParameterLineBreak:
+  Enabled: true
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/MethodCalledOnDoEndBlock:
+  Enabled: true
+
+Style/MultilineArrayBraceLayout:
+  Enabled: true
+
+Style/MultilineAssignmentLayout:
+  Enabled: true
+
+Style/MultilineHashBraceLayout:
+  Enabled: true
+
+Style/MultilineMethodCallBraceLayout:
+  Enabled: true
+
+Style/MultilineMethodDefinitionBraceLayout:
+  Enabled: true
+
+Style/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Style/OptionHash:
+  Enabled: true
+
+Style/PredicateName:
+  Exclude:
+    - spec/**/*
+
+Style/Send:
+  Enabled: true
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/StringMethods:
+  Enabled: true
+
+Style/SymbolArray:
+  Enabled: true
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: no_comma
+
+Style/TrailingCommaInLiteral:
+  EnforcedStyleForMultiline: no_comma

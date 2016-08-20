@@ -13,6 +13,7 @@
 #  is_hidden       :boolean          default(TRUE)
 #  fund_progress   :integer          default(0)
 #  backer_quantity :integer          default(0)
+#  plans_count     :integer          default(0)
 #
 
 require 'test_helper'

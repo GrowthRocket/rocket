@@ -35,7 +35,8 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.is_admin = true
     @user.save
-    redirect_to :back, notice: "成功设为管理员!"
+    flashp[:notice] = "成功设为管理员!"
+    redirect_to :back, notice:
   end
 
 
@@ -43,7 +44,8 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.is_admin = false
     @user.save
-    redirect_to :back, alert: "已降为非管理员！"
+    flash[:alert]= "已降为非管理员！"
+    redirect_to :back
   end
   private
 
