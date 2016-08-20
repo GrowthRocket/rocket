@@ -20,8 +20,8 @@
         <tr>
             <td><%= plan.id %></td>
             <td><%= plan.title %></td>
-            <td style="white-space: nowrap; overflow: hidden;"><%= plan.description %>
-            </td>
+            <td><%= truncate(plan.description, length: 10, separator: ' ') %></td>
+
             <td><%= plan.price %>元</td>
 
             <td><%= plan.backer_quantity %></td>
