@@ -11,22 +11,26 @@ class Plan < ApplicationRecord
 
   scope :recent, -> { order("created_at DESC") }
 
-   def require_price_judgment_and_save(plan)
-     if plan.price < plan.project.fund_goal
-       if plan.save
-         flash[:notice] = "您已成功新建筹款方案。"
-         redirect_to admin_project_plans_path
-       else
-         render :new
-       end
-     else
-       flash[:alert] = "方案价格应当小于项目筹款目标哦！"
-       render :new
-     end
-   end
+
+  def require_price_judgment_and_save(plan)
+    if plan.price < plan.project.fund_goal
+      if plan.save
+        flash[:notice] = "您已成功新建筹款方案。"
+        if current_user.is_admin?
+          redirect_to admin_project_plans_path
+        else
+          redirect_to account_project_plans_path
+        end
+      else
+        render :new
+      end
+    else
+      flash[:alert] = "方案价格应当小于项目筹款目标哦！"
+      render :new
+    end
+  end
 
 end
-
 
 
 
