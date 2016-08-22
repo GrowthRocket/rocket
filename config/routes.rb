@@ -46,6 +46,7 @@ Rails.application.routes.draw do
   namespace :account do
     resources :users
     resources :projects do
+      resources :posts
       resources :plans
       member do
         post :publish

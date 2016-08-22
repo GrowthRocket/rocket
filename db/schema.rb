@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160822094248) do
+ActiveRecord::Schema.define(version: 20160822114403) do
 
   create_table "accounts", force: :cascade do |t|
     t.integer  "balance",      default: 0
@@ -107,6 +107,13 @@ ActiveRecord::Schema.define(version: 20160822094248) do
     t.integer  "plan_goal"
     t.integer  "plan_progress",   default: 0
     t.integer  "backer_quantity", default: 0
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.text     "description"
+    t.integer  "project_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "projects", force: :cascade do |t|

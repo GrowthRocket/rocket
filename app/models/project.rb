@@ -11,6 +11,8 @@ class Project < ApplicationRecord
 
   scope :recent, -> { order("created_at DESC") }
 
+  has_many :posts
+
   def publish!
     self.is_hidden = false
     save
@@ -20,7 +22,7 @@ class Project < ApplicationRecord
     self.is_hidden = true
     save
   end
-  
+
 end
 
 # == Schema Information
