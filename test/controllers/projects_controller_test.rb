@@ -14,6 +14,7 @@
 #  fund_progress   :integer          default(0)
 #  backer_quantity :integer          default(0)
 #  plans_count     :integer          default(0)
+#  category_id     :integer
 #
 
 require 'test_helper'
