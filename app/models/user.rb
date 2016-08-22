@@ -31,11 +31,23 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  after_create :create_account
+
+
+
   mount_uploader :image, HeadimageUploader
+
   def admin?
     is_admin
   end
 
   has_many :orders
   has_many :projects
+  has_one :account
+
+  def generate_account
+    self.create_account
+  end
+
+
 end

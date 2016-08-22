@@ -12,6 +12,45 @@
 
 ActiveRecord::Schema.define(version: 20160822094248) do
 
+  create_table "accounts", force: :cascade do |t|
+    t.integer  "balance",      default: 0
+    t.integer  "amount",       default: 0
+    t.integer  "user_id"
+    t.integer  "profit",       default: 0
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "account_name"
+  end
+
+  create_table "bill_payments", force: :cascade do |t|
+    t.string   "order_id"
+    t.string   "channel_id"
+    t.integer  "amount"
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.integer  "plan_id"
+    t.string   "bill_status"
+    t.string   "payment_method"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "project_name"
+    t.string   "backer_name"
+    t.index ["bill_status"], name: "index_bill_payments_on_bill_status"
+  end
+
+  create_table "bill_payouts", force: :cascade do |t|
+    t.integer  "project_id"
+    t.integer  "amount"
+    t.string   "account_name"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "bill_status"
+    t.string   "project_name"
+    t.string   "creator_name"
+    t.index ["bill_status"], name: "index_bill_payouts_on_bill_status"
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false

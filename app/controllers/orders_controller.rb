@@ -17,9 +17,6 @@ class OrdersController < ApplicationController
     @order.project = @project
 
     if @order.save
-
-      FundingService.new(@order, current_user).add_progress!
-
       flash[:notice] = "感谢您对本项目的支持！"
       redirect_to account_order_path(@order.token)
     else

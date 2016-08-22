@@ -1,0 +1,44 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  order_id: MyString
+  channel_id: MyString
+  amount: 1
+  user_id: 1
+  project_id: 1
+  plan_id: 1
+  bill_status: MyString
+  payment_method: MyString
+
+two:
+  order_id: MyString
+  channel_id: MyString
+  amount: 1
+  user_id: 1
+  project_id: 1
+  plan_id: 1
+  bill_status: MyString
+  payment_method: MyString
+
+# == Schema Information
+#
+# Table name: bill_payments
+#
+#  id             :integer          not null, primary key
+#  order_id       :string
+#  channel_id     :string
+#  amount         :integer
+#  user_id        :integer
+#  project_id     :integer
+#  plan_id        :integer
+#  bill_status    :string
+#  payment_method :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  project_name   :string
+#  backer_name    :string
+#
+# Indexes
+#
+#  index_bill_payments_on_bill_status  (bill_status)
+#
