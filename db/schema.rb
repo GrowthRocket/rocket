@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160819021638) do
+ActiveRecord::Schema.define(version: 20160822045625) do
+
+  create_table "identity_verifications", force: :cascade do |t|
+    t.integer  "verify_type"
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "image"
+    t.integer  "verify_status"
+    t.string   "message"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "orders", force: :cascade do |t|
     t.integer  "total_price"
