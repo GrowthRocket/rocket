@@ -55,7 +55,11 @@ Rails.application.routes.draw do
     resources :orders
   end
 
-  resources :notifications
+  resources :notifications do
+    collection do
+      post :mark_as_read
+    end
+  end
 
   root "projects#index"
 
