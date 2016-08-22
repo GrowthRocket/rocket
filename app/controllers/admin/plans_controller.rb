@@ -4,7 +4,7 @@ class Admin::PlansController < ApplicationController
   layout "admin"
 
   def index
-    @project = Project.find(params[:project_id])
+    @project = current_user.projects.find(params[:project_id])
     @plans = @project.plans
   end
 

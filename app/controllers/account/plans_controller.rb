@@ -3,44 +3,41 @@ class Account::PlansController < ApplicationController
   layout "user"
 
   def index
-    @project = Project.find(params[:project_id])
+    @project = current_user.projects.find(params[:project_id])
     @plans = @project.plans
   end
 
   def new
-    @project = Project.find(params[:project_id])
-    @plan = Plan.new
+    @project = current_user.projects.find(params[:project_id])
+    @plan = @project.plans.build
   end
 
   def create
     @project = current_user.projects.find(params[:project_id])
-    @plan = Plan.new(plan_params)
-    @plan.project = @project
+    @plan = @project.plans.build(plan_params)
     require_price_judgment_and_save(@plan)
   end
 
   def edit
     @project = current_user.projects.find(params[:project_id])
-    @plan = Plan.find(params[:id])
+    @plan = @project.plans.find(params[:id])
   end
 
   def update
     @project = current_user.projects.find(params[:project_id])
-
-    @plan = Plan.find(params[:id])
+    @plan = @project.plans.find(params[:id])
     if @plan.update(plan_params)
-      flash[:notice] = "您已成功更新筹款方案。"
-      redirect_to account_project_plans_path
+      redirect_to admin_project_plans_path, notice: "您已成功更新筹款方案。"
     else
       render :edit
     end
   end
 
   def destroy
-    @plan = Plan.find(params[:id])
+    @project = current_user.projects.find(params[:project_id])
+    @plan = @project.plans.find(params[:id])
     @plan.destroy
-    flash[:alert] = "筹款方案删除成功"
-    redirect_to :back
+    redirect_to :back, alert: "筹款方案删除成功"
   end
 
   private
