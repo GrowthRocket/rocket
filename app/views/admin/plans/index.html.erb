@@ -6,20 +6,21 @@
 <table class="table table-boldered" , style="width: 100%; table-layout: fixed;">
     <thead>
         <tr>
-            <th width="5%">ID</th>
+            <th width="5%">#</th>
             <th >方案名称</th>
             <th >方案详情</th>
             <th >方案价格</th>
             <th >支持人数</th>
             <th >进度</th>
+            <th>方案ID</th>
             <th >操作</th>
             <th >创建时间</th>
         </tr>
     </thead>
     <tbody>
-        <%  @plans.each do |plan| %>
+        <%  @plans.each_with_index do |plan, index| %>
         <tr>
-            <td><%= plan.id %></td>
+          <td><%= index + 1 %></td>
             <td><%= plan.title %></td>
             <td><%= render_plan_description(plan)%></td>
             <td><%= plan.price %>元</td>
@@ -30,6 +31,7 @@
                 <!-- <%#= plan.plan_progress %>/ <#%= plan.plan_goal %> -->
                 <%#= number_with_precision(plan.plan_progress.to_f/plan.plan_goal * 100, precision: 2) %>
             </td>
+            <td><%= plan.id %></td>
             <td>
                 <%= link_to("编辑", edit_admin_project_plan_path(plan.project, plan), class: "btn btn-xs btn-info" )%>
                 <%= link_to("删除", admin_project_plan_path(plan.project,plan), method: :delete,  class: "btn btn-xs btn-danger" , data: {confirm: "确认删除该方案么?"}) %>

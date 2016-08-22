@@ -5,21 +5,22 @@
 <table class="table table-boldered">
     <thead>
         <tr>
-            <th>ID</th>
+            <th width="5%">#</th>
             <th>众筹项目</th>
             <th>方案数量</th>
             <th>筹款目标</th>
             <th>支持人数</th>
             <th>进度</th>
+            <th>项目ID</th>
             <th>状态</th>
             <th>操作</th>
         </tr>
     </thead>
     <tbody>
-        <% @projects.each do |project| %>
+       <% @projects.each_with_index do |project, index| %>
         <tr>
             <td>
-                <%= project.id %>
+                <%= index + 1 %>
             </td>
             <td>
                 <%= link_to(project.name, project_path(project)) %>
@@ -39,6 +40,9 @@
             <td>
                 <%= number_with_precision(project.fund_progress.to_f / project.fund_goal * 100, :precision => 2) %>
                 %
+            </td>
+            <td>
+                <%= project.id  %>
             </td>
             <td>
                 <%= render_project_status(project) %>
