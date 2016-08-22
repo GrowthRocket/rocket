@@ -4,7 +4,7 @@ class Admin::ProjectsController < ApplicationController
   layout "admin"
 
   def index
-    @projects = Project.all.recent
+    @projects = Project.all.recent.paginate(:page => params[:page], :per_page => 5)
   end
 
   def new
