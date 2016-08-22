@@ -5,7 +5,7 @@ class Admin::PlansController < ApplicationController
 
   def index
     @project = current_user.projects.find(params[:project_id])
-    @plans = @project.plans
+    @plans = @project.plans.recent
   end
 
   def new

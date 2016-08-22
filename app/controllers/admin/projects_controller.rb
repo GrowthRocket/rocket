@@ -4,7 +4,7 @@ class Admin::ProjectsController < ApplicationController
   layout "admin"
 
   def index
-    @projects = Project.all
+    @projects = Project.all.recent
   end
 
   def new

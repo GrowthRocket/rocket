@@ -8,21 +8,28 @@ class Plan < ApplicationRecord
   validates :plan_goal, numericality: { greater_than: 0, less_than: 1_000_000 }
   belongs_to :project, counter_cache: true
   has_many :orders
+
+  scope :recent, -> { order("created_at DESC") }
+
+   def require_price_judgment_and_save(plan)
+     if plan.price < plan.project.fund_goal
+       if plan.save
+         flash[:notice] = "您已成功新建筹款方案。"
+         redirect_to admin_project_plans_path
+       else
+         render :new
+       end
+     else
+       flash[:alert] = "方案价格应当小于项目筹款目标哦！"
+       render :new
+     end
+   end
+
 end
 
-def require_price_judgment_and_save(plan)
-  if plan.price < plan.project.fund_goal
-    if plan.save
-      flash[:notice] = "您已成功新建筹款方案。"
-      redirect_to admin_project_plans_path
-    else
-      render :new
-    end
-  else
-    flash[:alert] = "方案价格应当小于项目筹款目标哦！"
-    render :new
-  end
-end
+
+
+
 
 # == Schema Information
 #

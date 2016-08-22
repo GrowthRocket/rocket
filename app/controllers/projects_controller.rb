@@ -1,7 +1,6 @@
 class ProjectsController < ApplicationController
   def index
-    @projects = Project.published
-    # @account_projects = cur
+    @projects = Project.published.recent
   end
 
   def show

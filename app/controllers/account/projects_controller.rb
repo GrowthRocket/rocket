@@ -3,7 +3,7 @@ class Account::ProjectsController < ApplicationController
   layout "user"
 
   def index
-    @projects = current_user.projects
+    @projects = current_user.projects.recent
   end
 
   def new
