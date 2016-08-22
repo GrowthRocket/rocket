@@ -15,7 +15,17 @@ class Account::PlansController < ApplicationController
   def create
     @project = current_user.projects.find(params[:project_id])
     @plan = @project.plans.build(plan_params)
-    require_price_judgment_and_save(@plan)
+    if @plan.price < @plan.project.fund_goal
+      if @plan.save
+        flash[:notice] = "您已成功新建筹款方案。"
+        redirect_to account_projects_path
+      else
+        render :new
+      end
+    else
+      flash[:alert] = "方案价格应当小于项目筹款目标哦！"
+      render :new
+    end
   end
 
   def edit
@@ -27,7 +37,7 @@ class Account::PlansController < ApplicationController
     @project = current_user.projects.find(params[:project_id])
     @plan = @project.plans.find(params[:id])
     if @plan.update(plan_params)
-      redirect_to admin_project_plans_path, notice: "您已成功更新筹款方案。"
+      redirect_to account_project_plans_path, notice: "您已成功更新筹款方案。"
     else
       render :edit
     end
