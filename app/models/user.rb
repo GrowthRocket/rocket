@@ -17,6 +17,7 @@
 #  updated_at             :datetime         not null
 #  is_admin               :boolean          default(FALSE)
 #  user_name              :string
+#  image                  :string
 #
 # Indexes
 #
@@ -32,6 +33,9 @@ class User < ApplicationRecord
 
   after_create :create_account
 
+
+
+  mount_uploader :image, HeadimageUploader
 
   def admin?
     is_admin

@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
       flash[:notice] = "感谢您对本项目的支持！"
       redirect_to account_order_path(@order.token)
     else
-      render 'new'
+      render "new"
       # redirect_back(fallback_location: root_path)
     end
   end

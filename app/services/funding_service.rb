@@ -33,4 +33,13 @@ class FundingService
     @account.save
 
   end
+
+  def add_progress!
+    add!
+    send_notification!
+  end
+
+  def send_notification!
+    Notification.create(recipient: @project.user, actor: @user, action: "fund", notifiable: @order)
+  end
 end
