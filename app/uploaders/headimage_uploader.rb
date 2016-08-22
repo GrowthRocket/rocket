@@ -1,14 +1,14 @@
 # encoding: utf-8
 
-class ImageUploader < CarrierWave::Uploader::Base
+class HeadimageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  include CarrierWave::MiniMagick
-
+  # include CarrierWave::MiniMagick
+include CarrierWave::MiniMagick
   # Choose what kind of storage to use for this uploader:
   storage :file
-  #storage :fog
+  # storage :fog
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -38,7 +38,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   def default_url
     # "/images/fallback/" + [thumb, "avatar.jpg"].compact.join('_')
-    "/images/default_pic.jpg"
+    "/images/user.jpg"
   end
 
   process resize_to_fit: [990, 618]
@@ -46,23 +46,13 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :headimage do
     process resize_to_fill: [30,30]
   end
-  version :thumb do
-    process resize_to_fill: [132, 80]
-  end
 
-  version :show do
-    process resize_to_fill: [660, 400]
-  end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   # def extension_white_list
   #   %w(jpg jpeg gif png)
   # end
-
-  def extension_white_list
-    %w(jpg jpeg gif png)
-   end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.

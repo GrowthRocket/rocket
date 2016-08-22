@@ -12,6 +12,12 @@
 
 ActiveRecord::Schema.define(version: 20160822094248) do
 
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "identity_verifications", force: :cascade do |t|
     t.integer  "verify_type"
     t.integer  "user_id"
@@ -76,6 +82,7 @@ ActiveRecord::Schema.define(version: 20160822094248) do
     t.integer  "fund_progress",   default: 0
     t.integer  "backer_quantity", default: 0
     t.integer  "plans_count",     default: 0
+    t.integer  "category_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -93,6 +100,7 @@ ActiveRecord::Schema.define(version: 20160822094248) do
     t.datetime "updated_at",                             null: false
     t.boolean  "is_admin",               default: false
     t.string   "user_name"
+    t.string   "image"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
