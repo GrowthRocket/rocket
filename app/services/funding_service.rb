@@ -16,11 +16,8 @@ class FundingService
 
     if @user.orders.where(plan_id: @order.plan, aasm_state: "paid").empty?
       @plan.backer_quantity += 1
-      puts "----------------------"
     else
-      @p = @user.orders.where(plan_id: @order.plan)
-      puts "+++++++++++++++++++++++"
-      puts "#{@p.inspect}"
+      @user.orders.where(plan_id: @order.plan)
     end
 
     @plan.plan_progress += 1
