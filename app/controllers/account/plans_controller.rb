@@ -25,12 +25,12 @@ class Account::PlansController < ApplicationController
   end
 
   def edit
-    @project = current_user.projects.find(params[:project_id])
+    @project = urrent_user.projects.find(params[:project_id])
     @plan = Plan.find(params[:id])
   end
 
   def update
-    @project = current_user.projects.find(params[:project_id])
+    @project = urrent_user.projects.find(params[:project_id])
 
     @plan = Plan.find(params[:id])
     if @plan.update(plan_params)

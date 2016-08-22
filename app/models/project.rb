@@ -1,3 +1,5 @@
+
+
 class Project < ApplicationRecord
   validates :name, presence: true
   validates :fund_goal, numericality: { greater_than: 0, less_than: 1000000 }
@@ -5,7 +7,6 @@ class Project < ApplicationRecord
   mount_uploader :image, ImageUploader
   has_many :plans
   belongs_to :user
-
 
   scope :published, -> { where(is_hidden: false) }
   def publish!
