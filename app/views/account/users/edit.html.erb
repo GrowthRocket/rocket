@@ -1,6 +1,6 @@
-
-<h3> 修改我的资料 </h3>
+<h1> 修改我的资料 </h1>
 <%= simple_form_for [:account,@user] do |f| %>
+<%= f.input :image, :label =>"用户头像" %>
 <%= f.input :user_name, :label =>"用户名" %>
 <%= f.input :email, :readonly => true, :label =>"邮箱地址(暂时不支持更改)" %>
 <%= link_to("放弃更新", account_users_path, class: "btn btn-xs btn-default" ) %>
