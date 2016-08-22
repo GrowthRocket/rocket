@@ -152,7 +152,7 @@ puts "9 User's Plan created."
 
   Order.create!([total_price: 100, plan_id: 22, creator_name:"user3", backer_name: "backer2", price: 100 , quantity: 1, payment_method: "Alipay", aasm_state: "paid", user_id:2, project_id:8])
   BillPayment.create(order_id: 16, channel_id: 0,
-  amount: 100, user_id: 2, backer_name: "backer2", project_id: 6, project_name: "User1's Poject",
+  amount: 100, user_id: 2, backer_name: "backer2", project_id: 8, project_name: "User3's Poject",
   plan_id: 22, bill_status: "success", payment_method: "Alipay")
 
 
