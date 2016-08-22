@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :welcome
+  # resources :welcome
 
   namespace :admin do
     resources :orders
@@ -17,6 +17,12 @@ Rails.application.routes.draw do
       member do
         post :promote
         post :demote
+      end
+    end
+    resources :users_verify do
+      member do
+        post :pass_verify
+        post :reject_verify
       end
     end
   end
