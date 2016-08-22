@@ -6,7 +6,7 @@
 
   <%= f.input :image, :label =>"主题图片" %>
 
-  <% if @savetype == 1 %>
+  <% if ["new", "create"].include?(controller.action_name) %>
     <%= f.submit "创建项目", class: "btn btn-success" %>
   <% else %>
   <%= link_to("放弃更新", account_projects_path, class: "btn btn-default" ) %>
