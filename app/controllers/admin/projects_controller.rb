@@ -4,7 +4,11 @@ class Admin::ProjectsController < ApplicationController
   layout "admin"
 
   def index
-    @projects = Project.all.recent.paginate(:page => params[:page], :per_page => 5)
+    if params[:category_id]
+      @projects = Project.where(category_id: params[:category_id])
+    else
+      @projects = Project.all
+    end
   end
 
   def new
@@ -63,6 +67,6 @@ class Admin::ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :description, :user_id, :fund_goal, :image, :is_hidden)
+    params.require(:project).permit(:name, :description, :user_id, :fund_goal, :image, :is_hidden, :plans_count, :category_id)
   end
 end
