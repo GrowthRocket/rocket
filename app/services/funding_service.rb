@@ -24,9 +24,9 @@ class FundingService
     @plan.plan_progress += 1
     @plan.save
 
-    BillPayment.create(order_id: @order, channel_id: 0,
-    amount: @order.total_price, user_id: @user, project_id: @project,
-    plan_id: @plan, bill_status: "success", payment_method: @order.payment_method)
+    BillPayment.create(order_id: @order.id, channel_id: 0,
+    amount: @order.total_price, user_id: @user.id, project_id: @project.id,
+    plan_id: @plan.id, bill_status: "success", payment_method: @order.payment_method)
 
     @account = @user.account
     @account.amount += @order.total_price
