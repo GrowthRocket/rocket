@@ -45,6 +45,8 @@ gem 'aasm'
 gem "fog"
 gem "awesome_rails_console"
 gem "trix"
+gem "gravatarify"
+gem "pry"
 
 
 group :development, :test do
