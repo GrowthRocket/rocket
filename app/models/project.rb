@@ -1,6 +1,6 @@
 class Project < ApplicationRecord
   validates :name, presence: true
-  validates :fund_goal, numericality: { greater_than: 0, less_than: 1000000 }
+  validates :fund_goal, numericality: { greater_than: 0, less_than: 1_000_000 }
 
   mount_uploader :image, ImageUploader
   has_many :plans
@@ -8,6 +8,9 @@ class Project < ApplicationRecord
   belongs_to :category
 
   scope :published, -> { where(is_hidden: false) }
+
+  scope :recent, -> { order("created_at DESC") }
+
   def publish!
     self.is_hidden = false
     save
@@ -17,6 +20,7 @@ class Project < ApplicationRecord
     self.is_hidden = true
     save
   end
+  
 end
 
 # == Schema Information

@@ -8,6 +8,7 @@ class Account::ProjectsController < ApplicationController
     else
       @projects = current_user.projects
     end
+
   end
 
   def new
