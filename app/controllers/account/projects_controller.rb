@@ -13,6 +13,7 @@ class Account::ProjectsController < ApplicationController
 
   def new
     @project = current_user.projects.build
+      puts "++++++++"
   end
 
   def show
@@ -26,6 +27,7 @@ class Account::ProjectsController < ApplicationController
   def create
     @project = current_user.projects.build(project_params)
     @project.category_id = params[:category_id]
+    puts "++++++++"
 
     if @project.save
       redirect_to account_projects_path, notice: "项目创建成功"
@@ -69,6 +71,6 @@ class Account::ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :description, :user_id, :fund_goal, :image, :is_hidden, :plans_count, :category_id)
+    params.require(:project).permit(:name, :description, :user_id, :fund_goal, :image, :is_hidden, :plans_count)
   end
 end
