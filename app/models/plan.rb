@@ -10,6 +10,20 @@ class Plan < ApplicationRecord
   has_many :orders
 end
 
+def require_price_judgment_and_save(plan)
+  if plan.price < plan.project.fund_goal
+    if plan.save
+      flash[:notice] = "您已成功新建筹款方案。"
+      redirect_to admin_project_plans_path
+    else
+      render :new
+    end
+  else
+    flash[:alert] = "方案价格应当小于项目筹款目标哦！"
+    render :new
+  end
+end
+
 # == Schema Information
 #
 # Table name: plans

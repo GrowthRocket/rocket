@@ -27,7 +27,7 @@
                 <%= render_project_image(project,:thumb) %>
             </td>
             <td>
-                <%= link_to(project.plans_count, account_project_plans_path(project)) %>
+                <%= link_to(project.plans_count, admin_project_plans_path(project)) %>
             </td>
             <td>
                 ¥<%= project.fund_goal %>

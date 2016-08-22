@@ -17,12 +17,7 @@ class Admin::PlansController < ApplicationController
     @project = Project.find(params[:project_id])
     @plan = Plan.new(plan_params)
     @plan.project = @project
-    if @plan.save
-      redirect_to admin_project_plans_path, notice: "您已成功新建筹款方案。"
-    else
-
-      render :new
-    end
+    require_price_judgment_and_save(@plan)
   end
 
   def edit

@@ -16,12 +16,7 @@ class Account::PlansController < ApplicationController
     @project = current_user.projects.find(params[:project_id])
     @plan = Plan.new(plan_params)
     @plan.project = @project
-    if @plan.save
-      flash[:notice] = "您已成功新建筹款方案。"
-      redirect_to account_project_plans_path
-    else
-      render :new
-    end
+    require_price_judgment_and_save(@plan)
   end
 
   def edit
