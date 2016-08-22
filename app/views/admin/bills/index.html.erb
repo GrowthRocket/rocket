@@ -29,28 +29,30 @@
         <thead>
           <th>#</th>
           <th>项目名称</th>
-          <th>姓名</th>
           <th>合计金额</th>
           <th>下单时间</th>
+          <th>操作</th>
         </thead>
         <tbody>
 
             <% @bill_payments.each_with_index do |payment, index| %>
             <tr>
               <td>
-                <%= index %>
+                <%= index + 1 %>
               </td>
               <td>
-                <%= payment.project_name %>
-              </td>
-              <td>
-                <%= payment.backer_name %>
+                <%= link_to(payment.project_name, show_bill_payments_by_project_admin_bill_path(payment.project_id), method: :post) %>
               </td>
               <td>
                 <%= payment.amount %>
               </td>
               <td>
                 <%= payment.created_at %>
+              </td>
+              <td>
+                <% if payment.bill_status == "success" %>
+                  <%= link_to("发放资金", payout_admin_bill_path(payment.project_id), method: :post, class: "btn btn-primary") %>
+                <% end %>
               </td>
             </tr>
             <% end %>
@@ -90,15 +92,15 @@
   }
 
   function showTabContent(id, data) {
-    content = "<table class='table table-stripe'> <thead><th>#</th><th>项目名称</th><th>姓名</th><th>合计金额</th><th>下单时间</th></thead><tbody>"
+    content = "<table class='table table-stripe'> <thead><th>#</th><th>项目名称</th><th>合计金额</th><th>下单时间</th><th>操作</th></thead><tbody>"
     $.each(data, function(index, item) {
       content += "<tr>" +
         "<td>" + (index + 1) + "</td>" +
         "<td>"  + item.project_name
         render_bill_state(item) +  "</td>" +
-        "<td>" + item.backer_name + "</td>" +
         "<td>" + item.amount + "</td>" +
-        "<td>" + item.created_at  + "</td>"
+        "<td>" + item.created_at  + "</td>"+
+        "<td>" + item.bill_status == "sucess" ? "<a data-method='post' href='admin/bills/" + item.project_id + "/payout'>发放资金</a>"+
       "</tr>";
     })
       content += "</tbody></table>"

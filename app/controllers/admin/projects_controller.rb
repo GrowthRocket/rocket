@@ -5,9 +5,9 @@ class Admin::ProjectsController < ApplicationController
 
   def index
     if params[:category_id]
-      @projects = Project.where(category_id: params[:category_id])
+      @projects = Project.recent.where(category_id: params[:category_id]).paginate(:page => params[:page], :per_page => 5)
     else
-      @projects = Project.all
+      @projects = Project.all.recent.paginate(:page => params[:page], :per_page => 5)
     end
   end
 

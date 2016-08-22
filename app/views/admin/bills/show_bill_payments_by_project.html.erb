@@ -1,0 +1,31 @@
+<h1><%= @payments[0].project_name  %> 项目详细收入流水 </h1>
+<table class="table table-stripe">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>项目名称</th>
+      <th>支持者姓名</th>
+      <th>支持金额</th>
+      <th>日期</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @payments.each_with_index do |payment, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td>
+          <%= payment.project_name %>
+        </td>
+        <td>
+          <%= payment.backer_name %>
+        </td>
+        <td>
+          <%= payment.amount %>
+        </td>
+        <td>
+          <%= render_order_created_at(payment.created_at) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
