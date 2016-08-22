@@ -1,28 +1,21 @@
 <div>
-<h2>
-<span><%= link_to("待认证用户", admin_users_verify_index_path ) %></span>
-<span> | 用户认证申请详情</span>
-
-</h2>
+  <h2>
+    <span><%= link_to("待认证用户", admin_users_verify_index_path ) %></span>
+    <span> | 用户认证申请详情</span>
+  </h2>
 </div>
 
  <p>  用户ID：  <%= @user.id %> </p>
-
  <p>  用户名：    <%= @user.user_name %> </p>
-
  <p>  邮件地址：    <%= @user.email %> </p>
-
  <p>  注册时间：    <%= @user.created_at.strftime("%Y-%m-%d %H:%M:%S") %> </p>
-
  <p>  申请认证时间：    <%= @user.created_at.strftime("%Y-%m-%d %H:%M:%S") %> </p>
-
  <p>身份证正面图片 </p>
  <%#= image_tag(@user.image.show), user_path(user), class: "thumbnail") %>
  <p>身份证反面图片   </p>
  <%#= image_tag(@user.image.show), user_path(user), class: "thumbnail") %>
  <p>双手持身份证图片   </p>
  <%#= image_tag(@user.image.show), user_path(user), class: "thumbnail") %>
-
 <div class="well">
   <%= link_to("通过认证请求", pass_verify_admin_users_verify_path(@user) , :method => :post, :class => "btn btn-sm btn-success disabled") %>
 </div>

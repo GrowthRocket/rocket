@@ -1,7 +1,7 @@
 class Admin::UsersVerifyController < ApplicationController
   before_action :authenticate_user!
   before_action :require_is_admin
-  layout 'admin'
+  layout "admin"
 
   def index
     @users = User.where(:verify_status == 0)
@@ -15,22 +15,23 @@ class Admin::UsersVerifyController < ApplicationController
     @user = User.find(params[:id])
     @user.verify_status = 1
     @user.save
-    flashp[:notice] = "已通过该用户的实名认证申请!"
+    flash[:notice] = "已通过该用户的实名认证申请!"
     redirect_to :back
+    # UserMailer.notify_order_placed(@user).deliver!
   end
-
 
   def reject_verify
     @user = User.find(params[:id])
     @user.verify_status = －1
     @user.save
-    flashp[:notice] = "已通过该用户的实名认证申请!"
+    flash[:notice] = "已拒绝该用户的实名认证申请!"
     redirect_to :back
+    # UserMailer.notify_order_placed(@user).deliver!
   end
 
   private
 
   def user_verify
-    params.require(:user).permit(:verify_status, :message)
+    params.require(:identiy_verification).permit(:verify_status, :message)
   end
 end

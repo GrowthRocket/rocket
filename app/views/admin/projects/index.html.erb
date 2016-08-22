@@ -1,4 +1,9 @@
-<h2>众筹项目管理面板</h2>
+<div>
+  <h2>
+    <span>所有项目 | </span>
+    <span><%= link_to("待认证项目",  admin_projects_verify_index_path, ) %></span>
+  </h2>
+</div>
 <div class="pull-right">
     <%= link_to("新建众筹项目", new_admin_project_path, :class => "btn btn-success" ) %>
 </div>
