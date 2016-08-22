@@ -13,12 +13,12 @@ Rails.application.routes.draw do
         post :hide
       end
     end
-      resources :projects_verify do
-        member do
-          post :pass_verify
-          post :reject_verify
-        end
+    resources :projects_verify do
+      member do
+        post :pass_verify
+        post :reject_verify
       end
+    end
     resources :users do
       member do
         post :promote
@@ -55,7 +55,13 @@ Rails.application.routes.draw do
     resources :orders
   end
 
-  root 'projects#index'
+  resources :notifications do
+    collection do
+      post :mark_as_read
+    end
+  end
+
+  root "projects#index"
 
   resources :projects do
     resources :plans
