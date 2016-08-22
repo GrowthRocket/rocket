@@ -32,6 +32,11 @@ Rails.application.routes.draw do
         get :payout_index
         get :show_bill_payouts
       end
+
+      member do
+        post :show_bill_payments_by_project
+        post :payout
+      end
     end
 
     resources :users_verify do
@@ -40,7 +45,7 @@ Rails.application.routes.draw do
         post :reject_verify
       end
     end
-    
+
   end
 
   namespace :account do
