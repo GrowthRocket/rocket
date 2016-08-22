@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160822045625) do
+ActiveRecord::Schema.define(version: 20160822051137) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "identity_verifications", force: :cascade do |t|
     t.integer  "verify_type"
@@ -65,6 +71,7 @@ ActiveRecord::Schema.define(version: 20160822045625) do
     t.integer  "fund_progress",   default: 0
     t.integer  "backer_quantity", default: 0
     t.integer  "plans_count",     default: 0
+    t.integer  "category_id"
   end
 
   create_table "users", force: :cascade do |t|

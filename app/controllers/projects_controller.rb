@@ -1,7 +1,11 @@
 class ProjectsController < ApplicationController
+  layout "projects"
   def index
-    @projects = Project.published
-    # @account_projects = cur
+    if params[:category_id]
+      @projects = Project.published.where(category_id: params[:category_id])
+    else
+      @projects = Project.published
+    end
   end
 
   def show
