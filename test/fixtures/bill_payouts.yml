@@ -1,0 +1,26 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project_id: 1
+  amount: 1
+  account_name: MyString
+  user_id: 1
+
+two:
+  project_id: 1
+  amount: 1
+  account_name: MyString
+  user_id: 1
+
+# == Schema Information
+#
+# Table name: bill_payouts
+#
+#  id           :integer          not null, primary key
+#  project_id   :integer
+#  amount       :integer
+#  account_name :string
+#  user_id      :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
