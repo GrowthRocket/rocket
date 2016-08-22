@@ -1,4 +1,5 @@
-<h1><%= link_to(@project.name,  project_plans_path(@project)) %> 筹款方案管理</h1>
+<h1><%= link_to(@project.name,  project_plans_path(@project)) %>
+    筹款方案管理</h1>
 <div class="pull-right">
     <%= link_to("新增方案",   new_admin_project_plan_path(@project), class: "btn btn-warning")  %>
 </div>
@@ -20,16 +21,14 @@
         <tr>
             <td><%= plan.id %></td>
             <td><%= plan.title %></td>
-            <td><%= truncate(plan.description, length: 10, separator: ' ') %></td>
-
+            <td><%= render_plan_description(plan)%></td>
             <td><%= plan.price %>元</td>
-
             <td><%= plan.backer_quantity %></td>
             <td>
-              <%= number_with_precision(plan.plan_progress.to_f / plan.plan_goal * 100, :precision => 2) %>
-              %
-               <!-- <%#= plan.plan_progress %>/ <#%= plan.plan_goal %> -->
-              <%#= number_with_precision(plan.plan_progress.to_f/plan.plan_goal * 100, precision: 2) %>
+                <%= number_with_precision(plan.plan_progress.to_f / plan.plan_goal * 100, :precision => 2) %>
+                %
+                <!-- <%#= plan.plan_progress %>/ <#%= plan.plan_goal %> -->
+                <%#= number_with_precision(plan.plan_progress.to_f/plan.plan_goal * 100, precision: 2) %>
             </td>
             <td>
                 <%= link_to("编辑", edit_admin_project_plan_path(plan.project, plan), class: "btn btn-xs btn-info" )%>
