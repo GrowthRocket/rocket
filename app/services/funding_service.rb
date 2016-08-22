@@ -20,10 +20,19 @@ class FundingService
     else
       @p = @user.orders.where(plan_id: @order.plan)
       puts "+++++++++++++++++++++++"
-      puts "#{@p.inspect}"
+      puts @p.inspect.to_s
     end
 
     @plan.plan_progress += 1
     @plan.save
+  end
+
+  def add_progress!
+    add!
+    send_notification!
+  end
+
+  def send_notification!
+    Notification.create(recipient: @project.user, actor: @user, action: "fund", notifiable: @order)
   end
 end

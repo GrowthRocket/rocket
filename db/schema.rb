@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160822045625) do
+ActiveRecord::Schema.define(version: 20160822094248) do
 
   create_table "identity_verifications", force: :cascade do |t|
     t.integer  "verify_type"
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(version: 20160822045625) do
     t.string   "message"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "recipient_id"
+    t.integer  "actor_id"
+    t.datetime "read_at"
+    t.string   "action"
+    t.integer  "notifiable_id"
+    t.string   "notifiable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "orders", force: :cascade do |t|
