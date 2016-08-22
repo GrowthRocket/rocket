@@ -36,7 +36,7 @@ class Admin::UsersController < ApplicationController
     @user.is_admin = true
     @user.save
     flashp[:notice] = "成功设为管理员!"
-    redirect_to :back, notice:
+    redirect_to :back
   end
 
 
