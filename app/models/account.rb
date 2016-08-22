@@ -14,3 +14,5 @@ end
 #  updated_at   :datetime         not null
 #  account_name :string
 #
+
+belongs_to :user

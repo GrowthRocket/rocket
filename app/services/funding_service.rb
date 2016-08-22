@@ -6,6 +6,7 @@ class FundingService
     @user = user
   end
 
+  # TODO 需要加锁、加事务
   def add!
     @project.fund_progress += @order.total_price
     # @user.orders.where("orders_count = ? AND locked = ?", params[:orders], false)
@@ -22,5 +23,14 @@ class FundingService
 
     @plan.plan_progress += 1
     @plan.save
+
+    BillPayment.create(order_id: @order, channel_id: 0,
+    amount: @order.total_price, user_id: @user, project_id: @project,
+    plan_id: @plan, bill_status: "success", payment_method: @order.payment_method)
+
+    @account = @user.account
+    @account.amount += @order.total_price
+    @account.save
+
   end
 end
