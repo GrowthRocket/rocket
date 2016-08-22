@@ -29,7 +29,6 @@
         <thead>
           <th>#</th>
           <th>项目名称</th>
-          <th>姓名</th>
           <th>合计金额</th>
           <th>下单时间</th>
         </thead>
@@ -38,13 +37,10 @@
             <% @bill_payouts.each_with_index do |payment, index| %>
             <tr>
               <td>
-                <%= index %>
+                <%= index + 1 %>
               </td>
               <td>
                 <%= payment.project_name %>
-              </td>
-              <td>
-                <%= payment.creator_name %>
               </td>
               <td>
                 <%= payment.amount %>
@@ -90,15 +86,14 @@
   }
 
   function showTabContent(id, data) {
-    content = "<table class='table table-stripe'> <thead><th>#</th><th>项目名称</th><th>姓名</th><th>合计金额</th><th>下单时间</th></thead><tbody>"
+    content = "<table class='table table-stripe'> <thead><th>#</th><th>项目名称</th><th>合计金额</th><th>下单时间</th></thead><tbody>"
     $.each(data, function(index, item) {
       content += "<tr>" +
         "<td>" + (index + 1) + "</td>" +
         "<td>" + item.project_name +
         render_bill_state(item) +  "</td>" +
-        "<td>" + item.creator_name + "</td>" +
         "<td>" + item.amount + "</td>" +
-        "<td>" + item.created_at  + "</td>"
+        "<td>" + item.created_at  + "</td>" +
       "</tr>";
     })
       content += "</tbody></table>"
