@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :welcome
+  # resources :welcome
 
   namespace :admin do
     resources :orders
@@ -13,12 +13,34 @@ Rails.application.routes.draw do
         post :hide
       end
     end
+    resources :projects_verify do
+      member do
+        post :pass_verify
+        post :reject_verify
+      end
+    end
     resources :users do
       member do
         post :promote
         post :demote
       end
     end
+
+    resources :bills do
+      collection do
+        get :show_bill_payments
+        get :payout_index
+        get :show_bill_payouts
+      end
+    end
+
+    resources :users_verify do
+      member do
+        post :pass_verify
+        post :reject_verify
+      end
+    end
+    
   end
 
   namespace :account do
@@ -44,7 +66,13 @@ Rails.application.routes.draw do
     resources :orders
   end
 
-  root 'projects#index'
+  resources :notifications do
+    collection do
+      post :mark_as_read
+    end
+  end
+
+  root "projects#index"
 
   resources :projects do
     resources :plans

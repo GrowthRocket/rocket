@@ -67,7 +67,7 @@ var tmp = 1
               "<td>" + "<a href='/account/orders/"+item.token+"'>" + item.token +"</a>" +
               render_order_state(item) +  "</td>" +
               "<td>" + item.total_price + "</td>" +
-              "<td>" + "<%= render_order_created_at(item.created_at) %>" + "</td>"
+              "<td>" + item.created_at  + "</td>"
             "</tr>";
           })
           content += "</tbody></table>"

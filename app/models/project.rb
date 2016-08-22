@@ -1,5 +1,3 @@
-
-
 class Project < ApplicationRecord
   validates :name, presence: true
   validates :fund_goal, numericality: { greater_than: 0, less_than: 1_000_000 }
@@ -7,6 +5,7 @@ class Project < ApplicationRecord
   mount_uploader :image, ImageUploader
   has_many :plans
   belongs_to :user
+  belongs_to :category
 
   scope :published, -> { where(is_hidden: false) }
 
@@ -42,4 +41,5 @@ end
 #  fund_progress   :integer          default(0)
 #  backer_quantity :integer          default(0)
 #  plans_count     :integer          default(0)
+#  category_id     :integer
 #

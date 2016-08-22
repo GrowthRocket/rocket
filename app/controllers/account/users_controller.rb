@@ -12,6 +12,7 @@ class Account::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    # binding.pry
     if @user.update(user_params)
       redirect_to account_users_path
     else
@@ -26,6 +27,6 @@ class Account::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:user_name, :email)
+    params.require(:user).permit(:user_name, :email, :image)
   end
 end

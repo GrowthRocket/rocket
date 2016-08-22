@@ -1,0 +1,120 @@
+
+<div class="col-md-2">
+  <ul class="nav nav-pills nav-stacked">
+    <li role="presentation" class="active"><a href="#">收入流水</a></li>
+    <li role="presentation"><%= link_to("支出流水", payout_index_admin_bills_path) %></li>
+  </ul>
+</div>
+
+<div class="col-md-10">
+  <h2>总收入 ¥<%= @payment_amount %> </h2>
+  <h2>总支出 ¥<%= @payout_amount %></h2>
+
+  <h2>收入流水</h2>
+  <ul class="nav nav-tabs" id="billTabs">
+    <li class="active">
+      <%= link_to("成功账单", "#success_bill", data: { 'toggle': "tab"}) %>
+    </li>
+    <li>
+      <%= link_to("失败账单", "#faild_bill", data: { 'toggle': "tab"}) %>
+    </li>
+    <li>
+      <%= link_to("待确认账单", "#wait_bill", data: { 'toggle': "tab"}) %>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="success_bill" class="tab-pane fade in active">
+      <table class="table table-stripe">
+        <thead>
+          <th>#</th>
+          <th>项目名称</th>
+          <th>姓名</th>
+          <th>合计金额</th>
+          <th>下单时间</th>
+        </thead>
+        <tbody>
+
+            <% @bill_payments.each_with_index do |payment, index| %>
+            <tr>
+              <td>
+                <%= index %>
+              </td>
+              <td>
+                <%= payment.project_name %>
+              </td>
+              <td>
+                <%= payment.backer_name %>
+              </td>
+              <td>
+                <%= payment.amount %>
+              </td>
+              <td>
+                <%= payment.created_at %>
+              </td>
+            </tr>
+            <% end %>
+        </tbody>
+      </table>
+
+    </div>
+    <div id="faild_bill" class="tab-pane fade">
+
+    </div>
+    <div id="wait_bill" class="tab-pane fade">
+
+    </div>
+  </div>
+
+</div>
+<script>
+  $(function() {
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+      var cur_tab = e.target; // newly activated tab
+      var id = $(cur_tab).attr("href").substring(1);
+      getBillsInfo(id);
+    })
+  });
+
+  function getBillsInfo(id) {
+    $.ajax({
+      url: "/admin/bills/show_bill_payments",
+      method: "get",
+      data: {query_type: id},
+      dataType: "json",
+      success: function(data){
+        $("#" + id).empty();
+        showTabContent(id, data)
+      }
+    });
+  }
+
+  function showTabContent(id, data) {
+    content = "<table class='table table-stripe'> <thead><th>#</th><th>项目名称</th><th>姓名</th><th>合计金额</th><th>下单时间</th></thead><tbody>"
+    $.each(data, function(index, item) {
+      content += "<tr>" +
+        "<td>" + (index + 1) + "</td>" +
+        "<td>"  + item.project_name
+        render_bill_state(item) +  "</td>" +
+        "<td>" + item.backer_name + "</td>" +
+        "<td>" + item.amount + "</td>" +
+        "<td>" + item.created_at  + "</td>"
+      "</tr>";
+    })
+      content += "</tbody></table>"
+
+    $("#" + id).append(content);
+  }
+
+  function render_bill_state(bill) {
+    var content = "";
+    if (bill.bill_status == "faild") {
+      content += "<span class='label label-danger'>支付失败</span>";
+    } else if(bill.bill_status == "success") {
+      content += "<span class='label label-success'>已支付</span>";
+    } else {
+      content += "<span class='label label-warning'>待支付</span>";
+    }
+    return content;
+  }
+</script>
