@@ -16,4 +16,10 @@ end
 #  payment_method :string
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  project_name   :string
+#  backer_name    :string
+#
+# Indexes
+#
+#  index_bill_payments_on_bill_status  (bill_status)
 #

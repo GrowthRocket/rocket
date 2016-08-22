@@ -25,7 +25,7 @@ class FundingService
     @plan.save
 
     BillPayment.create(order_id: @order.id, channel_id: 0,
-    amount: @order.total_price, user_id: @user.id, project_id: @project.id,
+    amount: @order.total_price, user_id: @user.id, backer_name: @order.backer_name, project_id: @project.id, project_name: @project.name
     plan_id: @plan.id, bill_status: "success", payment_method: @order.payment_method)
 
     @account = @user.account

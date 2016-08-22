@@ -19,6 +19,13 @@ Rails.application.routes.draw do
         post :demote
       end
     end
+    resources :bills do
+      collection do
+        get :show_bill_payments
+        get :payout_index
+        get :show_bill_payouts
+      end
+    end
   end
 
   namespace :account do

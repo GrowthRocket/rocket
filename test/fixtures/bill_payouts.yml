@@ -23,4 +23,11 @@ two:
 #  user_id      :integer
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  bill_status  :string
+#  project_name :string
+#  creator_name :string
+#
+# Indexes
+#
+#  index_bill_payouts_on_bill_status  (bill_status)
 #

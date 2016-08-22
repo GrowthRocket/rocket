@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160822045343) do
+ActiveRecord::Schema.define(version: 20160822084041) do
 
   create_table "accounts", force: :cascade do |t|
     t.integer  "balance",      default: 0
@@ -33,6 +33,9 @@ ActiveRecord::Schema.define(version: 20160822045343) do
     t.string   "payment_method"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.string   "project_name"
+    t.string   "backer_name"
+    t.index ["bill_status"], name: "index_bill_payments_on_bill_status"
   end
 
   create_table "bill_payouts", force: :cascade do |t|
@@ -42,6 +45,10 @@ ActiveRecord::Schema.define(version: 20160822045343) do
     t.integer  "user_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.string   "bill_status"
+    t.string   "project_name"
+    t.string   "creator_name"
+    t.index ["bill_status"], name: "index_bill_payouts_on_bill_status"
   end
 
   create_table "orders", force: :cascade do |t|
