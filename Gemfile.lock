@@ -223,6 +223,7 @@ GEM
     formatador (0.2.5)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    gravatarify (3.1.1)
     i18n (0.7.0)
     inflecto (0.0.2)
     ipaddress (0.8.3)
@@ -374,12 +375,14 @@ DEPENDENCIES
   file_validators
   fog
   font-awesome-rails
+  gravatarify
   jbuilder (~> 2.5)
   jquery-rails
   letter_opener
   listen (~> 3.0.5)
   mini_magick
   pg
+  pry
   puma (~> 3.0)
   rails (~> 5.0.0)
   rails-erd
