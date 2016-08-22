@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160822043633) do
+ActiveRecord::Schema.define(version: 20160822045343) do
 
   create_table "accounts", force: :cascade do |t|
-    t.integer  "balance"
-    t.integer  "amount"
+    t.integer  "balance",      default: 0
+    t.integer  "amount",       default: 0
     t.integer  "user_id"
-    t.integer  "profit"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "profit",       default: 0
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.string   "account_name"
   end
 

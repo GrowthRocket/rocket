@@ -41,7 +41,7 @@ class User < ApplicationRecord
   has_many :projects
   has_one :account
 
-  def create_account
+  def generate_account
     self.create_account
   end
 

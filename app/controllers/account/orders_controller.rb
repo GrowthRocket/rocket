@@ -1,6 +1,6 @@
 class Account::OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :add_payment_log, :only => [:pay_with_alipay, :pay_with_wechat]
+  after_action :add_payment_log, :only => [:pay_with_alipay, :pay_with_wechat]
   layout "user"
 
   def index
