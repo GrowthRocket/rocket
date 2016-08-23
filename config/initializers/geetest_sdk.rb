@@ -2,33 +2,30 @@ require "digest"
 require "net/http"
 
 class GeetestSDK
+  VALIDATION_URL = "http://api.geetest.com/validate.php".freeze
+
   def initialize
-    @gee_uri = "http://api.geetest.com/validate.php"
     @key = ENV["gee_test_key"]
   end
 
   def validate(challenge = "", validate = "", seccode = "")
     md5 = Digest::MD5.hexdigest(@key + "geetest" + challenge)
-    if validate == md5
-      back =
-        begin
-          post(@gee_uri, seccode: seccode)
-        rescue
-          ""
-        end
-      if back == Digest::MD5.hexdigest(seccode)
-        return true
-      else
-        return false
-      end # if
-    else
+
+    if validate != md5
       return false
-    end # if
+      return
+    end
+
+    begin
+      Digest::MD5.hexdigest(seccode) == post(seccode: seccode)
+    rescue
+      false
+    end
   end # geetest_validate
 
   # data.is_a?(Hash)==true
-  def post(uri, data)
-    uri = URI(uri)
+  def post(data)
+    uri = URI(VALIDATION_URL)
     res = Net::HTTP.post_form(uri, data)
     res.body
   end
