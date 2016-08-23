@@ -46,6 +46,7 @@ gem "awesome_rails_console"
 gem "trix"
 gem "will_paginate"
 gem "gravatarify"
+gem 'twilio-ruby', '~> 4.11.1'
 
 
 group :development, :test do
