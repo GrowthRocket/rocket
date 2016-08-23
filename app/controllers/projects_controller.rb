@@ -1,12 +1,11 @@
 class ProjectsController < ApplicationController
   layout "projects"
   def index
-    @projects =
-      if params[:category_id]
-        Project.published.where(category_id: params[:category_id])
-      else
-        Project.published
-                     end
+    if params[:category_id]
+      @projects = Project.where(category_id: params[:category_id], aasm_state: "online")
+    else
+      @projects = Project.where(aasm_state: "online")
+    end
   end
 
   def show

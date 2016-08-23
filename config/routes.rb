@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       resources :plans
       member do
         post :publish
-        post :hide
+        post :offline
       end
     end
     resources :projects_verify do
@@ -59,8 +59,8 @@ Rails.application.routes.draw do
       resources :posts
       resources :plans
       member do
-        post :publish
-        post :hide
+        post :apply_for_verification
+        post :offline
       end
     end
     resources :orders do

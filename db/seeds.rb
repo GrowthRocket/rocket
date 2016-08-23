@@ -26,8 +26,8 @@ Category.create!([name: "technology"])
 puts "5 Category created."
 
 create_project = for i in 1..5 do
-                   Project.create!([name: "Poject no.#{i}", description: "我有一个好项目 #{i} 真的很不错", user_id: 1, fund_goal: 10_000 * i, is_hidden: "true", fund_progress: 600 * i,
-                                    backer_quantity: 3, category_id: i, aasm_state: "offline"])
+   Project.create!([name: "Poject no.#{i}", description: "我有一个好项目 #{i} 真的很不错", user_id: 1, fund_goal: 10_000 * i, is_hidden: "true", fund_progress: 600 * i,
+                    backer_quantity: 3, category_id: i, aasm_state: "project_created"])
 end
 
 puts "5 Public Project created."
@@ -53,60 +53,60 @@ puts "Plan auto create is done."
 i = 1
 
 create_order1 = for j in 1..3 do
-                  Order.create!([total_price: 100 * i, plan_id: j, creator_name: "user#{i}", backer_name: "backer#{i}", price: 100 * i, quantity: 1, payment_method: "Alipay", aasm_state: "paid", user_id: i + 1, project_id: 1])
+    Order.create!([total_price: 100 * i, plan_id: j, creator_name: "user#{i}", backer_name: "backer#{i}", price: 100 * i, quantity: 1, payment_method: "Alipay", aasm_state: "paid", user_id: i + 1, project_id: 1])
 
-                  BillPayment.create(
-                    order_id: j, channel_id: 0,
-                    amount: 100 * i, user_id: i + 1, backer_name: "backer#{i}", project_id: 1, project_name: "Poject no.1",
-                    plan_id: j, bill_status: "success", payment_method: "Alipay"
-                  )
-                  i += 1
+    BillPayment.create(
+      order_id: j, channel_id: 0,
+      amount: 100 * i, user_id: i + 1, backer_name: "backer#{i}", project_id: 1, project_name: "Poject no.1",
+      plan_id: j, bill_status: "success", payment_method: "Alipay"
+    )
+    i += 1
 end
 
 i = 1
 create_order2 = for j in 4..6 do
-                  Order.create!([total_price: 200 * i, plan_id: j, creator_name: "user#{i}", backer_name: "backer#{i}", price: 200 * i, quantity: 1, payment_method: "Alipay", aasm_state: "paid", user_id: i + 1, project_id: 2])
+    Order.create!([total_price: 200 * i, plan_id: j, creator_name: "user#{i}", backer_name: "backer#{i}", price: 200 * i, quantity: 1, payment_method: "Alipay", aasm_state: "paid", user_id: i + 1, project_id: 2])
 
-                  BillPayment.create(
-                    order_id: j, channel_id: 0,
-                    amount: 200 * i, user_id: i + 1, backer_name: "backer#{i}", project_id: 2, project_name: "Poject no.2",
-                    plan_id: j, bill_status: "success", payment_method: "Alipay"
-                  )
+    BillPayment.create(
+      order_id: j, channel_id: 0,
+      amount: 200 * i, user_id: i + 1, backer_name: "backer#{i}", project_id: 2, project_name: "Poject no.2",
+      plan_id: j, bill_status: "success", payment_method: "Alipay"
+    )
 
-                  i += 1
+    i += 1
 end
 i = 1
 create_order3 = for j in 7..9 do
-                  Order.create!([total_price: 300 * i, plan_id: j, creator_name: "user#{i}", backer_name: "backer#{i}", price: 300 * i, quantity: 1, payment_method: "WeChat", aasm_state: "paid", user_id: i + 1, project_id: 3])
+    Order.create!([total_price: 300 * i, plan_id: j, creator_name: "user#{i}", backer_name: "backer#{i}", price: 300 * i, quantity: 1, payment_method: "WeChat", aasm_state: "paid", user_id: i + 1, project_id: 3])
 
-                  BillPayment.create(
-                    order_id: j, channel_id: 0,
-                    amount: 300 * i, user_id: i + 1, backer_name: "backer#{i}", project_id: 3, project_name: "Poject no.3",
-                    plan_id: j, bill_status: "success", payment_method: "Alipay"
-                  )
-                  i += 1
+    BillPayment.create(
+      order_id: j, channel_id: 0,
+      amount: 300 * i, user_id: i + 1, backer_name: "backer#{i}", project_id: 3, project_name: "Poject no.3",
+      plan_id: j, bill_status: "success", payment_method: "Alipay"
+    )
+    i += 1
 end
 i = 1
 create_order4 = for j in 10..12 do
-                  Order.create!([total_price: 400 * i, plan_id: j, creator_name: "user#{i}", backer_name: "backer#{i}", price: 400 * i, quantity: 1, payment_method: "WeChat", aasm_state: "paid", user_id: i + 1, project_id: 4])
+    Order.create!([total_price: 400 * i, plan_id: j, creator_name: "user#{i}", backer_name: "backer#{i}", price: 400 * i, quantity: 1, payment_method: "WeChat", aasm_state: "paid", user_id: i + 1, project_id: 4])
 
-                  BillPayment.create(
-                    order_id: j, channel_id: 0,
-                    amount: 400 * i, user_id: i + 1, backer_name: "backer#{i}", project_id: 4, project_name: "Poject no.4",
-                    plan_id: j, bill_status: "success", payment_method: "Alipay"
-                  )
-                  i += 1
+    BillPayment.create(
+      order_id: j, channel_id: 0,
+      amount: 400 * i, user_id: i + 1, backer_name: "backer#{i}", project_id: 4, project_name: "Poject no.4",
+      plan_id: j, bill_status: "success", payment_method: "Alipay"
+    )
+    i += 1
 end
 i = 1
 create_order5 = for j in 13..15 do
-                  Order.create!([total_price: 500 * i, plan_id: j, creator_name: "user#{i}", backer_name: "backer#{i}", price: 500 * i, quantity: 1, payment_method: "WeChat", aasm_state: "paid", user_id: i + 1, project_id: 5])
+    Order.create!([total_price: 500 * i, plan_id: j, creator_name: "user#{i}", backer_name: "backer#{i}", price: 500 * i, quantity: 1, payment_method: "WeChat", aasm_state: "paid", user_id: i + 1, project_id: 5])
 
-                  BillPayment.create(
-                    order_id: j, channel_id: 0,
-                    amount: 500 * i, user_id: i + 1, backer_name: "backer#{i}", project_id: 5, project_name: "Poject no.5",
-                    plan_id: j, bill_status: "success", payment_method: "Alipay"
-                  )
-                  i += 1
+    BillPayment.create(
+      order_id: j, channel_id: 0,
+      amount: 500 * i, user_id: i + 1, backer_name: "backer#{i}", project_id: 5, project_name: "Poject no.5",
+      plan_id: j, bill_status: "success", payment_method: "Alipay"
+    )
+    i += 1
 end
 
 puts "Admin's Order and bill_payment auto create is done."
@@ -115,7 +115,7 @@ Project.create!([name: "User1's Poject", description: "user1 有一个好项目�
                  backer_quantity: 1, category_id: 1, aasm_state: "online"])
 
 Project.create!([name: "User2's Poject", description: "user2 有一个好项目，真的很不错", user_id: 3, fund_goal: 2000, is_hidden: "false", fund_progress: 100,
-                 backer_quantity: 1, category_id: 2, aasm_state: "online"])
+                 backer_quantity: 1, category_id: 2, aasm_state: "verifying"])
 
 Project.create!([name: "User3's Poject", description: "user3 有一个好项目，真的很不错", user_id: 4, fund_goal: 3000, is_hidden: "false", fund_progress: 100,
                  backer_quantity: 1, category_id: 3, aasm_state: "online"])

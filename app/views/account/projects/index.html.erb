@@ -65,6 +65,7 @@
                 <%= link_to("管理筹款方案", account_project_plans_path(project), :class => "btn btn-xs btn-warning") %>
                 <%= link_to("管理动态", account_project_posts_path(project), :class => "btn btn-xs btn-success") %>
                 <%= link_to("删除", account_project_path(project), :method => :delete, :data => { :confirm => "删除项目后不可恢复，您确定要删除吗?" }, :class => "btn btn-xs btn-danger") %>
+                <%= render_project_operation(project) %>
             </td>
         </tr>
         <% end %>
