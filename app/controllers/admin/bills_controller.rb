@@ -4,16 +4,24 @@ class Admin::BillsController < ApplicationController
   layout "admin"
 
   def index
-    @payment_amount = BillPayment.where(bill_status: ["success", "paid"]).sum(:amount)
-    @payout_amount = BillPayout.where(bill_status: "success").sum(:amount)
     @bill_payments = BillPayment.bill_payment_by_project_id(["success", "paid"])
     # @bill_payout = BillPayment.where(bill_status: "success")
   end
 
   def payout_index
+    @bill_payouts = BillPayout.bill_payout_by_project_id(["success", "paid"])
+  end
+
+  def payments_index
     @payment_amount = BillPayment.where(bill_status: ["success", "paid"]).sum(:amount)
     @payout_amount = BillPayout.where(bill_status: "success").sum(:amount)
-    @bill_payouts = BillPayout.bill_payout_by_project_id(["success", "paid"])
+    @fund_rate = ENV['fund_rate']
+  end
+
+  def custom_fund_rate
+    ENV['fund_rate'] = params[:fund_rate]
+    flash[:notice] = "服务费比例修改成功"
+    redirect_back(fallback_location: root_path)
   end
 
   def show_bill_payments
@@ -53,8 +61,7 @@ class Admin::BillsController < ApplicationController
   def payout
     @project = Project.find(params[:id])
     amount = BillPayment.where(bill_status: "success", project_id: params[:id]).sum(:amount)
-    puts "----------------#{amount}"
-    options = {project: @project, amount: amount[1] * 0.9}
+    options = {project: @project, amount: amount[1] * ((100 - ENV['fund_rate'].to_f) / 100) }
     if FundingService.new(options).payout!
       BillPayment.where(project_id: params[:id]).update_all(bill_status: "paid")
       flash[:notice] = "资金发放成功！"

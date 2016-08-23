@@ -31,6 +31,8 @@ Rails.application.routes.draw do
         get :show_bill_payments
         get :payout_index
         get :show_bill_payouts
+        get :payments_index
+        post :custom_fund_rate
       end
 
       member do

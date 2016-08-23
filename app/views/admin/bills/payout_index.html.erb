@@ -1,14 +1,6 @@
-
-<div class="col-md-2">
-  <ul class="nav nav-pills nav-stacked">
-    <li role="presentation"> <%= link_to("收入流水", admin_bills_path) %></li>
-    <li role="presentation" class="active"><a href="#">支出流水</a></li>
-  </ul>
-</div>
+<%= render partial:"bill_nav" %>
 
 <div class="col-md-10">
-  <h2>总收入 ¥<%= @payment_amount %> </h2>
-  <h2>总支出 ¥<%= @payout_amount %></h2>
 
   <h2>支出流水</h2>
   <ul class="nav nav-tabs" id="billTabs">
