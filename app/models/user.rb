@@ -33,6 +33,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   after_create :create_account
+
   mount_uploader :image, HeadimageUploader
 
   def admin?
@@ -45,7 +46,7 @@ class User < ApplicationRecord
   has_many :identiy_verifications
 
   def generate_account
-    self.create_account
+    create_account
   end
 
   include AASM

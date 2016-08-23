@@ -21,7 +21,7 @@ class Account::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-   end
+  end
 
   def apply_for_certify
   @user = User.find(params[:id])

@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160823030708) do
+
+ActiveRecord::Schema.define(version: 20160823040640) do
 
   create_table "accounts", force: :cascade do |t|
     t.integer  "balance",      default: 0
@@ -121,14 +122,16 @@ ActiveRecord::Schema.define(version: 20160823030708) do
     t.text     "description"
     t.integer  "user_id"
     t.string   "image"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
     t.integer  "fund_goal"
     t.boolean  "is_hidden",       default: true
     t.integer  "fund_progress",   default: 0
     t.integer  "backer_quantity", default: 0
     t.integer  "plans_count",     default: 0
     t.integer  "category_id"
+    t.string   "aasm_state",      default: "project_created"
+    t.index ["aasm_state"], name: "index_projects_on_aasm_state"
   end
 
   create_table "users", force: :cascade do |t|

@@ -45,7 +45,6 @@ Rails.application.routes.draw do
         post :reject_verify
       end
     end
-
   end
 
   namespace :account do
@@ -69,6 +68,8 @@ Rails.application.routes.draw do
         post :show_orders_for_one_project
       end
     end
+
+    resources :bills
   end
 
   resources :plans do

@@ -7,7 +7,16 @@ AllCops:
   ExtraDetails: true
   TargetRubyVersion: 2.3
 
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
 Metrics/AbcSize:
+  Enabled: false
+
+Metrics/LineLength:
   Enabled: false
 
 Metrics/MethodLength:
@@ -16,6 +25,9 @@ Metrics/MethodLength:
 Rails:
   Enabled: true
 
+Rails/Output:
+  Enabled: false
+  
 Style/AutoResourceCleanup:
   Enabled: true
 
