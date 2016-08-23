@@ -30,10 +30,8 @@ module Admin::OrdersHelper
   end
 
   def render_order_operation_admin(order)
-
   end
+
   def render_order_operation(order)
-
   end
-
 end

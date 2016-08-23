@@ -46,14 +46,14 @@ gem "awesome_rails_console"
 gem "trix"
 gem "will_paginate"
 gem "gravatarify"
-gem "pry"
-#  如果 controller 报错，将 binding.pry 加入 controller 报错的那一行代码之前，然后在rails s的环境里可以实时调试
 
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "byebug", platform: :mri
   gem "sqlite3"
+  gem "pry"
+  #  如果 controller 报错，将 binding.pry 加入 controller 报错的那一行代码之前，然后在rails s的环境里可以实时调试
 end
 
 group :production do
@@ -62,6 +62,7 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
+  gem "rubocop"
   gem "web-console"
   gem "listen", "~> 3.0.5"
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring

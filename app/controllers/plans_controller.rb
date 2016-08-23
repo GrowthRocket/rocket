@@ -3,6 +3,4 @@ class PlansController < ApplicationController
     @project = Project.find(params[:project_id])
     @plans = @project.plans
   end
-
-
 end
