@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  layout "projects"
+
   def index
     if params[:category_id]
       @projects = Project.published.where(category_id: params[:category_id])
