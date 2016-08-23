@@ -33,8 +33,6 @@ class User < ApplicationRecord
 
   after_create :create_account
 
-
-
   mount_uploader :image, HeadimageUploader
 
   def admin?
@@ -46,8 +44,6 @@ class User < ApplicationRecord
   has_one :account
 
   def generate_account
-    self.create_account
+    create_account
   end
-
-
 end

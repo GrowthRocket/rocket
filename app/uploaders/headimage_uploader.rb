@@ -1,11 +1,10 @@
 # encoding: utf-8
 
 class HeadimageUploader < CarrierWave::Uploader::Base
-
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
-include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
@@ -44,9 +43,8 @@ include CarrierWave::MiniMagick
   process resize_to_fit: [990, 618]
 
   version :headimage do
-    process resize_to_fill: [30,30]
+    process resize_to_fill: [30, 30]
   end
-
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
@@ -59,5 +57,4 @@ include CarrierWave::MiniMagick
   # def filename
   #   "something.jpg" if original_filename
   # end
-
 end
