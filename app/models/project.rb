@@ -8,6 +8,7 @@ class Project < ApplicationRecord
   belongs_to :category
 
   scope :published, -> { where(is_hidden: false) }
+  scope :recent, -> { order("created_at DESC")}
 
   include AASM
 
@@ -16,7 +17,7 @@ class Project < ApplicationRecord
     state :verifying
     state :online
     state :unverified
-    state :complete
+    state :offline
 
     event :apply_verify do
       transitions from: :project_created, to: :verifying
@@ -32,7 +33,7 @@ class Project < ApplicationRecord
     end
 
     event :finish do
-      transitions from: :online, to: :complete
+      transitions from: :online, to: :offline
     end
 
 
