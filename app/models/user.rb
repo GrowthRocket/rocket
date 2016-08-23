@@ -18,9 +18,10 @@
 #  is_admin               :boolean          default(FALSE)
 #  user_name              :string
 #  image                  :string
-#  phone_number           :integer
-#  captcha                :integer
 #  aasm_state             :string
+#  phone_number           :string
+#  captcha                :integer
+#  country_code           :string           default("+86")
 #
 # Indexes
 #
@@ -49,7 +50,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   # validates :contact_phone_number, format: { with: /^1[0-9]{10}$/, message: "请输入正确的手机号码！"}, :multiline => true
-
+  # validates_uniqueness_of :phone_number
+  # validates :phone_number, phone: { possible: false, allow_blank: true, types: [:mobile] }
+  validates :captcha, presence: true
 
   after_create :create_account
 
