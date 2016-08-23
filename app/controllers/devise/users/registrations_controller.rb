@@ -18,7 +18,7 @@ class Devise::Users::RegistrationsController < Devise::RegistrationsController
       seccode = params[:geetest_seccode] || ''
 
       # 将私钥传入，要注册的
-      sdk = GeetestSDK.new('key')
+      sdk = GeetestSDK.new(ENV['GEE_TEST_KEY'])
       if sdk.validate(challenge, validate, seccode)
         super
       else
