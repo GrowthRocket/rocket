@@ -1,6 +1,6 @@
 class Account::OrdersController < ApplicationController
   before_action :authenticate_user!
-  after_action :add_payment_log, :only => [:pay_with_alipay, :pay_with_wechat]
+  after_action :add_payment_log, only: %i(pay_with_alipay pay_with_wechat)
   layout "user"
 
   def index
@@ -44,7 +44,7 @@ class Account::OrdersController < ApplicationController
   end
 
   def add_payment_log
-    options = {order: @order, user: current_user}
+    options = { order: @order, user: current_user }
     FundingService.new(options).add_progress!
   end
 

@@ -43,4 +43,5 @@ class Notifications
     $("[data-behavior='notification-items']").html(items)
 
 jQuery ->
-  new Notifications
+  # TODO: 生产环境要打开
+  # new Notifications

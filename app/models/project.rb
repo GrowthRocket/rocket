@@ -4,11 +4,12 @@ class Project < ApplicationRecord
 
   mount_uploader :image, ImageUploader
   has_many :plans
+  has_many :posts
   belongs_to :user
   belongs_to :category
 
   scope :published, -> { where(is_hidden: false) }
-  scope :recent, -> { order("created_at DESC")}
+  scope :recent, -> { order("created_at DESC") }
 
   include AASM
 
@@ -23,7 +24,6 @@ class Project < ApplicationRecord
       transitions from: :project_created, to: :verifying
     end
 
-
     event :approve do
       transitions from: :verifying, to: :online
     end
@@ -35,8 +35,6 @@ class Project < ApplicationRecord
     event :finish do
       transitions from: :online, to: :offline
     end
-
-
   end
 
   def publish!
