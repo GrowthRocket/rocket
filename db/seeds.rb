@@ -126,29 +126,19 @@ puts "3 User's Project created."
 #   Plan.create!([title: "user1 Plan on.#{i}", description: "这是 user1 的 第#{i} 个赞助方案", quantity:1, price: 100 * i, project_id: 6, plan_goal: 10, plan_progress: 1, backer_quantity: ])
 # end
 
-<<<<<<< HEAD
 Plan.create!([title: "user1 Plan on.1", description: "这是 user1 的 第 1 个赞助方案", quantity:1, price: 100, project_id: 6, plan_goal: 10, plan_progress: 1, backer_quantity: 1])
 Plan.create!([title: "user1 Plan on.2", description: "这是 user1 的 第 2 个赞助方案", quantity:1, price: 200, project_id: 6, plan_goal: 10, plan_progress: 0, backer_quantity: 0])
 Plan.create!([title: "user1 Plan on.3", description: "这是 user1 的 第 3 个赞助方案", quantity:1, price: 300, project_id: 6, plan_goal: 10, plan_progress: 0, backer_quantity: 0])
-=======
-Plan.create!([title: "user1 Plan on.1", description: "这是 user1 的 第 1 个赞助方案", quantity: 1, price: 100, project_id: 6, plan_goal: 10, plan_progress: 1, backer_quantity: 1])
-Plan.create!([title: "user1 Plan on.2", description: "这是 user1 的 第 2 个赞助方案", quantity: 1, price: 100, project_id: 6, plan_goal: 10, plan_progress: 0, backer_quantity: 0])
-Plan.create!([title: "user1 Plan on.3", description: "这是 user1 的 第 3 个赞助方案", quantity: 1, price: 100, project_id: 6, plan_goal: 10, plan_progress: 0, backer_quantity: 0])
->>>>>>> develop
+
 
 # user2_create_plan = for i in 1..3 do
 #   Plan.create!([title: "user2 Plan on.#{i}", description: "这是 user2 的 第#{i} 个赞助方案", quantity:1, price: 200 * i, project_id: 7, plan_goal: 10, plan_progress: 1, backer_quantity: 1])
 # end
 
-<<<<<<< HEAD
 Plan.create!([title: "user2 Plan on.1", description: "这是 user2 的 第 1 个赞助方案", quantity:1, price: 100, project_id: 7, plan_goal: 10, plan_progress: 1, backer_quantity: 1])
 Plan.create!([title: "user2 Plan on.2", description: "这是 user2 的 第 2 个赞助方案", quantity:1, price: 200, project_id: 7, plan_goal: 10, plan_progress: 0, backer_quantity: 0])
 Plan.create!([title: "user2 Plan on.3", description: "这是 user2 的 第 3 个赞助方案", quantity:1, price: 300, project_id: 7, plan_goal: 10, plan_progress: 0, backer_quantity: 0])
-=======
-Plan.create!([title: "user2 Plan on.1", description: "这是 user2 的 第 1 个赞助方案", quantity: 1, price: 100, project_id: 7, plan_goal: 10, plan_progress: 1, backer_quantity: 1])
-Plan.create!([title: "user2 Plan on.2", description: "这是 user2 的 第 2 个赞助方案", quantity: 1, price: 100, project_id: 7, plan_goal: 10, plan_progress: 0, backer_quantity: 0])
-Plan.create!([title: "user2 Plan on.3", description: "这是 user2 的 第 3 个赞助方案", quantity: 1, price: 100, project_id: 7, plan_goal: 10, plan_progress: 0, backer_quantity: 0])
->>>>>>> develop
+
 
 # user3_create_plan = for i in 1..3 do
 #   Plan.create!([title: "user3 Plan on.#{i}", description: "这是 user3 的 第#{i} 个赞助方案", quantity:1, price: 300 * i, project_id: 8, plan_goal: 10, plan_progress: 1, backer_quantity: 1])
