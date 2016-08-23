@@ -8,6 +8,7 @@ class Project < ApplicationRecord
   belongs_to :category
 
   scope :published, -> { where(is_hidden: false) }
+  scope :recent, -> { order("created_at DESC")}
 
   include AASM
 
