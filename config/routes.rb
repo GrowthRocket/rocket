@@ -45,7 +45,6 @@ Rails.application.routes.draw do
         post :reject_verify
       end
     end
-
   end
 
   namespace :account do
