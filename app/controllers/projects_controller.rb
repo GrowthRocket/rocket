@@ -10,7 +10,9 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    @posts = @project.posts
+    @user = @project.user
+    @posts = @project.posts.recent
+    @plans = @project.plans
     if @project.is_hidden?
       if !current_user
         redirect_to root_path, alert: "该项目为非公开项目。"

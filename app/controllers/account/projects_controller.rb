@@ -25,7 +25,6 @@ class Account::ProjectsController < ApplicationController
 
   def create
     @project = current_user.projects.build(project_params)
-    @project.category_id = params[:category_id]
 
     if @project.save
       redirect_to account_projects_path, notice: "项目创建成功"
