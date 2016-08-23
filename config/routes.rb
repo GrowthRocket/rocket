@@ -67,6 +67,8 @@ Rails.application.routes.draw do
         post :show_orders_for_one_project
       end
     end
+
+    resources :bills
   end
 
   resources :plans do

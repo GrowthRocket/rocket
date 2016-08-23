@@ -4,9 +4,10 @@ class Project < ApplicationRecord
 
   mount_uploader :image, ImageUploader
   has_many :plans
+  has_many :posts
   belongs_to :user
   belongs_to :category
-
+  
   scope :published, -> { where(is_hidden: false) }
   scope :recent, -> { order("created_at DESC")}
 
