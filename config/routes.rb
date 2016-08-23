@@ -48,7 +48,11 @@ Rails.application.routes.draw do
   end
 
   namespace :account do
-    resources :users
+    resources :users do
+      member do
+        post :apply_for_certify
+      end
+    end
     resources :projects do
       resources :posts
       resources :plans

@@ -27,41 +27,10 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 
-class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
-  after_create :create_account
+require 'test_helper'
 
-  mount_uploader :image, HeadimageUploader
-
-  def admin?
-    is_admin
-  end
-
-  has_many :orders
-  has_many :projects
-  has_one :account
-  has_many :identiy_verifications
-
-  def generate_account
-    create_account
-  end
-
-  include AASM
-
-  aasm do
-    state :user_registered, initial: true
-    state :passed_verified
-    state :unpassed_verified
-
-    event :apply_for_certify do
-      transitions from: :user_registered, to: :unpassed_verified
-    end
-    event :approve do
-      transitions from: :unpassed_verified, to: :passed_verified
-    end
-  end
-
+class UserTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
 end

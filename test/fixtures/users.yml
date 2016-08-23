@@ -27,41 +27,14 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 
-class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
-  after_create :create_account
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-  mount_uploader :image, HeadimageUploader
-
-  def admin?
-    is_admin
-  end
-
-  has_many :orders
-  has_many :projects
-  has_one :account
-  has_many :identiy_verifications
-
-  def generate_account
-    create_account
-  end
-
-  include AASM
-
-  aasm do
-    state :user_registered, initial: true
-    state :passed_verified
-    state :unpassed_verified
-
-    event :apply_for_certify do
-      transitions from: :user_registered, to: :unpassed_verified
-    end
-    event :approve do
-      transitions from: :unpassed_verified, to: :passed_verified
-    end
-  end
-
-end
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+# column: value
