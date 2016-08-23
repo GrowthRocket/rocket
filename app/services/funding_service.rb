@@ -44,10 +44,8 @@ class FundingService
     account.profit += @amount
     account.save
 
-    BillPayout.create(
-      project_id: @project.id, amount: @amount, account_name: account.account_name,
-      user_id: user.id, bill_status: "success", project_name: @project.name, creator_name: user.user_name
-    )
+    BillPayout.create(project_id: @project.id, amount: @amount, account_name: account.account_name,
+    user_id: user.id, bill_status: "paid", project_name: @project.name, creator_name: user.user_name)
   end
 
   def add_progress!
