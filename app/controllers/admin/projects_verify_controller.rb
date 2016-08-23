@@ -14,6 +14,7 @@ class Admin::ProjectsVerifyController < ApplicationController
 
   def pass_verify
     @project = Project.find(params[:id])
+    @project.approve!
     @project.verify_status = 1
     @project.save
     flash[:notice] = "已通过该项目的发布申请!"
@@ -23,6 +24,7 @@ class Admin::ProjectsVerifyController < ApplicationController
 
   def reject_verify
     @project = Project.find(params[:id])
+    @project.reject!
     @project.verify_status = －1
     @project.save
     flash[:notice] = "已拒绝该项目的发布申请!"
