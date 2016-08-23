@@ -18,6 +18,8 @@
 #  is_admin               :boolean          default(FALSE)
 #  user_name              :string
 #  image                  :string
+#  phone_number           :integer
+#  captcha                :integer
 #
 # Indexes
 #
@@ -30,6 +32,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  # validates :contact_phone_number, format: { with: /^1[0-9]{10}$/, message: "请输入正确的手机号码！"}, :multiline => true
 
   after_create :create_account
 
