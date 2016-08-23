@@ -9,9 +9,34 @@ class Project < ApplicationRecord
 
   scope :published, -> { where(is_hidden: false) }
 
-  scope :recent, -> { order("created_at DESC") }
+  include AASM
 
-  has_many :posts
+  aasm do
+    state :project_created, initial: true
+    state :verifying
+    state :online
+    state :unverified
+    state :complete
+
+    event :apply_verify do
+      transitions from: :project_created, to: :verifying
+    end
+
+
+    event :approve do
+      transitions from: :verifying, to: :online
+    end
+
+    event :reject do
+      transitions from: :verifying, to: :unverified
+    end
+
+    event :finish do
+      transitions from: :online, to: :complete
+    end
+
+
+  end
 
   def publish!
     self.is_hidden = false
@@ -22,7 +47,6 @@ class Project < ApplicationRecord
     self.is_hidden = true
     save
   end
-
 end
 
 # == Schema Information
@@ -42,4 +66,9 @@ end
 #  backer_quantity :integer          default(0)
 #  plans_count     :integer          default(0)
 #  category_id     :integer
+#  aasm_state      :string           default("project_created")
+#
+# Indexes
+#
+#  index_projects_on_aasm_state  (aasm_state)
 #
