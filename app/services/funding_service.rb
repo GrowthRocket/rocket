@@ -44,7 +44,7 @@ class FundingService
     account.save
 
     BillPayout.create(project_id: @project.id, amount: @amount, account_name: account.account_name,
-    user_id: user.id, bill_status: "success", project_name: @project.name, creator_name: user.user_name)
+    user_id: user.id, bill_status: "paid", project_name: @project.name, creator_name: user.user_name)
 
   end
 
