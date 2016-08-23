@@ -28,7 +28,7 @@ puts "5 Category created."
 
 create_project = for i in 1..5 do
   Project.create!([name: "Poject no.#{i}", description: "我有一个好项目 #{i} 真的很不错", user_id: 1, fund_goal: 10000 * i, is_hidden: "true", fund_progress: 600 * i,
-  backer_quantity: 3, category_id: i, aasm_state="offline" ])
+  backer_quantity: 3, category_id: i, aasm_state: "offline" ])
 end
 
 puts "5 Public Project created."
@@ -104,13 +104,13 @@ end
 puts "Admin's Order and bill_payment auto create is done."
 
 Project.create!([name: "User1's Poject", description: "user1 有一个好项目，真的很不错", user_id: 2, fund_goal: 1000, is_hidden: "false", fund_progress: 100,
-backer_quantity: 1, category_id: 1, aasm_state="online" ])
+backer_quantity: 1, category_id: 1, aasm_state: "online" ])
 
 Project.create!([name: "User2's Poject", description: "user2 有一个好项目，真的很不错", user_id: 3, fund_goal: 2000, is_hidden: "false", fund_progress: 100,
-backer_quantity: 1, category_id: 2, aasm_state="online" ])
+backer_quantity: 1, category_id: 2, aasm_state: "online" ])
 
 Project.create!([name: "User3's Poject", description: "user3 有一个好项目，真的很不错", user_id: 4, fund_goal: 3000, is_hidden: "false", fund_progress: 100,
-backer_quantity: 1, category_id: 3, aasm_state="online"])
+backer_quantity: 1, category_id: 3, aasm_state: "online"])
 
 puts "3 User's Project created."
 
