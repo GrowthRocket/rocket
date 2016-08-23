@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160823040640) do
+ActiveRecord::Schema.define(version: 20160823115137) do
 
   create_table "accounts", force: :cascade do |t|
     t.integer  "balance",      default: 0
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20160823040640) do
     t.string   "message"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "project_id"
   end
 
   create_table "notifications", force: :cascade do |t|

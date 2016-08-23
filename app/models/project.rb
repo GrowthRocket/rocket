@@ -4,6 +4,7 @@ class Project < ApplicationRecord
 
   mount_uploader :image, ImageUploader
   has_many :plans
+  has_many :posts
   belongs_to :user
   belongs_to :category
 
@@ -20,9 +21,8 @@ class Project < ApplicationRecord
     state :offline
 
     event :apply_verify do
-      transitions from: :project_created, to: :verifying
+      transitions from: [:project_created, :unverified], to: :verifying
     end
-
 
     event :approve do
       transitions from: :verifying, to: :online

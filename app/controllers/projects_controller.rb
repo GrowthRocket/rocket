@@ -2,9 +2,9 @@ class ProjectsController < ApplicationController
   layout "projects"
   def index
     if params[:category_id]
-      @projects = Project.published.where(category_id: params[:category_id])
+      @projects = Project.where(category_id: params[:category_id], aasm_state: "online")
     else
-      @projects = Project.published
+      @projects = Project.where(aasm_state: "online")
     end
   end
 
