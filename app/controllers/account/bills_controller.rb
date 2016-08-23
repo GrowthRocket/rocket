@@ -3,7 +3,7 @@ class Account::BillsController < ApplicationController
   def index
     @user = current_user
     @projects = @user.projects
-    @payments = BillPayment.where(bill_status: ["success", "paid"], project_id: @projects)
+    @payments = BillPayment.where(bill_status: %w(success paid), project_id: @projects)
     @payments_amount = @payments.sum(:amount)
   end
 end
