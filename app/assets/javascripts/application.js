@@ -19,4 +19,5 @@
 //= require bootstrap/tab
 
 //= require trix
+
 // = require_tree .
