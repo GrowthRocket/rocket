@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20160823071852) do
+
+
+
 
   create_table "accounts", force: :cascade do |t|
     t.integer  "balance",      default: 0
@@ -149,8 +153,12 @@ ActiveRecord::Schema.define(version: 20160823071852) do
     t.boolean  "is_admin",               default: false
     t.string   "user_name"
     t.string   "image"
+
     t.integer  "phone_number"
     t.integer  "captcha"
+
+    t.string   "aasm_state"
+    t.index ["aasm_state"], name: "index_users_on_aasm_state"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
