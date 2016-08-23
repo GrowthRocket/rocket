@@ -15,7 +15,7 @@ module Admin::OrdersHelper
     elsif order.order_cancelled?
       content_tag(:span, "Order Cancelled", class: "label label-default")
 
-    elsif order.git?
+    elsif order.good_returned?
       content_tag(:span, "Good Returned", class: "label label-default")
 
     elsif order.appling_cancel_order?

@@ -2,7 +2,7 @@ class Admin::ProjectsController < ApplicationController
   before_action :authenticate_user!
   before_action :require_is_admin
   layout "admin"
-
+  
   def index
     if params[:category_id]
       @projects = Project.recent.where(category_id: params[:category_id]).paginate(:page => params[:page], :per_page => 5)
