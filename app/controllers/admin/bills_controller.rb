@@ -52,7 +52,8 @@ class Admin::BillsController < ApplicationController
 
   def payout
     @project = Project.find(params[:id])
-    amount = BillPayment.where(bill_status: "success").group("project_id").sum(:amount)
+    amount = BillPayment.where(bill_status: "success", project_id: params[:id]).sum(:amount)
+    puts "----------------#{amount}"
     options = {project: @project, amount: amount[1] * 0.9}
     if FundingService.new(options).payout!
       BillPayment.where(project_id: params[:id]).update_all(bill_status: "paid")

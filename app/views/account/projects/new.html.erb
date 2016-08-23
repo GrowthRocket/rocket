@@ -1,8 +1,3 @@
 <h1>新建众筹项目</h1>
-<%= simple_form_for [:account, @project] do |f| %>
-<%= f.input :name, :label =>"项目名称" %>
-<%= f.trix_editor :description, :label =>"项目描述" %>
-<%= f.input :fund_goal, :label =>"筹款目标" %>
-<%= f.input :image, :label =>"主题图片" %>
-<%= f.submit "创建项目", class: "btn btn-success" %>
-<% end %>
+
+<%= render "form" %>
