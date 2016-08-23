@@ -3,12 +3,12 @@ class Account::ProjectsController < ApplicationController
   layout "user"
 
   def index
-    if params[:category_id]
-      @projects = current_user.projects.where(category_id: params[:category_id])
-    else
-      @projects = current_user.projects
-    end
-
+    @projects =
+      if params[:category_id]
+        current_user.projects.where(category_id: params[:category_id])
+      else
+        current_user.projects
+      end
   end
 
   def new

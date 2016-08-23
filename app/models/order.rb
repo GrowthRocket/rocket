@@ -1,26 +1,3 @@
-# == Schema Information
-#
-# Table name: orders
-#
-#  id             :integer          not null, primary key
-#  total_price    :integer
-#  plan_id        :integer
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
-#  creator_name   :string
-#  backer_name    :string
-#  price          :integer
-#  quantity       :integer
-#  payment_method :string
-#  token          :string
-#  aasm_state     :string           default("order_placed")
-#  user_id        :integer
-#  project_id     :integer
-#
-# Indexes
-#
-#  index_orders_on_aasm_state  (aasm_state)
-#
 
 class Order < ApplicationRecord
   belongs_to :user
@@ -58,15 +35,15 @@ class Order < ApplicationRecord
     end
 
     event :return_good do
-      transitions from: [:shipped, :appling_good_return], to: :good_returned
+      transitions from: %i(shipped appling_good_return), to: :good_returned
     end
 
     event :cancel_order do
-      transitions from: [:order_placed, :paid, :appling_cancel_order], to: :order_cancelled
+      transitions from: %i(order_placed paid appling_cancel_order), to: :order_cancelled
     end
 
     event :apply_cancel_order do
-      transitions from: [:order_placed, :paid], to: :appling_cancel_order
+      transitions from: %i(order_placed paid), to: :appling_cancel_order
     end
 
     event :apply_good_return do

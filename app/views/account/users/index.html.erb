@@ -25,4 +25,12 @@
 </table>
 <div>
   <%= link_to("修改我的资料", edit_account_user_path(@user), :class => "btn btn-xs btn-info") %>
+  <% if @user.aasm_state == "user_registered" %>
+  <%= link_to("申请实名认证", apply_for_certify_account_user_path(@user), :method => :post, :class => "btn btn-xs btn-info") %>
+  <% elsif @user.aasm_state == "unpassed_verified" %>
+  <%= content_tag(:span, "实名认证审核中，请耐心等待...", class: "label label-success") %>
+  <% else %>
+  <% @user.aasm_state == "passed_verify"  %>
+  <%= link_to("已实名认证", "#", :class => "btn btn-xs btn-success disabled") %>
+  <% end %>
 </div>

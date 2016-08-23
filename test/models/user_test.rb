@@ -18,9 +18,13 @@
 #  is_admin               :boolean          default(FALSE)
 #  user_name              :string
 #  image                  :string
+#  phone_number           :integer
+#  captcha                :integer
+#  aasm_state             :string
 #
 # Indexes
 #
+#  index_users_on_aasm_state            (aasm_state)
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #

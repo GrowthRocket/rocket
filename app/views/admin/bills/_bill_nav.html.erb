@@ -1,0 +1,18 @@
+<div class="col-md-2">
+  <ul class="nav nav-pills nav-stacked">
+    <% if "index" == controller.action_name %>
+      <li role="presentation" class="active"><a href="javascript:void(0)">收入流水</a></li>
+      <li role="presentation"><%= link_to("支出流水", payout_index_admin_bills_path) %></li>
+      <li role="presentation"><%= link_to("收支情况", payments_index_admin_bills_path) %></li>
+    <% elsif "payout_index" == controller.action_name %>
+      <li role="presentation"><%= link_to("收入流水", admin_bills_path) %></li>
+      <li role="presentation" class="active"><%= link_to("支出流水", "javascript:void(0)") %></li>
+      <li role="presentation"><%= link_to("收支情况", payments_index_admin_bills_path) %></li>
+    <% else %>
+      <li role="presentation"><%= link_to("收入流水", admin_bills_path) %></li>
+      <li role="presentation"><%= link_to("支出流水", payout_index_admin_bills_path) %></li>
+      <li role="presentation" class="active"><%= link_to("收支情况", "javascript:void(0)") %></li>
+    <% end %>
+
+  </ul>
+</div>

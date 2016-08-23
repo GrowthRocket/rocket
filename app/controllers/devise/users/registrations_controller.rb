@@ -1,6 +1,6 @@
 class Devise::Users::RegistrationsController < Devise::RegistrationsController
-# before_action :configure_sign_up_params, only: [:create]
-# before_action :configure_account_update_params, only: [:update]
+  # before_action :configure_sign_up_params, only: [:create]
+  # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
   # def new
@@ -8,9 +8,25 @@ class Devise::Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  #  def create
-  #    super
-  #  end
+    def create
+      # in your controller action
+
+      require 'geetest_ruby_sdk'
+
+      challenge = params[:geetest_challenge] || ''
+      validate = params[:geetest_validate] || ''
+      seccode = params[:geetest_seccode] || ''
+
+      # 将私钥传入，要注册的
+      sdk = GeetestSDK.new(ENV['GEE_TEST_KEY'])
+      if sdk.validate(challenge, validate, seccode)
+        super
+      else
+        flash[:alert] = "请滑动滑块进行验证"
+        redirect_to :back
+        # render :new
+      end
+    end
 
   # GET /resource/edit
   # def edit
@@ -57,5 +73,4 @@ class Devise::Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-
 end

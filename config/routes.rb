@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "devise/users/registrations"}
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # resources :welcome
@@ -31,6 +31,8 @@ Rails.application.routes.draw do
         get :show_bill_payments
         get :payout_index
         get :show_bill_payouts
+        get :payments_index
+        post :custom_fund_rate
       end
 
       member do
@@ -45,11 +47,14 @@ Rails.application.routes.draw do
         post :reject_verify
       end
     end
-
   end
 
   namespace :account do
-    resources :users
+    resources :users do
+      member do
+        post :apply_for_certify
+      end
+    end
     resources :projects do
       resources :posts
       resources :plans
@@ -65,6 +70,8 @@ Rails.application.routes.draw do
         post :show_orders_for_one_project
       end
     end
+
+    resources :bills
   end
 
   resources :plans do

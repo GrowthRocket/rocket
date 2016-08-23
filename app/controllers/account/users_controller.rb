@@ -12,7 +12,6 @@ class Account::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    # binding.pry
     if @user.update(user_params)
       redirect_to account_users_path
     else
@@ -22,7 +21,19 @@ class Account::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-   end
+  end
+
+  def apply_for_certify
+  @user = User.find(params[:id])
+  @user.apply_for_certify!
+  if @user.aasm_state == "passed_verify"
+    flash[:notice] = "您已通过实名认证！"
+    redirect_to :back
+  else
+    flash[:notice] = "您已提交申请实名认证！"
+    redirect_to :back
+  end
+end
 
   private
 

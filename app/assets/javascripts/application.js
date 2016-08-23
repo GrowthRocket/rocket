@@ -17,6 +17,5 @@
 //= require bootstrap/dropdown
 //= require bootstrap/collapse
 //= require bootstrap/tab
-
 //= require trix
-= require_tree .
+// = require_tree .
