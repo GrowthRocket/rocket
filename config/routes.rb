@@ -47,11 +47,14 @@ Rails.application.routes.draw do
         post :reject_verify
       end
     end
-
   end
 
   namespace :account do
-    resources :users
+    resources :users do
+      member do
+        post :apply_for_certify
+      end
+    end
     resources :projects do
       resources :posts
       resources :plans

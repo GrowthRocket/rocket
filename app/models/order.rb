@@ -35,15 +35,15 @@ class Order < ApplicationRecord
     end
 
     event :return_good do
-      transitions from: [:shipped, :appling_good_return], to: :good_returned
+      transitions from: %i(shipped appling_good_return), to: :good_returned
     end
 
     event :cancel_order do
-      transitions from: [:order_placed, :paid, :appling_cancel_order], to: :order_cancelled
+      transitions from: %i(order_placed paid appling_cancel_order), to: :order_cancelled
     end
 
     event :apply_cancel_order do
-      transitions from: [:order_placed, :paid], to: :appling_cancel_order
+      transitions from: %i(order_placed paid), to: :appling_cancel_order
     end
 
     event :apply_good_return do
@@ -67,8 +67,6 @@ class Order < ApplicationRecord
     end
   end
 end
-
-
 
 # == Schema Information
 #

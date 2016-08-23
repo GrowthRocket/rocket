@@ -17,7 +17,7 @@
  <p>双手持身份证图片   </p>
  <%#= image_tag(@user.image.show), user_path(user), class: "thumbnail") %>
 <div class="well">
-  <%= link_to("通过认证请求", pass_verify_admin_users_verify_path(@user) , :method => :post, :class => "btn btn-sm btn-success disabled") %>
+  <%= link_to("通过认证请求", pass_verify_admin_users_verify_path(@user) , :method => :post, :class => "btn btn-sm btn-success") %>
 </div>
 <div class="well">
   <p>
@@ -25,5 +25,5 @@
   <%= f.input :user_name, label:false, :readonly => true, :placeholder => "请填写拒绝原因" %>
   <% end %>
   </p>
-  <%= link_to("拒绝认证请求", reject_verify_admin_users_verify_path(@user) , :method => :post, :class => "btn btn-sm btn-danger disabled") %>
+  <%= link_to("拒绝认证请求", reject_verify_admin_users_verify_path(@user) , :method => :post, :class => "btn btn-sm btn-danger") %>
 </div>

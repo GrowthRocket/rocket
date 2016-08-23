@@ -31,31 +31,33 @@ class Admin::BillsController < ApplicationController
 
   def show_bill_payments
     query_type = params[:query_type]
-    case query_type
-    when "success_bill"
-      @bill_payments = BillPayment.bill_payment_by_project_id(["success", "paid"])
-    when "faild_bill"
-      @bill_payments = BillPayment.bill_payment_by_project_id(["faild",""])
-    when "wait_bill"
-      @bill_payments = BillPayment.bill_payment_by_project_id(["wait", ""])
-    else
-      @bill_payments = BillPayment.bill_payment_by_project_id(["success", "paid"])
-    end
+    @bill_payments =
+      case query_type
+      when "success_bill"
+        BillPayment.bill_payment_by_project_id(%w(success paid))
+      when "faild_bill"
+        BillPayment.bill_payment_by_project_id(["faild", ""])
+      when "wait_bill"
+        BillPayment.bill_payment_by_project_id(["wait", ""])
+      else
+        BillPayment.bill_payment_by_project_id(%w(success paid))
+      end
     render json: @bill_payments
   end
 
   def show_bill_payouts
     query_type = params[:query_type]
-    case query_type
-    when "success_bill"
-      @bill_payouts = BillPayout.bill_payout_by_project_id(["success", "paid"])
-    when "faild_bill"
-      @bill_payouts = BillPayout.bill_payout_by_project_id(["faild",""])
-    when "wait_bill"
-      @bill_payouts = BillPayout.bill_payout_by_project_id(["wait", ""])
-    else
-      @bill_payouts = BillPayout.bill_payout_by_project_id(["success", "paid"])
-    end
+    @bill_payouts =
+      case query_type
+      when "success_bill"
+        BillPayout.bill_payout_by_project_id(%w(success paid))
+      when "faild_bill"
+        BillPayout.bill_payout_by_project_id(["faild", ""])
+      when "wait_bill"
+        BillPayout.bill_payout_by_project_id(["wait", ""])
+      else
+        BillPayout.bill_payout_by_project_id(%w(success paid))
+      end
     render json: @bill_payouts
   end
 
@@ -77,6 +79,4 @@ class Admin::BillsController < ApplicationController
     end
     redirect_back(fallback_location: root_path)
   end
-
-
 end
