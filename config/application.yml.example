@@ -1,6 +1,2 @@
-production:
-  GEE_TEST_KEY: ""
-
-development:
-  GEE_TEST_KEY: ""
-  fund_rate: 10
+gee_test_key: ""
+fund_rate: 10
