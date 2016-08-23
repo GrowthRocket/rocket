@@ -2,9 +2,9 @@ require "digest"
 require "net/http"
 
 class GeetestSDK
-  def initialize(key, new_uri = nil)
-    @gee_uri = new_uri || "http://api.geetest.com/validate.php"
-    @key = key
+  def initialize
+    @gee_uri = "http://api.geetest.com/validate.php"
+    @key = ENV["gee_test_key"]
   end
 
   def validate(challenge = "", validate = "", seccode = "")

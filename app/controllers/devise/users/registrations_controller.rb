@@ -1,4 +1,3 @@
-require "geetest_ruby_sdk"
 class Devise::Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
@@ -17,7 +16,7 @@ class Devise::Users::RegistrationsController < Devise::RegistrationsController
     seccode = params[:geetest_seccode] || ""
 
     # 将私钥传入，要注册的
-    sdk = GeetestSDK.new(ENV["gee_test_key"])
+    sdk = GeetestSDK.new
     if sdk.validate(challenge, validate, seccode)
       super
     else
