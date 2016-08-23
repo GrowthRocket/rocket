@@ -1,14 +1,44 @@
-
-
 class Project < ApplicationRecord
   validates :name, presence: true
-  validates :fund_goal, numericality: { greater_than: 0, less_than: 1000000 }
+  validates :fund_goal, numericality: { greater_than: 0, less_than: 1_000_000 }
 
   mount_uploader :image, ImageUploader
   has_many :plans
   belongs_to :user
+  belongs_to :category
 
   scope :published, -> { where(is_hidden: false) }
+  scope :recent, -> { order("created_at DESC")}
+
+  include AASM
+
+  aasm do
+    state :project_created, initial: true
+    state :verifying
+    state :online
+    state :unverified
+    state :offline
+
+    event :apply_verify do
+      transitions from: :project_created, to: :verifying
+    end
+
+
+    event :approve do
+      transitions from: :verifying, to: :online
+    end
+
+    event :reject do
+      transitions from: :verifying, to: :unverified
+    end
+
+    event :finish do
+      transitions from: :online, to: :offline
+    end
+
+
+  end
+
   def publish!
     self.is_hidden = false
     save
@@ -36,4 +66,10 @@ end
 #  fund_progress   :integer          default(0)
 #  backer_quantity :integer          default(0)
 #  plans_count     :integer          default(0)
+#  category_id     :integer
+#  aasm_state      :string           default("project_created")
+#
+# Indexes
+#
+#  index_projects_on_aasm_state  (aasm_state)
 #

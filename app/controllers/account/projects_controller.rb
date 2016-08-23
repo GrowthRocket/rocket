@@ -3,7 +3,12 @@ class Account::ProjectsController < ApplicationController
   layout "user"
 
   def index
-    @projects = current_user.projects
+    if params[:category_id]
+      @projects = current_user.projects.where(category_id: params[:category_id])
+    else
+      @projects = current_user.projects
+    end
+
   end
 
   def new
@@ -20,6 +25,8 @@ class Account::ProjectsController < ApplicationController
 
   def create
     @project = current_user.projects.build(project_params)
+    @project.category_id = params[:category_id]
+
     if @project.save
       redirect_to account_projects_path, notice: "项目创建成功"
     else
@@ -62,6 +69,6 @@ class Account::ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :description, :user_id, :fund_goal, :image, :is_hidden)
+    params.require(:project).permit(:name, :description, :user_id, :fund_goal, :image, :is_hidden, :plans_count, :category_id)
   end
 end

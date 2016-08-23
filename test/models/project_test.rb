@@ -14,6 +14,12 @@
 #  fund_progress   :integer          default(0)
 #  backer_quantity :integer          default(0)
 #  plans_count     :integer          default(0)
+#  category_id     :integer
+#  aasm_state      :string           default("project_created")
+#
+# Indexes
+#
+#  index_projects_on_aasm_state  (aasm_state)
 #
 
 require 'test_helper'

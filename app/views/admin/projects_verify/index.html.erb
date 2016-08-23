@@ -1,0 +1,44 @@
+<div>
+  <h2>
+    <span><%= link_to("所有项目",  admin_projects_path, ) %></span>
+    <span> | 待认证项目</span>
+  </h2>
+</div>
+<table class="table table-boldered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>众筹项目</th>
+            <th>方案数量</th>
+            <th>筹款目标</th>
+            <th>状态</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @projects.each do |project| %>
+        <tr>
+            <td>
+                <%= project.id %>
+            </td>
+            <td>
+                <%= link_to(project.name, project_path(project)) %>
+                <br/>
+                <%= render_project_image(project,:thumb) %>
+            </td>
+            <td>
+                <%= link_to(project.plans_count, account_project_plans_path(project)) %>
+            </td>
+            <td>
+                ¥<%= project.fund_goal %>
+            </td>
+            <td>
+                <%= render_project_status(project) %>
+            </td>
+            <td>
+                <%= link_to("查看项目申请详情", admin_projects_verify_path(id: project), :class => "btn btn-xs btn-info") %>
+            </td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>

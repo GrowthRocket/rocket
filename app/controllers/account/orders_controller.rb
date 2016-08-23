@@ -1,5 +1,6 @@
 class Account::OrdersController < ApplicationController
   before_action :authenticate_user!
+  after_action :add_payment_log, :only => [:pay_with_alipay, :pay_with_wechat]
   layout "user"
 
   def index
@@ -9,7 +10,7 @@ class Account::OrdersController < ApplicationController
   def show_orders_for_one_project
     @order = current_user.orders.find(params[:id])
     @project = @order.project
-    @plans = @project.plans
+    # @plans = @project.plans
 
     @orders = current_user.orders.where(project_id: @project.id)
 
@@ -40,6 +41,11 @@ class Account::OrdersController < ApplicationController
       flash[:alert] = "付款失败，请重新尝试。"
     end
     redirect_to account_order_path(@order.token)
+  end
+
+  def add_payment_log
+    options = {order: @order, user: current_user}
+    FundingService.new(options).add_progress!
   end
 
   private

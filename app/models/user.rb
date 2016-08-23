@@ -17,6 +17,7 @@
 #  updated_at             :datetime         not null
 #  is_admin               :boolean          default(FALSE)
 #  user_name              :string
+#  image                  :string
 #
 # Indexes
 #
@@ -30,6 +31,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  after_create :create_account
+
+
+
+  mount_uploader :image, HeadimageUploader
 
   def admin?
     is_admin
@@ -37,4 +43,11 @@ class User < ApplicationRecord
 
   has_many :orders
   has_many :projects
+  has_one :account
+
+  def generate_account
+    self.create_account
+  end
+
+
 end

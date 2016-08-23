@@ -8,7 +8,12 @@ class Plan < ApplicationRecord
   validates :plan_goal, numericality: { greater_than: 0, less_than: 1_000_000 }
   belongs_to :project, counter_cache: true
   has_many :orders
+
+  scope :recent, -> { order("created_at DESC") }
 end
+
+
+
 
 # == Schema Information
 #

@@ -19,13 +19,29 @@
 </div>
 </div>
 
+
+
 <hr>
   <div class="container-fluid well">
     <div class="row">
       <div class="col-xs-12 col-sm-9 col-md-8-offset-1">
-        <p><%= simple_format(@project.description) %></p>
+        项目详情 <p><%= simple_format(@project.description) %></p>
       </div>
     </div>
   </div>
+
+  <p>最新动态</p>
+  <div class="row">
+    <div class="col-xs-12 col-sm-9 col-md-8-offset-1">
+      <% @posts.each do |post| %>
+      <div class="container-fluid well">
+      <p><%= simple_format(post.description) %></p>
+      <p><%= post.created_at.strftime("%Y-%m-%d %H:%M:%S")  %></p>
+      </div>
+      <% end %>
+  </div>
+  </div>
+
+
   <!-- 演示样式参考 -->
   <!-- <img style="width:100%" src="/uploads/17.png"></img> -->

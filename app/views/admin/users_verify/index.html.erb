@@ -1,0 +1,45 @@
+<div>
+  <h2>
+  <span><%= link_to("所有用户",  admin_users_path, ) %></span>
+  <span> | 待认证用户</span>
+  </h2>
+</div>
+
+<table class="table table-boldered">
+  <thead>
+    <th>ID</th>
+    <th>用户名</th>
+    <th>邮箱地址</th>
+    <th>注册时间</th>
+    <th>申请时间</th>
+    <th>当前状态</th>
+    <th>操作</th>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+  <tr>
+    <td>
+      <%= user.id %>
+    </td>
+    <td>
+      <%= user.user_name %>
+    </td>
+    <td>
+      <%= user.email %>
+    </td>
+    <td>
+      <%= user.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+    </td>
+    <td>
+      <%#= verify.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+    </td>
+    <td>
+      <%#= render_user_verify_status(user) %>
+    </td>
+    <td>
+      <%= link_to("查看申请详情", admin_users_verify_path(id: user), :class => "btn btn-xs btn-info") %>
+    </td>
+  </tr>
+  <% end %>
+</tbody>
+</table>

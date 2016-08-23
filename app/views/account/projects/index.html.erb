@@ -2,12 +2,26 @@
 <div class="pull-right">
     <%= link_to("新建众筹项目", new_account_project_path, :class => "btn btn-success" ) %>
 </div>
+<div class="dropdown clearfix pull-right">
+      <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuDivider" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          按类型
+          <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
+        <li><%= link_to("全部", account_projects_path) %></li>
+        <li><%= link_to("视频", account_projects_path(category_id: 1)) %></li>
+        <li><%= link_to("音乐", account_projects_path(category_id: 2)) %></li>
+        <li><%= link_to("写作", account_projects_path(category_id: 3)) %></li>
+        <li><%= link_to("科技", account_projects_path(category_id: 4)) %></li>
+      </ul>
+</div>
 <table class="table table-boldered">
     <thead>
         <tr>
             <th>ID</th>
             <th>众筹项目</th>
             <th>方案数量</th>
+            <th>动态数量</th>
             <th>筹款目标</th>
             <th>支持人数</th>
             <th>进度</th>
@@ -30,6 +44,9 @@
                 <%= link_to(project.plans_count, account_project_plans_path(project)) %>
             </td>
             <td>
+                <%= link_to(project.posts.count, account_project_posts_path(project))  %>
+            </td>
+            <td>
                 ¥<%= project.fund_goal %>
             </td>
             <td>
@@ -46,6 +63,7 @@
             <td>
                 <%= link_to("编辑项目", edit_account_project_path(project), :class => "btn btn-xs btn-info") %>
                 <%= link_to("管理筹款方案", account_project_plans_path(project), :class => "btn btn-xs btn-warning") %>
+                <%= link_to("管理动态", account_project_posts_path(project), :class => "btn btn-xs btn-success") %>
                 <%= link_to("删除", account_project_path(project), :method => :delete, :data => { :confirm => "删除项目后不可恢复，您确定要删除吗?" }, :class => "btn btn-xs btn-danger") %>
             </td>
         </tr>

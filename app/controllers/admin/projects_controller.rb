@@ -2,9 +2,13 @@ class Admin::ProjectsController < ApplicationController
   before_action :authenticate_user!
   before_action :require_is_admin
   layout "admin"
-
+  
   def index
-    @projects = Project.all
+    if params[:category_id]
+      @projects = Project.recent.where(category_id: params[:category_id]).paginate(:page => params[:page], :per_page => 5)
+    else
+      @projects = Project.all.recent.paginate(:page => params[:page], :per_page => 5)
+    end
   end
 
   def new
@@ -63,6 +67,6 @@ class Admin::ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :description, :user_id, :fund_goal, :image, :is_hidden)
+    params.require(:project).permit(:name, :description, :user_id, :fund_goal, :image, :is_hidden, :plans_count, :category_id)
   end
 end

@@ -1,7 +1,7 @@
 class Admin::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :require_is_admin
-  layout 'admin'
+  layout "admin"
 
   def index
     @users = User.all
@@ -35,8 +35,8 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.is_admin = true
     @user.save
-    flashp[:notice] = "成功设为管理员!"
-    redirect_to :back, notice:
+    flash[:notice] = "成功设为管理员!"
+    redirect_to :back
   end
 
 

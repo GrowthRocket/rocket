@@ -1,11 +1,16 @@
 class ProjectsController < ApplicationController
+  layout "projects"
   def index
-    @projects = Project.published
-    # @account_projects = cur
+    if params[:category_id]
+      @projects = Project.published.where(category_id: params[:category_id])
+    else
+      @projects = Project.published
+    end
   end
 
   def show
     @project = Project.find(params[:id])
+    @posts = @project.posts
     if @project.is_hidden?
       if !current_user
         redirect_to root_path, alert: "该项目为非公开项目。"
