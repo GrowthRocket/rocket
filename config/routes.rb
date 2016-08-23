@@ -53,6 +53,7 @@ Rails.application.routes.draw do
     resources :users do
       member do
         post :apply_for_certify
+        post :send_verification_code
       end
     end
     resources :projects do

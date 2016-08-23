@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute,:user_name,:phone_number, :captcha])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:phone_number, :captcha])
   end
 
   def require_price_judgment_and_save(plan)
@@ -30,4 +30,23 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
+  def check_geetest
+    # in your controller action
+
+    require 'geetest_ruby_sdk'
+
+    challenge = params[:geetest_challenge] || ''
+    validate = params[:geetest_validate] || ''
+    seccode = params[:geetest_seccode] || ''
+
+    # 将私钥传入，要注册的
+    sdk = GeetestSDK.new(ENV['GEE_TEST_KEY'])
+    @geetest = true
+    if !sdk.validate(challenge, validate, seccode)
+      @geetest = false
+    end
+  end
+
+
 end

@@ -46,7 +46,9 @@ gem "awesome_rails_console"
 gem "trix"
 gem "will_paginate"
 gem "gravatarify"
-
+gem 'twilio-ruby', '~> 4.11.1'
+gem 'phonelib'
+gem "rotp"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
