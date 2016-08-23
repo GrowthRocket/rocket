@@ -14,7 +14,7 @@
           <th>#</th>
           <th>项目名称</th>
           <th>支持者姓名</th>
-          <th>所选方案</th>
+          <th>所选方案编号</th>
           <th>合计金额</th>
           <th>下单时间</th>
         </thead>
@@ -32,6 +32,7 @@
               <%= payment.backer_name%>
             </td>
             <td>
+              <!-- TODO 通过payment找到plan的title -->
               <%= payment.plan_id %>
             </td>
             <td>
