@@ -5,7 +5,9 @@
   <%= f.input :fund_goal, :label =>"筹款目标" %>
 
   <%= f.input :image, :label =>"主题图片" %>
-  <%= f.input :category_id, :label =>"项目类型", collection: Category.all, prompt: "请选择" %>
+  <%= f.input :category_id,:collection => Category.all,:label_method => :chs_name,:value_method => :id,:label => "请选择分类" ,:include_blank => false %>
+
+
 
   <% if ["new", "create"].include?(controller.action_name) %>
     <%= f.submit "创建项目", class: "btn btn-success" %>
