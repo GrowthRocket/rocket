@@ -5,7 +5,7 @@ class GeetestSDK
   VALIDATION_URL = "http://api.geetest.com/validate.php".freeze
 
   def initialize
-    @key = ENV["gee_test_key"]
+    @key = ENV["GEE_TEST_KEY"]
   end
 
   def validate(challenge = "", validate = "", seccode = "")
