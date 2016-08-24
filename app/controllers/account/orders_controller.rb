@@ -1,6 +1,6 @@
 class Account::OrdersController < ApplicationController
   before_action :authenticate_user!
-  after_action :add_payment_log, only: %i(pay_with_alipay pay_with_wechat)
+  # after_action :add_payment_log, only: %i(pay_with_alipay pay_with_wechat)
   layout "user"
 
   def index
@@ -23,7 +23,7 @@ class Account::OrdersController < ApplicationController
 
   def pay_with_alipay
     @order = current_user.orders.find_by_token(params[:id])
-    if @order.pay!("Alipay")
+    if add_payment_log("Alipay")
       flash[:notice] = "您已成功付款，再次感谢您的支持！"
       OrderMailer.notify_order_placed(@order).deliver!
     else
@@ -34,7 +34,7 @@ class Account::OrdersController < ApplicationController
 
   def pay_with_wechat
     @order = current_user.orders.find_by_token(params[:id])
-    if @order.pay!("WeChat")
+    if add_payment_log("WeChat")
       flash[:notice] = "您已成功付款，再次感谢您的支持！"
       OrderMailer.notify_order_placed(@order).deliver!
     else
@@ -43,8 +43,8 @@ class Account::OrdersController < ApplicationController
     redirect_to account_order_path(@order.token)
   end
 
-  def add_payment_log
-    options = { order: @order, user: current_user }
+  def add_payment_log(payment_method)
+    options = { order: @order, user: current_user, payment_method: payment_method}
     FundingService.new(options).add_progress!
   end
 
