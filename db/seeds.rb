@@ -157,7 +157,7 @@ Plan.create!([title: "支持者", description: "赠送《一支笔的静心之�
 Plan.create!([title: "慷慨资助者", description: "赠送《一支笔的静心之旅：钢笔淡彩风景速写》图书、一套明信片、一本速写本、1个《樱木花道的镰仓高校前站》画彩印帆布袋。", quantity:1, price: 299, project_id: 9,
 plan_goal: 100, plan_progress: 0, backer_quantity: 0])
 Plan.create!([title: "VIP资助者", description: "赠送限量版私人订制钢笔淡彩风景速写作品一幅。我将给支持者单独创作绘画一幅钢笔淡彩速写作品。", quantity:1, price: 2999, project_id: 9, plan_goal: 20,
-plan_progress: 10, backer_quantity: 1])
+plan_progress: 1, backer_quantity: 1])
 
 puts "12  Plans created."
 
@@ -181,6 +181,13 @@ puts "12  Plans created."
   BillPayment.create(order_id: 16, channel_id: 0,
   amount: 2999, user_id: 5, backer_name: "李项", project_id: 9, project_name: "用钢笔送你一个淡彩梦！",
   plan_id: 27, bill_status: "success", payment_method: "Alipay")
+
+
+  Post.create!([description:"这个世界很大，只要你愿意去看。", project_id: "9" ])
+  Post.create!([description:"很多时候我们看到的是我们想看到的，我们所见只是我们心中的真相。", project_id: "9" ])
+  Post.create!([description:"旅行远不止走马观花，而是见天见地，见自己，走过足够远的路，才会懂自己。", project_id: "9" ])
+  Post.create!([description:"云南大理是个神奇的地方，同样的人来到这，行为不同了，心境也不同了。希望有时间能够再来。", project_id: "9" ])
+  Post.create!([description:"今天创作了3幅钢笔淡彩画，感谢你们的支持，我们一起完成梦想。", project_id: "9" ])
 
 
 
