@@ -10,4 +10,5 @@ end
 #  name       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  chs_name   :string           default("Simplified Chinese")
 #

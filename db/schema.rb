@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160823203554) do
+ActiveRecord::Schema.define(version: 20160824075348) do
 
   create_table "accounts", force: :cascade do |t|
     t.integer  "balance",      default: 0
@@ -53,8 +53,9 @@ ActiveRecord::Schema.define(version: 20160823203554) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.string   "chs_name",   default: "Simplified Chinese"
   end
 
   create_table "identity_verifications", force: :cascade do |t|

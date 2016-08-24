@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
     else
       @projects = Project.where(aasm_state: "online")
     end
+    @categories = Category.all
   end
 
   def show

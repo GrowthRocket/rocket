@@ -3,11 +3,9 @@
         <ul class="nav nav-pills nav-stacked" style="max-width: 300px; padding-top:20px;">
             <li class="categoryHeader">项目类型</li>
             <li><%= link_to("全部", projects_path) %></li>
-            <li><%= link_to("视频", projects_path(category_id: 1)) %></li>
-            <li><%= link_to("音乐", projects_path(category_id: 2)) %></li>
-            <li><%= link_to("写作", projects_path(category_id: 3)) %></li>
-            <li><%= link_to("科技", projects_path(category_id: 4)) %></li>
-
+            <% @categories.each do |category| %>
+            <li><%= link_to(category.chs_name, projects_path(category_id: category.id)) %></li>
+            <% end %>
         </ul>
     </div>
     <div class="col-md-10">
