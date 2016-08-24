@@ -52,7 +52,7 @@ class Project < ApplicationRecord
 
 
     begin
-      @plan = self.plans.create!(title: "自定义金额", description: "不谢，就是想支持你。", price: 1, plan_goal: 999_999, plan_type: 0)
+      @plan = self.plans.create!(title: "自定义金额", description: "单纯地想支持Ta。", price: 1, plan_goal: 999_999, plan_type: 0)
     rescue => e
       logger.error e.message
       logger.error e.backtrace.join("\n")

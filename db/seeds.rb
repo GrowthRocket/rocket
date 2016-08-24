@@ -23,12 +23,12 @@ User.create([email: "user4@gmail.com", password: '111111', password_confirmation
 puts "4 Users' accounts created."
 
 #共5个用户，1个admin
-Category.create!([name: "video"])
-Category.create!([name: "music"])
-Category.create!([name: "writing"])
-Category.create!([name: "science"])
-Category.create!([name: "technology"])
-Category.create!([name: "Painting"])
+Category.create!([name: "video", chs_name: "影视"])
+Category.create!([name: "music", chs_name: "音乐"])
+Category.create!([name: "writing", chs_name: "写作"])
+Category.create!([name: "science", chs_name: "科学"])
+Category.create!([name: "technology", chs_name: "技术"])
+Category.create!([name: "Painting", chs_name: "绘画"])
 
 puts "6 Categories created."
 

@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-2">
         <ul class="nav nav-pills nav-stacked" style="max-width: 300px; padding-top:20px;">
-            <li class="categoryHeader"><%= link_to(">全部分类", projects_path) %></li>
+            <li class="categoryHeader"><%= link_to("全部分类", projects_path) %></li>
             <% @categories.each do |category| %>
             <li><%= link_to(category.chs_name, projects_path(category_id: category.id)) %></li>
             <% end %>
