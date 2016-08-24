@@ -33,7 +33,7 @@ class ProjectsController < ApplicationController
   def search
     if @query_string.present?
       search_result = Project.ransack(@search_criteria).result(:distinct => true)
-      binding.pry
+      # binding.pry
       @projects = search_result.paginate(:page => params[:page], :per_page => 20 )
       # set_page_title "搜索 #{@query_string}"
     end
