@@ -90,6 +90,9 @@ Rails.application.routes.draw do
 
   resources :projects do
     resources :plans
+    collection do
+      get :search
+    end
   end
 
   resources :welcome

@@ -46,6 +46,7 @@ class Project < ApplicationRecord
     self.is_hidden = true
     save
   end
+
 end
 
 # == Schema Information
@@ -66,6 +67,7 @@ end
 #  plans_count     :integer          default(0)
 #  category_id     :integer
 #  aasm_state      :string           default("project_created")
+#  video           :string
 #
 # Indexes
 #

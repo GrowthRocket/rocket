@@ -1,5 +1,7 @@
 class ProjectsController < ApplicationController
 
+  before_action :validate_search_key , :only => [:search]
+
   def index
     if params[:category_id]
       @projects = Project.where(category_id: params[:category_id], aasm_state: "online")
@@ -27,4 +29,27 @@ class ProjectsController < ApplicationController
       end
     end
   end
+
+  def search
+    if @query_string.present?
+      search_result = Project.ransack(@search_criteria).result(:distinct => true)
+      binding.pry
+      @projects = search_result.paginate(:page => params[:page], :per_page => 20 )
+      # set_page_title "搜索 #{@query_string}"
+    end
+  end
+
+  protected
+
+  def validate_search_key
+    @query_string = params[:q].gsub(/\\|\'|\/|\?/, "") if params[:q].present?
+    @search_criteria = search_criteria(@query_string)
+  end
+
+
+  def search_criteria(query_string)
+    { :name_cont => query_string ,aasm_state_eq: "online"}
+  end
+
+
 end
