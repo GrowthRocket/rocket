@@ -47,7 +47,7 @@ class HeadimageUploader < CarrierWave::Uploader::Base
   end
 
   version :mdimage do
-    process resize_to_fill: [120,120]
+    process resize_to_fill: [200,200]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

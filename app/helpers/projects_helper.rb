@@ -10,4 +10,10 @@ module ProjectsHelper
   def render_project_funding_progress(project)
     number_with_precision(project.fund_progress.to_f / project.fund_goal * 100, precision: 2) + " %"
   end
+
+  def render_highlight_content(project,query_string)
+    excerpt_cont = excerpt(project.name, query_string, radius: 500)
+    highlight(excerpt_cont, query_string)
+  end
+
 end

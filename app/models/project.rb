@@ -1,4 +1,5 @@
 class Project < ApplicationRecord
+  after_create :generate_custom_price_plan
   validates :name, presence: true
   validates :fund_goal, numericality: { greater_than: 0, less_than: 1_000_000 }
 
@@ -21,7 +22,7 @@ class Project < ApplicationRecord
     state :offline
 
     event :apply_verify do
-      transitions from: [:project_created, :unverified], to: :verifying
+      transitions from: [:project_created, :unverified, :offline], to: :verifying
     end
 
     event :approve do
@@ -46,6 +47,18 @@ class Project < ApplicationRecord
     self.is_hidden = true
     save
   end
+
+  def generate_custom_price_plan
+
+
+    begin
+      @plan = self.plans.create!(title: "自定义金额", description: "不谢，就是想支持你。", price: 1, plan_goal: 999_999, plan_type: 0)
+    rescue => e
+      logger.error e.message
+      logger.error e.backtrace.join("\n")
+    end
+  end
+
 end
 
 # == Schema Information
@@ -66,6 +79,7 @@ end
 #  plans_count     :integer          default(0)
 #  category_id     :integer
 #  aasm_state      :string           default("project_created")
+#  video           :string
 #
 # Indexes
 #

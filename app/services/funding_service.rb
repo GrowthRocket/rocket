@@ -7,6 +7,7 @@ class FundingService
     @user = options[:user] unless options[:user].nil?
     @project = options[:project] unless options[:project].nil?
     @amount = options[:amount] unless options[:amount].nil?
+    @payment_method = options[:payment_method] unless options[:payment_method].nil?
   end
 
   # TODO: 需要加锁、加事务
@@ -23,10 +24,10 @@ class FundingService
     else
       @user.orders.where(plan_id: @order.plan)
     end
-
+    binding.pry
     @plan.plan_progress += 1
     @plan.save
-
+    @order.pay!(@payment_method)
     BillPayment.create(
       order_id: @order.id, channel_id: 0,
       amount: @order.total_price, user_id: @user.id, backer_name: @order.backer_name, project_id: @project.id, project_name: @project.name,

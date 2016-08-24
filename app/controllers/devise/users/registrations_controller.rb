@@ -9,17 +9,6 @@ class Devise::Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
     def create
-      # in your controller action
-
-      # require 'geetest_ruby_sdk'
-      #
-      # challenge = params[:geetest_challenge] || ''
-      # validate = params[:geetest_validate] || ''
-      # seccode = params[:geetest_seccode] || ''
-      #
-      # # 将私钥传入，要注册的
-      # sdk = GeetestSDK.new(ENV['GEE_TEST_KEY'])
-      # if sdk.validate(challenge, validate, seccode)
       if @geetest
         phone_number = params[:user][:phone_number]
         captcha = params[:user][:captcha]
@@ -31,16 +20,11 @@ class Devise::Users::RegistrationsController < Devise::RegistrationsController
           flash[:alert] = "验证码不正确"
           redirect_to new_user_registration_path
         end
+        # super
       else
         flash[:alert] = "请先滑动滑块"
         redirect_to new_user_registration_path
       end
-
-      # else
-      #   flash[:alert] = "请滑动滑块进行验证"
-      #   redirect_to new_user_registration_path
-      #   # render :new
-      # end
     end
 
   # GET /resource/edit

@@ -75,14 +75,18 @@ class User < ApplicationRecord
 
   aasm do
     state :user_registered, initial: true
+    state :request_verify
     state :passed_verified
     state :unpassed_verified
 
     event :apply_for_certify do
-      transitions from: :user_registered, to: :unpassed_verified
+      transitions from: [:user_registered, :unpassed_verified], to: :request_verify
     end
     event :approve do
-      transitions from: :unpassed_verified, to: :passed_verified
+      transitions from: :request_verify, to: :passed_verified
+    end
+    event :reject do
+      transitions from: :request_verify, to: :unpassed_verified
     end
   end
 

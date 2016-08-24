@@ -9,8 +9,8 @@ class Admin::ProjectsController < ApplicationController
         Project.recent.where(category_id: params[:category_id]).paginate(page: params[:page], per_page: 5)
       else
         Project.all.recent.paginate(page: params[:page], per_page: 5)
-     end
-     @categories = Category.all
+      end
+      @categories = Category.all
   end
 
   def new
@@ -71,6 +71,6 @@ class Admin::ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :description, :user_id, :fund_goal, :image, :is_hidden, :plans_count, :category_id)
+    params.require(:project).permit(:name, :description, :user_id, :fund_goal, :image, :is_hidden, :plans_count, :category_id, :video)
   end
 end

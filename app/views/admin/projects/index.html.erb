@@ -23,9 +23,8 @@
 <table class="table table-boldered">
     <thead>
         <tr>
-            <th width="5%">序号</th>
-            <th>ID</th>
             <th>众筹项目</th>
+            <th>项目发起者</th>
             <th>方案数量</th>
             <th>筹款目标</th>
             <th>支持人数</th>
@@ -38,15 +37,12 @@
        <% @projects.each_with_index do |project, index| %>
         <tr>
             <td>
-                <%= index + 1 %>
-            </td>
-            <td>
-                <%= project.id  %>
-            </td>
-            <td>
                 <%= link_to(project.name, project_path(project)) %>
                 <br/>
                 <%= render_project_image(project,:thumb) %>
+            </td>
+            <td>
+                <%= User.find(project.user_id).user_name %>
             </td>
             <td>
                 <%= link_to(project.plans_count, admin_project_plans_path(project)) %>

@@ -63,6 +63,7 @@ Rails.application.routes.draw do
       member do
         post :apply_for_verification
         post :offline
+        post :reject_message
       end
     end
     resources :orders do
@@ -90,6 +91,9 @@ Rails.application.routes.draw do
 
   resources :projects do
     resources :plans
+    collection do
+      get :search
+    end
   end
 
   resources :welcome
