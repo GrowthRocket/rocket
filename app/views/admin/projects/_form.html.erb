@@ -4,7 +4,7 @@
   <%= f.trix_editor :description, :label =>"项目描述" %>
   <%= f.input :fund_goal, :label =>"筹款目标" %>
   <%= f.input :image, :label =>"主题图片" %>
-  <%= f.input :category_id,:collection => Category.all,:label_method => :chs_name,:value_method => :id,:label => "请选择分类" ,:include_blank => false %>
+  <%= f.input :category_id,:collection => Category.all,:label_method => :chs_name,:value_method => :id,:label => "请选择分类" %>
 
 
   <% if ["new", "create"].include?(controller.action_name) %>
