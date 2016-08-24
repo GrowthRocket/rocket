@@ -1,4 +1,5 @@
 class Project < ApplicationRecord
+  after_create :generate_custom_price_plan
   validates :name, presence: true
   validates :fund_goal, numericality: { greater_than: 0, less_than: 1_000_000 }
 
@@ -45,6 +46,17 @@ class Project < ApplicationRecord
   def hide!
     self.is_hidden = true
     save
+  end
+
+  def generate_custom_price_plan
+
+
+    begin
+      @plan = self.plans.create!(title: "自定义金额", description: "不谢，就是想支持你。", price: 1, plan_goal: 999_999, plan_type: 0)
+    rescue => e
+      logger.error e.message
+      logger.error e.backtrace.join("\n")
+    end
   end
 
 end

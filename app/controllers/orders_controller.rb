@@ -3,7 +3,22 @@ class OrdersController < ApplicationController
 
   def new
     @plan = Plan.find(params[:plan_id])
-    @order = @plan.orders.build(price: @plan.price, quantity: @plan.quantity)
+    if @plan.plan_type == 0
+      custom_price = params[:custom_price]
+      if custom_price == ""
+        flash[:alert] = "请输入自定义金额"
+        redirect_to new_plan_path
+      else
+        @plan.price = custom_price
+        if @plan.save
+          @order = @plan.orders.build(price: @plan.price, quantity: @plan.quantity)
+        else
+          render "plans/index"
+        end
+      end
+    else
+      @order = @plan.orders.build(price: @plan.price, quantity: @plan.quantity)
+    end
   end
 
   def create
