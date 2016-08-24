@@ -46,6 +46,7 @@ class Project < ApplicationRecord
     self.is_hidden = true
     save
   end
+
 end
 
 # == Schema Information
