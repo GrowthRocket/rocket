@@ -1,4 +1,13 @@
 module Account::ProjectsHelper
+
+  def render_project_video_or_image(project)
+    if project.video.include? "youku"
+      project.video.html_safe
+    else
+      image_tag(project.image.large)
+   end
+  end
+
   def render_project_operation(project)
     if project.aasm_state == "project_created" &&
        @projects.where("aasm_state = ? OR aasm_state = ?", "online", "verifying").count == 0 &&
