@@ -34,7 +34,7 @@ puts "6 Categories created."
 
 create_project = for i in 1..5 do
    Project.create!([name: "Poject no.#{i}", description: "我有一个好项目 #{i} 真的很不错", user_id: 1, fund_goal: 10_000 * i, is_hidden: "true", fund_progress: 600 * i,
-                    backer_quantity: 3, category_id: i, aasm_state: "project_created"])
+                    backer_quantity: 3, category_id: i, aasm_state: "project_created", video: ""])
 end
 
 
@@ -120,19 +120,19 @@ end
 puts "Admin's Order and bill_payment auto create is done."
 
 Project.create!([name: "User1's Poject", description: "user1 有一个好项目，真的很不错", user_id: 2, fund_goal: 1000, is_hidden: "false", fund_progress: 100,
-                 backer_quantity: 1, category_id: 1, aasm_state: "online"])
+                 backer_quantity: 1, category_id: 1, aasm_state: "online", video: ""])
 
 Project.create!([name: "User2's Poject", description: "user2 有一个好项目，真的很不错", user_id: 3, fund_goal: 2000, is_hidden: "false", fund_progress: 100,
-                 backer_quantity: 1, category_id: 2, aasm_state: "verifying"])
+                 backer_quantity: 1, category_id: 2, aasm_state: "verifying", video: ""])
 
 Project.create!([name: "User3's Poject", description: "user3 有一个好项目，真的很不错", user_id: 4, fund_goal: 3000, is_hidden: "false", fund_progress: 100,
-                 backer_quantity: 1, category_id: 3, aasm_state: "online"])
+                 backer_quantity: 1, category_id: 3, aasm_state: "online", video: ""])
 
 
 Project.create!([name: "用钢笔送你一个淡彩梦！", description: "借一场旅行，放下过去，遇见自己，然后更好地行走。
 这是一个90后的追梦心愿，或许你和我有着同样的梦想，却无法亲历实现。把你的故事和梦想告诉我，我将为你私人定制一副钢笔淡彩速写梦想之作。我叫文艺，一个90后的建筑专业高材生，毕业后，瞒着家人辞掉了深圳优越的设计院工作，去寻找精心绘画的“理想国”。 ",
 user_id: 5, fund_goal: 96000, is_hidden: "true", fund_progress: 2999,
-backer_quantity: 1, category_id: 6, aasm_state: "offline" ])
+backer_quantity: 1, category_id: 6, aasm_state: "offline", video: "" ])
 
 
 puts "4 Users' Projects created."
