@@ -50,9 +50,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   # validates :contact_phone_number, format: { with: /^1[0-9]{10}$/, message: "请输入正确的手机号码！"}, :multiline => true
-  validates_uniqueness_of :phone_number
-  validates :phone_number, phone: { possible: false, allow_blank: true, types: [:mobile] }
-  validates :captcha, presence: true
+  # validates_uniqueness_of :phone_number
+  # validates :phone_number, phone: { possible: false, allow_blank: true, types: [:mobile] }
+  # validates :captcha, presence: true
 
   after_create :create_account
 
