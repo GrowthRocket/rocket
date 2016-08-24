@@ -15,6 +15,7 @@ class Admin::ProjectsController < ApplicationController
 
   def new
     @project = Project.new
+    @categories = Category.all
   end
 
   def show
@@ -23,6 +24,7 @@ class Admin::ProjectsController < ApplicationController
 
   def edit
     @project = Project.find(params[:id])
+    @categories = Category.all
   end
 
   def create

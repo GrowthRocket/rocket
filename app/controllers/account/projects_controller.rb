@@ -13,6 +13,7 @@ class Account::ProjectsController < ApplicationController
 
   def new
     @project = current_user.projects.build
+    @categories = Category.all
   end
 
   def show
@@ -21,6 +22,7 @@ class Account::ProjectsController < ApplicationController
 
   def edit
     @project = current_user.projects.find(params[:id])
+    @categories = Category.all
   end
 
   def create
