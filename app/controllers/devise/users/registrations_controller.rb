@@ -10,17 +10,7 @@ class Devise::Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
     def create
       if @geetest
-        phone_number = params[:user][:phone_number]
-        captcha = params[:user][:captcha]
-        verification_code = VerificationCode.select("verification_code").where(phone_number: phone_number, code_status: true).take
-        if verification_code.verification_code == captcha
-          VerificationCode.where(phone_number: phone_number, code_status: true).update_all(code_status: false)
-          super
-        else
-          flash[:alert] = "验证码不正确"
-          redirect_to new_user_registration_path
-        end
-        # super
+        super
       else
         flash[:alert] = "请先滑动滑块"
         redirect_to new_user_registration_path

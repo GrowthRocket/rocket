@@ -24,7 +24,6 @@ class FundingService
     else
       @user.orders.where(plan_id: @order.plan)
     end
-    binding.pry
     @plan.plan_progress += 1
     @plan.save
     @order.pay!(@payment_method)

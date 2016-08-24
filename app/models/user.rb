@@ -20,7 +20,7 @@
 #  image                  :string
 #  aasm_state             :string
 #  phone_number           :string
-#  captcha                :integer
+#  captcha                :string
 #  country_code           :string           default("+86")
 #
 # Indexes
@@ -83,7 +83,8 @@ class User < ApplicationRecord
       transitions from: [:user_registered, :unpassed_verified], to: :request_verify
     end
     event :approve do
-      transitions from: :request_verify, to: :passed_verified
+      # transitions from: :request_verify, to: :passed_verified
+      transitions from: :user_registered, to: :passed_verified
     end
     event :reject do
       transitions from: :request_verify, to: :unpassed_verified

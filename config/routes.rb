@@ -55,6 +55,8 @@ Rails.application.routes.draw do
       member do
         post :apply_for_certify
         post :send_verification_code
+        get :show_verify_phone_number
+        post :verify_phone_number
       end
     end
     resources :projects do
