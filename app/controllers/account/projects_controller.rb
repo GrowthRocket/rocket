@@ -53,13 +53,27 @@ class Account::ProjectsController < ApplicationController
   end
 
   def apply_for_verification
+    @projects = current_user.projects
     @project = current_user.projects.find(params[:id])
-    @project.apply_verify!
 
-    IdentityVerification.create!(verify_type: 2, user_id: current_user.id,
-          title: @project.name, image: @project.image, project_id: params[:id],
-          verify_status: 0, message: "apply")
-    redirect_to :back
+    if current_user.aasm_state != "passed_verified"
+      flash[:alert] = "您尚未通过实名认证"
+      redirect_to :back
+    elsif @project.plans_count == 0
+      flash[:alert] = "您尚未创建筹款方案"
+      redirect_to :back
+    elsif  @projects.where("aasm_state = ? OR aasm_state = ?", "online", "verifying").count != 0
+      flash[:alert] = "您已有在线项目或已有项目在审核中"
+      redirect_to :back
+    else
+      @project.apply_verify!
+      IdentityVerification.create!(
+        verify_type: 2, user_id: current_user.id,
+        title: @project.name, image: @project.image, project_id: params[:id],
+        verify_status: 0, message: "apply")
+        flash[:notice] = "申请成功，请耐心等待..."
+        redirect_to :back
+    end
   end
 
   def offline
@@ -69,7 +83,7 @@ class Account::ProjectsController < ApplicationController
   end
 
   def reject_message
-     @identity_verification = IdentityVerification.find_by(project_id: params[:id])
+    @identity_verification = IdentityVerification.find_by(project_id: params[:id])
    end
 
   private
