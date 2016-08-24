@@ -4,18 +4,19 @@ class Admin::ProjectsVerifyController < ApplicationController
   layout "admin"
 
   def index
-    @projects = Project.where(:verify_status == 0)
+    @projects = Project.where(aasm_state: "verifying")
   end
 
   def show
     @project = Project.find(params[:id])
     @plans = @project.plans
+    @identity_verification = IdentityVerification.find_by(project_id: @project.id)
   end
 
   def pass_verify
     @project = Project.find(params[:id])
     @project.approve!
-    @project.verify_status = 1
+    @project.aasm_state = "online"
     @project.save
     flash[:notice] = "已通过该项目的发布申请!"
     redirect_to :back
@@ -25,9 +26,14 @@ class Admin::ProjectsVerifyController < ApplicationController
   def reject_verify
     @project = Project.find(params[:id])
     @project.reject!
-    @project.verify_status = －1
+
+
+    @project.aasm_state = "unverified"
     @project.save
     flash[:notice] = "已拒绝该项目的发布申请!"
+    @identity_verification = IdentityVerification.find_by(project_id: params[:id])
+
+    @identity_verification.update(verify_status: -1)
     redirect_to :back
     # projectMailer.notify_order_placed(@project).deliver!
   end

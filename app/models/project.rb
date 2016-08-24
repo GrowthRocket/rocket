@@ -7,9 +7,9 @@ class Project < ApplicationRecord
   has_many :posts
   belongs_to :user
   belongs_to :category
-  
+
   scope :published, -> { where(is_hidden: false) }
-  scope :recent, -> { order("created_at DESC")}
+  scope :recent, -> { order("created_at DESC") }
 
   include AASM
 
@@ -21,9 +21,8 @@ class Project < ApplicationRecord
     state :offline
 
     event :apply_verify do
-      transitions from: :project_created, to: :verifying
+      transitions from: [:project_created, :unverified], to: :verifying
     end
-
 
     event :approve do
       transitions from: :verifying, to: :online
@@ -36,8 +35,6 @@ class Project < ApplicationRecord
     event :finish do
       transitions from: :online, to: :offline
     end
-
-
   end
 
   def publish!
@@ -49,6 +46,7 @@ class Project < ApplicationRecord
     self.is_hidden = true
     save
   end
+
 end
 
 # == Schema Information

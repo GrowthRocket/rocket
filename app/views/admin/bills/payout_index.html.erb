@@ -1,14 +1,6 @@
-
-<div class="col-md-2">
-  <ul class="nav nav-pills nav-stacked">
-    <li role="presentation"> <%= link_to("收入流水", admin_bills_path) %></li>
-    <li role="presentation" class="active"><a href="#">支出流水</a></li>
-  </ul>
-</div>
+<%= render partial:"bill_nav" %>
 
 <div class="col-md-10">
-  <h2>总收入 ¥<%= @payment_amount %> </h2>
-  <h2>总支出 ¥<%= @payout_amount %></h2>
 
   <h2>支出流水</h2>
   <ul class="nav nav-tabs" id="billTabs">
@@ -29,24 +21,25 @@
         <thead>
           <th>#</th>
           <th>项目名称</th>
-          <th>合计金额</th>
-          <th>下单时间</th>
+          <th>项目已支付金额</th>
+          <th>账单生成时间</th>
+          <th>操作</th>
         </thead>
         <tbody>
 
-            <% @bill_payouts.each_with_index do |payment, index| %>
+            <% @bill_payouts.each_with_index do |payout, index| %>
             <tr>
               <td>
                 <%= index + 1 %>
               </td>
               <td>
-                <%= payment.project_name %>
+                <%= payout.project_name %><%= render_bill_status(payout.bill_status) %>
               </td>
               <td>
-                <%= payment.amount %>
+                <%= render_amount(payout.amount) %>
               </td>
               <td>
-                <%= payment.created_at %>
+                <%= payout.created_at %>
               </td>
             </tr>
             <% end %>
@@ -86,15 +79,16 @@
   }
 
   function showTabContent(id, data) {
-    content = "<table class='table table-stripe'> <thead><th>#</th><th>项目名称</th><th>合计金额</th><th>下单时间</th></thead><tbody>"
+    content = "<table class='table table-stripe'> <thead><th>#</th><th>项目名称</th><th>项目已支付金额</th><th>账单生成时间</th><th>操作</th></thead><tbody>"
     $.each(data, function(index, item) {
       content += "<tr>" +
         "<td>" + (index + 1) + "</td>" +
-        "<td>" + item.project_name +
+        "<td>"  + item.project_name +
         render_bill_state(item) +  "</td>" +
-        "<td>" + item.amount + "</td>" +
+        "<td> ¥" + item.amount + "</td>" +
         "<td>" + item.created_at  + "</td>" +
-      "</tr>";
+        "<td>" + render_payout_button(item.bill_status, item.project_id)
+      "</td></tr>";
     })
       content += "</tbody></table>"
 
@@ -104,12 +98,17 @@
   function render_bill_state(bill) {
     var content = "";
     if (bill.bill_status == "faild") {
-      content += "<span class='label label-danger'>支付失败</span>";
+      content += "<span class='label label-danger'>失败</span>";
     } else if(bill.bill_status == "success") {
-      content += "<span class='label label-success'>已支付</span>";
-    } else {
-      content += "<span class='label label-warning'>待支付</span>";
+      content += "<span class='label label-warning'>待打款</span>";
+    } else if(bill.bill_status == "paid") {
+      content += "<span class='label label-success'>已打款</span>";
     }
     return content;
   }
+
+  function render_payout_button(billStatus, projectId) {
+    return billStatus == "success" ? "<a data-method='post' class='btn btn-primary' href='admin/bills/" + projectId + "/payout'>发放资金</a>" : "";
+  }
+
 </script>

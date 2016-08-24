@@ -1,8 +1,7 @@
 class BillPayment < ApplicationRecord
-  scope :bill_payment_by_project_id, -> (bill_status) { select("project_id, project_name, backer_name, SUM(amount) as amount, created_at, bill_status").where("bill_status = ? or bill_status = ?", bill_status[0], bill_status[1]).group("project_id")}
+  scope :bill_payment_by_project_id, -> (bill_status) { select("project_id, project_name, backer_name, SUM(amount) as amount, created_at, bill_status").where("bill_status = ? or bill_status = ?", bill_status[0], bill_status[1]).group("project_id") }
 
-  scope :success_payment_by_project, -> (project_id) {where("project_id = ? and bill_status = 'success'", project_id)}
-
+  scope :success_payment_by_project, -> (project_id) { where("project_id = ? and bill_status = 'success'", project_id) }
 end
 
 # == Schema Information

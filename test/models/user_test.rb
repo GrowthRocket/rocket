@@ -18,9 +18,14 @@
 #  is_admin               :boolean          default(FALSE)
 #  user_name              :string
 #  image                  :string
+#  aasm_state             :string
+#  phone_number           :string
+#  captcha                :integer
+#  country_code           :string           default("+86")
 #
 # Indexes
 #
+#  index_users_on_aasm_state            (aasm_state)
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
