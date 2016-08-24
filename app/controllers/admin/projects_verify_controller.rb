@@ -27,13 +27,13 @@ class Admin::ProjectsVerifyController < ApplicationController
     @project = Project.find(params[:id])
     @project.reject!
 
-
+    message = params[:message]
     @project.aasm_state = "unverified"
     @project.save
     flash[:notice] = "已拒绝该项目的发布申请!"
     @identity_verification = IdentityVerification.find_by(project_id: params[:id])
 
-    @identity_verification.update(verify_status: -1)
+    @identity_verification.update(verify_status: -1, message: message)
     redirect_to admin_projects_path
     # projectMailer.notify_order_placed(@project).deliver!
   end
