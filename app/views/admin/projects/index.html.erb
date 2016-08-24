@@ -15,10 +15,9 @@
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
         <li><%= link_to("全部", admin_projects_path) %></li>
-        <li><%= link_to("视频", admin_projects_path(category_id: 1)) %></li>
-        <li><%= link_to("音乐", admin_projects_path(category_id: 2)) %></li>
-        <li><%= link_to("写作", admin_projects_path(category_id: 3)) %></li>
-        <li><%= link_to("科技", admin_projects_path(category_id: 4)) %></li>
+        <% @categories.each do |category| %>
+        <li><%= link_to(category.chs_name, admin_projects_path(category_id: category.id)) %></li>
+        <% end %>
       </ul>
   </div>
 <table class="table table-boldered">
@@ -30,7 +29,6 @@
             <th>筹款目标</th>
             <th>支持人数</th>
             <th>进度</th>
-            <th>项目ID</th>
             <th>状态</th>
             <th>操作</th>
         </tr>
@@ -59,9 +57,6 @@
             <td>
                 <%= number_with_precision(project.fund_progress.to_f / project.fund_goal * 100, :precision => 2) %>
                 %
-            </td>
-            <td>
-                <%= project.id  %>
             </td>
             <td>
                 <%= render_project_status(project) %>

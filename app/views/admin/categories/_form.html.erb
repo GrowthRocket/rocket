@@ -1,0 +1,10 @@
+<%= simple_form_for [:admin, @category] do |f| %>
+<%= f.input :name, label: "分类英文名", input_html: {class: "form-control"} %>
+<%= f.input :chs_name, label: "分类中文名", input_html: {class: "form-control"} %>
+<% if ["new", "create"].include?(controller.action_name) %>
+  <%= f.submit "创建分类", class: "btn btn-warning" %>
+<% else %>
+<%= link_to("放弃更新", admin_categories_path, class: "btn btn-default" ) %>
+  <%= f.submit "提交更新", class: "btn btn-info" %>
+<% end %>
+<% end %>

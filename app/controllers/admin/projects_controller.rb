@@ -9,11 +9,13 @@ class Admin::ProjectsController < ApplicationController
         Project.recent.where(category_id: params[:category_id]).paginate(page: params[:page], per_page: 5)
       else
         Project.all.recent.paginate(page: params[:page], per_page: 5)
-       end
+      end
+      @categories = Category.all
   end
 
   def new
     @project = Project.new
+    @categories = Category.all
   end
 
   def show
@@ -22,6 +24,7 @@ class Admin::ProjectsController < ApplicationController
 
   def edit
     @project = Project.find(params[:id])
+    @categories = Category.all
   end
 
   def create

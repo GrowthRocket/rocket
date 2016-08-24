@@ -53,8 +53,9 @@ ActiveRecord::Schema.define(version: 20160824141153) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.string   "chs_name",   default: "Simplified Chinese"
   end
 
   create_table "identity_verifications", force: :cascade do |t|
