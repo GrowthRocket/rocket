@@ -16,6 +16,7 @@
 #  plans_count     :integer          default(0)
 #  category_id     :integer
 #  aasm_state      :string           default("project_created")
+#  video           :string
 #
 # Indexes
 #

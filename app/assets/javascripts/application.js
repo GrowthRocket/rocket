@@ -17,5 +17,5 @@
 //= require bootstrap/dropdown
 //= require bootstrap/collapse
 //= require bootstrap/tab
-= require notifications
-// = require trix
+//= require trix
+//= require notifications
