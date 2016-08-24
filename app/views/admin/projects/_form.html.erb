@@ -3,7 +3,6 @@
   <%= f.input :name, :label =>"项目名称" %>
   <%= f.trix_editor :description, :label =>"项目描述" %>
   <%= f.input :fund_goal, :label =>"筹款目标" %>
-  <%= f.input :is_hidden %>
   <%= f.input :image, :label =>"主题图片" %>
   <%= f.input :category_id, :label =>"项目类型", collection: Category.all, prompt: "请选择" %>
 

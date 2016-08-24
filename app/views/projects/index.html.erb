@@ -1,8 +1,7 @@
 <div class="row">
     <div class="col-md-2">
         <ul class="nav nav-pills nav-stacked" style="max-width: 300px; padding-top:20px;">
-            <li class="categoryHeader">项目类型</li>
-            <li><%= link_to("全部", projects_path) %></li>
+            <li class="categoryHeader"><%= link_to(">全部分类", projects_path) %></li>
             <% @categories.each do |category| %>
             <li><%= link_to(category.chs_name, projects_path(category_id: category.id)) %></li>
             <% end %>
@@ -14,17 +13,15 @@
             <%= link_to(image_tag(project.image.show), project_path(project), class: "thumbnail") %>
             <h2><%= link_to(project.name, project_path(project)) %></h2>
             <p>筹集目标金额 ¥
-                <%= project.fund_goal %></p>
-            <p>已筹到 ¥
-                <%= project.fund_progress %>
-                &nbsp| &nbsp
-                <span>进度
+                <%= project.fund_goal %>
+              &nbsp| &nbsp 已筹到 ¥
+                <%= project.fund_progress %></p>
+                <p>进度
                     <%= number_with_precision(project.fund_progress.to_f / project.fund_goal * 100, :precision => 2) %>%</span>
-            </p>
-            <p>当前已有
+&nbsp| &nbsp 当前已有
                 <%= project.backer_quantity %>
                 人支持</p>
-            <%= link_to("支持项目", project_plans_path(project), :class => "btn btn-success" ) %>
+            <%#= link_to("支持项目", project_plans_path(project), :class => "btn btn-success" ) %>
         </div>
         <% end %>
     </div>
