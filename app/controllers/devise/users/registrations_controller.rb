@@ -24,7 +24,6 @@ class Devise::Users::RegistrationsController < Devise::RegistrationsController
         flash[:alert] = "请先滑动滑块"
         redirect_to new_user_registration_path
       end
-    end
   end
 
   # GET /resource/edit
