@@ -20,7 +20,7 @@
 #  image                  :string
 #  aasm_state             :string
 #  phone_number           :string
-#  captcha                :integer
+#  captcha                :string
 #  country_code           :string           default("+86")
 #
 # Indexes
