@@ -50,9 +50,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   # validates :contact_phone_number, format: { with: /^1[0-9]{10}$/, message: "请输入正确的手机号码！"}, :multiline => true
-  validates_uniqueness_of :phone_number
-  validates :phone_number, phone: { possible: false, allow_blank: true, types: [:mobile] }
-  validates :captcha, presence: true
+  # validates_uniqueness_of :phone_number
+  # validates :phone_number, phone: { possible: false, allow_blank: true, types: [:mobile] }
+  # validates :captcha, presence: true
 
   after_create :create_account
 
@@ -75,14 +75,18 @@ class User < ApplicationRecord
 
   aasm do
     state :user_registered, initial: true
+    state :request_verify
     state :passed_verified
     state :unpassed_verified
 
     event :apply_for_certify do
-      transitions from: :user_registered, to: :unpassed_verified
+      transitions from: [:user_registered, :unpassed_verified], to: :request_verify
     end
     event :approve do
-      transitions from: :unpassed_verified, to: :passed_verified
+      transitions from: :request_verify, to: :passed_verified
+    end
+    event :reject do
+      transitions from: :request_verify, to: :unpassed_verified
     end
   end
 

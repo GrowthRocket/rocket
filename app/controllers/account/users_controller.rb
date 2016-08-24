@@ -27,6 +27,7 @@ class Account::UsersController < ApplicationController
   def apply_for_certify
     @user = User.find(params[:id])
     @user.apply_for_certify!
+
     if @user.aasm_state == "passed_verify"
       flash[:notice] = "您已通过实名认证！"
       redirect_to :back
