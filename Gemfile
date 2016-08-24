@@ -49,6 +49,8 @@ gem "gravatarify"
 gem 'twilio-ruby', '~> 4.11.1'
 gem 'phonelib'
 gem "rotp"
+gem "ransack"
+gem "seo_helper"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
