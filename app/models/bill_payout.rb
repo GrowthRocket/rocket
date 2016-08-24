@@ -1,5 +1,5 @@
 class BillPayout < ApplicationRecord
-  scope :bill_payout_by_project_id, -> (bill_status) { select("project_id, project_name, creator_name, SUM(amount) as amount, created_at").where("bill_status = ? or bill_status = ?", bill_status[0], bill_status[1]).group("project_id")}
+  scope :bill_payout_by_project_id, -> (bill_status) { select("project_id, project_name, creator_name, SUM(amount) as amount, created_at, bill_status").where("bill_status = ? or bill_status = ?", bill_status[0], bill_status[1]).group("project_id")}
 end
 
 # == Schema Information

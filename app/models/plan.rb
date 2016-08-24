@@ -1,4 +1,4 @@
-
+ 
 class Plan < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
@@ -11,9 +11,6 @@ class Plan < ApplicationRecord
 
   scope :recent, -> { order("created_at DESC") }
 end
-
-
-
 
 # == Schema Information
 #

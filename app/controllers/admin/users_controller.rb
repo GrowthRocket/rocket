@@ -6,15 +6,19 @@ class Admin::UsersController < ApplicationController
   def index
     @users = User.all
   end
+
   def new
     @user = User.new
   end
+
   def show
     @user = User.find(params[:id])
   end
+
   def edit
     @user = User.find(params[:id])
   end
+
   def create
     @user = User.new(user_params)
     if @user.save
@@ -23,6 +27,7 @@ class Admin::UsersController < ApplicationController
       render :new
     end
   end
+
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
@@ -31,6 +36,7 @@ class Admin::UsersController < ApplicationController
       render :edit
     end
   end
+
   def promote
     @user = User.find(params[:id])
     @user.is_admin = true
@@ -39,14 +45,14 @@ class Admin::UsersController < ApplicationController
     redirect_to :back
   end
 
-
   def demote
     @user = User.find(params[:id])
     @user.is_admin = false
     @user.save
-    flash[:alert]= "已降为非管理员！"
+    flash[:alert] = "已降为非管理员！"
     redirect_to :back
   end
+
   private
 
   def user_params

@@ -3,12 +3,12 @@ class Account::ProjectsController < ApplicationController
   layout "user"
 
   def index
-    if params[:category_id]
-      @projects = current_user.projects.where(category_id: params[:category_id])
-    else
-      @projects = current_user.projects
-    end
-
+    @projects =
+      if params[:category_id]
+        current_user.projects.where(category_id: params[:category_id])
+      else
+        current_user.projects
+      end
   end
 
   def new
@@ -25,7 +25,6 @@ class Account::ProjectsController < ApplicationController
 
   def create
     @project = current_user.projects.build(project_params)
-
     if @project.save
       redirect_to account_projects_path, notice: "项目创建成功"
     else
@@ -53,17 +52,25 @@ class Account::ProjectsController < ApplicationController
     redirect_to :back
   end
 
-  def publish
+  def apply_for_verification
     @project = current_user.projects.find(params[:id])
-    @project.publish!
+    @project.apply_verify!
+
+    IdentityVerification.create!(verify_type: 2, user_id: current_user.id,
+          title: @project.name, image: @project.image, project_id: params[:id],
+          verify_status: 0, message: "apply")
     redirect_to :back
   end
 
-  def hide
+  def offline
     @project = current_user.projects.find(params[:id])
-    @project.hide!
+    @project.finish!
     redirect_to :back
   end
+
+  def reject_message
+     @identity_verification = IdentityVerification.find_by(project_id: params[:id])
+   end
 
   private
 

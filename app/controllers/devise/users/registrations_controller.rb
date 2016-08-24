@@ -1,16 +1,31 @@
 class Devise::Users::RegistrationsController < Devise::RegistrationsController
-# before_action :configure_sign_up_params, only: [:create]
-# before_action :configure_account_update_params, only: [:update]
-
+  # before_action :configure_sign_up_params, only: [:create]
+  # before_action :configure_account_update_params, only: [:update]
+  before_action :check_geetest, only:[:create]
   # GET /resource/sign_up
   # def new
   #   super
   # end
 
   # POST /resource
-  #  def create
-  #    super
-  #  end
+  def create
+      if @geetest
+        phone_number = params[:user][:phone_number]
+        captcha = params[:user][:captcha]
+        verification_code = VerificationCode.select("verification_code").where(phone_number: phone_number, code_status: true).take
+        if verification_code.verification_code == captcha
+          VerificationCode.where(phone_number: phone_number, code_status: true).update_all(code_status: false)
+          super
+        else
+          flash[:alert] = "验证码不正确"
+          redirect_to new_user_registration_path
+        end
+      else
+        flash[:alert] = "请先滑动滑块"
+        redirect_to new_user_registration_path
+      end
+    end
+  end
 
   # GET /resource/edit
   # def edit
@@ -57,5 +72,4 @@ class Devise::Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-
 end

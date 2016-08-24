@@ -4,11 +4,12 @@ class Admin::ProjectsController < ApplicationController
   layout "admin"
 
   def index
-    if params[:category_id]
-      @projects = Project.recent.where(category_id: params[:category_id]).paginate(:page => params[:page], :per_page => 5)
-    else
-      @projects = Project.all.recent.paginate(:page => params[:page], :per_page => 5)
-    end
+    @projects =
+      if params[:category_id]
+        Project.recent.where(category_id: params[:category_id]).paginate(page: params[:page], per_page: 5)
+      else
+        Project.all.recent.paginate(page: params[:page], per_page: 5)
+                     end
   end
 
   def new
@@ -58,9 +59,9 @@ class Admin::ProjectsController < ApplicationController
     redirect_to :back
   end
 
-  def hide
+  def offline
     @project = Project.find(params[:id])
-    @project.hide!
+    @project.finish!
     redirect_to :back
   end
 
