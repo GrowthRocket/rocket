@@ -68,6 +68,9 @@ class Account::ProjectsController < ApplicationController
     redirect_to :back
   end
 
+  def reject_message
+     @identity_verification = IdentityVerification.find_by(project_id: params[:id])
+   end
 
   private
 

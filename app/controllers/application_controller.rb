@@ -11,10 +11,19 @@ class ApplicationController < ActionController::Base
 
 
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: %i(attribute phone_number captcha))
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i(phone_number captcha))
   end
 
   def require_price_judgment_and_save(plan)
+    if plan.price.nil?
+      flash[:alert] = "请填写方案价格"
+      render "new"
+      return
+    elsif plan.plan_goal.nil?
+      flash[:alert] = "请填写方案人数"
+      render "new"
+      return
+    end
     if plan.price > plan.project.fund_goal
       flash[:alert] = "方案价格不能大于项目筹款目标哦！"
       render :new
@@ -33,7 +42,6 @@ class ApplicationController < ActionController::Base
   end
 
   def check_geetest
-
     challenge = params[:geetest_challenge] || ""
     validate = params[:geetest_validate] || ""
     seccode = params[:geetest_seccode] || ""
@@ -41,10 +49,8 @@ class ApplicationController < ActionController::Base
     # 将私钥传入，要注册的
     sdk = GeetestSDK.new
     @geetest = true
-    if !sdk.validate(challenge, validate, seccode)
+    unless sdk.validate(challenge, validate, seccode)
       @geetest = false
     end
   end
-
-
 end

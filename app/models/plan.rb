@@ -1,4 +1,4 @@
-
+ 
 class Plan < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
