@@ -6,7 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-puts "创建一个 admin 账户, 3 个 user 账户，一共 5 个项目，每个项目 3 个方案，每个方案 1 笔订单，每笔订单 1 条流水，5 种分类"
+puts "创建一个 admin 账户, admin创建 5 个项目，每个项目 3 个方案，每个方案 1 笔订单，每笔订单 1 条流水。
+4 个 user 账户，每个user创建1个项目，每个项目3个方案，每个方案1笔订单，每笔订单1条流水。
+共6 种分类。"
+
 
 User.create([email: "admin@gmail.com", password: "111111", password_confirmation: "111111", is_admin: "true"])
 puts "Admin account created."
@@ -15,20 +18,25 @@ create_users = for i in 1..3 do
                  User.create([email: "user#{i}@gmail.com", password: "111111", password_confirmation: "111111", is_admin: "false", user_name: "user#{i}"])
 end
 
-puts "User account created."
+User.create([email: "user4@gmail.com", password: '111111', password_confirmation: '111111', is_admin: 'false', user_name: "许昕"])
 
+puts "4 Users' accounts created."
+
+#共5个用户，1个admin
 Category.create!([name: "video"])
 Category.create!([name: "music"])
 Category.create!([name: "writing"])
 Category.create!([name: "science"])
 Category.create!([name: "technology"])
+Category.create!([name: "Painting"])
 
-puts "5 Category created."
+puts "6 Categories created."
 
 create_project = for i in 1..5 do
    Project.create!([name: "Poject no.#{i}", description: "我有一个好项目 #{i} 真的很不错", user_id: 1, fund_goal: 10_000 * i, is_hidden: "true", fund_progress: 600 * i,
                     backer_quantity: 3, category_id: i, aasm_state: "project_created"])
 end
+
 
 puts "5 Public Project created."
 
@@ -120,7 +128,14 @@ Project.create!([name: "User2's Poject", description: "user2 有一个好项目�
 Project.create!([name: "User3's Poject", description: "user3 有一个好项目，真的很不错", user_id: 4, fund_goal: 3000, is_hidden: "false", fund_progress: 100,
                  backer_quantity: 1, category_id: 3, aasm_state: "online"])
 
-puts "3 User's Project created."
+
+Project.create!([name: "用钢笔送你一个淡彩梦！", description: "借一场旅行，放下过去，遇见自己，然后更好地行走。
+这是一个90后的追梦心愿，或许你和我有着同样的梦想，却无法亲历实现。把你的故事和梦想告诉我，我将为你私人定制一副钢笔淡彩速写梦想之作。我叫文艺，一个90后的建筑专业高材生，毕业后，瞒着家人辞掉了深圳优越的设计院工作，去寻找精心绘画的“理想国”。 ",
+user_id: 5, fund_goal: 96000, is_hidden: "true", fund_progress: 2999,
+backer_quantity: 1, category_id: 6, aasm_state: "offline" ])
+
+
+puts "4 Users' Projects created."
 
 # user1_create_plan = for i in 1..3 do
 #   Plan.create!([title: "user1 Plan on.#{i}", description: "这是 user1 的 第#{i} 个赞助方案", quantity:1, price: 100 * i, project_id: 6, plan_goal: 10, plan_progress: 1, backer_quantity: ])
@@ -149,7 +164,14 @@ Plan.create!([title: "user3 Plan on.2", description: "这是 user3 的 第 2 个
 Plan.create!([title: "user3 Plan on.3", description: "这是 user3 的 第 3 个赞助方案", quantity:1, price: 300, project_id: 8, plan_goal: 10, plan_progress: 0, backer_quantity: 0])
 
 
-puts "9 User's Plan created."
+
+Plan.create!([title: "支持者", description: "赠送《一支笔的静心之旅：钢笔淡彩风景速写》图书及一套明信片。", quantity:1, price:199, project_id: 9, plan_goal: 100, plan_progress: 0, backer_quantity: 0])
+Plan.create!([title: "慷慨资助者", description: "赠送《一支笔的静心之旅：钢笔淡彩风景速写》图书、一套明信片、一本速写本、1个《樱木花道的镰仓高校前站》画彩印帆布袋。", quantity:1, price: 299, project_id: 9,
+plan_goal: 100, plan_progress: 0, backer_quantity: 0])
+Plan.create!([title: "VIP资助者", description: "赠送限量版私人订制钢笔淡彩风景速写作品一幅。我将给支持者单独创作绘画一幅钢笔淡彩速写作品。", quantity:1, price: 2999, project_id: 9, plan_goal: 20,
+plan_progress: 1, backer_quantity: 1])
+
+puts "12  Plans created."
 
 Order.create!([total_price: 100, plan_id: 16, creator_name: "user1", backer_name: "backer3", price: 100, quantity: 1, payment_method: "Alipay", aasm_state: "paid", user_id: 3, project_id: 6])
 BillPayment.create(
@@ -171,5 +193,19 @@ BillPayment.create(
   amount: 100, user_id: 2, backer_name: "backer2", project_id: 8, project_name: "User3's Poject",
   plan_id: 22, bill_status: "success", payment_method: "Alipay"
 )
+
+  Order.create!([total_price: 2999, plan_id: 27, creator_name:"许昕", backer_name: "李项", price: 2999 , quantity: 1, payment_method: "Alipay", aasm_state: "paid", user_id: 5, project_id:9])
+  BillPayment.create(order_id: 16, channel_id: 0,
+  amount: 2999, user_id: 5, backer_name: "李项", project_id: 9, project_name: "用钢笔送你一个淡彩梦！",
+  plan_id: 27, bill_status: "success", payment_method: "Alipay")
+
+
+  Post.create!([description:"这个世界很大，只要你愿意去看。", project_id: "9" ])
+  Post.create!([description:"很多时候我们看到的是我们想看到的，我们所见只是我们心中的真相。", project_id: "9" ])
+  Post.create!([description:"旅行远不止走马观花，而是见天见地，见自己，走过足够远的路，才会懂自己。", project_id: "9" ])
+  Post.create!([description:"云南大理是个神奇的地方，同样的人来到这，行为不同了，心境也不同了。希望有时间能够再来。", project_id: "9" ])
+  Post.create!([description:"今天创作了3幅钢笔淡彩画，感谢你们的支持，我们一起完成梦想。", project_id: "9" ])
+
+
 
 puts "User's Order and bill_payment auto create is done."

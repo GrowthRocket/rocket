@@ -41,14 +41,17 @@ class Account::UsersController < ApplicationController
   def send_verification_code
 
     # if @geetest
-      totp = ROTP::TOTP.new("base32secret3232")
-      code = totp.now
-      phone_number = params[:phone_number]
-      VerificationCode.create(phone_number: phone_number, verification_code: code)
-      options = {phone_number: phone_number, code: code}
-      NotificationService.new(options).send_sms
-      @message = {status: "y"}
-      render json: @message
+    totp = ROTP::TOTP.new("base32secret3232")
+    code = totp.now
+    phone_number = params[:phone_number]
+    unless VerificationCode.where(phone_number: phone_number, code_status: true).empty?
+      VerificationCode.where(phone_number: phone_number, code_status: true).update_all(code_status: false)
+    end
+    VerificationCode.create(phone_number: phone_number, verification_code: code)
+    options = {phone_number: phone_number, code: code}
+    NotificationService.new(options).send_sms
+    @message = {status: "y"}
+    render json: @message
     # else
     #   flash[:alert] = "请先滑动滑块"
     #   @message = {status: "n"}
