@@ -59,9 +59,9 @@ class Admin::ProjectsController < ApplicationController
     redirect_to :back
   end
 
-  def hide
+  def offline
     @project = Project.find(params[:id])
-    @project.hide!
+    @project.finish!
     redirect_to :back
   end
 

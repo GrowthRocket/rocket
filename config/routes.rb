@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       resources :plans
       member do
         post :publish
-        post :hide
+        post :offline
       end
     end
     resources :projects_verify do
@@ -53,14 +53,15 @@ Rails.application.routes.draw do
     resources :users do
       member do
         post :apply_for_certify
+        post :send_verification_code
       end
     end
     resources :projects do
       resources :posts
       resources :plans
       member do
-        post :publish
-        post :hide
+        post :apply_for_verification
+        post :offline
       end
     end
     resources :orders do
@@ -89,4 +90,6 @@ Rails.application.routes.draw do
   resources :projects do
     resources :plans
   end
+
+  resources :welcome
 end

@@ -1,7 +1,7 @@
 class Devise::Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-
+  before_action :check_geetest, only:[:create]
   # GET /resource/sign_up
   # def new
   #   super
@@ -9,20 +9,21 @@ class Devise::Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    # in your controller action
-
-    challenge = params[:geetest_challenge] || ""
-    validate = params[:geetest_validate] || ""
-    seccode = params[:geetest_seccode] || ""
-
-    # 将私钥传入，要注册的
-    sdk = GeetestSDK.new
-    if sdk.validate(challenge, validate, seccode)
-      super
-    else
-      flash[:alert] = "请滑动滑块进行验证"
-      redirect_to :back
-      # render :new
+      if @geetest
+        phone_number = params[:user][:phone_number]
+        captcha = params[:user][:captcha]
+        verification_code = VerificationCode.select("verification_code").where(phone_number: phone_number, code_status: true).take
+        if verification_code.verification_code == captcha
+          VerificationCode.where(phone_number: phone_number, code_status: true).update_all(code_status: false)
+          super
+        else
+          flash[:alert] = "验证码不正确"
+          redirect_to new_user_registration_path
+        end
+      else
+        flash[:alert] = "请先滑动滑块"
+        redirect_to new_user_registration_path
+      end
     end
   end
 

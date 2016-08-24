@@ -21,7 +21,7 @@ class Project < ApplicationRecord
     state :offline
 
     event :apply_verify do
-      transitions from: :project_created, to: :verifying
+      transitions from: [:project_created, :unverified], to: :verifying
     end
 
     event :approve do

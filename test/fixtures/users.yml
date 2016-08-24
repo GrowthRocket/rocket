@@ -18,9 +18,10 @@
 #  is_admin               :boolean          default(FALSE)
 #  user_name              :string
 #  image                  :string
-#  phone_number           :integer
-#  captcha                :integer
 #  aasm_state             :string
+#  phone_number           :string
+#  captcha                :integer
+#  country_code           :string           default("+86")
 #
 # Indexes
 #
