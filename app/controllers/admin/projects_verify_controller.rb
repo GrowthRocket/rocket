@@ -19,7 +19,7 @@ class Admin::ProjectsVerifyController < ApplicationController
     @project.aasm_state = "online"
     @project.save
     flash[:notice] = "已通过该项目的发布申请!"
-    redirect_to :back
+    redirect_to admin_projects_path
     # projectMailer.notify_order_placed(@project).deliver!
   end
 
@@ -34,7 +34,7 @@ class Admin::ProjectsVerifyController < ApplicationController
     @identity_verification = IdentityVerification.find_by(project_id: params[:id])
 
     @identity_verification.update(verify_status: -1)
-    redirect_to :back
+    redirect_to admin_projects_path
     # projectMailer.notify_order_placed(@project).deliver!
   end
 
