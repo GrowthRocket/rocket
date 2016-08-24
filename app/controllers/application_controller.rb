@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
 
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: %i(phone_number captcha))
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i(attribute))
   end
 
   def require_price_judgment_and_save(plan)

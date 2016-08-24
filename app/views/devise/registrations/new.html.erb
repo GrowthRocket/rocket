@@ -7,17 +7,17 @@
 
       <%#= f.input :user_name, required: true, label:false, autofocus: true, :placeholder => "用户名" %>
       <%= f.input :email, required: true, label:false, autofocus: true, :placeholder => "电子邮箱" %>
-      <%= f.input :phone_number, required: true, label:false, autofocus: true, hint: "请通过下方滑块验证之后再点击发送短信随机密码", :placeholder => "手机号"%>
+      <%#= f.input :phone_number, required: true, label:false, autofocus: true, hint: "请通过下方滑块验证之后再点击发送短信随机密码", :placeholder => "手机号"%>
       <script type="text/javascript" src="http://api.geetest.com/get.php?gt=a4b2ec9158bea9022e35c1b414e07adc"></script>
       <br />
-      <div class="form-actions">
+      <!-- <div class="form-actions">
         <input type="button" id="send_verification_code" value="发送短信验证码" class="btn btn-default"/>
         <%#= link_to("", "javascript:void(0)", class: "btn btn-default", id: "send_verification_code") %>
         <%#= f.button :button, "发送短信随机密码" ,  %>
-      </div>
-      <br />
+      </div> -->
+      <!-- <br /> -->
 
-      <%= f.input :captcha, required: true, label:false, autofocus: true, :placeholder => "短信随机密码" %>
+      <%#= f.input :captcha, required: true, label:false, autofocus: true, :placeholder => "短信随机密码" %>
       <%= f.input :password, required: true, label:false, hint: ("至少 #{@minimum_password_length}  位英文字母和数字组合" if @minimum_password_length), :placeholder => "密码" %>
       <%= f.input :password_confirmation, required: true , label:false,  :placeholder => "确认密码"%>
       <div class="form-actions">
