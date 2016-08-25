@@ -4,7 +4,7 @@ class Account::PlansController < ApplicationController
 
   def index
     @project = current_user.projects.find(params[:project_id])
-    @plans = @project.plans.recent
+    @plans = @project.plans.normal.recent
   end
 
   def new
@@ -20,7 +20,7 @@ class Account::PlansController < ApplicationController
 
   def edit
     @project = current_user.projects.find(params[:project_id])
-    @plan = @project.plans.find(params[:id])
+    @plan = @project.plans.normal.find(params[:id])
   end
 
   def update
@@ -35,7 +35,7 @@ class Account::PlansController < ApplicationController
 
   def destroy
     @project = current_user.projects.find(params[:project_id])
-    @plan = @project.plans.find(params[:id])
+    @plan = @project.plans.normal.find(params[:id])
     @plan.destroy
     redirect_to :back, alert: "筹款方案删除成功"
   end

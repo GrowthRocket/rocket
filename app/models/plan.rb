@@ -1,4 +1,4 @@
- 
+
 class Plan < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
@@ -10,6 +10,7 @@ class Plan < ApplicationRecord
   has_many :orders
 
   scope :recent, -> { order("created_at DESC") }
+  scope :normal, -> { where(plan_type: 1) }
 end
 
 # == Schema Information
@@ -27,4 +28,5 @@ end
 #  plan_goal       :integer
 #  plan_progress   :integer          default(0)
 #  backer_quantity :integer          default(0)
+#  plan_type       :byte             default("1")
 #

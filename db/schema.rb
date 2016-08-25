@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160824074003) do
+ActiveRecord::Schema.define(version: 20160824141153) do
 
   create_table "accounts", force: :cascade do |t|
     t.integer  "balance",      default: 0
@@ -53,8 +53,9 @@ ActiveRecord::Schema.define(version: 20160824074003) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.string   "chs_name",   default: "Simplified Chinese"
   end
 
   create_table "identity_verifications", force: :cascade do |t|
@@ -101,13 +102,14 @@ ActiveRecord::Schema.define(version: 20160824074003) do
     t.string   "title"
     t.text     "description"
     t.integer  "quantity",        default: 1
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.integer  "price"
     t.integer  "project_id"
     t.integer  "plan_goal"
     t.integer  "plan_progress",   default: 0
     t.integer  "backer_quantity", default: 0
+    t.         "plan_type",       default: "1"
   end
 
   create_table "posts", force: :cascade do |t|
