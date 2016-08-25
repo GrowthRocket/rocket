@@ -4,8 +4,8 @@
 
 <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= f.error_notification %>
-
-  <div class="form-inputs">
+  <div class="input-group margin-bottom-sm devise_form">
+    <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
     <%= f.input :email, required: true, label: false, autofocus: true , :placeholder => "请输入您的邮箱地址" %>
   </div>
 
