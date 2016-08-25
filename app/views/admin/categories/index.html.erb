@@ -1,6 +1,6 @@
 <h2>管理分类</h2>
 <div class="pull-right">
-    <%= link_to("新建分类", new_admin_category_path, :class => "btn btn-success" ) %>
+    <%= link_to("新建分类", new_admin_category_path, :class => "btn btn-default" ) %>
 </div>
 
 <table class="table table-boldered">
@@ -20,7 +20,8 @@
     <td><%= category.name %></td>
     <td><%= category.chs_name %></td>
     <td>
-    <%= link_to("编辑", edit_admin_category_path(category)) %>
+    <%= link_to("编辑", edit_admin_category_path(category), class: "btn btn-xs btn-default") %>
+
      </td>
   </tr>
 </tobdy>
