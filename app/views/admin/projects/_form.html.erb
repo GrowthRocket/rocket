@@ -10,7 +10,7 @@
   <%= f.input :is_hidden %>
   <%= f.input :video, :label => "视频（请贴优酷视频公开链接）" %>
   <%= f.input :image, :label =>"主题图片" %>
-  <%= f.input :category_id,:collection => @categories,:label_method => :chs_name,:value_method => :id,:label => "请选择分类",:include_blank => false %>
+  <%= f.input :category_id,:collection => @categories,:label_method => :chs_name,:            :user_id => 1,:label => "请选择分类",:include_blank => false %>
 
 
   <% if ["new", "create"].include?(controller.action_name) %>

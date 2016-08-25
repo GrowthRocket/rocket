@@ -36,7 +36,6 @@ class Account::ProjectsController < ApplicationController
 
   def update
     @project = current_user.projects.find(params[:id])
-    @project.is_hidden = true
     if @project.update(project_params)
       flash[:notice] = "项目更新成功"
       redirect_to account_projects_path
