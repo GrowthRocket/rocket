@@ -1,8 +1,6 @@
 <div class="project">
     <div>
         <div class="col-md-8 ">
-
-
             <div class="content">
                 <div class="image">
                 <%= render_project_video_or_image(@project) %>
@@ -44,7 +42,7 @@
                     <%= @project.name %>
                 </h1>
                 <p class="project-text">
-                    <%= image_tag(@user.image.mdimage) %>
+                    <%=image_tag((@user.image.mdimage), class: "img-circle" ,style: "width:80px; height:80px")%>
                     <%= @user.user_name %>
                     的筹款目标为¥
                     <%= @project.fund_goal %>
@@ -61,7 +59,6 @@
 
         <% @plans.each do |plan| %>
         <div class="content text-center">
-
             <p>
                 <div class="trix">
                     <div class="project-text">
