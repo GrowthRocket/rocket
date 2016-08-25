@@ -15,16 +15,11 @@
             <%= render "common/flashes" %>
               <div class="col-md-8 col-md-offset-2">
                 <ul class="nav nav-tabs">
-                  <%# if current_user.is_admin? %>
-                      <!-- <li class="active"><%#= link_to("我的资料",  account_users_path, ) %> </li> -->
-                  <%# else %>
                       <li  role="presentation" class="active"><%= link_to("我的资料",  account_users_path ) %> </li>
                       <li  role="presentation" class="active"><%= link_to("我发起的项目", account_projects_path) %> </li>
                       <!-- <li  role="presentation" class="active"><#%= link_to("我的动态", account_project_posts_path(Project.first)) %> </li> -->
                       <li  role="presentation" class="active"><%= link_to("我的项目收入", account_bills_path) %> </li>
                       <li  role="presentation" class="active"><%= link_to("我的支持记录", account_orders_path) %> </li>
-
-                  <%# end %>
                 </ul>
               </div>
 

@@ -15,11 +15,11 @@
             <%= render "common/flashes" %>
               <div class="col-md-8 col-md-offset-2">
                     <ul class="nav nav-tabs">
-                        <li role="presentation" class="active"><%= link_to("众筹项目管理", admin_projects_path) %> </li>
-                        <li role="presentation" class="active"><%= link_to("分类管理",  admin_categories_path) %> </li>
-                        <li role="presentation" class="active"><%= link_to("订单管理", admin_orders_path) %></li>
-                        <li role="presentation" class="active"><%= link_to("用户管理",  admin_users_path) %></li>
-                        <li role="presentation" class="active"><%= link_to("资金流水",  admin_bills_path) %></li>
+                        <li role="presentation"><%= active_link_to "众筹项目管理", admin_projects_path, :class_active => 'enabled' %> </li>
+                        <li role="presentation"><%= active_link_to "分类管理",  admin_categories_path,:class_active => 'enabled' %> </li>
+                        <li role="presentation"><%= active_link_to "订单管理", admin_orders_path,:class_active => 'enabled' %></li>
+                        <li role="presentation"><%= active_link_to "用户管理",  admin_users_path, :class_active => 'enabled'%></li>
+                        <li role="presentation"><%= active_link_to "资金流水",  admin_bills_path, :class_active => 'enabled'%></li>
                     </ul>
               </div>
 
