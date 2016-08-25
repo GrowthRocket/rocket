@@ -54,7 +54,7 @@
               <% if ["unverified", "project_created", "offline"].include?(project.aasm_state) %>
                 <%= link_to("编辑项目", edit_account_project_path(project), :class => "btn btn-xs btn-info") %>
               <% end %>
-                <%= link_to("申请审核", apply_for_verification_account_project_path(project), :method => :post,  :class => "btn btn-xs btn-info") %>
+                <%= link_to("申请上线", apply_for_verification_account_project_path(project), :method => :post,  :class => "btn btn-xs btn-info") %>
 
                 <%= link_to("管理筹款方案", account_project_plans_path(project), :class => "btn btn-xs btn-warning") %>
                 <%= link_to("管理动态", account_project_posts_path(project), :class => "btn btn-xs btn-success") %>
