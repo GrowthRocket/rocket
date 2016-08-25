@@ -1,0 +1,36 @@
+<%= simple_form_for [:admin, @user], :url => verify_phone_number_account_user_path, method: :post do |f| %>
+
+<div class=" col-sm-12 col-md-6 col-lg-6 col-sm-offset-0 col-md-offset-3" >
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">验证手机</h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-3 col-lg-3" align="center"> <img src="<%=@user.image.mdimage%>" class="img-circle img-responsive"> </div>
+        <div class=" col-md-9 col-lg-9 ">
+          <table class="table table-user-information">
+            <tbody>
+              <tr>
+               <td>
+                 <%= f.input :phone_number, required: true, label: "手机号码", placeholder: "请输入手机号码" ,class: "form-control"%>
+               </td>
+             </tr>
+              <tr>
+                <td>
+                  <script type="text/javascript" src="http://api.geetest.com/get.php?gt=a4b2ec9158bea9022e35c1b414e07adc"></script>
+                  <br />
+                  <%= f.input :captcha, required: true, label: "验证码", placeholder: "请输入验证码", input_html: {class: "form-control"}%>
+                  <input type="button" id="send_verification_code" value="发送短信验证码" class="btn btn-default"/>
+                  <%= f.button :submit, "验证" , disable_with: "验证中...", :class => "btn btn-success"  %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    </div>
+</div>
+
+<% end %>

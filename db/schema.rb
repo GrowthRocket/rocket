@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160824141153) do
+ActiveRecord::Schema.define(version: 20160824185115) do
 
   create_table "accounts", force: :cascade do |t|
     t.integer  "balance",      default: 0
@@ -155,7 +155,7 @@ ActiveRecord::Schema.define(version: 20160824141153) do
     t.string   "image"
     t.string   "aasm_state"
     t.string   "phone_number"
-    t.integer  "captcha"
+    t.string   "captcha"
     t.string   "country_code",           default: "+86"
     t.index ["aasm_state"], name: "index_users_on_aasm_state"
     t.index ["email"], name: "index_users_on_email", unique: true
