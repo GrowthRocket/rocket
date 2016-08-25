@@ -75,7 +75,11 @@
 
             <% if plan.plan_type == 1 %>
               <p>
-                <%= link_to("支持#{plan.price}元", new_plan_order_path(plan), :class => "reserve-sm-btn" ) %>
+                <% if plan.plan_progress >= plan.plan_goal  %>
+                  <%= link_to(("限额已满"), '#', class: "btn btn-default disabled") %>
+                <% else %>
+                  <%= link_to("支持#{plan.price}元", new_plan_order_path(plan), :class => "reserve-sm-btn" ) %>
+                <% end %>
               </p>
             <% else %>
               <p>

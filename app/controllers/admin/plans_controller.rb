@@ -17,7 +17,7 @@ class Admin::PlansController < ApplicationController
     @project = Project.find(params[:project_id])
     @plan = Plan.new(plan_params)
     @plan.project = @project
-    require_price_judgment_and_save(@plan)
+    require_create_plan_judgment(@plan)
   end
 
   def edit
@@ -29,22 +29,12 @@ class Admin::PlansController < ApplicationController
     @project = Project.find(params[:project_id])
 
     @plan = Plan.find(params[:id])
-    if @plan.update(plan_params)
-      redirect_to admin_project_plans_path, notice: "您已成功更新筹款方案。"
-    else
-      render :edit
-    end
-  end
-
-  def destroy
-    @plan = Plan.find(params[:id])
-    @plan.destroy
-    redirect_to :back, alert: "筹款方案删除成功"
+    require_update_plan_judgment
   end
 
   private
 
   def plan_params
-    params.require(:plan).permit(:title, :description, :price, :plan_goal)
+    params.require(:plan).permit(:description, :price, :plan_goal)
   end
 end
