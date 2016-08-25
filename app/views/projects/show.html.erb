@@ -44,7 +44,8 @@
                 <p class="project-text">
                     <%=image_tag((@user.image.mdimage), class: "img-circle" ,style: "width:80px; height:80px")%>
                     <%= @user.user_name %>
-                    的筹款目标为¥
+                    <br>
+                    筹款目标为 ¥
                     <%= @project.fund_goal %>
                 </p>
                 <p class="project-text">
@@ -76,7 +77,7 @@
             <% if plan.plan_type == 1 %>
               <p>
                 <% if plan.plan_progress >= plan.plan_goal  %>
-                  <%= link_to(("限额已满"), '#', class: "btn btn-default disabled") %>
+                  <%= link_to(("限额已满"), '#', class: "btn btn-default btn-md disabled") %>
                 <% else %>
                   <%= link_to("支持#{plan.price}元", new_plan_order_path(plan), :class => "reserve-sm-btn" ) %>
                 <% end %>
