@@ -107,6 +107,6 @@ class Account::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:user_name, :email, :image, :phone_number, :captcha)
+    params.require(:user).permit(:user_name, :email, :image, :phone_number, :captcha, :weibo, :description)
   end
 end
