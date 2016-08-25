@@ -7,8 +7,7 @@
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     </head>
 
-    <body style="background-image: url(/images/Body_bg.png);">
-
+    <body>
         <div class="container-fluid">
             <%= render "common/navbar" %>
             <div class="row">
@@ -22,16 +21,13 @@
                         <li role="presentation"><%= active_link_to "资金流水",  admin_bills_path, :class_active => 'enabled'%></li>
                     </ul>
               </div>
-
             </div>
-            <div class="row">
+          <div class="row">
               <div class="col-md-8 col-md-offset-2">
                 <%= yield %>
               </div>
-        </div>
+            </div>
       </div>
-
         <%= render "common/footer" %>
-
     </body>
 </html>
