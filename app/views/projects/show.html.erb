@@ -49,8 +49,7 @@
                 </p>
                 <p class="project-text">
                     已筹到 ¥
-                    <%= @project.fund_progress %>， 已有<%= @project.backer_quantity %>人支持， 进度
-                    <%= number_with_precision(@project.fund_progress.to_f / @project.fund_goal * 100, :precision => 2) %>%
+                    <%= @project.fund_progress %>， 已有<%= @project.backer_quantity %>人支持<%= render_progress(number_with_precision(@project.fund_progress.to_f / @project.fund_goal * 100, :precision => 2)) %>
                     <% if @project.aasm_state == "offline" %>
                       <%= link_to("该项目已下线", project_plans_path(@project), :class => "reserve-btn btn disabled" ) %>
                     <% else %>
