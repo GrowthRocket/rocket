@@ -1,7 +1,7 @@
 class Account::UsersController < ApplicationController
-  before_action :authenticate_user!, :except => [:send_verification_code]
-  before_action :check_geetest, only:[:send_verification_code]
-  before_action :phone_number_validates, :only => [:verify_phone_number]
+  before_action :authenticate_user!, except: [:send_verification_code]
+  before_action :check_geetest, only: [:send_verification_code]
+  before_action :phone_number_validates, only: [:verify_phone_number]
   layout "user"
 
   def index
@@ -38,7 +38,8 @@ class Account::UsersController < ApplicationController
     end
   end
 
-# TODO: 加事务 判断接口返回的状态
+  # TODO: 加事务 判断接口返回的状态
+  # FIXME: 你們的 service object 亂寫，寄送邏輯應該包在 service object 裡面而不是外面 by xdite
   def send_verification_code
     if @geetest
       totp = ROTP::TOTP.new("base32secret3232")
@@ -48,13 +49,13 @@ class Account::UsersController < ApplicationController
         VerificationCode.where(phone_number: phone_number, code_status: true).update_all(code_status: false)
       end
       VerificationCode.create(phone_number: phone_number, verification_code: code)
-      options = {phone_number: phone_number, code: code}
+      options = { phone_number: phone_number, code: code }
       NotificationService.new(options).send_sms
-      @message = {status: "y"}
+      @message = { status: "y" }
       render json: @message
     else
       flash[:alert] = "请先滑动滑块"
-      @message = {status: "n", url: @url}
+      @message = { status: "n", url: @url }
       render json: @message
     end
   end
