@@ -31,5 +31,8 @@ class Ability
     can :manage, Plan do |plan|
       (plan.project.user_id == user.id)
     end
+    can :manage, Post do |post|
+      (post.project.user_id == post.id)
+    end
   end
 end
