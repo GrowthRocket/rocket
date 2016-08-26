@@ -2,6 +2,8 @@ class Account::ProjectsController < ApplicationController
   before_action :authenticate_user!
   layout "user"
 
+  authorize_resource
+
   def index
     @projects =
       if params[:category_id]
@@ -63,7 +65,7 @@ class Account::ProjectsController < ApplicationController
     elsif @project.plans_count == 0
       flash[:alert] = "您尚未创建筹款方案"
       redirect_to :back
-    elsif  @projects.where("aasm_state = ? OR aasm_state = ?", "online", "verifying").count != 0
+    elsif @projects.where("aasm_state = ? OR aasm_state = ?", "online", "verifying").count != 0
       flash[:alert] = "您已有在线项目或已有项目在审核中"
       redirect_to :back
     else
@@ -71,9 +73,10 @@ class Account::ProjectsController < ApplicationController
       IdentityVerification.create!(
         verify_type: 2, user_id: current_user.id,
         title: @project.name, image: @project.image, project_id: params[:id],
-        verify_status: 0, message: "apply")
-        flash[:notice] = "申请成功，请耐心等待..."
-        redirect_to :back
+        verify_status: 0, message: "apply"
+      )
+      flash[:notice] = "申请成功，请耐心等待..."
+      redirect_to :back
     end
   end
 
