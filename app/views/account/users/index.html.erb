@@ -1,5 +1,5 @@
 
-<div class=" col-sm-12 col-md-6 col-lg-6 col-sm-offset-0 col-md-offset-3" >
+<div class=" col-sm-12 col-md-6 col-lg-9 col-sm-offset-0 col-md-offset-3  " >
   <div class="panel panel-info">
     <div class="panel-heading">
       <h3 class="panel-title">我的资料</h3>
@@ -19,13 +19,21 @@
               <td><%= @user.email %></td>
               </tr>
               <tr>
+              <td>微博</td>
+              <td><%= @user.weibo %></td>
+              </tr>
+              <tr>
               <td>注册时间</td>
               <td><%= @user.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
               </tr>
               <tr>
+              <td>个人简介</td>
+              <td><%= @user.description %></td>
+              </tr>
+              <!-- <tr>
               <td>我的身份</td>
               <td>众筹人 ／ 支持者<%#= render_user_level(user) %></td>
-              </tr>
+              </tr> -->
             </tbody>
           </table>
           <div>

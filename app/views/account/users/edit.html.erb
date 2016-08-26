@@ -2,6 +2,8 @@
 <%= simple_form_for [:account,@user] do |f| %>
 <%= f.input :image, :label =>"用户头像" %>
 <%= f.input :user_name, :label =>"用户名" %>
+<%= f.input :weibo, :label =>"微博" %>
+<%= f.input :description, :label =>"个人简介" %>
 <%= f.input :email, readonly: true, :label =>"邮箱地址(暂时不支持更改)" %>
 <%= link_to("修改密码", edit_user_registration_path, class: "btn btn-sm btn-default" ) %>
 <%= link_to("放弃更新", account_users_path, class: "btn btn-sm btn-default" ) %>

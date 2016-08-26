@@ -22,6 +22,8 @@
 #  phone_number           :string
 #  captcha                :string
 #  country_code           :string           default("+86")
+#  weibo                  :string
+#  description            :string
 #
 # Indexes
 #
