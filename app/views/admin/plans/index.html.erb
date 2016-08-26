@@ -11,11 +11,8 @@
             <th >方案详情</th>
             <th >支持人数</th>
             <th >进度</th>
-<<<<<<< HEAD
             <th>限额</th>
             <th>方案ID</th>
-=======
->>>>>>> develop
             <th >操作</th>
             <th >创建时间</th>
         </tr>
@@ -35,13 +32,10 @@
                 <!-- <%#= plan.plan_progress %>/ <#%= plan.plan_goal %> -->
                 <%#= number_with_precision(plan.plan_progress.to_f/plan.plan_goal * 100, precision: 2) %>
             </td>
-<<<<<<< HEAD
             <td>
               <%= plan.plan_goal %>份
             </td>
             <td><%= plan.id %></td>
-=======
->>>>>>> develop
             <td>
                 <%= link_to("编辑", edit_admin_project_plan_path(plan.project, plan), class: "btn btn-sm btn-default" )%>
                 <%= link_to("删除", admin_project_plan_path(plan.project,plan), method: :delete,  class: "btn btn-sm btn-default" , data: {confirm: "确认删除该方案么?"}) %>

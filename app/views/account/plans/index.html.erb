@@ -32,8 +32,8 @@
               <%= plan.plan_goal %>份
             </td>
             <td>
-                <%= link_to("编辑", edit_account_project_plan_path(plan.project, plan), class: "btn btn-xs btn-info" )%>
-                <%= link_to("删除", account_project_plan_path(plan.project,plan), method: :delete,  class: "btn btn-xs btn-danger" , data: {confirm: "确认删除该方案么?"}) %>
+                <%= link_to("编辑", edit_account_project_plan_path(plan.project, plan), class: "btn btn-sm btn-info" )%>
+                <%= link_to("删除", account_project_plan_path(plan.project,plan), method: :delete,  class: "btn btn-sm btn-danger" , data: {confirm: "确认删除该方案么?"}) %>
             </td>
 
             <td><%= plan.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>

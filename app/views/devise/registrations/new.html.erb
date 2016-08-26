@@ -5,7 +5,7 @@
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
       <%#= f.input :user_name, required: true, label:false, autofocus: true, :placeholder => "用户名" %>
-      <div class="input-group margin-bottom-sm devise_form">
+      <div class="input-group margin-bottom-sm devise-form">
         <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
         <!-- <input class="form-control" type="text" placeholder="Email address"> -->
         <%= f.input :email, required: true, label:false, autofocus: true, :placeholder => "电子邮箱"%>
@@ -18,20 +18,20 @@
       </div> -->
       <!-- <br /> -->
       <%#= f.input :captcha, required: true, label:false, autofocus: true, :placeholder => "短信随机密码" %>
-      <div class="input-group devise_form">
+      <div class="input-group  devise-form">
         <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
         <%#= f.input :password, class: "form-control" ,required: true, label:false, hint: ("至少 #{@minimum_password_length}  位英文字母和数字组合" if @minimum_password_length), :placeholder => "密码" %>
-        <%= f.input :password, class: "form-control" ,required: true, label:false, :placeholder => "密码,至少8位英文数字组合"%>
+        <%= f.input :password, class: "form-control devise-form" ,required: true, label:false, :placeholder => "密码,至少8位英文数字组合"%>
       </div>
-      <div class="input-group devise_form">
-        <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+      <div class="input-group devise-form">
+        <span class="input-group-addon "><i class="fa fa-key fa-fw"></i></span>
       <%= f.input :password_confirmation, class: "form-control", required: true , label:false,  :placeholder => "确认密码" %>
     </div>
-      <div>
+      <div >
         <script type="text/javascript" src="http://api.geetest.com/get.php?gt=a4b2ec9158bea9022e35c1b414e07adc"></script>
       </div>
       <br />
-      <div class="form-actions">
+      <div class="form-actions ">
         <%= f.button :submit, "注册用户" , :class => "btn btn-success btn-block"  %>
       </div>
   <% end %>

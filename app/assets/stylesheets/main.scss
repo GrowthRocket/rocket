@@ -31,10 +31,6 @@ body {
   color: #4A92B7;
 }
 
-.devise_form{
-  margin-bottom: 15px;
-}
-
 .searchbar {
   margin-bottom: 10px
 }
@@ -100,4 +96,9 @@ body {
 
 #devise-input-width{
   width: 350px;
+}
+
+.devise-form{
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
