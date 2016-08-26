@@ -31,6 +31,8 @@ gem "jbuilder", "~> 2.5"
 # gem 'capistrano-rails', group: :development
 
 gem "bootstrap-sass"
+gem "cancancan", "~> 1.10"
+
 gem "devise"
 gem "simple_form"
 gem "annotate"
@@ -46,12 +48,12 @@ gem "awesome_rails_console"
 gem "trix"
 gem "will_paginate"
 gem "gravatarify"
-gem 'twilio-ruby', '~> 4.11.1'
-gem 'phonelib'
+gem "twilio-ruby", "~> 4.11.1"
+gem "phonelib"
 gem "rotp"
 gem "ransack"
 gem "seo_helper"
-gem 'active_link_to'
+gem "active_link_to"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -1,5 +1,4 @@
-class Account::BillsController < ApplicationController
-  layout "user"
+class Account::BillsController < AccountController
   def index
     @user = current_user
     @projects = @user.projects

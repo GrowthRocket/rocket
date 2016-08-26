@@ -1,6 +1,5 @@
-class Account::ProjectsController < ApplicationController
-  before_action :authenticate_user!
-  layout "user"
+class Account::ProjectsController < AccountController
+  authorize_resource
 
   def index
     @projects =
@@ -57,24 +56,16 @@ class Account::ProjectsController < ApplicationController
     @projects = current_user.projects
     @project = current_user.projects.find(params[:id])
 
-    if current_user.aasm_state != "passed_verified"
-      flash[:alert] = "您尚未通过实名认证"
-      redirect_to :back
-    elsif @project.plans_count == 0
-      flash[:alert] = "您尚未创建筹款方案"
-      redirect_to :back
-    elsif  @projects.where("aasm_state = ? OR aasm_state = ?", "online", "verifying").count != 0
-      flash[:alert] = "您已有在线项目或已有项目在审核中"
-      redirect_to :back
-    else
-      @project.apply_verify!
-      IdentityVerification.create!(
-        verify_type: 2, user_id: current_user.id,
-        title: @project.name, image: @project.image, project_id: params[:id],
-        verify_status: 0, message: "apply")
-        flash[:notice] = "申请成功，请耐心等待..."
-        redirect_to :back
-    end
+    check_project_apply_valid
+
+    @project.apply_verify!
+    IdentityVerification.create!(
+      verify_type: 2, user_id: current_user.id,
+      title: @project.name, image: @project.image, project_id: params[:id],
+      verify_status: 0, message: "apply"
+    )
+    flash[:notice] = "申请成功，请耐心等待..."
+    redirect_to :back
   end
 
   def offline
@@ -88,6 +79,26 @@ class Account::ProjectsController < ApplicationController
    end
 
   private
+
+  def check_project_apply_valid
+    unless current_user.passed_verified?
+      flash[:alert] = "您尚未通过实名认证"
+      redirect_to :back
+      return
+    end
+
+    if @project.plans_count == 0
+      flash[:alert] = "您尚未创建筹款方案"
+      redirect_to :back
+      return
+    end
+
+    if @projects.where("aasm_state = ? OR aasm_state = ?", "online", "verifying").count != 0
+      flash[:alert] = "您已有在线项目或已有项目在审核中"
+      redirect_to :back
+      return
+    end
+  end
 
   def project_params
     params.require(:project).permit(:name, :description, :user_id, :fund_goal, :image, :plans_count, :category_id, :video)
