@@ -1,7 +1,5 @@
-class Account::PlansController < ApplicationController
-  before_action :authenticate_user!
+class Account::PlansController < AccountController
   before_action :find_project
-  layout "user"
 
   authorize_resource
 

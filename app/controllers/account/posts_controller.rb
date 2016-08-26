@@ -1,7 +1,5 @@
-class Account::PostsController < ApplicationController
-  before_action :authenticate_user!
+class Account::PostsController < AccountController
   before_action :find_project
-  layout "user"
 
   authorize_resource
 

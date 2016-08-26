@@ -1,7 +1,4 @@
-class Account::ProjectsController < ApplicationController
-  before_action :authenticate_user!
-  layout "user"
-
+class Account::ProjectsController < AccountController
   authorize_resource
 
   def index
