@@ -53,7 +53,7 @@
                     <% if @project.aasm_state == "offline" %>
                       <%= link_to("该项目已下线", project_plans_path(@project), :class => "reserve-btn btn disabled" ) %>
                     <% else %>
-                      <%= link_to("支持项目", project_plans_path(@project), :class => "reserve-btn" ) %>
+                      <%= link_to("支持项目", project_plans_path(@project), :class => "reserve-btn", style: "margin-left:45px") %>
                     <% end %>
                 </p>
             </div>
