@@ -12,7 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20160825101039) do
 
-
   create_table "accounts", force: :cascade do |t|
     t.integer  "balance",      default: 0
     t.integer  "amount",       default: 0
