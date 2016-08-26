@@ -6,7 +6,6 @@
 <table class="table table-boldered" , style="width: 100%; table-layout: fixed;">
     <thead>
         <tr>
-            <th width="5%">ID</th>
             <th >方案名称</th>
             <th >方案详情</th>
             <th >方案价格</th>
@@ -19,7 +18,6 @@
     <tbody>
         <%  @plans.each do |plan| %>
         <tr>
-            <td><%= plan.id %></td>
             <td><%= plan.title %></td>
             <td><%= render_plan_description(plan)%></td>
             <td><%= plan.price %>元</td>
