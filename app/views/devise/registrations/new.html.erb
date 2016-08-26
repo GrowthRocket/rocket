@@ -7,7 +7,6 @@
       <%#= f.input :user_name, required: true, label:false, autofocus: true, :placeholder => "用户名" %>
       <div class="input-group margin-bottom-sm devise-form">
         <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
-        <!-- <input class="form-control" type="text" placeholder="Email address"> -->
         <%= f.input :email, required: true, label:false, autofocus: true, :placeholder => "电子邮箱"%>
       </div>
       <%#= f.input :phone_number, required: true, label:false, autofocus: true, hint: "请通过下方滑块验证之后再点击发送短信随机密码", :placeholder => "手机号"%>
@@ -20,7 +19,6 @@
       <%#= f.input :captcha, required: true, label:false, autofocus: true, :placeholder => "短信随机密码" %>
       <div class="input-group  devise-form">
         <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
-        <%#= f.input :password, class: "form-control" ,required: true, label:false, hint: ("至少 #{@minimum_password_length}  位英文字母和数字组合" if @minimum_password_length), :placeholder => "密码" %>
         <%= f.input :password, class: "form-control devise-form" ,required: true, label:false, :placeholder => "密码,至少8位英文数字组合"%>
       </div>
       <div class="input-group devise-form">
