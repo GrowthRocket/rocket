@@ -1,8 +1,4 @@
-class Admin::OrdersController < ApplicationController
-  before_action :authenticate_user!
-  before_action :require_is_admin
-  layout "admin"
-
+class Admin::OrdersController < AdminController
   def index
     @orders = Order.all
   end
