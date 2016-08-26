@@ -1,6 +1,5 @@
 
 class Plan < ApplicationRecord
-  validates :title, presence: true
   validates :description, presence: true
   validates :price, presence: true
   validates :price, numericality: { greater_than: 0, less_than: 1_000_000 }
@@ -8,10 +7,12 @@ class Plan < ApplicationRecord
   validates :plan_goal, numericality: { greater_than: 0, less_than: 1_000_000 }
   belongs_to :project, counter_cache: true
   has_many :orders
-
-  scope :recent, -> { order("created_at DESC") }
   scope :normal, -> { where(plan_type: 1) }
+  scope :recent, -> { order("created_at DESC") }
 end
+
+
+
 
 # == Schema Information
 #

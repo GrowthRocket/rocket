@@ -48,7 +48,7 @@
               </td>
               <td>
                 <% if payment.bill_status == "success" %>
-                  <%= link_to("发放资金", payout_admin_bill_path(payment.project_id), method: :post, class: "btn btn-primary") %>
+                  <%= link_to("发放资金", payout_admin_bill_path(payment.project_id), method: :post, class: "btn btn-default") %>
                 <% end %>
               </td>
             </tr>

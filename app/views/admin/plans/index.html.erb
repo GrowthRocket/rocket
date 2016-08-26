@@ -7,12 +7,15 @@
     <thead>
         <tr>
             <th width="5%">#</th>
-            <th >方案名称</th>
-            <th >方案详情</th>
             <th >方案价格</th>
+            <th >方案详情</th>
             <th >支持人数</th>
             <th >进度</th>
+<<<<<<< HEAD
+            <th>限额</th>
             <th>方案ID</th>
+=======
+>>>>>>> develop
             <th >操作</th>
             <th >创建时间</th>
         </tr>
@@ -21,9 +24,10 @@
         <%  @plans.each_with_index do |plan, index| %>
         <tr>
           <td><%= index + 1 %></td>
-            <td><%= plan.title %></td>
-            <td><%= render_plan_description(plan)%></td>
-            <td><%= plan.price %>元</td>
+          <td><%= plan.price %>元</td>
+          <td class="trix">
+            <%= render_plan_description(plan) %>
+          </td>
             <td><%= plan.backer_quantity %></td>
             <td>
                 <%= number_with_precision(plan.plan_progress.to_f / plan.plan_goal * 100, :precision => 2) %>
@@ -31,10 +35,16 @@
                 <!-- <%#= plan.plan_progress %>/ <#%= plan.plan_goal %> -->
                 <%#= number_with_precision(plan.plan_progress.to_f/plan.plan_goal * 100, precision: 2) %>
             </td>
-            <td><%= plan.id %></td>
+<<<<<<< HEAD
             <td>
-                <%= link_to("编辑", edit_admin_project_plan_path(plan.project, plan), class: "btn btn-xs btn-info" )%>
-                <%= link_to("删除", admin_project_plan_path(plan.project,plan), method: :delete,  class: "btn btn-xs btn-danger" , data: {confirm: "确认删除该方案么?"}) %>
+              <%= plan.plan_goal %>份
+            </td>
+            <td><%= plan.id %></td>
+=======
+>>>>>>> develop
+            <td>
+                <%= link_to("编辑", edit_admin_project_plan_path(plan.project, plan), class: "btn btn-sm btn-default" )%>
+                <%= link_to("删除", admin_project_plan_path(plan.project,plan), method: :delete,  class: "btn btn-sm btn-default" , data: {confirm: "确认删除该方案么?"}) %>
             </td>
 
             <td><%= plan.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>

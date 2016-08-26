@@ -8,19 +8,19 @@
     <% @plans.each do |plan| %>
 
     <div class="well">
-
-        <p>
-          <%= plan.title %>
-        </p>
-        <p>
-          <%= simple_format(plan.description) %>
+        <p class="trix">
+          <%= sanitize(plan.description) %>
         </p>
         <p>
           限额 <%= plan.plan_goal %>位 | 剩余<%= plan.plan_goal - plan.plan_progress %>位
         </p>
         <% if plan.plan_type == 1 %>
           <p>
-            <%= link_to("支持#{plan.price}元", new_plan_order_path(plan), :class => "btn btn-success" ) %>
+            <% if plan.plan_progress >= plan.plan_goal  %>
+              <%= link_to(("限额已满"), '#', class: "btn btn-default disabled") %>
+            <% else %>
+              <%= link_to("支持#{plan.price}元", new_plan_order_path(plan), :class => "btn btn-success" ) %>
+            <% end %>
           </p>
         <% else %>
           <p>

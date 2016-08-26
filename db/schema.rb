@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20160825101039) do
 
+
   create_table "accounts", force: :cascade do |t|
     t.integer  "balance",      default: 0
     t.integer  "amount",       default: 0
@@ -127,7 +128,6 @@ ActiveRecord::Schema.define(version: 20160825101039) do
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
     t.integer  "fund_goal"
-    t.boolean  "is_hidden",       default: true
     t.integer  "fund_progress",   default: 0
     t.integer  "backer_quantity", default: 0
     t.integer  "plans_count",     default: 0

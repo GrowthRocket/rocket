@@ -65,16 +65,18 @@
       font-weight: 700;
       color: #fff;
       font-size: 17px;
-      text-align: center;
       display: inline-block;
       background-color: #41ccb4;
       margin: 20px 0 30px 45px;
     }
 
-  .reserve-btn:hover, a:hover, a:link, a:visited {
- text-decoration: none;}
+  .reserve-btn:hover{
+  color: white;
+ text-decoration: none;
+}
 
- .reserve-sm-btn:hover, a:hover, a:link, a:visited {
+ .reserve-sm-btn:hover {
+   color: white;
 text-decoration: none;}
 
 

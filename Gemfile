@@ -51,6 +51,7 @@ gem 'phonelib'
 gem "rotp"
 gem "ransack"
 gem "seo_helper"
+gem 'active_link_to'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
