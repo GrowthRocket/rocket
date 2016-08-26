@@ -13,19 +13,24 @@
             <%= render "common/navbar" %>
             <div class="row">
             <%= render "common/flashes" %>
-              <div class="col-md-8 col-md-offset-2">
-                    <ul class="nav nav-tabs">
-                        <li role="presentation" class="active"><%= link_to("众筹项目管理", admin_projects_path) %> </li>
-                        <li role="presentation" class="active"><%= link_to("分类管理",  admin_categories_path) %> </li>
-                        <li role="presentation" class="active"><%= link_to("订单管理", admin_orders_path) %></li>
-                        <li role="presentation" class="active"><%= link_to("用户管理",  admin_users_path) %></li>
-                        <li role="presentation" class="active"><%= link_to("资金流水",  admin_bills_path) %></li>
-                    </ul>
+              <div class="container col-md-2">
+                  <div class="notice notice-success">
+                    <li role="presentation" class="active"><%= link_to("众筹项目管理", admin_projects_path) %> </li>
+                  </div>
+                  <div class="notice notice-danger">
+                    <li role="presentation" class="active"><%= link_to("分类管理",  admin_categories_path) %> </li>
+                  </div>
+                  <div class="notice notice-info">
+                    <li role="presentation" class="active"><%= link_to("订单管理", admin_orders_path) %></li>
+                  </div>
+                  <div class="notice notice-warning">
+                    <li role="presentation" class="active"><%= link_to("用户管理",  admin_users_path) %></li>
+                  </div>
+                  <div class="notice notice-default">
+                    <li role="presentation" class="active"><%= link_to("资金流水",  admin_bills_path) %></li>
+                  </div>
               </div>
-
-            </div>
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2">
+              <div class="col-md-10 col-md-offset-0 well">
                 <%= yield %>
               </div>
         </div>
