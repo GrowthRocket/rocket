@@ -4,9 +4,9 @@ class ProjectsController < ApplicationController
 
   def index
     if params[:category_id]
-      @projects = Project.where(category_id: params[:category_id], aasm_state: "online")
+      @projects = Project.where(category_id: params[:category_id])
     else
-      @projects = Project.where(aasm_state: "online")
+      @projects = Project.all
     end
     @categories = Category.all
   end

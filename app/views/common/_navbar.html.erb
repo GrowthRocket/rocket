@@ -11,6 +11,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
+
               <% if !current_user %>
                 <li><%= link_to("注册", new_user_registration_path) %> </li>
                 <li><%= link_to("登录", new_user_session_path) %></li>
@@ -47,9 +48,9 @@
               </li>
               <% end %>
             </ul>
-            <!-- <form class="navbar-form navbar-right" role="search">
-              <button type="button" class="btn btn-success">发起项目</button>
-            </form> -->
+            <form action="<%= new_account_project_path %>" class="navbar-form navbar-right" role="search">
+              <button type="submit" class="btn btn-success">发起项目</button>
+            </form>
         </div>
         <!-- /.navbar-collapse -->
     </div>
