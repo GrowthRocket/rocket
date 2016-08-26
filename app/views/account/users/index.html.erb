@@ -29,23 +29,23 @@
             </tbody>
           </table>
           <div>
-            <%= link_to("修改我的资料", edit_account_user_path(@user), :class => "btn btn-xs btn-info") %>
+            <%= link_to("修改我的资料", edit_account_user_path(@user), :class => "btn btn-sm btn-default") %>
 
             <% if @user.aasm_state == "user_registered" %>
-              <%= link_to("认证手机", show_verify_phone_number_account_user_path(@user), :class => "btn btn-xs btn-info") %>
+              <%= link_to("认证手机", show_verify_phone_number_account_user_path(@user), :class => "btn btn-sm btn-default") %>
             <% elsif @user.aasm_state == "passed_verified" %>
-              <%= link_to("手机已认证", "javascript:void(0)", :class => "btn btn-xs btn-success disabled") %>
+              <%= link_to("手机已认证", "javascript:void(0)", :class => "btn btn-sm btn-success disabled") %>
             <% end %>
 
 
             <%# if @user.aasm_state == "user_registered" %>
-            <%#= link_to("申请实名认证", apply_for_certify_account_user_path(@user), :method => :post, :class => "btn btn-xs btn-info") %>
+            <%#= link_to("申请实名认证", apply_for_certify_account_user_path(@user), :method => :post, :class => "btn btn-sm btn-info") %>
             <%# elsif @user.aasm_state == "request_verify" %>
             <%#= content_tag(:span, "实名认证审核中，请耐心等待...", class: "label label-success") %>
             <%# elsif @user.aasm_state == "passed_verified" %>
-            <%#= link_to("已实名认证", "#", :class => "btn btn-xs btn-success disabled") %>
+            <%#= link_to("已实名认证", "#", :class => "btn btn-sm btn-success disabled") %>
             <%# else %>
-            <%#= link_to("再次申请实名认证", apply_for_certify_account_user_path(@user), :method => :post, :class => "btn btn-xs btn-info") %>
+            <%#= link_to("再次申请实名认证", apply_for_certify_account_user_path(@user), :method => :post, :class => "btn btn-sm btn-info") %>
             <%# end %>
 
 
