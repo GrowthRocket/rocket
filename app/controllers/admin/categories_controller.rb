@@ -1,8 +1,4 @@
-class Admin::CategoriesController < ApplicationController
-  before_action :authenticate_user!
-  before_action :require_is_admin
-  layout "admin"
-
+class Admin::CategoriesController < AdminController
   def index
     @categories = Category.all
   end
@@ -21,11 +17,11 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def show
-   @category = Category.find(params[:id])
+    @category = Category.find(params[:id])
   end
 
   def edit
-   @category = Category.find(params[:id])
+    @category = Category.find(params[:id])
   end
 
   def update
@@ -40,10 +36,10 @@ class Admin::CategoriesController < ApplicationController
 
   def destroy
     @category = Category.find(params[:id])
-     if @category.destroy
-     flash[:notice] = "分类删除成功"
-     redirect_to admin_categories_path
-     end
+    if @category.destroy
+      flash[:notice] = "分类删除成功"
+      redirect_to admin_categories_path
+    end
   end
 
   private

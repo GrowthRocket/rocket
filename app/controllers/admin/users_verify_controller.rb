@@ -1,8 +1,4 @@
-class Admin::UsersVerifyController < ApplicationController
-  before_action :authenticate_user!
-  before_action :require_is_admin
-  layout "admin"
-
+class Admin::UsersVerifyController < AdminController
   def index
     @users = User.where(:verify_status == 0)
   end

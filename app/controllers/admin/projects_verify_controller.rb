@@ -1,8 +1,4 @@
-class Admin::ProjectsVerifyController < ApplicationController
-  before_action :authenticate_user!
-  before_action :require_is_admin
-  layout "admin"
-
+class Admin::ProjectsVerifyController < AdminController
   def index
     @projects = Project.where(aasm_state: "verifying")
   end
