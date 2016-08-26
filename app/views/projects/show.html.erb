@@ -3,7 +3,7 @@
         <div class="col-md-8 ">
             <div class="content">
                 <div class="image">
-                <%= render_project_video_or_image(@project) %>
+                    <%= render_project_video_or_image(@project) %>
                 </div>
             </div>
 
@@ -44,16 +44,17 @@
                 <p class="project-text">
                     <%=image_tag((@user.image.mdimage), class: "img-circle" ,style: "width:80px; height:80px")%>
                     <%= @user.user_name %>
-                    <br>
-                    筹款目标为 ¥
+                    的筹款目标为¥
                     <%= @project.fund_goal %>
                 </p>
                 <p class="project-text">
                     已筹到 ¥
-                    <%= @project.fund_progress %>，
-                    已有<%= @project.backer_quantity %>人支持，
-                    进度 <%= number_with_precision(@project.fund_progress.to_f / @project.fund_goal * 100, :precision => 2) %>%
-                    <%= link_to("支持项目", project_plans_path(@project), :class => "reserve-btn" ) %>
+                    <%= @project.fund_progress %>， 已有<%= @project.backer_quantity %>人支持<%= render_progress(number_with_precision(@project.fund_progress.to_f / @project.fund_goal * 100, :precision => 2)) %>
+                    <% if @project.aasm_state == "offline" %>
+                      <%= link_to("该项目已下线", project_plans_path(@project), :class => "reserve-btn btn disabled" ) %>
+                    <% else %>
+                      <%= link_to("支持项目", project_plans_path(@project), :class => "reserve-btn" ) %>
+                    <% end %>
                 </p>
             </div>
         </div>
@@ -71,30 +72,30 @@
                 限额
                 <%= plan.plan_goal %>位 | 剩余<%= plan.plan_goal - plan.plan_progress %>位
             </p>
-
-
-
-            <% if plan.plan_type == 1 %>
-              <p>
-                <% if plan.plan_progress >= plan.plan_goal  %>
-                  <%= link_to(("限额已满"), '#', class: "btn btn-default btn-md disabled") %>
-                <% else %>
-                  <%= link_to("支持#{plan.price}元", new_plan_order_path(plan), :class => "reserve-sm-btn" ) %>
-                <% end %>
-              </p>
+            <% if @project.aasm_state == "offline" %>
+            <p>
+              <%= link_to("该项目已下线", new_plan_order_path(plan), :class => "reserve-sm-btn btn disabled") %>
+            </p>
             <% else %>
-              <p>
-                <%= form_tag new_plan_order_path(plan), method: "get", class: "form-inline" do %>
-                  <input type="text" name="custom_price" class="form-control" placeholder="请输入自定义金额"/>
-                  <%= submit_tag "支持", class: "form-control btn btn-primary" %>
-                <% end %>
-              </p>
+              <% if plan.plan_type == 1 %>
+                <%= link_to("支持#{plan.price}元", new_plan_order_path(plan), :class => "reserve-sm-btn" ) %>
+              <% else %>
+                <p>
+                    <%= form_tag new_plan_order_path(plan), method: "get", class: "form-inline" do %>
+                      <input type="text" name="custom_price" class="form-control" placeholder="请输入自定义金额"/>
+                      <% if @project.aasm_state == "offline" %>
+                        <%= submit_tag "该项目已下线", class: "form-control btn btn-primary ", disabled: true %>
+                      <% else %>
+                        <%= submit_tag "支持", class: "form-control btn btn-primary" %>
+                      <% end %>
+                    <% end %>
+                </p>
+              <% end %>
             <% end %>
         </div>
         <% end %>
 
-
-  </div>
+    </div>
 
 </div>
 

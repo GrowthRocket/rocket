@@ -9,7 +9,6 @@ class Project < ApplicationRecord
   belongs_to :user
   belongs_to :category
 
-  scope :published, -> { where(is_hidden: false) }
   scope :recent, -> { order("created_at DESC") }
 
   include AASM
@@ -38,16 +37,6 @@ class Project < ApplicationRecord
     end
   end
 
-  def publish!
-    self.is_hidden = false
-    save
-  end
-
-  def hide!
-    self.is_hidden = true
-    save
-  end
-
   def generate_custom_price_plan
 
 
@@ -73,7 +62,6 @@ end
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  fund_goal       :integer
-#  is_hidden       :boolean          default(TRUE)
 #  fund_progress   :integer          default(0)
 #  backer_quantity :integer          default(0)
 #  plans_count     :integer          default(0)

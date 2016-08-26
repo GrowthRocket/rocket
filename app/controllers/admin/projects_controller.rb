@@ -29,7 +29,7 @@ class Admin::ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-    @project.user = current_user
+
     if @project.save
       redirect_to admin_projects_path
     else
@@ -71,6 +71,6 @@ class Admin::ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :description, :user_id, :fund_goal, :image, :is_hidden, :plans_count, :category_id, :video)
+    params.require(:project).permit(:name, :description, :user_id, :fund_goal, :image, :plans_count, :category_id, :video)
   end
 end

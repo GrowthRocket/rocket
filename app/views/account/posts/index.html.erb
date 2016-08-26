@@ -18,7 +18,7 @@
             <td><%= index + 1 %></td>
             <td><%= render_post_description(post) %></td>
             <td>
-                <%= link_to("删除", account_project_post_path(post.project, post), method: :delete,  class: "btn btn-xs btn-danger" , data: {confirm: "确认删除该方案么?"}) %>
+                <%= link_to("删除", account_project_post_path(post.project, post), method: :delete,  class: "btn btn-sm btn-danger" , data: {confirm: "确认删除该方案么?"}) %>
             </td>
 
             <td><%= post.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
