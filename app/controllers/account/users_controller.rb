@@ -29,7 +29,7 @@ class Account::UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.apply_for_certify!
 
-    if @user.aasm_state == "passed_verify"
+    if @user.passed_verified?
       flash[:notice] = "您已通过实名认证！"
       redirect_to :back
     else
@@ -65,19 +65,20 @@ class Account::UsersController < ApplicationController
   end
 
   def verify_phone_number
-    if @verification_code.verification_code == @user.captcha
-      VerificationCode.where(phone_number: @user.phone_number, code_status: true).update_all(code_status: false)
-      current_user.phone_number = @user.phone_number
-      if current_user.save!
-        current_user.approve!
-        flash[:notice] = "手机验证成功"
-        redirect_to account_users_path
-      else
-        flash[:alert] = "手机验证失败，请稍后再试。"
-        render "show_verify_phone_number"
-      end
-    else
+    if @verification_code.verification_code != @user.captcha
       flash[:alert] = "验证码不正确"
+      render "show_verify_phone_number"
+      return
+    end
+
+    VerificationCode.where(phone_number: @user.phone_number, code_status: true).update_all(code_status: false)
+    current_user.phone_number = @user.phone_number
+    if current_user.save!
+      current_user.approve!
+      flash[:notice] = "手机验证成功"
+      redirect_to account_users_path
+    else
+      flash[:alert] = "手机验证失败，请稍后再试。"
       render "show_verify_phone_number"
     end
   end
@@ -88,17 +89,17 @@ class Account::UsersController < ApplicationController
     @user = User.new(user_params)
     phone_number = @user.phone_number
     captcha = @user.captcha
-    if phone_number == ""
+    if phone_number.blank?
       flash[:alert] = "请输入手机号"
       render "show_verify_phone_number"
       return
-    elsif captcha == ""
+    elsif captcha.blank?
       flash[:alert] = "请输入验证码"
       render "show_verify_phone_number"
       return
     end
     @verification_code = VerificationCode.select("verification_code").where(phone_number: phone_number, code_status: true).take
-    if @verification_code.nil?
+    if @verification_code.blank?
       flash[:alert] = "验证码错误"
       render "show_verify_phone_number"
       return
