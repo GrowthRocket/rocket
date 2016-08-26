@@ -28,5 +28,8 @@ class Ability
 
   def basic_management
     can :manage, Project
+    can :manage, Plan do |plan|
+      (plan.project.user_id == user.id)
+    end
   end
 end
