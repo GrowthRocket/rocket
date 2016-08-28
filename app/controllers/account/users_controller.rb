@@ -63,6 +63,10 @@ class Account::UsersController < ApplicationController
     @user = current_user
   end
 
+  def change_password
+    @user = current_user
+  end
+
   def verify_phone_number
     if @verification_code.verification_code == @user.captcha
       VerificationCode.where(phone_number: @user.phone_number, code_status: true).update_all(code_status: false)
