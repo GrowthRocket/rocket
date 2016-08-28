@@ -16,4 +16,8 @@ module ProjectsHelper
     highlight(excerpt_cont, query_string)
   end
 
+  def render_search_empty_result
+    
+  end
+
 end

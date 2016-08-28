@@ -6,42 +6,50 @@
   <p text-align = "center">
     尊敬的vip用户<%= @user.user_name  %>，你当前服务费为10%，以下为你的收入情况。
   </p>
-  <hr>
+  <hr />
+
+  <% if @payments.count == 0 %>
+  <div>
+     <p>暂无收入记录</p>
+  </div>
 
 
-      <table class="table table-boldered">
-        <thead>
-          <th>#</th>
-          <th>项目名称</th>
-          <th>支持者姓名</th>
-          <th>所选方案编号</th>
-          <th>合计金额</th>
-          <th>下单时间</th>
-        </thead>
+  <% else %>
+  <table class="table table-boldered">
+    <thead>
+      <th>#</th>
+      <th>项目名称</th>
+      <th>支持者姓名</th>
+      <th>所选方案编号</th>
+      <th>合计金额</th>
+      <th>下单时间</th>
+    </thead>
 
-        <tbody>
-          <% @payments.each_with_index do |payment, index| %>
-          <tr>
-            <td>
-              <%= index + 1 %>
-            </td>
-            <td>
-              <%= link_to(payment.project_name, project_path(payment.project_id) ) %>
-            </td>
-            <td>
-              <%= payment.backer_name%>
-            </td>
-            <td>
-              <!-- TODO 通过payment找到plan的title -->
-              <%= payment.plan_id %>
-            </td>
-            <td>
-              <%= payment.amount %>
-            </td>
-            <td>
-              <%= render_order_created_at(payment.created_at)%>
-            </td>
+    <tbody>
+      <% @payments.each_with_index do |payment, index| %>
+      <tr>
+        <td>
+          <%= index + 1 %>
+        </td>
+        <td>
+          <%= link_to(payment.project_name, project_path(payment.project_id) ) %>
+        </td>
+        <td>
+          <%= payment.backer_name%>
+        </td>
+        <td>
+          <!-- TODO 通过payment找到plan的title -->
+          <%= payment.plan_id %>
+        </td>
+        <td>
+          <%= payment.amount %>
+        </td>
+        <td>
+          <%= render_order_created_at(payment.created_at)%>
+        </td>
 
-            <% end %>
-        </tbody>
-       </table>
+        <% end %>
+    </tbody>
+   </table>
+
+  <% end %>
