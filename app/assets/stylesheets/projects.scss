@@ -104,8 +104,15 @@
 }
 
 .index-show{
-  border: 1px solid #e8eced;
   background-color: #fff;
   // margin: 5px;
   padding: 5px;
+}
+
+#edit-input-long-width{
+  width: 600px;
+}
+
+.edit-input-short-width{
+  width: 200px !important;
 }

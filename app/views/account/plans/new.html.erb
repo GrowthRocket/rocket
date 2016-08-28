@@ -1,7 +1,7 @@
   <h2 class="text-center">新建方案</h2>
   <%= simple_form_for [:account, @project, @plan] do |f| %>
-  <%= f.input :price, label: "方案价格", input_html: {class: "form-control"} %>
+  <%= f.input :price, label: "方案价格", input_html: {class: "edit-input-short-width"} %>
   <%= f.trix_editor :description, label: "方案描述", input_html: {class: "form-control"} %>
-  <%= f.input :plan_goal, label: "限额", input_html: {class: "form-control"} %>
+  <%= f.input :plan_goal, label: "限额", input_html: {class: "edit-input-short-width"} %>
   <%= f.submit "创建方案", class: "btn btn-warning" %>
   <% end %>
