@@ -44,7 +44,7 @@
                 <%= render_service_charge(payment.amount, @fund_rate) %>
               </td>
               <td>
-                <%= payment.created_at %>
+                <%= render_order_created_at(payment.created_at) %>
               </td>
               <td>
                 <% if payment.bill_status == "success" %>
@@ -97,7 +97,7 @@
         render_bill_state(item) +  "</td>" +
         "<td> ¥" + item.amount + "</td>" +
         "<td>" + render_fund_rate(item.amount) + "</td>" +
-        "<td>" + item.created_at  + "</td>" +
+        "<td>" + render_created_at(item.created_at)  + "</td>" +
         "<td>" + render_payment_button(item.bill_status, item.project_id)
       "</td></tr>";
     })
@@ -125,5 +125,13 @@
   function render_fund_rate(amount) {
     var fund_rate = "<%= @fund_rate %>"
     return "¥" + (parseFloat(100 - fund_rate) / 100 * amount).toFixed(2)
+  }
+
+  function render_created_at(createdAt) {
+    var d = new Date(createdAt)
+    var render_date = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate() + " " +
+    d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+    console.log(render_date)
+    return render_date;
   }
 </script>
