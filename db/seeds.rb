@@ -66,7 +66,7 @@ create_order1 = for j in 1..3 do
     BillPayment.create(
       order_id: j, channel_id: 0,
       amount: 100 * i, user_id: i + 1, backer_name: "backer#{i}", project_id: 1, project_name: "Poject no.1",
-      plan_id: j, bill_status: "success", payment_method: "Alipay"
+      plan_id: j, bill_status: "success", payment_method: "Alipay", plan_description: "这是 A 的 第#{j} 个赞助方案"
     )
     i += 1
 end
@@ -78,7 +78,7 @@ create_order2 = for j in 4..6 do
     BillPayment.create(
       order_id: j, channel_id: 0,
       amount: 200 * i, user_id: i + 1, backer_name: "backer#{i}", project_id: 2, project_name: "Poject no.2",
-      plan_id: j, bill_status: "success", payment_method: "Alipay"
+      plan_id: j, bill_status: "success", payment_method: "Alipay",plan_description: "这是 B 的 第#{j} 个赞助方案"
     )
 
     i += 1
@@ -90,7 +90,7 @@ create_order3 = for j in 7..9 do
     BillPayment.create(
       order_id: j, channel_id: 0,
       amount: 300 * i, user_id: i + 1, backer_name: "backer#{i}", project_id: 3, project_name: "Poject no.3",
-      plan_id: j, bill_status: "success", payment_method: "Alipay"
+      plan_id: j, bill_status: "success", payment_method: "Alipay", plan_description: "这是 C 的 第#{j} 个赞助方案"
     )
     i += 1
 end
@@ -101,7 +101,7 @@ create_order4 = for j in 10..12 do
     BillPayment.create(
       order_id: j, channel_id: 0,
       amount: 400 * i, user_id: i + 1, backer_name: "backer#{i}", project_id: 4, project_name: "Poject no.4",
-      plan_id: j, bill_status: "success", payment_method: "Alipay"
+      plan_id: j, bill_status: "success", payment_method: "Alipay", plan_description: "这是 D 的 第#{j} 个赞助方案"
     )
     i += 1
 end
@@ -112,7 +112,7 @@ create_order5 = for j in 13..15 do
     BillPayment.create(
       order_id: j, channel_id: 0,
       amount: 500 * i, user_id: i + 1, backer_name: "backer#{i}", project_id: 5, project_name: "Poject no.5",
-      plan_id: j, bill_status: "success", payment_method: "Alipay"
+      plan_id: j, bill_status: "success", payment_method: "Alipay", plan_description: "这是 E 的 第#{j} 个赞助方案"
     )
     i += 1
 end
@@ -177,27 +177,27 @@ Order.create!([total_price: 100, plan_id: 16, creator_name: "user1", backer_name
 BillPayment.create(
   order_id: 16, channel_id: 0,
   amount: 100, user_id: 3, backer_name: "backer3", project_id: 6, project_name: "User1's Poject",
-  plan_id: 16, bill_status: "success", payment_method: "Alipay"
+  plan_id: 16, bill_status: "success", payment_method: "Alipay", plan_description: "这是 D 的第 2 个赞助方案"
 )
 
 Order.create!([total_price: 100, plan_id: 19, creator_name: "user2", backer_name: "backer1", price: 100, quantity: 1, payment_method: "Alipay", aasm_state: "paid", user_id: 1, project_id: 7])
 BillPayment.create(
   order_id: 17, channel_id: 0,
   amount: 100, user_id: 1, backer_name: "backer1", project_id: 7, project_name: "User2's Poject",
-  plan_id: 19, bill_status: "success", payment_method: "Alipay"
+  plan_id: 19, bill_status: "success", payment_method: "Alipay", plan_description: "这是 E 的第 2 个赞助方案"
 )
 
 Order.create!([total_price: 100, plan_id: 22, creator_name: "user3", backer_name: "backer2", price: 100, quantity: 1, payment_method: "Alipay", aasm_state: "paid", user_id: 2, project_id: 8])
 BillPayment.create(
   order_id: 16, channel_id: 0,
   amount: 100, user_id: 2, backer_name: "backer2", project_id: 8, project_name: "User3's Poject",
-  plan_id: 22, bill_status: "success", payment_method: "Alipay"
+  plan_id: 22, bill_status: "success", payment_method: "Alipay", plan_description: "单纯地想支持Ta。"
 )
 
   Order.create!([total_price: 2999, plan_id: 27, creator_name:"许昕", backer_name: "李项", price: 2999 , quantity: 1, payment_method: "Alipay", aasm_state: "paid", user_id: 5, project_id:9])
   BillPayment.create(order_id: 16, channel_id: 0,
   amount: 2999, user_id: 5, backer_name: "李项", project_id: 9, project_name: "用钢笔送你一个淡彩梦！",
-  plan_id: 27, bill_status: "success", payment_method: "Alipay")
+  plan_id: 34, bill_status: "success", payment_method: "Alipay", plan_description: "赠送《一支笔的静心之旅：钢笔淡彩风景速写》图书及一套明信片。")
 
 
   Post.create!([description:"这个世界很大，只要你愿意去看。", project_id: "9" ])

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160825101039) do
+ActiveRecord::Schema.define(version: 20160828062951) do
 
   create_table "accounts", force: :cascade do |t|
     t.integer  "balance",      default: 0
@@ -31,10 +31,11 @@ ActiveRecord::Schema.define(version: 20160825101039) do
     t.integer  "plan_id"
     t.string   "bill_status"
     t.string   "payment_method"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.string   "project_name"
     t.string   "backer_name"
+    t.text     "plan_description"
     t.index ["bill_status"], name: "index_bill_payments_on_bill_status"
   end
 
