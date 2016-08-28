@@ -1,9 +1,9 @@
 
-<%= render :partial => "projects/search_bar" %>
+<%#= render :partial => "projects/search_bar" %>
 
 <br>
-<div class="search-result">
+<div class="search-result text-center">
 
-   <%= render :partial => "projects/item", :collection => @projects, :as => :project %>
+   <%= render(:partial => "projects/item", :collection => @projects, :as => :project) || "暂时还没有以这个名称命名的项目哦" %>
 
 </div>
