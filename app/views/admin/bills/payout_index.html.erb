@@ -39,7 +39,7 @@
                 <%= render_amount(payout.amount) %>
               </td>
               <td>
-                <%= payout.created_at %>
+                <%= render_order_created_at(payout.created_at) %>
               </td>
             </tr>
             <% end %>
@@ -86,7 +86,7 @@
         "<td>"  + item.project_name +
         render_bill_state(item) +  "</td>" +
         "<td> ¥" + item.amount + "</td>" +
-        "<td>" + item.created_at  + "</td>" +
+        "<td>" + render_created_at(item.created_at)  + "</td>" +
         "<td>" + render_payout_button(item.bill_status, item.project_id)
       "</td></tr>";
     })
@@ -109,6 +109,13 @@
 
   function render_payout_button(billStatus, projectId) {
     return billStatus == "success" ? "<a data-method='post' class='btn btn-primary' href='admin/bills/" + projectId + "/payout'>发放资金</a>" : "";
+  }
+  function render_created_at(createdAt) {
+    var d = new Date(createdAt)
+    var render_date = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate() + " " +
+    d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+    console.log(render_date)
+    return render_date;
   }
 
 </script>

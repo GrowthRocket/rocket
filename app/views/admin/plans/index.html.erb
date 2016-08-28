@@ -41,7 +41,7 @@
                 <%= link_to("删除", admin_project_plan_path(plan.project,plan), method: :delete,  class: "btn btn-sm btn-default" , data: {confirm: "确认删除该方案么?"}) %>
             </td>
 
-            <td><%= plan.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
+            <td><%= render_order_created_at(plan.created_at) %></td>
         </tr>
         <% end %>
     </tbody>

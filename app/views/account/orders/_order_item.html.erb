@@ -70,7 +70,7 @@ var tmp = 1
               "<td>" + item.plan_description + "</td>" +
               "<td>" + item.payment_method + "</td>" +
               "<td>" + item.total_price + "</td>" +
-              "<td>" + item.created_at  + "</td>"
+              "<td>" +render_created_at(item.created_at) + "</td>"
             "</tr>";
           })
           content += "</tbody></table>"
@@ -88,5 +88,13 @@ var tmp = 1
       content += "<span class='label label-success'>已支付</span>";
     }
     return content;
+  }
+
+  function render_created_at(createdAt) {
+    var d = new Date(createdAt)
+    var render_date = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate() + " " +
+    d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+    console.log(render_date)
+    return render_date;
   }
 </script>

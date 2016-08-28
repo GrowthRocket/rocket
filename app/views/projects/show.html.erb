@@ -25,7 +25,7 @@
                     <div class="text">
                         <%= sanitize(post.description)%>
                         <div class="post-date">
-                            <%= post.created_at.strftime("%Y-%m-%d %H:%M:%S")  %>
+                            <%= render_order_created_at(post.created_at) %>
                         </div>
                         <hr>
                     </div>
