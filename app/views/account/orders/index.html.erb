@@ -2,12 +2,14 @@
 <h2>我支持的项目</h2>
 
 <div class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true">
-  <%= render partial: "order_item", collection: @orders, as: "item" %>
+  <%= render(partial: "order_item", collection: @orders, as: "item") || render_support_empty_message %>
 </div>
 
-<div class='empty-pading-bottom'>
-点击项目名称展开查看详情
-</div>
+<% if @orders.size > 0 %>
+  <div class='empty-pading-bottom'>
+    点击项目名称展开查看详情
+  </div>
+<% end %>
 
 
   <%# @orders.each_with_index do |order, index| %>
