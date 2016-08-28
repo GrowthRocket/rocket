@@ -20,9 +20,10 @@ class ApplicationController < ActionController::Base
       render :new
       return
     elsif plan.plan_goal.nil?
-      flash[:alert] = "请填写方案人数"
-      render :new
-      return
+      plan.plan_goal = 999
+      # flash[:alert] = "请填写方案人数"
+      # render :new
+      # return
     end
     if plan.price > plan.project.fund_goal
       flash[:alert] = "方案价格不能大于项目筹款目标哦！"
