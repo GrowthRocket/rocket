@@ -61,7 +61,7 @@ puts "Plan auto create is done."
 i = 1
 
 create_order1 = for j in 1..3 do
-    Order.create!([total_price: 100 * i, plan_id: j, creator_name: "user#{i}", backer_name: "backer#{i}", price: 100 * i, quantity: 1, payment_method: "Alipay", aasm_state: "paid", user_id: i + 1, project_id: 1])
+    Order.create!([total_price: 100 * i, plan_id: j, creator_name: "user#{i}", backer_name: "backer#{i}", price: 100 * i, quantity: 1, payment_method: "Alipay", aasm_state: "paid", user_id: i + 1, project_id: 1, plan_description: "这是 A 的 第#{j} 个赞助方案", project_name:"Poject no.1"])
 
     BillPayment.create(
       order_id: j, channel_id: 0,
@@ -73,7 +73,7 @@ end
 
 i = 1
 create_order2 = for j in 4..6 do
-    Order.create!([total_price: 200 * i, plan_id: j, creator_name: "user#{i}", backer_name: "backer#{i}", price: 200 * i, quantity: 1, payment_method: "Alipay", aasm_state: "paid", user_id: i + 1, project_id: 2])
+    Order.create!([total_price: 200 * i, plan_id: j, creator_name: "user#{i}", backer_name: "backer#{i}", price: 200 * i, quantity: 1, payment_method: "Alipay", aasm_state: "paid", user_id: i + 1, project_id: 2, plan_description: "这是 B 的 第#{j} 个赞助方案", project_name:"Poject no.2"])
 
     BillPayment.create(
       order_id: j, channel_id: 0,
@@ -85,7 +85,7 @@ create_order2 = for j in 4..6 do
 end
 i = 1
 create_order3 = for j in 7..9 do
-    Order.create!([total_price: 300 * i, plan_id: j, creator_name: "user#{i}", backer_name: "backer#{i}", price: 300 * i, quantity: 1, payment_method: "WeChat", aasm_state: "paid", user_id: i + 1, project_id: 3])
+    Order.create!([total_price: 300 * i, plan_id: j, creator_name: "user#{i}", backer_name: "backer#{i}", price: 300 * i, quantity: 1, payment_method: "WeChat", aasm_state: "paid", user_id: i + 1, project_id: 3, plan_description: "这是 C 的 第#{j} 个赞助方案", project_name:"Poject no.3"])
 
     BillPayment.create(
       order_id: j, channel_id: 0,
@@ -96,7 +96,7 @@ create_order3 = for j in 7..9 do
 end
 i = 1
 create_order4 = for j in 10..12 do
-    Order.create!([total_price: 400 * i, plan_id: j, creator_name: "user#{i}", backer_name: "backer#{i}", price: 400 * i, quantity: 1, payment_method: "WeChat", aasm_state: "paid", user_id: i + 1, project_id: 4])
+    Order.create!([total_price: 400 * i, plan_id: j, creator_name: "user#{i}", backer_name: "backer#{i}", price: 400 * i, quantity: 1, payment_method: "WeChat", aasm_state: "paid", user_id: i + 1, project_id: 4, plan_description: "这是 D 的 第#{j} 个赞助方案", project_name:"Poject no.4"])
 
     BillPayment.create(
       order_id: j, channel_id: 0,
@@ -107,7 +107,7 @@ create_order4 = for j in 10..12 do
 end
 i = 1
 create_order5 = for j in 13..15 do
-    Order.create!([total_price: 500 * i, plan_id: j, creator_name: "user#{i}", backer_name: "backer#{i}", price: 500 * i, quantity: 1, payment_method: "WeChat", aasm_state: "paid", user_id: i + 1, project_id: 5])
+    Order.create!([total_price: 500 * i, plan_id: j, creator_name: "user#{i}", backer_name: "backer#{i}", price: 500 * i, quantity: 1, payment_method: "WeChat", aasm_state: "paid", user_id: i + 1, project_id: 5, plan_description: "这是 E 的 第#{j} 个赞助方案", project_name:"Poject no.5"])
 
     BillPayment.create(
       order_id: j, channel_id: 0,
@@ -173,28 +173,28 @@ plan_progress: 1, backer_quantity: 1])
 
 puts "12  Plans created."
 
-Order.create!([total_price: 100, plan_id: 16, creator_name: "user1", backer_name: "backer3", price: 100, quantity: 1, payment_method: "Alipay", aasm_state: "paid", user_id: 3, project_id: 6])
+Order.create!([total_price: 100, plan_id: 16, creator_name: "user1", backer_name: "backer3", price: 100, quantity: 1, payment_method: "Alipay", aasm_state: "paid", user_id: 3, project_id: 6, plan_description: "这是 D 的第 2 个赞助方案", project_name:"User1's Poject"])
 BillPayment.create(
   order_id: 16, channel_id: 0,
   amount: 100, user_id: 3, backer_name: "backer3", project_id: 6, project_name: "User1's Poject",
   plan_id: 16, bill_status: "success", payment_method: "Alipay", plan_description: "这是 D 的第 2 个赞助方案"
 )
 
-Order.create!([total_price: 100, plan_id: 19, creator_name: "user2", backer_name: "backer1", price: 100, quantity: 1, payment_method: "Alipay", aasm_state: "paid", user_id: 1, project_id: 7])
+Order.create!([total_price: 100, plan_id: 19, creator_name: "user2", backer_name: "backer1", price: 100, quantity: 1, payment_method: "Alipay", aasm_state: "paid", user_id: 1, project_id: 7, plan_description: "这是 E 的第 2 个赞助方案", project_name:"User2's Poject"])
 BillPayment.create(
   order_id: 17, channel_id: 0,
   amount: 100, user_id: 1, backer_name: "backer1", project_id: 7, project_name: "User2's Poject",
   plan_id: 19, bill_status: "success", payment_method: "Alipay", plan_description: "这是 E 的第 2 个赞助方案"
 )
 
-Order.create!([total_price: 100, plan_id: 22, creator_name: "user3", backer_name: "backer2", price: 100, quantity: 1, payment_method: "Alipay", aasm_state: "paid", user_id: 2, project_id: 8])
+Order.create!([total_price: 100, plan_id: 22, creator_name: "user3", backer_name: "backer2", price: 100, quantity: 1, payment_method: "Alipay", aasm_state: "paid", user_id: 2, project_id: 8, plan_description: "User3's Poject", project_name:"User3's Poject"])
 BillPayment.create(
   order_id: 16, channel_id: 0,
   amount: 100, user_id: 2, backer_name: "backer2", project_id: 8, project_name: "User3's Poject",
   plan_id: 22, bill_status: "success", payment_method: "Alipay", plan_description: "单纯地想支持Ta。"
 )
 
-  Order.create!([total_price: 2999, plan_id: 27, creator_name:"许昕", backer_name: "李项", price: 2999 , quantity: 1, payment_method: "Alipay", aasm_state: "paid", user_id: 5, project_id:9])
+  Order.create!([total_price: 2999, plan_id: 27, creator_name:"许昕", backer_name: "李项", price: 2999 , quantity: 1, payment_method: "Alipay", aasm_state: "paid", user_id: 5, project_id:9, plan_description: "赠送《一支笔的静心之旅：钢笔淡彩风景速写》图书及一套明信片。", project_name:"用钢笔送你一个淡彩梦！"])
   BillPayment.create(order_id: 16, channel_id: 0,
   amount: 2999, user_id: 5, backer_name: "李项", project_id: 9, project_name: "用钢笔送你一个淡彩梦！",
   plan_id: 34, bill_status: "success", payment_method: "Alipay", plan_description: "赠送《一支笔的静心之旅：钢笔淡彩风景速写》图书及一套明信片。")

@@ -60,12 +60,15 @@ var tmp = 1
       success: function(data){
         var content = "";
         if(data.length > 0) {
-          content = "<table class='table table-stripe'> <thead><th>#</th><th>订单编号</th><th>合计金额</th><th>下单时间</th></thead><tbody>"
+          content = "<table class='table table-stripe'> <thead><th>#</th><th>订单编号</th><th>发起人</th><th>所选方案描述</th><th>支付方式</th><th>合计金额</th><th>下单时间</th></thead><tbody>"
           $.each(data, function(index, item) {
             content += "<tr>" +
               "<td>" + (index + 1) + "</td>" +
               "<td>" + "<a href='/account/orders/"+item.token+"'>" + item.token +"</a>" +
               render_order_state(item) +  "</td>" +
+              "<td>" + item.creator_name + "</td>" +
+              "<td>" + item.plan_description + "</td>" +
+              "<td>" + item.payment_method + "</td>" +
               "<td>" + item.total_price + "</td>" +
               "<td>" + item.created_at  + "</td>"
             "</tr>";
