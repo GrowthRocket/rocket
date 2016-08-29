@@ -28,30 +28,34 @@ class ApplicationController < ActionController::Base
   end
 
   def require_create_plan_judgment(plan)
-    if plan.price.nil?
+    if plan.price.blank?
       flash[:alert] = "请填写回报价格"
       render :new
       return
-    elsif plan.plan_goal.nil?
+    end
+
+    if plan.price > plan.project.fund_goal
+      flash[:alert] = "回报价格不能大于项目筹款目标哦！"
+      render :new
+      return
+    end
+
+    if plan.plan_goal.blank?
       plan.plan_goal = 999
       # flash[:alert] = "请填写回报人数"
       # render :new
       # return
     end
-    if plan.price > plan.project.fund_goal
-      flash[:alert] = "回报价格不能大于项目筹款目标哦！"
-      render :new
-    else
-      if plan.save
-        flash[:notice] = "您已成功新建筹款回报。"
-        if current_user.is_admin?
-          redirect_to admin_project_plans_path
-        else
-          redirect_to account_project_plans_path
-        end
+
+    if plan.save
+      flash[:notice] = "您已成功新建筹款回报。"
+      if current_user.is_admin?
+        redirect_to admin_project_plans_path
       else
-        render :new
+        redirect_to account_project_plans_path
       end
+    else
+      render :new
     end
   end
 
