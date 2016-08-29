@@ -2,7 +2,7 @@
 <%#= render :partial => "projects/search_bar" %>
 
 <br>
-<div class="search-result text-center">
+<div class="search-result">
 
    <%= render(:partial => "projects/item", :collection => @projects, :as => :project) || render_search_empty_result %>
 

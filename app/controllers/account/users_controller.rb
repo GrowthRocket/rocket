@@ -64,6 +64,10 @@ class Account::UsersController < ApplicationController
     @user = current_user
   end
 
+  def change_password
+    @user = current_user
+  end
+
   def verify_phone_number
     if @verification_code.verification_code != @user.captcha
       flash[:alert] = "验证码不正确"

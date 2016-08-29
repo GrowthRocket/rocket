@@ -1,16 +1,12 @@
-<div class="col-md-6 col-md-offset-0 well">
+<div class="col-md-6 col-md-offset-0 index-show">
     <%= link_to(image_tag(project.image.show), project_path(project), class: "thumbnail") %>
     <h2><%= link_to(render_highlight_content(project, @query_string), project_path(project)) %></h2>
     <p>筹集目标金额 ¥
-        <%= project.fund_goal %></p>
-    <p>已筹到 ¥
-        <%= project.fund_progress %>
-        &nbsp| &nbsp
-        <span>进度
-            <%= number_with_precision(project.fund_progress.to_f / project.fund_goal * 100, :precision => 2) %>%</span>
-    </p>
-    <p>当前已有
+        <%= project.fund_goal %>
+      &nbsp| &nbsp 已筹到 ¥
+        <%= project.fund_progress %></p>
+        <p>
+            <%= render_progress(number_with_precision(project.fund_progress.to_f / project.fund_goal * 100, :precision => 2)) %>当前已有
         <%= project.backer_quantity %>
         人支持</p>
-    <%= link_to("支持项目", project_plans_path(project), :class => "btn btn-success" ) %>
 </div>

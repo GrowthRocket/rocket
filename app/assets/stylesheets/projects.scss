@@ -2,13 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-
-
 .projects{
  font-family: 'Microsoft Yahei';
 }
-
 
 .content{
   background-color: #fff;
@@ -16,7 +12,6 @@
   margin: 0 0 30px 0;
   border: 1px solid #e8eced
 }
-
 
 .content .project-card {
   float: right;
@@ -29,15 +24,12 @@
   font-family: 'Microsoft Yahei';
   padding: 5px 30px 11px 45px;
   line-height: 28px;
-
 }
 
- .content .image{
+.content .image{
  padding: 19px 0 19px 0;
  text-align: center;
 }
-
-
 
 .reserve-btn {
     margin-top: 25px;
@@ -52,33 +44,31 @@
     display: inline-block;
     background-color: #41ccb4;
     margin-bottom: 30px;
-
-
-  }
+}
 
 
 .reserve-sm-btn {
-    border-radius: 3px;
-    width: 135px;
-    height: 40px;
-    line-height: 38px;
-    font-weight: 700;
-    color: #fff;
-    font-size: 17px;
-    display: inline-block;
-    background-color: #41ccb4;
-    margin: 20px 0 30px 45px;
-  }
+      border-radius: 3px;
+      width: 135px;
+      height: 40px;
+      line-height: 38px;
+      font-weight: 700;
+      color: #fff;
+      font-size: 17px;
+      display: inline-block;
+      background-color: #41ccb4;
+      margin: 20px 0 30px 45px;
+}
 
 .reserve-btn:hover{
   color: white;
  text-decoration: none;
 }
 
- .reserve-sm-btn:hover {
+.reserve-sm-btn:hover {
    color: white;
-text-decoration: none;}
-
+   text-decoration: none;
+}
 
 .project h1{
   font-family: 'Microsoft Yahei';
@@ -86,10 +76,7 @@ text-decoration: none;}
   text-align: left;
   padding: 0 10px 10px 45px;
   line-height: 28px;
-
 }
-
-
 
 .content h2{
   font-family: 'STKaiti';
@@ -111,7 +98,21 @@ text-decoration: none;}
   line-height: 28px;
 }
 
- .text .post-date{
+.text .post-date{
   font-size: 10px;
   color: #a5a5a5
+}
+
+.index-show{
+  background-color: #fff;
+  // margin: 5px;
+  padding: 5px;
+}
+
+#edit-input-long-width{
+  width: 600px;
+}
+
+.edit-input-short-width{
+  width: 200px !important;
 }

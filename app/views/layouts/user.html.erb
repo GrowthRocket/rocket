@@ -10,18 +10,17 @@
     <body>
       <div class="container-fluid">
             <%= render "common/navbar" %>
-            <div class="row">
             <%= render "common/flashes" %>
-              <div class="col-md-8 col-md-offset-2">
-                <ul class="nav nav-tabs">
-                      <li  role="presentation" class="active"><%= link_to("我的资料",  account_users_path ) %> </li>
-                      <li  role="presentation" class="active"><%= link_to("我发起的项目", account_projects_path) %> </li>
-                      <!-- <li  role="presentation" class="active"><#%= link_to("我的动态", account_project_posts_path(Project.first)) %> </li> -->
-                      <li  role="presentation" class="active"><%= link_to("我的项目收入", account_bills_path) %> </li>
-                      <li  role="presentation" class="active"><%= link_to("我的支持记录", account_orders_path) %> </li>
-                </ul>
+            <div class="row">
+              <div class="col-md-2 col-md-offset-0">
+                <ul class="nav nav-pills nav-stacked user-menu-li">
+                <%= active_link_to("我的资料", account_users_path , :active => :inclusive, :wrap_tag => :li ) %>
+                <%= active_link_to("我发起的项目", account_projects_path , :active => :inclusive, :wrap_tag => :li ) %>
+                <%= active_link_to("我的项目收入", account_bills_path , :active => :inclusive, :wrap_tag => :li ) %>
+                <%= active_link_to("我的支持记录", account_orders_path , :active => :inclusive, :wrap_tag => :li ) %>
+              </ul>
               </div>
-              <div class="col-md-8 col-md-offset-2">
+              <div class="col-md-10 col-md-offset-0 well">
                 <%= yield %>
               </div>
             </div>

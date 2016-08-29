@@ -1,3 +1,22 @@
-// Place all the styles related to the account controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.user-menu-li{
+  padding: 10px;
+  max-width: 150px;
+  background-color: #fafafa;
+}
+
+.user-name-input-witdth{
+  width: 200px;
+}
+
+.user-weibo-input-witdth{
+  width: 300px;
+}
+
+.user-info-input-witdth{
+  rows: 4 !important;
+  width: 300px;
+}
+
+.arrow-downward{
+  margin-right: 10px;
+}

@@ -1,13 +1,10 @@
-
-<div class=" col-sm-12 col-md-6 col-lg-9 col-sm-offset-0 col-md-offset-3  " >
-  <div class="panel panel-info">
-    <div class="panel-heading">
-      <h3 class="panel-title">我的资料</h3>
-    </div>
-    <div class="panel-body">
+    <div>
+      <h2>我的资料</h2>
       <div class="row">
-        <div class="col-md-3 col-lg-3" align="center"> <img src="<%=@user.image.mdimage%>" class="img-circle img-responsive"> </div>
-        <div class=" col-md-9 col-lg-9 ">
+        <div class="col-md-2 col-lg-2" align="center">
+          <img src="<%=@user.image.mdimage%>" class="img-responsive">
+        </div>
+        <div class=" col-md-7 col-lg-7 ">
           <table class="table table-user-information">
             <tbody>
               <tr>
@@ -30,19 +27,15 @@
               <td>个人简介</td>
               <td><%= @user.description %></td>
               </tr>
-              <!-- <tr>
-              <td>我的身份</td>
-              <td>众筹人 ／ 支持者<%#= render_user_level(user) %></td>
-              </tr> -->
             </tbody>
           </table>
           <div>
-            <%= link_to("修改我的资料", edit_account_user_path(@user), :class => "btn btn-sm btn-default") %>
-
+            <%= link_to("修改个人资料", edit_account_user_path(@user), :class => "btn btn-sm btn-default") %>
+            <%= link_to("修改密码", edit_user_registration_path, class: "btn btn-sm btn-default" ) %>
             <% if @user.aasm_state == "user_registered" %>
-              <%= link_to("认证手机", show_verify_phone_number_account_user_path(@user), :class => "btn btn-sm btn-default") %>
+              <%= link_to("验证手机", show_verify_phone_number_account_user_path(@user), :class => "btn btn-sm btn-default") %>
             <% elsif @user.aasm_state == "passed_verified" %>
-              <%= link_to("手机已认证", "javascript:void(0)", :class => "btn btn-sm btn-success disabled") %>
+              <%= link_to("手机已验证", "javascript:void(0)", :class => "btn btn-sm btn-success disabled") %>
             <% end %>
 
 
@@ -61,5 +54,3 @@
         </div>
       </div>
     </div>
-    </div>
-</div>
