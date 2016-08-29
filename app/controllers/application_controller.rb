@@ -54,9 +54,9 @@ class ApplicationController < ActionController::Base
   end
 
   def check_geetest
-    challenge = params[:geetest_challenge] || ""
-    validate = params[:geetest_validate] || ""
-    seccode = params[:geetest_seccode] || ""
+    challenge = params[:geetest_challenge]
+    validate = params[:geetest_validate]
+    seccode = params[:geetest_seccode]
 
     # 将私钥传入，要注册的
     sdk = GeetestSDK.new
