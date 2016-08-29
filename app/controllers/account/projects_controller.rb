@@ -66,6 +66,7 @@ class Account::ProjectsController < AccountController
     )
     flash[:notice] = "申请成功，请耐心等待..."
     redirect_to :back
+    return 
   end
 
   def offline
@@ -88,7 +89,7 @@ class Account::ProjectsController < AccountController
     end
 
     if @project.plans_count == 0
-      flash[:alert] = "您尚未创建筹款方案"
+      flash[:alert] = "您尚未创建筹款回报"
       redirect_to :back
       return
     end

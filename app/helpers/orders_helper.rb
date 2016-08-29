@@ -9,7 +9,7 @@ module OrdersHelper
     end
   end
 
-  def render_support_empty_message
+  def render_order_empty_warning
     content_tag :div, class: "text-center" do
       content_tag :span, "暂无支持项目"
     end

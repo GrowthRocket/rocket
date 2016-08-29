@@ -10,10 +10,16 @@ module Admin::ProjectsHelper
     when "unverified"
       content_tag(:span, "审核未通过", class: "label label-danger")
     when "offline"
-      content_tag(:span, "已下线", class: "label label-info")
+      content_tag(:span, "已结束众筹", class: "label label-info")
     end
   end
 
   def render_project_backers_quantity(project)
+  end
+
+  def render_project_empty_warning
+    content_tag :div, class: "text-center" do
+      content_tag :span, "暂时还没有项目哦"
+    end
   end
 end
