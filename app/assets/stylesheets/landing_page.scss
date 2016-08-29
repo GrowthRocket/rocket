@@ -1,0 +1,83 @@
+.lp-container {
+  // min-width: 1200px;
+  height: 600px;
+  font-family: "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: #fff;
+}
+
+.lp-container-flex {
+    max-width: 1080px;
+    margin-right: auto;
+    margin-left: auto;
+
+}
+
+.lp-container-col{
+  width: 320px;
+  position: relative;
+  float:left;
+  margin: 30px 20px 20px 20px;
+  background-color: #fff;
+  height: 440px;
+  border: solid 1px #F1EEEA;
+  border-radius: 8px;
+  overflow: hidden;
+}
+//定义框
+
+.lp-container-col .image{
+  display: block;
+  position: relative;
+}
+
+
+.lp-container-col .lp-container-title {
+  margin: 0 20px;
+  overflow: hidden;
+  line-height: 40px;
+  font-weight: bold;
+  font-size: 13px;
+  overflow: hidden;
+  color: black;
+}
+
+.lp-container-col .lp-container-title:hover{
+  text-decoration: none;
+}
+
+.lp-container-col .lp-container-text {
+  margin: 0 20px;
+  height: 60px;
+  overflow: hidden;
+  font-size: 12px;
+  line-height: 20px;
+  color: #888888;
+
+}
+
+.lp-container-col .progress-whole{
+  margin: 40px 0px 5px 20px;
+  width: 280px;
+  height: 5px;
+}
+
+.lp-container-col .progress-content{
+  background-color: #50abf2;
+}
+//以上为进度条
+
+
+.lp-container-col   .lp-text-col{
+  width: 25%;
+  position: relative;
+  float:left;
+  margin: 10px 0 10px 20px;
+  font-size: 12px;
+  line-height: 20px;
+  color: #888888;
+
+}
+
+.lp-container-col .lp-container-figure {
+  color: black;
+}
