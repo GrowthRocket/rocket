@@ -108,34 +108,47 @@
   border: solid 2px #F1EEEA;
   border-radius: 6px;
 }
-//rabecca
+//rabecca end ***
 
 .lp-user{
-  // background: rgba(0, 0, 0, 0.35);
-  width:40%;
-  margin:auto;
-  padding:auto;
+  height: 300px;
+  margin:80px 0 0;
 }
 
 .lp-user img{
+  // background: rgba(0, 0, 0, 0.35);
   width: 100px;
-  float:left;
-  margin: 20px;
+  // float:left;
+  margin: 25px 0 0 30px;
 }
 
 .lp-user.title{
 font-weight: bold;
 }
 
-.lp-user p{
+.lp-user-desciption {
   // width: 100px;
   // float:left;
-  margin: 5px;
+  margin: 25px 0 0;
 }
 
-.lp-user.link{
+.lp-user-link a{
   a:link {text-decoration: none; color: #e9e9e9};
   a:visited {text-decoration: none; color: #e9e9e9}	;
   a:hover {text-decoration: none; color: #e9e9e9}	;
   a:active {text-decoration: none; color: #e9e9e9};
+}
+
+
+.lp-action{
+  background: rgba(0, 0, 0, 0.35);
+  width: 320px;
+  position: relative;
+  float:left;
+  margin: 20px;
+  padding: 0 20px;
+  background-color: #fff;
+  height: 440px;
+  border: solid 2px #F1EEEA;
+  border-radius: 6px;
 }
