@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   def resource_name
     :user
-   end
+  end
 
   def resource
     @resource ||= User.new

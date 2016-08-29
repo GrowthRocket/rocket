@@ -63,10 +63,9 @@ class Account::ProjectsController < AccountController
         verify_status: 0, message: "apply"
       )
       flash[:notice] = "申请成功，请耐心等待..."
-      redirect_to :back
-    else
-      redirect_to :back
+
     end
+    redirect_to :back
   end
 
   def offline

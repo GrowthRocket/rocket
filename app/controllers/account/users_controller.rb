@@ -30,13 +30,15 @@ class Account::UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.apply_for_certify!
 
-    if @user.passed_verified?
-      flash[:notice] = "您已通过实名认证！"
-      redirect_to :back
-    else
-      flash[:notice] = "您已提交申请实名认证！"
-      redirect_to :back
-    end
+    flash[:notice] =
+      if @user.passed_verified?
+        "您已通过实名认证！"
+
+      else
+        "您已提交申请实名认证！"
+
+      end
+    redirect_to :back
   end
 
   # TODO: 加事务 判断接口返回的状态
@@ -53,12 +55,14 @@ class Account::UsersController < ApplicationController
       options = { phone_number: phone_number, code: code }
       NotificationService.new(options).send_sms
       @message = { status: "y" }
-      render json: @message
+
     else
       flash[:alert] = "请先滑动滑块"
       @message = { status: "n", url: @url }
-      render json: @message
+
     end
+
+    render json: @message
   end
 
   def show_verify_phone_number
