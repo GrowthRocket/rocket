@@ -58,7 +58,7 @@ Rails.application.routes.draw do
         post :send_verification_code
         get :show_verify_phone_number
         post :verify_phone_number
-        post :change_password
+        get :change_password
       end
     end
     resources :projects do
