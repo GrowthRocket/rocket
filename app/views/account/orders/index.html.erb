@@ -2,7 +2,7 @@
 <h2>我支持的项目</h2>
 
 <div class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true">
-  <%= render(partial: "order_item", collection: @orders, as: "item") || render_support_empty_message %>
+  <%= render(partial: "order_item", collection: @orders, as: "item") || render_order_empty_warning %>
 </div>
 
 <% if @orders.size > 0 %>

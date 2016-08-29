@@ -34,4 +34,10 @@ module Admin::OrdersHelper
 
   def render_order_operation(order)
   end
+
+  def render_order_empty_warning
+    content_tag :div, class: "text-center" do
+      content_tag :span, "暂时还没有订单"
+    end
+  end
 end
