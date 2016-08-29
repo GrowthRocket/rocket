@@ -1,0 +1,66 @@
+$(function() {
+  $('#new_project').ajaxForm({
+    success: function(data) {
+      $(this).next.append(showPlan())
+    }
+  });
+})
+
+function showPlan() {
+  var content = '';
+  content = "<div class='row'>" +
+              "<div class='col-md-4 col-md-offset-4'>" +
+                "<i class='fa fa-dot-circle-o fa-4x project-circle' aria-hidden='true'></i>" +
+                "<i class='fa fa-check-circle fa-4x project-circle' aria-hidden='true'></i>" +
+              "</div>" +
+            "</div>" +
+            "<div class='row'>" +
+              "<div class='col-md-4 col-md-offset-4 well project-well'>" +
+                "<h1>项目信息</h1>" +
+                  // generateForm() +
+              "</div>" +
+            "</div>";
+
+}
+
+function generateForm() {
+  var content = "<form novalidate='novalidate' class='simple_form new_plan' id='new_plan' action='/account/projects/6/plans' accept-charset='UTF-8' method='post'><input name='utf8' type='hidden' value='✓'><input type='hidden' name='authenticity_token' value='3uhUnCrwOSa4emgf9XkOldUYe9ht5xP5HGdBPlfL132Jfol+ivsrUBdkOcHr9vR+RGu3oE/4T4BtLzdLidjFsg=='>
+    <div class='form-group integer required plan_price'><label class='integer required control-label' for='plan_price'><abbr title='required'>*</abbr> 方案价格</label><input class='numeric integer required edit-input-short-width form-control' type='number' step='1' name='plan[price]' id='plan_price'></div>
+    <trix-toolbar id='trix-toolbar-2'><div class='button_groups'>
+    <span class='button_group text_tools'>
+      <button type='button' class='bold' data-trix-attribute='bold' data-trix-key='b' title='Bold'>Bold</button>
+      <button type='button' class='italic' data-trix-attribute='italic' data-trix-key='i' title='Italic'>Italic</button>
+      <button type='button' class='strike' data-trix-attribute='strike' title='Strikethrough'>Strikethrough</button>
+      <button type='button' class='link' data-trix-attribute='href' data-trix-action='link' data-trix-key='k' title='Link'>Link</button>
+    </span>
+
+    <span class='button_group block_tools'>
+      <button type='button' class='quote' data-trix-attribute='quote' title='Quote'>Quote</button>
+      <button type='button' class='code' data-trix-attribute='code' title='Code'>Code</button>
+      <button type='button' class='list bullets' data-trix-attribute='bullet' title='Bullets'>Bullets</button>
+      <button type='button' class='list numbers' data-trix-attribute='number' title='Numbers'>Numbers</button>
+      <button type='button' class='block-level decrease' data-trix-action='decreaseBlockLevel' title='Decrease Level'>Decrease Level</button>
+      <button type='button' class='block-level increase' data-trix-action='increaseBlockLevel' title='Increase Level'>Increase Level</button>
+    </span>
+
+    <span class='button_group history_tools'>
+      <button type='button' class='undo' data-trix-action='undo' data-trix-key='z' title='Undo'>Undo</button>
+      <button type='button' class='redo' data-trix-action='redo' data-trix-key='shift+z' title='Redo'>Redo</button>
+    </span>
+  </div>
+
+  <div class='dialogs'>
+    <div class='dialog link_dialog' data-trix-attribute='href' data-trix-dialog='href'>
+      <div class='link_url_fields'>
+        <input type='url' required='' name='href' placeholder='Enter a URL…' disabled='disabled'>
+        <div class='button_group'>
+          <input type='button' value='Link' data-trix-method='setAttribute'>
+          <input type='button' value='Unlink' data-trix-method='removeAttribute'>
+        </div>
+      </div>
+    </div>
+  </div></trix-toolbar><trix-editor class='formatted_content' input='plan_description_trix_input_plan' contenteditable='' trix-id='2' toolbar='trix-toolbar-2'></trix-editor><input type='hidden' name='plan[description]' id='plan_description_trix_input_plan'>
+    <div class='form-group integer required plan_plan_goal'><label class='integer required control-label' for='plan_plan_goal'><abbr title='required'>*</abbr> 人数上限</label><input class='numeric integer required edit-input-short-width form-control' type='number' step='1' name='plan[plan_goal]' id='plan_plan_goal'></div>
+    <input type='submit' name='commit' value='申请审核' class='btn btn-warning' data-disable-with='申请审核...'>
+  </form>";
+}

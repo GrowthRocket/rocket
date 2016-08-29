@@ -27,7 +27,8 @@ class Account::ProjectsController < AccountController
   def create
     @project = current_user.projects.build(project_params)
     if @project.save
-      redirect_to account_projects_path, notice: "项目创建成功"
+      # redirect_to account_projects_path, notice: "项目创建成功"
+      render json: {message: "项目创建成功"}
     else
       render :new
     end
