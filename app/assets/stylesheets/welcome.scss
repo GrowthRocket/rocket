@@ -4,40 +4,20 @@
 
 .lp-title-bg{
   // background-image: url(images/lp-title.jpg);
-  background: url(images/lp-title.jpg) no-repeat center top;
+  background: url(images/lp-title-bg.jpg) no-repeat center top;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  // background-attachment: fixed;
   overflow: hidden;
   background-size:cover;
   position: absolute;
-}
-
-.frosted-glass{
-           width: 287px;
-           height: 285px;
-           background: inherit;
-           -webkit-filter: blur(5px);
-           -moz-filter: blur(5px);
-           -ms-filter: blur(5px);
-           -o-filter: blur(5px);
-           filter: blur(5px);
-           filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=4, MakeShadow=false);
-}
-
-.weather{
-    width:80px;
-    height:80px;
-    margin-top: -200px;
-    margin-left: 100px;
-    position: relative;
-    display: block;
+  // padding:300px 0;
 }
 
 .lp-title-h1{
   color: #fff;
   font-size: 5em;
   text-align: center;
-  margin: 150px 0 20px 0;
+  margin: 200px 0 100px;
   // -webkit-text-stroke: 1px #babec9;/*描边的像素，也就是粗细，这里指定是2像素的黑色边框*/
 }
 
@@ -45,20 +25,20 @@
   color: #fff;
   font-size: 2em;
   text-align: center;
-  margin: 10px 0 20px 0;
+  margin: 100px 0;
   // -webkit-text-stroke: 1px #babec9;/*描边的像素，也就是粗细，这里指定是2像素的黑色边框*/
 
 }
 
-.lp-title-btn{
+#lp-title-btn{
   // background: rgba(0, 0, 0, 0.35);
   color: #FFF;
-  font-size: 2.2em;
+  font-size: 2.5em;
   text-align: center;
-  margin: 10px 0 60px 0;
-  padding: 20px 0 20px 0;
+  // margin: 0 auto;
+  padding: 0 0 67px 0;
   a:link {text-decoration: none; color: #FFF};
   a:visited {text-decoration: none; color: #FFF}	;
-  // a:hover {text-decoration: none; color: #98a1a4}	;
-  // a:active {text-decoration: none; color: #98a1a4};
+  a:hover {text-decoration: none; color: #98a1a4}	;
+  a:active {text-decoration: none; color: #98a1a4};
 }
