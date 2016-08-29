@@ -13,5 +13,4 @@ class NotificationService
       body: "你的验证码是 #{@code}"
     )
   end
-
 end

@@ -11,9 +11,6 @@ class Plan < ApplicationRecord
   scope :recent, -> { order("created_at DESC") }
 end
 
-
-
-
 # == Schema Information
 #
 # Table name: plans

@@ -2,12 +2,11 @@ class Account::ProjectsController < AccountController
   authorize_resource
 
   def index
-    @projects =
-      if params[:category_id]
-        current_user.projects.where(category_id: params[:category_id])
-      else
-        current_user.projects
-      end
+    @projects = current_user.projects
+
+    if params[:category_id]
+      @projects = current_user.projects.where(category_id: params[:category_id])
+    end
   end
 
   def new
@@ -98,7 +97,7 @@ class Account::ProjectsController < AccountController
       flash[:alert] = "您已有在线项目或已有项目在审核中"
       return false
     end
-    return true
+    true
   end
 
   def project_params
