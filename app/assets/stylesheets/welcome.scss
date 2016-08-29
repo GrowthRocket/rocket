@@ -3,48 +3,82 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .lp-title-bg{
-  // background-image: url(images/lp-title.jpg);
   background: url(images/lp-title-bg.jpg) no-repeat center top;
   background-repeat: no-repeat;
   // background-attachment: fixed;
   overflow: hidden;
   background-size:cover;
   position: absolute;
-  // padding:300px 0;
 }
 
-.lp-title-h1{
+.lp-slogan h2{
   color: #fff;
   font-size: 5em;
   text-align: center;
-  margin: 200px 0 100px;
-  // -webkit-text-stroke: 1px #babec9;/*描边的像素，也就是粗细，这里指定是2像素的黑色边框*/
+  margin: 200px 0 50px;
+  // -webkit-text-stroke: 1px #babec9;
 }
 
-.lp-title-h2{
+.lp-slogan p{
   color: #fff;
   font-size: 2em;
   text-align: center;
-  margin: 100px 0;
-  // -webkit-text-stroke: 1px #babec9;/*描边的像素，也就是粗细，这里指定是2像素的黑色边框*/
-
+  margin: 50px 0 100px;
 }
 
-#lp-title-btn{
-  // background: rgba(0, 0, 0, 0.35);
+.lp-title-btn{
+  background: rgba(0, 0, 0, 0.35);
   color: #FFF;
   font-size: 2.5em;
   text-align: center;
   // margin: 0 auto;
-  padding: 0 0 67px 0;
+  padding: 8px ;
+  margin: 0 40% 60px;
+  width: 20%;
   a:link {text-decoration: none; color: #FFF};
   a:visited {text-decoration: none; color: #FFF}	;
-  a:hover {text-decoration: none; color: #98a1a4}	;
-  a:active {text-decoration: none; color: #98a1a4};
+  a:hover {text-decoration: none; color: #e9e9e9}	;
+  a:active {text-decoration: none; color: #e9e9e9};
 }
 
-.feature-1{
-  // background-image: url(images/feature-1.jpg);
-  // background: #000;
-  // image: url(images/feature-1.jpg);
+.lp-feature{
+  background: #FFF;
+}
+
+.lp-feature-head h3{
+  color: #393939;
+  font-size: 3em;
+  text-align: center;
+  margin: 60px 0 32px;
+}
+
+.lp-feature-head p{
+  color: #393939;
+  font-size: 1.2em;
+  // text-align: center;
+  margin: 32px 15%;
+  width: 70%;
+}
+
+.lp-feature-detail{
+  width:80%;
+  margin:10px;
+  padding:10px;
+}
+
+.lp-feature-detail img{
+  position: relative;
+  padding: 10px;
+  margin: 0 10%;
+}
+
+.lp-feature-detail h4{
+  text-align: center;
+  font-size: 1.5em;
+  margin: 25px 0 20px;
+}
+
+.lp-feature-detail p{
+  font-size: 1em;
+  margin: 20px 0 50px;
 }
