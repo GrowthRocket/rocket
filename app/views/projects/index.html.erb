@@ -10,7 +10,7 @@
               &nbsp| &nbsp 已筹到 ¥
                 <%= project.fund_progress %></p>
                 <p>
-                    <%= render_progress(number_with_precision(project.fund_progress.to_f / project.fund_goal * 100, :precision => 2)) %></span>当前已有
+                    <%= render_progress(number_with_precision(project.fund_progress.to_f / project.fund_goal * 100, :precision => 2)) %>当前已有
                 <%= project.backer_quantity %>
                 人支持</p>
             <%#= link_to("支持项目", project_plans_path(project), :class => "btn btn-success" ) %>
