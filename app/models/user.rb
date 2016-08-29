@@ -70,7 +70,7 @@ class User < ApplicationRecord
   has_many :identiy_verifications
 
   def generate_account
-    Account.create!(user_id: self.id)
+    Account.create!(user_id: id)
   end
 
   include AASM
@@ -82,7 +82,7 @@ class User < ApplicationRecord
     state :unpassed_verified
 
     event :apply_for_certify do
-      transitions from: [:user_registered, :unpassed_verified], to: :request_verify
+      transitions from: %i(user_registered unpassed_verified), to: :request_verify
     end
     event :approve do
       # transitions from: :request_verify, to: :passed_verified
@@ -92,5 +92,4 @@ class User < ApplicationRecord
       transitions from: :request_verify, to: :unpassed_verified
     end
   end
-
 end

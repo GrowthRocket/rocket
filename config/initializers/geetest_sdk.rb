@@ -13,7 +13,6 @@ class GeetestSDK
 
     if validate != md5
       return false
-      return
     end
 
     begin

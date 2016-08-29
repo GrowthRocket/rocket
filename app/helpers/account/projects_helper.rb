@@ -9,7 +9,7 @@ module Account::ProjectsHelper
 
   def render_project_operation(project)
     if project.online?
-      link_to("结束众筹", offline_account_project_path(project), :method => :post,  :class => "btn btn-sm btn-default")
+      link_to("结束众筹", offline_account_project_path(project), method: :post, class: "btn btn-sm btn-default")
       # if project.project_created? &&
       #    @projects.where("aasm_state = ? OR aasm_state = ?", "online", "verifying").count.zero? &&
       #    project.plans_count.nonzero?
@@ -29,5 +29,4 @@ module Account::ProjectsHelper
       content_tag :span, "您暂时还没有项目哦，请创建"
     end
   end
-
 end

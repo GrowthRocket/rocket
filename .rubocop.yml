@@ -7,6 +7,15 @@ AllCops:
   ExtraDetails: true
   TargetRubyVersion: 2.3
 
+Style/RegexpLiteral:
+  Enabled: false
+  
+Lint/UselessAssignment:
+  Enabled: false
+
+Style/For:
+  Enabled: false
+
 Style/ClassAndModuleChildren:
   Enabled: false
 
@@ -27,7 +36,7 @@ Rails:
 
 Rails/Output:
   Enabled: false
-  
+
 Style/AutoResourceCleanup:
   Enabled: true
 
