@@ -2,6 +2,20 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_sign_up_params, if: :devise_controller?
 
+  helper_method :resource, :resource_name, :devise_mapping
+
+     def resource_name
+       :user
+      end
+
+     def resource
+       @resource ||= User.new
+     end
+
+     def devise_mapping
+       @devise_mapping ||= Devise.mappings[:user]
+     end
+
   def require_is_admin
     unless current_user.admin?
       flash[:alert] = "You are not admin"

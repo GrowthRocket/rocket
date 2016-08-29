@@ -9,7 +9,12 @@ class Account::UsersController < ApplicationController
   end
 
   def edit
+    @user = current_user
     @user = User.find(params[:id])
+  end
+
+  def show
+    @user = current_user
   end
 
   def update
@@ -19,10 +24,6 @@ class Account::UsersController < ApplicationController
     else
       render :edit
     end
-  end
-
-  def show
-    @user = User.find(params[:id])
   end
 
   def apply_for_certify
@@ -67,6 +68,15 @@ class Account::UsersController < ApplicationController
   def change_password
     @user = current_user
   end
+
+  # def update_password
+  #   @user = current_user
+  #   if @user.update(user_params)
+  #     redirect_to account_users_path, notice: "Update Success"
+  #   else
+  #     render :change_password
+  #   end
+  # end
 
   def verify_phone_number
     if @verification_code.verification_code != @user.captcha
