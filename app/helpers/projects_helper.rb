@@ -16,4 +16,11 @@ module ProjectsHelper
     highlight(excerpt_cont, query_string)
   end
 
+  def render_search_empty_result
+    content_tag :div, class: "text-center" do
+      content_tag :span, "暂时还没有以这个名称命名的项目哦，请换一个项目名字再试一下"
+    end
+  end
+
+
 end

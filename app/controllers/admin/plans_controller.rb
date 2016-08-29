@@ -1,8 +1,4 @@
-class Admin::PlansController < ApplicationController
-  before_action :authenticate_user!
-  before_action :require_is_admin
-  layout "admin"
-
+class Admin::PlansController < AdminController
   def index
     @project = Project.find(params[:project_id])
     @plans = @project.plans.recent

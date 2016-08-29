@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for mobile display -->
@@ -10,6 +11,7 @@
     </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
             <ul class="nav navbar-nav navbar-right">
 
               <% if !current_user %>
@@ -51,6 +53,7 @@
             <form action="<%= new_account_project_path %>" class="navbar-form navbar-right" role="search">
               <button type="submit" class="btn btn-success">发起项目</button>
             </form>
+            <%= render :partial => "projects/search_bar" %>
         </div>
         <!-- /.navbar-collapse -->
     </div>

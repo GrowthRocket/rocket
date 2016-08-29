@@ -8,4 +8,10 @@ module OrdersHelper
       end
     end
   end
+
+  def render_support_empty_message
+    content_tag :div, class: "text-center" do
+      content_tag :span, "暂无支持项目"
+    end
+  end
 end

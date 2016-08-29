@@ -1,8 +1,4 @@
-class Admin::ProjectsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :require_is_admin
-  layout "admin"
-
+class Admin::ProjectsController < AdminController
   def index
     @projects =
       if params[:category_id]
@@ -10,7 +6,7 @@ class Admin::ProjectsController < ApplicationController
       else
         Project.all.recent.paginate(page: params[:page], per_page: 5)
       end
-      @categories = Category.all
+    @categories = Category.all
   end
 
   def new

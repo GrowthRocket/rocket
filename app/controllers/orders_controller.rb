@@ -28,7 +28,8 @@ class OrdersController < ApplicationController
     @order = @plan.orders.build(order_params)
     @order.creator_name = current_user.user_name
     @order.user = current_user
-
+    @order.project.plan_description = @plan.description
+    @order.project_name = @project.name
     @order.project = @project
 
     if @order.save

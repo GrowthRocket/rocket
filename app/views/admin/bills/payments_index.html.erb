@@ -4,6 +4,7 @@
 <div class="col-md-10">
   <h2>总收入 ¥<%= @payment_amount %> </h2>
   <h2>总支出 ¥<%= @payout_amount %></h2>
+  <h2>总利润 ¥<%= @payment_amount - @payout_amount %></h2>
   <h2>当前服务费比例 <%= render_fund_rate(@fund_rate) %> </h2>
   <%= form_tag(custom_fund_rate_admin_bills_path, class: "form-inline") do -%>
     <div class="form-group">
