@@ -13,7 +13,14 @@ class Admin::PlansController < AdminController
     @project = Project.find(params[:project_id])
     @plan = Plan.new(plan_params)
     @plan.project = @project
-    require_create_plan_judgment(@plan)
+
+    check_plan_valid_for_create
+
+    if @plan.save
+      redirect_to admin_project_plans_path
+    else
+      render :new
+    end
   end
 
   def edit
