@@ -36,35 +36,20 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def require_update_plan_judgment(plan, plan_params)
-    if plan.price.nil?
+  def check_plan_valid_for_edit
+    if @plan.price.blank?
       flash[:alert] = "请填写回报价格"
-      render :edit
-      return
-    elsif plan.plan_goal.nil?
-      flash[:alert] = "请填写回报人数"
-      render :edit
-      return
-    elsif plan.plan_goal < plan.plan_progress
-      flash[:alert] = "回报数量不可小于已支持人数"
-      render :edit
-      return
     end
-    if plan.price > plan.project.fund_goal
+    if @plan.plan_goal.blank?
+      flash[:alert] = "请填写回报人数"
+    end
+
+    if @plan.plan_goal.to_i < @plan.plan_progress.to_i
+      flash[:alert] = "回报数量不可小于已支持人数"
+    end
+
+    if @plan.price > @project.fund_goal.to_i
       flash[:alert] = "回报价格不能大于项目筹款目标哦！"
-      render :edit
-      return
-    else
-      if plan.update(plan_params)
-        flash[:notice] = "您已成功新建筹款回报。"
-        if current_user.is_admin?
-          redirect_to admin_project_plans_path
-        else
-          redirect_to account_project_plans_path
-        end
-      else
-        render :edit
-      end
     end
   end
 

@@ -29,6 +29,17 @@ class Account::PlansController < AccountController
   def update
     @plan = @project.plans.find(params[:id])
     check_plan_valid_for_edit
+
+    if @plan.update(plan_params)
+      flash[:notice] = "您已成功新建筹款回报。"
+      if current_user.is_admin?
+        redirect_to admin_project_plans_path
+      else
+        redirect_to account_project_plans_path
+      end
+    else
+      render :edit
+    end
   end
 
   private
