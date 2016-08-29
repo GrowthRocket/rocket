@@ -32,7 +32,7 @@ class Admin::PlansController < AdminController
     @project = Project.find(params[:project_id])
 
     @plan = Plan.find(params[:id])
-    require_update_plan_judgment
+    check_plan_valid_for_edit
   end
 
   private

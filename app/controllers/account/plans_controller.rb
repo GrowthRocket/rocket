@@ -28,7 +28,7 @@ class Account::PlansController < AccountController
 
   def update
     @plan = @project.plans.find(params[:id])
-    require_update_plan_judgment(@plan, plan_params)
+    check_plan_valid_for_edit
   end
 
   private
