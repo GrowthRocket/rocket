@@ -1,0 +1,153 @@
+
+
+
+.lp-container .lp-background-img{
+  // background-image: url(images/lp-title.jpg);
+  background: url(images/bg.jpg) no-repeat center top;
+  // background-attachment: fixed;
+  background-size:cover;
+  position: absolute;
+  height: 600px;
+  width: 100%;
+}
+
+.lp-container{
+    // min-width: 1200px;
+    background: #fff;
+    height: 600px;
+    font-family: "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align: center;
+    overflow: hidden;
+
+  }
+
+
+
+.lp-container h1{
+  color: white;
+  margin-top: 220px;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.lp-container h2{
+  color: white;
+  font-size: 30px;
+  margin-top: 40px;
+  font-weight: bold;
+}
+
+.lp-btn-primary{
+margin-top: 40px;
+color: white;
+background: #f3506a;
+border: none;
+font-weight: 200;
+padding: 18px 32px;
+border-radius: 6px;
+font-weight: bold;
+font-size: 14px;
+
+}
+
+
+.lp-btn-primary-sm{
+  margin-top: auto;
+  color: white;
+  background: #f3506a;
+  border: none;
+  font-weight: 200;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+
+.lp-btn-primary-sm:hover{
+color: white;
+}
+
+.lp-btn-primary:hover{
+color: white;
+}
+
+
+
+
+
+
+
+.lp-container-flex {
+    max-width: 1080px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.lp-container-col {
+    width: 320px;
+    position: relative;
+    float: left;
+    margin: 30px 20px 20px;
+    background-color: #fff;
+    height: 440px;
+    border: solid 1px #F1EEEA;
+    border-radius: 8px;
+    overflow: hidden;
+}
+//定义框
+.lp-container-col .image {
+    display: block;
+    position: relative;
+}
+.lp-container-col .lp-container-title {
+    margin: 0 20px;
+    overflow: hidden;
+    line-height: 40px;
+    font-weight: bold;
+    font-size: 13px;
+    overflow: hidden;
+    color: black;
+}
+.lp-container-col .lp-container-title:hover {
+    text-decoration: none;
+}
+.lp-container-col .lp-container-text {
+    margin: 0 20px;
+    height: 60px;
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 20px;
+    color: #888888;
+}
+.lp-container-col .progress-whole {
+    margin: 40px 0 5px 20px;
+    width: 280px;
+    height: 5px;
+}
+.lp-container-col .progress-content {
+    background-color: #3fcbd0;
+}
+//以上为进度条
+.lp-container-col .lp-text-col {
+    width: 25%;
+    position: relative;
+    float: left;
+    margin: 10px 0 10px 20px;
+    font-size: 12px;
+    line-height: 20px;
+    color: #888888;
+}
+.lp-container-col .lp-container-figure {
+    color: black;
+}
+.btn-bordered {
+    color: #3fcbd0;
+    background: transparent;
+    border: 2px solid #3fcbd0;
+    font-weight: 200;
+    padding: 10px 16px;
+    border-radius: 6px;
+}
+.btn-bordered:hover{
+  color: #3fcbd0;
+}

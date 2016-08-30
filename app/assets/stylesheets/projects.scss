@@ -10,7 +10,8 @@
   background-color: #fff;
   font-family: tahoma;
   margin: 0 0 30px 0;
-  border: 1px solid #e8eced
+  border: 1px solid #e8eced;
+  overflow: hidden;
 }
 
 .content .project-card {
@@ -24,10 +25,11 @@
   font-family: 'Microsoft Yahei';
   padding: 5px 30px 11px 45px;
   line-height: 28px;
+
 }
 
 .content .image{
- padding: 19px 0 19px 0;
+ padding: 19px 0;
  text-align: center;
 }
 
