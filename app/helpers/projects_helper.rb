@@ -1,6 +1,6 @@
 module ProjectsHelper
   def render_project_description(project)
-    simple_format(project.description)
+    sanitize(project.description)
   end
 
   def render_project_image(project, _size = :thumb)
