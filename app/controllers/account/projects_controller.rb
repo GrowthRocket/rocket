@@ -2,12 +2,11 @@ class Account::ProjectsController < AccountController
   authorize_resource
 
   def index
-    @projects =
-      if params[:category_id]
-        current_user.projects.where(category_id: params[:category_id])
-      else
-        current_user.projects
-      end
+    @projects = current_user.projects
+
+    if params[:category_id]
+      @projects = current_user.projects.where(category_id: params[:category_id])
+    end
   end
 
   def new
@@ -56,17 +55,18 @@ class Account::ProjectsController < AccountController
     @projects = current_user.projects
     @project = current_user.projects.find(params[:id])
 
-    check_project_apply_valid
-
-    @project.apply_verify!
-    IdentityVerification.create!(
-      verify_type: 2, user_id: current_user.id,
-      title: @project.name, image: @project.image, project_id: params[:id],
-      verify_status: 0, message: "apply"
-    )
-    flash[:notice] = "申请成功，请耐心等待..."
-    redirect_to :back
-    return 
+    if check_project_apply_valid
+      @project.apply_verify!
+      IdentityVerification.create!(
+        verify_type: 2, user_id: current_user.id,
+        title: @project.name, image: @project.image, project_id: params[:id],
+        verify_status: 0, message: "apply"
+      )
+      flash[:notice] = "申请成功，请耐心等待..."
+      redirect_to :back
+    else
+      redirect_to :back
+    end
   end
 
   def offline
@@ -77,28 +77,27 @@ class Account::ProjectsController < AccountController
 
   def reject_message
     @identity_verification = IdentityVerification.find_by(project_id: params[:id])
-   end
+  end
 
   private
 
   def check_project_apply_valid
+    # binding.pry
     unless current_user.passed_verified?
       flash[:alert] = "您尚未通过实名认证"
-      redirect_to :back
-      return
+      return false
     end
 
-    if @project.plans_count == 0
+    if @project.plans_count < 2
       flash[:alert] = "您尚未创建筹款回报"
-      redirect_to :back
-      return
+      return false
     end
 
-    if @projects.where("aasm_state = ? OR aasm_state = ?", "online", "verifying").count != 0
+    if @projects.where("aasm_state = ? OR aasm_state = ?", "online", "verifying").count.nonzero?
       flash[:alert] = "您已有在线项目或已有项目在审核中"
-      redirect_to :back
-      return
+      return false
     end
+    true
   end
 
   def project_params

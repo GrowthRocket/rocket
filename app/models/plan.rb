@@ -3,16 +3,20 @@ class Plan < ApplicationRecord
   validates :description, presence: true
   validates :price, presence: true
   validates :price, numericality: { greater_than: 0, less_than: 1_000_000 }
-  validates :plan_goal, presence: true
   validates :plan_goal, numericality: { greater_than: 0, less_than: 1_000_000 }
   belongs_to :project, counter_cache: true
   has_many :orders
   scope :normal, -> { where(plan_type: 1) }
   scope :recent, -> { order("created_at DESC") }
+
+  before_validation :check_plan_goal
+
+  def check_plan_goal
+    if plan_goal.blank?
+      self.plan_goal = 999
+    end
+  end
 end
-
-
-
 
 # == Schema Information
 #

@@ -7,7 +7,8 @@ body {
   padding-top: 60px;
   padding-bottom: 10px;
   margin-bottom: 100px;
-  background-image: url(images/Body_bg.png);
+  // background-image: url(images/Body_bg.png);
+  background: #F5F4F9;
 }
 
 #footer {
@@ -17,7 +18,7 @@ body {
   height: 100px;
   position: absolute;
   width: 100%;
-  margin-top: 200px;
+  margin-top: 20px;
   padding-top: 20px;
   a:link {text-decoration: none; color: #A0A1A2};
   a:visited {text-decoration: none; color: #A0A1A2}	;

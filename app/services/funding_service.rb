@@ -1,6 +1,7 @@
 class FundingService
   # def initialize(order, user, project)
   def initialize(options)
+    # FIXME : too ugly
     @order = options[:order] unless options[:order].nil?
     @project = @order.project unless options[:order].nil?
     @plan = @order.plan unless options[:order].nil?
@@ -45,8 +46,10 @@ class FundingService
     account.profit += @amount
     account.save
 
-    BillPayout.create(project_id: @project.id, amount: @amount, account_name: account.account_name,
-    user_id: user.id, bill_status: "paid", project_name: @project.name, creator_name: user.user_name)
+    BillPayout.create(
+      project_id: @project.id, amount: @amount, account_name: account.account_name,
+      user_id: user.id, bill_status: "paid", project_name: @project.name, creator_name: user.user_name
+    )
   end
 
   def add_progress!

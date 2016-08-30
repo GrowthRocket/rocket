@@ -1,21 +1,21 @@
 class Devise::Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-  before_action :check_geetest, only:[:create]
+  before_action :check_geetest, only: [:create]
   # GET /resource/sign_up
   # def new
   #   super
   # end
 
   # POST /resource
-    def create
-      if @geetest
-        super
-      else
-        flash[:alert] = "请先滑动滑块"
-        redirect_to new_user_registration_path
-      end
+  def create
+    if @geetest
+      super
+    else
+      flash[:alert] = "请先滑动滑块"
+      redirect_to new_user_registration_path
     end
+  end
 
   # GET /resource/edit
   # def edit
@@ -31,8 +31,9 @@ class Devise::Users::RegistrationsController < Devise::RegistrationsController
     yield resource if block_given?
     if resource_updated
       if is_flashing_format?
-        flash_key = update_needs_confirmation?(resource, prev_unconfirmed_email) ?
-          :update_needs_confirmation : :updated
+        flash_key =
+          update_needs_confirmation?(resource, prev_unconfirmed_email) ?
+                   :update_needs_confirmation : :updated
         set_flash_message :notice, flash_key
       end
       bypass_sign_in resource, scope: resource_name
