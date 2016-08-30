@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-
-
 
 <div class="lp-container">
 <div class="lp-background-img">
@@ -24,75 +21,6 @@
 </div>
 
 
-
-
-
-
-
-<div class="row lp-container">
-    <div class="lp-container-flex">
-        <h3 class="text-center">热门推荐</h3>
-        <% @projects.each do |project| %>
-        <div class="lp-container-col">
-            <div class="image">
-                <%= link_to(image_tag(project.image.landing_page), project_path(project)) %>
-            </div>
-
-            <%= link_to(project.name, project_path(project), class:"lp-container-title" )%>
-            <div class="lp-container-text trix">
-                <%= sanitize(project.description)%>
-            </div>
-
-            <div>
-                <%= render_progress_landing_page(number_with_precision(project.fund_progress.to_f / project.fund_goal * 100, :precision => 2)) %>
-            </div>
-            <div class="lp-text-col">
-                <div class="lp-container-figure">
-                    <%= number_with_precision(project.fund_progress.to_f / project.fund_goal * 100, :precision => 0) %>%
-                    <br>
-                </div>
-                筹款进度
-            </div>
-            <div class="lp-text-col">
-                <div class="lp-container-figure">
-                    <%= project.fund_progress %>元
-                </div>
-                已筹款
-            </div>
-            <div class="lp-text-col">
-                <div class="lp-container-figure">
-                    <%= project.backer_quantity %>人
-                </div>
-                支持人数
-            </div>
-        </div>
-       <% end %>
-        <div >
-               <%= link_to("查看所有项目", projects_path,class:"btn btn-bordered")%>
-        </div>
-=======
-<!--第一屏，用rebeeca的版本，这个先存档 <div class="row">
-    <div class="col-md-12 com-md-offset-0 lp-title-bg lp-container">
-      <div  class="lp-slogan">
-        <div>
-          <h2>
-            下一个火箭项目的助跑平台
-          </h2>
-      </div>
-      <div>
-      <p>
-          万种筹资，助推才华青年最后一把，催成下一个世界级人才
-      </p>
-    </div>
-    </div>
-      <div class="lp-title-btn">
-        <%= link_to("立刻行动", new_account_project_path) %>
-      </div>
->>>>>>> d4bae0938e52fa84011204bcb548a43e603405f1
-  </div>
-</div> -->
-
-<!-- 第二屏，保留此版 -->
 <div class="row">
   <div class="lp-feature lp-container">
   <div class="col-md-12 col-md-offset4-0 lp-feature-head">
@@ -142,13 +70,52 @@
   </div>
  </div>
 </div>
-<!-- 第二屏结束 -->
 
-<!-- 第三屏，用rebeeca的版本 -->
+<div class="row lp-container">
+    <div class="lp-container-flex">
+        <h3 class="text-center">热门推荐</h3>
+        <% @projects.each do |project| %>
+        <div class="lp-container-col">
+            <div class="image">
+                <%= link_to(image_tag(project.image.landing_page), project_path(project)) %>
+            </div>
 
-<!-- 第三屏结束 -->
+            <%= link_to(project.name, project_path(project), class:"lp-container-title" )%>
+            <div class="lp-container-text trix">
+                <%= sanitize(project.description)%>
+            </div>
 
-<!-- 第四屏，保留此版  -->
+            <div>
+                <%= render_progress_landing_page(number_with_precision(project.fund_progress.to_f / project.fund_goal * 100, :precision => 2)) %>
+            </div>
+            <div class="lp-text-col">
+                <div class="lp-container-figure">
+                    <%= number_with_precision(project.fund_progress.to_f / project.fund_goal * 100, :precision => 0) %>%
+                    <br>
+                </div>
+                筹款进度
+            </div>
+            <div class="lp-text-col">
+                <div class="lp-container-figure">
+                    <%= project.fund_progress %>元
+                </div>
+                已筹款
+            </div>
+            <div class="lp-text-col">
+                <div class="lp-container-figure">
+                    <%= project.backer_quantity %>人
+                </div>
+                支持人数
+            </div>
+        </div>
+       <% end %>
+        <div >
+               <%= link_to("查看所有项目", projects_path,class:"btn btn-bordered")%>
+        </div>
+      </div>
+    </div>
+
+
 <div class="row lp-user ">
   <div class="col-md-2 col-md-offset-0 ">
       <img  src='images/u1.jpg' class="img-circle" alt="fetrue1">
