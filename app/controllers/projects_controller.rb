@@ -15,7 +15,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @user = @project.user
     @posts = @project.posts.recent
-    @plans = @project.plans
+    @plans = @project.plans.price
   end
 
   def search
