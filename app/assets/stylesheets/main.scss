@@ -8,22 +8,49 @@ body {
   padding-bottom: 10px;
   margin-bottom: 100px;
   background: #F5F4F9;
-  // font-family: arial, sans-serif;
+  font-family: arial, sans-serif;
 }
 
+// config navbar
+
+.navbar{
+  min-height: 60px;
+  margin-bottom: 0px;
+  a:link { text-decoration: none; color: #FFFFFF };
+  a:visited { text-decoration: none; color: #FFFFFF }	;
+  a:hover { text-decoration: none; color: #B9B9B9 }	;
+  a:active { text-decoration: none; color: #B9B9B9 };
+}
+
+.navbar-default{
+  background-color: #323232;
+  border-color: #323232;
+  padding-left: 1%;
+}
+
+// .navbar-default .navbar-nav > li > a{
+//   color: #FFFFFF;
+// }
+
+.navbar-default  .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+  color: #B9B9B9 ;
+}
+
+// config navbar end
+
 #footer {
-  background: rgba(51, 51, 51, 51);
-  color: #A0A1A2;
+  background: #323232;
+  color: #CACACA;
   bottom: 0;
   height: 100px;
   position: absolute;
   width: 100%;
   margin-top: 20px;
   padding-top: 20px;
-  a:link {text-decoration: none; color: #A0A1A2};
-  a:visited {text-decoration: none; color: #A0A1A2}	;
-  a:hover {text-decoration: none; color: #FFFFFF}	;
-  a:active {text-decoration: none; color: #FFFFFF};
+  a:link {text-decoration: none; color: #FFFFFF};
+  a:visited {text-decoration: none; color: #FFFFFF}	;
+  a:hover {text-decoration: none; color: #B9B9B9}	;
+  a:active {text-decoration: none; color: #B9B9B9};
 }
 
 .searchbar {
@@ -35,10 +62,6 @@ body {
   min-height: 200px;
   width: 600px;
   margin-bottom: 10px;
-}
-
-.logo_icon{
-  color: #4A92B7;
 }
 
 .searchbar {
