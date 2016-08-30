@@ -4,7 +4,7 @@
 .lp-container .lp-background-img{
   // background-image: url(images/lp-title.jpg);
   background: url(images/bg.jpg) no-repeat center top;
-  // background-attachment: fixed;
+  background-attachment: fixed;
   background-size:cover;
   position: absolute;
   height: 600px;
@@ -25,16 +25,16 @@
 
 .lp-container h1{
   color: white;
-  margin-top: 220px;
-  font-size: 40px;
-  font-weight: bold;
+  margin-top: 280px;
+  font-size: 4em;
+  // font-weight: bold;
 }
 
 .lp-container h2{
   color: white;
-  font-size: 30px;
-  margin-top: 40px;
-  font-weight: bold;
+  font-size: 20px;
+  margin: 35px 0 50px;
+  // font-weight: bold;
 }
 
 .lp-btn-primary{
