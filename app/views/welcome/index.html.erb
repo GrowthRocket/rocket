@@ -1,27 +1,26 @@
 
 <div class="lp-container">
-<div class="lp-background-img">
+  <div class="lp-background-img">
 
 
-<div>
-    <h1>
-        下一个火箭项目的助跑平台
-    </h1>
-</div>
-<div>
-    <h2>
-        万种筹资，助推才华青年最后一把，催成下一个世界级人才
-    </h2>
-</div>
-<div>
-    <%= link_to("发起众筹", new_account_project_path, class: "btn lp-btn-primary") %>
-</div>
-</div>
+  <div>
+      <h1>
+          下一个火箭项目的助跑平台
+      </h1>
+  </div>
+  <div>
+      <h2>
+          万种筹资，助推才华青年最后一把，催成下一个世界级人才
+      </h2>
+  </div>
+  <div class="lp-action btn">
+      <%= link_to("发起众筹", new_account_project_path) %>
+  </div>
+  </div>
 
 </div>
 
 
-<div class="row">
   <div class="lp-feature lp-container">
   <div class="col-md-12 col-md-offset4-0 lp-feature-head">
     <div>
@@ -69,7 +68,6 @@
   </div>
   </div>
  </div>
-</div>
 
 <div class="row lp-container">
     <div class="lp-container-flex">
@@ -142,8 +140,15 @@
   </p>
   <p>感谢 @郭达峰 (Strikingly) 和 @李笑来 的每月支持。让我可以全职投入 VueJS 开发。</p>
 </div>
+
+
+
+
 </div>
-<div class="row ">
-  <div>让万千支持者，助你挣破枷锁，腾空起飞</div>
-</div>
+<div class="row lp-action">
+  <p>让万千支持者，助你挣破枷锁，腾空起飞</p>
+  <div class="lp-action btn">
+      <%= link_to("发起众筹", new_account_project_path) %>
+  </div>
+  </div>
 <!-- 第四屏结束 -->
