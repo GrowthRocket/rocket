@@ -6,6 +6,32 @@
     <div class="index-project-img">
       <%= link_to(image_tag(project.image.show), project_path(project)) %>
     </div>
+    <div class="index-project-detail">
+      <div>
+        <h2><%= link_to(image_tag(project.name), project_path(project)) %></h2>
+      </div>
+      <div class="num">
+        <%= project.backer_quantity %>
+      </div>
+        <div class="text">
+            支持人数
+      </div>
+      <div  class="num">
+          <%= project.fund_progress %>
+      </div>
+      <div class="text">
+          已筹资金
+    </div>
+      <div  class="num">
+          <%= number_with_precision(project.fund_progress.to_f / project.fund_goal * 100, :precision => 0) %>%
+      </div>
+      <div class="text">
+          筹款进度
+    </div>
+      <div>
+          <%= render_progress_landing_page(number_with_precision(project.fund_progress.to_f / project.fund_goal * 100, :precision => 2)) %>
+      </div>
+    </div>
   </div>
 </div>
 <% end %>
