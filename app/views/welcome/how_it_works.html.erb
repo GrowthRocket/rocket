@@ -1,0 +1,202 @@
+<div class="hiw-header">
+    <div>
+        <h1 class="text-center">
+            实现梦想，如此简单
+        </h1>
+    </div>
+
+    <div class="hiw-action btn">
+        <%#= link_to("发起众筹", new_account_project_path) %>
+    </div>
+</div>
+
+<div class="hiw-flow">
+    <div class="col-md-10 col-md-offset-1 hiw-flow-img">
+        <div>
+            <div></div>
+            <div>
+                <img src='images/flow.png' alt="flow">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="hiw-faq">
+    <h3 class="text-center">常见问题</h3>
+
+    <hr>
+
+    <div class="hiw-faq-block-container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-0">
+                <div class="hiw-faq-block">
+                    <h2>如何发起项目呢？</h2>
+                    <p>在网页上方点击“发起项目”，根据提示在网站上提交所需要的基本项目信息，以图文结合的形式
+                      展示你的项目，完成后便可提交审核。
+                    </p>
+                    <h2>
+                        手机号码注册时为什么收不到验证码？
+                    </h2>
+                    <p>1、请确认您的手机是否对此类系统短信进行拦截设置，需解除设置；
+                      <br>2、曾向运营商投诉，拒收此类短信，可联系我们查询原因。</p>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-md-offset-0">
+                <div class="hiw-faq-block">
+                    <h2>
+                        你们的网站跟其它的众筹网站有什么不同？
+                    </h2>
+                    <p>We know we’re a bit biased, but: we bet you'll feel right at home around here! Art, architecture, technology, films, DIY—if it's a creative, entrepreneurial project it’s probably a great fit. Whether you're just getting started with an idea or are
+                        looking for a marketplace solution, there's a home for your project on Indiegogo.
+                    </p>
+
+                    <h2>
+                        我为什么要选择你们的网站来发布众筹吗？
+                    </h2>
+                    <p>Having seen hundreds of thousands of campaigns, we know what works - our Campaign Strategists compiled all the tips, tricks, and best practices for a great crowdfunding experience: see the
+                        <a href="https://learn.indiegogo.com/the-essential-guide-to-crowdfunding/?utm_source=productpage&amp;utm_medium=igg.com&amp;utm_content=textlink&amp;utm_campaign=howitworks&amp;r=wrp_www_xx_0000_igg00003_0000000_002_0000_" target="_blank">Essential Guide to Crowdfunding.</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4 col-md-offset-0">
+                <div class="hiw-faq-block">
+                    <h2>
+                        发布一个项目我需要准备什么资料？
+                    </h2>
+                    <p>We know we’re a bit biased, but: we bet you'll feel right at home around here! Art, architecture, technology, films, DIY—if it's a creative, entrepreneurial project it’s probably a great fit. Whether you're just getting started with an idea or are
+                        looking for a marketplace solution, there's a home for your project on Indiegogo.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="hiw-faq-help-center">
+    Read more on our
+    <span class="i-gogenta">
+        <a ng-href="https://support.indiegogo.com/hc/en-us" class="" href="https://support.indiegogo.com/hc/en-us">help center.</a>
+    </span>
+</div> -->
+<!-- ngRepeat: faq in faqs -->
+
+<!-- <div class="col-md-4 col-md-offset-0">
+        <div class="hiw-feature-detail">
+            <div>
+
+            </div>
+            <div>
+                <h4>无后顾之忧，全职专心投入创作</h4>
+            </div>
+            <div>
+                <p>以全职薪金方式，保你心无旁骛投入项目创作. 不再担心自己的创意会被外行人指点限制，尽情挥洒自己的热血与激情。</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-md-offset-0">
+        <div class="hiw-feature-detail">
+            <div>
+                <img src='images/feature-2.jpg' alt="fetrue1">
+            </div>
+            <div>
+                <h4>急速缩短现实与梦想间的差距</h4>
+                <p>梦想与现实总是有差距。许多激动人心的专案，总是业余专案、或需要储蓄大把启动资金才能启动。在这里，我们助推你最后一把。提早将火箭升空。</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-md-offset-0">
+        <div class="hiw-feature-detail">
+            <div>
+                <img src='images/feature-3.jpg' alt="fetrue1">
+            </div>
+            <div>
+                <h4>最理解也最支持你的小众天使</h4>
+                <p>这里的投资人，是最懂你的同好粉丝。无须再按下脾气跟外行傻逼，解释他们八百辈子都不会懂的专业远见。你可以从这群支持者得到最真诚的反馈、支持与助推。</p>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<!-- <div class="row hiw-container">
+    <div class="hiw-container-flex">
+        <h3 class="text-center">热门推荐</h3>
+        <%# @projects.each do |project| %>
+        <div class="hiw-container-col">
+            <div class="image">
+                <%#= link_to(image_tag(project.image.landing_page), project_path(project)) %>
+            </div>
+
+            <%#= link_to(project.name, project_path(project), class:"hiw-container-title" )%>
+            <div class="hiw-container-text trix">
+                <%#= sanitize(project.description)%>
+            </div>
+
+            <div>
+                <%#= render_progress_landing_page(number_with_precision(project.fund_progress.to_f / project.fund_goal * 100, :precision => 2)) %>
+            </div>
+            <div class="hiw-text-col">
+                <div class="hiw-container-figure">
+                    <%#= number_with_precision(project.fund_progress.to_f / project.fund_goal * 100, :precision => 0) %>%
+                    <br>
+                </div>
+                筹款进度
+            </div>
+            <div class="hiw-text-col">
+                <div class="hiw-container-figure">
+                    <%#= project.fund_progress %>元
+                </div>
+                已筹款
+            </div>
+            <div class="hiw-text-col">
+                <div class="hiw-container-figure">
+                    <%#= project.backer_quantity %>人
+                </div>
+                支持人数
+            </div>
+        </div>
+        <%# end %>
+        <div>
+            <%= link_to("查看所有项目", projects_path,class:"btn btn-bordered")%>
+        </div>
+    </div>
+</div> -->
+
+`<!-- <div class="row hiw-user ">
+  <div class="col-md-2 col-md-offset-0 ">
+      <img  src='images/u1.jpg' class="img-circle" alt="fetrue1">
+  </div>
+  <div class="col-md-4 col-md-offset-o hiw-user-desciption">
+    <p>
+      <span>
+        <a href="http://blog.xdite.net/"  class="hiw-user-link" target="_blank">@xdite</a>
+      </span>
+      <br />
+      <span  class="hiw-user title">知名 Ruby on Rails 大神级教练</span>
+    </p>
+    <p>感谢 @李笑来 的初期支持。让我可以全职投入改变编程教学的下一波革命。</p>
+  </div>
+  <div class="col-md-2 col-md-offset-0">
+    <img   src='images/u2.jpg'  class="img-circle"  alt="fetrue1">
+  </div>
+  <div class="col-md-4 col-md-offset-0 hiw-user-desciption">
+    <span>
+      <a href="http://weibo.com/arttechdesign/"  target="_blank">@尤小右</a>
+    </span>
+    <br />
+    <span  class="hiw-user title">VueJS创造者</span>
+  </p>
+  <p>感谢 @郭达峰 (Strikingly) 和 @李笑来 的每月支持。让我可以全职投入 VueJS 开发。</p>
+</div>
+
+
+
+
+</div> -->`
+<!-- <div class="row hiw-action">
+    <p>让万千支持者，助你挣破枷锁，腾空起飞</p>
+    <div class="hiw-action btn">
+        <%#= link_to("发起众筹", new_account_project_path) %>
+    </div>
+</div> -->
+<!-- 第四屏结束 -->

@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   root "welcome#index"
 
+  get "/how_it_works", to: "welcome#how_it_works"
+
   namespace :admin do
     resources :orders
     resources :categories

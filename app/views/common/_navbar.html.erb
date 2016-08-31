@@ -8,6 +8,7 @@
         <i class="fa fa-rocket fa-lg logo_icon" aria-hidden="true"></i>
         <span>人才火箭</span>
       </a>
+      <%= link_to("用户指南", how_it_works_path, class:"hiw-btn btn btn-default btn-sm") %>
     </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -34,6 +35,7 @@
 
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
                     <img src="<%=current_user.image.headimage%>" class="nav-img img-circle"/>      
                     你好， <%= current_user.email %>
                   <b class="caret"></b>
