@@ -1,10 +1,11 @@
 
 
 
+
 .lp-container .lp-background-img{
   // background-image: url(images/lp-title.jpg);
   background: url(images/bg.jpg) no-repeat center top;
-  background-attachment: fixed;
+  // background-attachment: fixed;
   background-size:cover;
   position: absolute;
   height: 600px;
@@ -92,6 +93,7 @@ color: white;
     border: solid 1px #F1EEEA;
     border-radius: 8px;
     overflow: hidden;
+    text-align: left;
 }
 //定义框
 .lp-container-col .image {
