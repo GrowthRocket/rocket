@@ -113,12 +113,37 @@ hr{
 }
 
 // config index
-// display: inline-block;
+.index-out{
+  min-width:1200px;
+  text-align:center;
+}
+
+.index-project{
+  margin-top:15px;
+  // height: 400px;
+  width:1080px;
+  background-color: #cacaca;
+  // padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  // float: left;
+  display: inline-block;
+}
+
 .index-project-img{
-  max-height: 400px;
-  max-width: 660px;
+  height: 400px;
+  width: 600px;
+  // padding: 20px;
+  margin: 20px 20px 30px;
+  // float: left;
+  // display: inline-block;
+}
+
+.index-project-detail{
+  height: 400px;
+  width: 400px;
   padding: 20px;
-  margin: 20px;
-  border: 0px;
-  border-radius: 0px;
+  margin: 20px 20px 30px 30px;
+  // float: right;
+  // display: inline-block;
 }
