@@ -48,7 +48,8 @@
                 <%= render_project_image(project,:thumb) %>
             </td>
             <td>
-                <%= User.find(project.user_id).user_name %>
+                <%#= User.find(project.user_id).user_name %>
+                <%= project.user.user_name %>
             </td>
             <td>
                 <%= link_to(project.plans_count, admin_project_plans_path(project)) %>
