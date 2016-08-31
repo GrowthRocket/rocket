@@ -59,7 +59,7 @@
 }
 
 .lp-user.title{
-font-weight: bold;
+  font-weight: bold;
 }
 
 .lp-user-desciption {
@@ -88,18 +88,25 @@ font-weight: bold;
     padding: 8px 20px ;
     margin: 0 40% 60px;
     // width: 20%;
-    a:link {text-decoration: none; color: #FFF};
-    a:visited {text-decoration: none; color: #FFF}	;
-    a:hover {text-decoration: none; color: #e9e9e9}	;
-    a:active {text-decoration: none; color: #e9e9e9};
+    a:link {color: #FFF};
+    a:visited {color: #FFF}	;
+    a:hover {color: #e9e9e9}	;
+    a:active {color: #e9e9e9};
   }
-  .lp-action.btn.sm{
-      font-size: 1em;
-      text-align: center;
-      // margin: 0 auto;
-      padding: 5px ;
-      margin: 2px;
-    }
+
+.lp-action.btn.sm{
+    font-size: 1em;
+    text-align: center;
+    padding: 5px;
+    margin: 3px;
+    width: 95px;
+    height: 35px;
+    letter-spacing: 0.2em;
+    a:link {color: #FFFFFF};
+    a:visited {color: #FFFFFF}	;
+    a:hover {color: #FBFBFB}	;
+    a:active {color: #FBFBFB};
+}
 // nfreeness定义样式结束
 
 // 以下为rebecca定义的样式
