@@ -42,14 +42,14 @@ class Account::ProjectsController < AccountController
     end
   end
 
-  def destroy
-    @project = current_user.projects.find(params[:id])
-    plans = @project.plans
-    plans.destroy
-    @project.destroy
-    flash[:alert] = "项目删除成功"
-    redirect_to :back
-  end
+  # def destroy
+  #   @project = current_user.projects.find(params[:id])
+  #   plans = @project.plans
+  #   plans.destroy
+  #   @project.destroy
+  #   flash[:alert] = "项目删除成功"
+  #   redirect_to :back
+  # end
 
   def apply_for_verification
     @projects = current_user.projects
@@ -84,7 +84,7 @@ class Account::ProjectsController < AccountController
   def check_project_apply_valid
     # binding.pry
     unless current_user.passed_verified?
-      flash[:alert] = "您尚未通过实名认证"
+      flash[:alert] = "为了保证项目的真实性，请到我的资料页验证手机号。"
       return false
     end
 
