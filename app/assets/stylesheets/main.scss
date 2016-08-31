@@ -14,6 +14,12 @@ body {
   // font-size: 14px;
 }
 
+hr{
+  border: 0;
+  height: 0;
+  margin: 0;
+  border-bottom: 1px solid #CCCCCC;
+}
 // config navbar
 //
 .navbar{
@@ -22,8 +28,8 @@ body {
 }
 
 .navbar-default {
-  background-color: rgba(245, 245, 245, 0.96);
-  border-color: #CACACACA;
+  background-color: rgba(255, 255, 255, 0.96);
+  border-color: #CCCCCC;
 }
 // .navbar-default .navbar-brand {
 //   margin: 10px 0 0 0;
@@ -124,15 +130,15 @@ body {
 
 #footer {
   background: #323232;
-  color: #B9B9B9;
+  color: #CCCCCC;
   bottom: 0;
   height: 100px;
   position: absolute;
   width: 100%;
   margin-top: 20px;
   padding-top: 20px;
-  a:link {text-decoration: none; color: #B9B9B9};
-  a:visited {text-decoration: none; color: #B9B9B9}	;
+  a:link {text-decoration: none; color: #CCCCCC};
+  a:visited {text-decoration: none; color: #CCCCCC}	;
   a:hover {text-decoration: none; color: #FFFFFF}	;
   a:active {text-decoration: none; color: #FFFFFF};
 }
