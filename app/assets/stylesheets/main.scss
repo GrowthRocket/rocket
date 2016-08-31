@@ -9,10 +9,9 @@ body {
   margin-bottom: 100px;
   background: #FBFBFB;
   font-family: arial, sans-serif;
-  // a:link { text-decoration: none; color: #FFFFFF };
-  // a:visited { text-decoration: none; color: #FFFFFF }	;
-  // a:hover { text-decoration: none; color: #888888 }	;
-  // a:active { text-decoration: none; color: #888888 };
+  line-height: 1.8em;
+  letter-spacing: 0.1em;
+  // font-size: 14px;
 }
 
 // config navbar
@@ -125,17 +124,17 @@ body {
 
 #footer {
   background: #323232;
-  color: #CACACA;
+  color: #B9B9B9;
   bottom: 0;
   height: 100px;
   position: absolute;
   width: 100%;
   margin-top: 20px;
   padding-top: 20px;
-  a:link {text-decoration: none; color: #FFFFFF};
-  a:visited {text-decoration: none; color: #FFFFFF}	;
-  a:hover {text-decoration: none; color: #B9B9B9}	;
-  a:active {text-decoration: none; color: #B9B9B9};
+  a:link {text-decoration: none; color: #B9B9B9};
+  a:visited {text-decoration: none; color: #B9B9B9}	;
+  a:hover {text-decoration: none; color: #FFFFFF}	;
+  a:active {text-decoration: none; color: #FFFFFF};
 }
 
 .searchbar {
