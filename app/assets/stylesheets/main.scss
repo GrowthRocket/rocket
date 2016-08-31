@@ -7,23 +7,135 @@ body {
   padding-top: 60px;
   padding-bottom: 10px;
   margin-bottom: 100px;
-  // background-image: url(images/Body_bg.png);
-  // background: #F5F4F9;
+  background: #FBFBFB;
+  font-family: arial, sans-serif;
+  a:link { text-decoration: none; color: #666666 };
+  a:visited { text-decoration: none; color: #666666 }	;
+  a:hover { text-decoration: none; color: #888888 }	;
+  a:active { text-decoration: none; color: #888888 };
 }
 
+// config navbar
+//
+.navbar{
+  min-height: 60px;
+  margin-bottom: 0px;
+}
+
+.navbar-default {
+  background-color: rgba(245, 245, 245, 0.96);
+  border-color: #CACACACA;
+}
+// .navbar-default .navbar-brand {
+//   margin: 10px 0 0 0;
+//   color: #FFFFFF;
+// }
+// .navbar-default .navbar-brand:hover,
+// .navbar-default .navbar-brand:focus {
+//   color: #B9B9B9;
+//   background-color: #323232;
+// }
+// .navbar-default .navbar-text {
+//   color: #FFFFFF;
+// }
+// .navbar-default .navbar-nav > li > a {
+//   color: #FFFFFF;
+// }
+// .navbar-default .navbar-nav > li > a:hover,
+// .navbar-default .navbar-nav > li > a:focus {
+//   color: #B9B9B9;
+//   background-color: #323232;
+// }
+// .navbar-default .navbar-nav > .active > a,
+// .navbar-default .navbar-nav > .active > a:hover,
+// .navbar-default .navbar-nav > .active > a:focus {
+//   color: #B9B9B9;
+//   background-color: #323232;
+// }
+// .navbar-default .navbar-nav > .disabled > a,
+// .navbar-default .navbar-nav > .disabled > a:hover,
+// .navbar-default .navbar-nav > .disabled > a:focus {
+//   color: #B9B9B9;
+//   background-color: #323232;
+// }
+// .navbar-default .navbar-toggle {
+//   border-color: #323232;
+// }
+// .navbar-default .navbar-toggle:hover,
+// .navbar-default .navbar-toggle:focus {
+//   background-color: #323232;
+// }
+// .navbar-default .navbar-toggle .icon-bar {
+//   background-color: #323232;
+// }
+// .navbar-default .navbar-collapse,
+// .navbar-default .navbar-form {
+//   border-color: #323232;
+//   margin-top: 10px;
+// }
+// .navbar-default .navbar-nav > .open > a,
+// .navbar-default .navbar-nav > .open > a:hover,
+// .navbar-default .navbar-nav > .open > a:focus {
+//   color: #B9B9B9;
+//   background-color: #323232;
+// }
+// @media (max-width: 767px) {
+//   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+//     color: #FFFFFF;
+//   }
+//   .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+//   .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+//     color: #B9B9B9;
+//     background-color: #323232;
+//   }
+//   .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+//   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+//   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+//     color: #FFFFFF;
+//     background-color: #B9B9B9;
+//   }
+//   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a,
+//   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+//   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:focus {
+//     color: #B9B9B9;
+//     background-color: #323232;
+//   }
+// }
+// .navbar-default .navbar-link {
+//   color: #FFFFFF;
+// }
+// .navbar-default .navbar-link:hover {
+//   color: #B9B9B9;
+// }
+// .navbar-default .btn-link {
+//   color: #FFFFFF;
+// }
+// .navbar-default .btn-link:hover,
+// .navbar-default .btn-link:focus {
+//   color: #B9B9B9;
+// }
+// .navbar-default .btn-link[disabled]:hover,
+// fieldset[disabled] .navbar-default .btn-link:hover,
+// .navbar-default .btn-link[disabled]:focus,
+// fieldset[disabled] .navbar-default .btn-link:focus {
+//   color: #B9B9B9;
+// }
+
+// config navbar end
+
 #footer {
-  background: rgba(51, 51, 51, 51);
-  color: #A0A1A2;
+  background: #323232;
+  color: #CACACA;
   bottom: 0;
   height: 100px;
   position: absolute;
   width: 100%;
   margin-top: 20px;
   padding-top: 20px;
-  a:link {text-decoration: none; color: #A0A1A2};
-  a:visited {text-decoration: none; color: #A0A1A2}	;
-  a:hover {text-decoration: none; color: #FFFFFF}	;
-  a:active {text-decoration: none; color: #FFFFFF};
+  a:link {text-decoration: none; color: #FFFFFF};
+  a:visited {text-decoration: none; color: #FFFFFF}	;
+  a:hover {text-decoration: none; color: #B9B9B9}	;
+  a:active {text-decoration: none; color: #B9B9B9};
 }
 
 .searchbar {
@@ -37,12 +149,8 @@ body {
   margin-bottom: 10px;
 }
 
-.logo_icon{
-  color: #4A92B7;
-}
-
 .searchbar {
-  margin-bottom: 10px
+  margin-bottom: 0;
 }
 
 .progress-bar {

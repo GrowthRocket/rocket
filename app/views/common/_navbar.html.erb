@@ -6,7 +6,7 @@
       <!-- <h1><a class="navbar-brand" href="/">人才火箭</a></h1> -->
       <a class="navbar-brand" href="/">
         <i class="fa fa-rocket fa-lg logo_icon" aria-hidden="true"></i>
-        人才火箭
+        <span>人才火箭</span>
       </a>
     </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -51,7 +51,7 @@
               <% end %>
             </ul>
             <form action="<%= new_account_project_path %>" class="navbar-form navbar-right" role="search">
-              <button type="submit" class="btn lp-btn-primary-sm">发起众筹</button>
+              <button type="submit" class="btn lp-action btn sm">发起众筹</button>
             </form>
             <%= render :partial => "projects/search_bar" %>
         </div>
