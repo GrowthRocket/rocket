@@ -34,6 +34,7 @@ hr{
 .notice-ring{
   margin-top:5px;
 }
+
 // config navbar
 
 .navbar{
@@ -96,10 +97,6 @@ hr{
   a:active {color: #FFFFFF};
 }
 
-.searchbar {
-  margin-bottom: 10px
-}
-
 .formatted_content {
   background-color: #fff;
   min-height: 200px;
@@ -107,8 +104,8 @@ hr{
   margin-bottom: 10px;
 }
 
-.searchbar {
-  margin-bottom: 0;
+.nav-search {
+  margin-top: 4px;
 }
 
 .progress-bar {
