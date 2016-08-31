@@ -80,7 +80,7 @@ class Account::ProjectsController < AccountController
   end
 
   private
-
+ 
   def check_project_apply_valid
     # binding.pry
     unless current_user.passed_verified?

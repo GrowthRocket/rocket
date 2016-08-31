@@ -10,9 +10,8 @@
   height: 600px;
   width: 100%;
 }
-
 .lp-container{
-    // min-width: 1200px;
+    min-width: 1200px;
     background: #fff;
     height: 600px;
     font-family: "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -25,16 +24,16 @@
 
 .lp-container h1{
   color: white;
-  margin-top: 280px;
-  font-size: 4em;
-  // font-weight: bold;
+  margin-top: 220px;
+  font-size: 40px;
+  font-weight: bold;
 }
 
 .lp-container h2{
   color: white;
-  font-size: 20px;
-  margin: 35px 0 50px;
-  // font-weight: bold;
+  font-size: 30px;
+  margin-top: 40px;
+  font-weight: bold;
 }
 
 .lp-btn-primary{
