@@ -8,6 +8,6 @@
   </div>
 <ul class="nav nav-tabs">
   <%= active_link_to("全部项目", admin_projects_path, active: :inclusive, wrap_tag: :li) %>
-  <%= active_link_to("待审核项目",  admin_projects_verify_index_path, active: :inclusive, wrap_tag: :li) %>
+  <%= active_link_to("待审核项目(#{@projects_verifying.count})",  admin_projects_verify_index_path, active: :inclusive, wrap_tag: :li) %>
 </ul>
 <br><br>

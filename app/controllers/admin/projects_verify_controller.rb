@@ -1,6 +1,6 @@
 class Admin::ProjectsVerifyController < AdminController
   def index
-    @projects = Project.where(aasm_state: "verifying")
+    @projects_verifying = Project.where(aasm_state: "verifying")
     @categories = Category.all
   end
 

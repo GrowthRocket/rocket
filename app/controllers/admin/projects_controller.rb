@@ -7,6 +7,7 @@ class Admin::ProjectsController < AdminController
         Project.all.recent.paginate(page: params[:page], per_page: 5)
       end
     @categories = Category.all
+    @projects_verifying = Project.where(aasm_state: "verifying")
   end
 
   def new
