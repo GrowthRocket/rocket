@@ -4,7 +4,7 @@
   <%= f.text_area :description, :class => "tinymce", :rows => 10, :cols => 120 %>
   <%= tinymce :alternate%>
   <% if ["new", "create"].include?(controller.action_name) %>
-    <%= f.input :user_id, :label =>"项目发起者" ,input_html: { class: 'edit-input-short-width'},:placeholder => "请填入用户ID"%>
+    <%= f.input :user_email, :label =>"项目发起者" ,input_html: { class: 'edit-input-short-width'},:placeholder => "请填入用户邮箱"%>
   <% end %>
   <%= f.input :category_id,:collection => @categories,:label_method => :chs_name,:value_method => :id,:label => "请选择分类",:include_blank => false ,input_html: { class: 'edit-input-short-width'}%>
   <%= f.input :fund_goal, :label =>"筹款目标" ,input_html: { class: 'edit-input-short-width'}%>

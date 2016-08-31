@@ -5,7 +5,8 @@
 <% else %>
 <table class="table table-boldered">
     <thead>
-        <tr>
+      <tr>
+        <th>#</th>
           <th>众筹项目</th>
           <th>
             <li style="list-style-type:none;" class="dropdown">
@@ -31,9 +32,10 @@
     </tr>
 </thead>
 <tbody>
-
     <% @projects.each_with_index do |project, index| %>
-    <tr>
+      <td>
+        <%= index + 1 %>
+      </td>
         <td>
             <%= link_to(project.name, project_path(project)) %>
             <br/>
@@ -71,7 +73,7 @@
             <% if project.project_created? %>
             <%= link_to("审核项目", admin_projects_verify_path(id: project), :class => "btn btn-sm btn-default") %>
             <% end %>
-            
+
             <%= link_to("编辑项目", edit_admin_project_path(project), :class => "btn btn-sm btn-default") %>
             <%#= link_to("管理筹款回报", admin_project_plans_path(project), :class => "btn btn-sm btn-default") %>
             <%= link_to("删除", admin_project_path(project), :method => :delete, :data => { :confirm => "删除项目后不可恢复，您确定要删除吗?" }, :class => "btn btn-sm btn-default") %>

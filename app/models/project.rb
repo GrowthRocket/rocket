@@ -9,6 +9,9 @@ class Project < ApplicationRecord
   belongs_to :user
   belongs_to :category
 
+
+  attr_accessor :user_email
+
   scope :recent, -> { order("created_at DESC") }
 
   include AASM
