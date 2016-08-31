@@ -6,19 +6,6 @@
   <div class="pull-right">
       <%= link_to("新建众筹项目", new_admin_project_path, :class => "btn btn-success" ) %>
   </div>
-
-  <div class="dropdown clearfix pull-right">
-      <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuDivider" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          按类型
-          <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
-          <li><%= link_to("全部", admin_projects_path) %></li>
-          <% @categories.each do |category| %>
-          <li><%= link_to(category.chs_name, admin_projects_path(category_id: category.id)) %></li>
-          <% end %>
-      </ul>
-  </div>
 <ul class="nav nav-tabs">
   <%= active_link_to("全部项目", admin_projects_path, active: :inclusive, wrap_tag: :li) %>
   <%= active_link_to("待审核项目",  admin_projects_verify_index_path, active: :inclusive, wrap_tag: :li) %>
