@@ -1,6 +1,7 @@
 class Project < ApplicationRecord
   after_create :generate_custom_price_plan
   validates :name, presence: true
+  validates :description, presence: true
   validates :fund_goal, numericality: { greater_than: 0, less_than: 1_000_000 }
 
   mount_uploader :image, ImageUploader

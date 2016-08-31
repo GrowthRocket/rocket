@@ -63,9 +63,14 @@ Rails.application.routes.draw do
     end
     resources :projects do
       resources :posts
-      resources :plans
+      resources :plans do
+        collection do
+          post :create_plan
+        end
+      end
       member do
         post :apply_for_verification
+        post :apply_for_verification_new
         post :offline
         post :reject_message
       end

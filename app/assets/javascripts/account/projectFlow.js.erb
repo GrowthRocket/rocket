@@ -1,66 +1,294 @@
+var planIndex = 1;
+var projectId;
+var planQueue = [-1, 0];
+
+function showError(error, containerId) {
+  $(".alert-danger").remove();
+  $(".navbar-fixed-top").siblings("#" + containerId).find(".row:visible").first().prepend("<div class='alert alert-dismissable alert-danger'><button class='close' data-dismiss='alert'>×</button>" + error + "</div>");
+  $("html, body").animate({
+      scrollTop: 0
+  }, 200);
+  return false;
+}
+
 $(function() {
+  $("#nextStep").click(function() {
+    $('#new_project').submit();
+  });
+
+  $("#preStep").click(function() {
+    containerToggle();
+    stepToggle();
+  });
+
+  $("#generateNewPlanContainer").click(function() {
+    planIndex++;
+    var index = getCurrentPlanIndex();
+    planQueue[index] = 1;
+    planQueue.push(0);
+    fillPlanInfo(showPlan());
+    $("html, body").animate({
+        scrollTop: (0,document.body.scrollHeight)
+    }, 600);
+    return false;
+    // $("#plan" + (planIndex) + "container").siblings().each(function(index) {
+    //   $(this).children().each(function(index) {
+    //     console.log($(this))
+    //     console.log(index)
+    //     if (index == 0) {
+    //       $(this).show();
+    //     } else {
+    //       $(this).hide();
+    //     }
+    //   });
+    // });
+  });
+
+  $("#applyVerify").click(function() {
+    $(this).attr("disabled", true);
+    var postUrl = "/account/projects/" + projectId + "/apply_for_verification_new/";
+    $.ajax({
+      type: "POST",
+      url: postUrl,
+      dataType: "json",
+      success: function(data) {
+        $("#applyVerify").attr("disabled", false);
+        if (data.status == "y") {
+          showSuccess(data.message);
+        } else if (data.status == "e") {
+          showError(data.message, "plansInfor");
+        } else if (data.status == "verifyID") {
+          alert("身份认证");
+        }else {
+          alert("What?");
+        }
+      }
+    });
+  });
+
   $('#new_project').ajaxForm({
     success: function(data) {
-      $(this).next.append(showPlan())
+      $("#new_project").find(":submit").attr("disabled", false);
+      if (data.status == "y") {
+        $("#projectInfor").hide();
+        fillPlanInfo(showPlan())
+        // $("#plansInfor").append(showPlan())
+        stepToggle();
+        projectId = data.project_id;
+        $(".newPlan").show();
+      } else if(data.status == "r") {
+        containerToggle();
+        stepToggle();
+      } else {
+        var errors = data.errors
+        if (errors.name != undefined) {
+          showError("项目名称不能为空", "projectInfor");
+        } else if (errors.description != undefined) {
+          showError("项目描述不能为空", "projectInfor");
+        } else if (errors.fund_goal != undefined) {
+          showError("筹款目标要大于 0 小于 1_000_000", "projectInfor");
+        }
+        window.scrollTo(0, 0);
+      }
     }
   });
+
 })
 
-function showPlan() {
-  var content = '';
+function showSuccess(message) {
+  $("#successContainer").siblings().hide();
+  var content = "";
   content = "<div class='row'>" +
-              "<div class='col-md-4 col-md-offset-4'>" +
-                "<i class='fa fa-dot-circle-o fa-4x project-circle' aria-hidden='true'></i>" +
-                "<i class='fa fa-check-circle fa-4x project-circle' aria-hidden='true'></i>" +
-              "</div>" +
-            "</div>" +
-            "<div class='row'>" +
-              "<div class='col-md-4 col-md-offset-4 well project-well'>" +
-                "<h1>项目信息</h1>" +
-                  // generateForm() +
+              "<div class='col-md-4 col-md-offset-4 well project-well text-center'>" +
+                "<p><i class='fa fa-check-circle project-circle fa-5x' aria-hidden='true'></i></p>" +
+                "<p>" + message + "</p>"
               "</div>" +
             "</div>";
 
+  $("#successContainer").append(content);
+}
+
+function fillPlanInfo(content) {
+  $("#plansInfor").append(content);
+  $("#generateNewPlanContainer").hover(function() {
+    $(this).css('cursor', 'pointer');
+  });
+
+  $("#savePlan" + planIndex).bind("click", function() {
+    var planNum = $(this).attr("planNum");
+    createPlan(projectId, planNum);
+  });
+  $(".removePlan" + planIndex).bind("click", function() {
+    var planNum = $(this).attr("planNum");
+    var planId = $(".removePlan" + planNum).first().attr("planId");
+    removePlan(planId, planNum);
+  });
+}
+
+function showPlanInforB(planNum) {
+  $("#plan" + planNum + "A").hide();
+  var planPrice = $("#plan_price" + planNum).val();
+  var planGoal = $("#plan_plan_goal" + planNum).val();
+  var planDescription = $("#plan_descrition" + planNum).val();
+  var planIndex = $("#plan" + planNum + "A").find("h1").text().match(/\d/g).join("");
+  var content = generatePlanB(planPrice, planGoal, planDescription, planIndex, planNum);
+  $("#plan" + planNum + "B").append(content);
+  refreshPlanNum();
+
+  $(".removePlan" + planNum).bind("click", function() {
+    // TODO: 实现删除
+    var planNum = $(this).attr("planNum");
+    var planId = $(".removePlan" + planNum).first().attr("planId");
+    removePlan(planId, planNum);
+  });
+
+
+  $("#showPlan" + planNum + "A").bind("click", function() {
+    planABToggle(planNum);
+  });
+
+  $("#plan" + planNum + "B").show();
+}
+
+function createPlan(projectId, planNum) {
+  var postData = $("#plan" + planNum + "InforForm").serializeArray();
+  $.ajax({
+    url: "/account/projects/" + projectId + "/plans/create_plan/",
+    method: "post",
+    data: postData,
+    dataType: "json",
+    success: function(data){
+      // $("#applyVerify").attr("disabled", false);
+      if (data.status == "y") {
+        $(".removePlan" + planNum).attr("planId", data.plan_id);
+        $("#plan" + planNum + "InforForm").append("<input type='hidden' name='plan_id' value='" + data.plan_id + "'>");
+        showPlanInforB(planNum);
+      } else if (data.status == "customerror") {
+        showError(data.message, "plansInfor");
+      } else if (data.status == "r") {
+        planABToggle(planNum);
+      } else {
+        var errors = data.errors
+        if (errors.description != undefined) {
+          showError("回报内容不能为空", "plansInfor");
+        } else if (errors.price != undefined) {
+          showError("支持金额不能为空", "plansInfor");
+        } else if (errors.plan_goal != undefined) {
+          showError("人数上限不能为空", "plansInfor");
+        }
+      }
+    }
+  });
+}
+
+function getCurrentPlanIndex() {
+  var planIndex = planQueue.indexOf(0);
+  return planIndex;
+}
+
+function showPlan() {
+  var content = '';
+  content = "<div id=plan" + planIndex + "container>" +
+            "<div id='plan" + planIndex + "B'></div>" +
+            "<div id='plan" + planIndex + "A'>" +
+              "<div class='row'>" +
+                "<div class='col-md-4 col-md-offset-4 well project-well'>" +
+                  "<h1>回报" + getCurrentPlanIndex() + "设置</h1>" +
+                    generateForm() +
+                "</div>" +
+              "</div>" +
+            "</div>"+
+            "</div>";
+
+            // console.log(content);
+  return content;
+}
+
+function removePlan(planId, planNum) {
+  var planIndex = planQueue.indexOf(0);
+  planQueue.splice(planIndex, 1);
+  // planQueue.push(0);
+  if (planId != undefined) {
+    $.ajax({
+      url: "/account/projects/" + projectId + "/plans/" + planId + "/",
+      method: "delete",
+      dataType: "json",
+      success: function(data){
+        if (data.status == "y") {
+
+        }
+      }
+    });
+  }
+  removePlanContainer(planNum);
+}
+
+function removePlanContainer(planNum) {
+  $("#plan" + planNum + "container").remove();
+  refreshPlanNum();
+}
+
+function refreshPlanNum() {
+  $("#plansInfor").children().each(function(index) {
+    $(this).find("h1").text("回报" + (index + 1) + "设置");
+    $(this).find("h3").text("回报" + (index + 1));
+  });
 }
 
 function generateForm() {
-  var content = "<form novalidate='novalidate' class='simple_form new_plan' id='new_plan' action='/account/projects/6/plans' accept-charset='UTF-8' method='post'><input name='utf8' type='hidden' value='✓'><input type='hidden' name='authenticity_token' value='3uhUnCrwOSa4emgf9XkOldUYe9ht5xP5HGdBPlfL132Jfol+ivsrUBdkOcHr9vR+RGu3oE/4T4BtLzdLidjFsg=='>
-    <div class='form-group integer required plan_price'><label class='integer required control-label' for='plan_price'><abbr title='required'>*</abbr> 方案价格</label><input class='numeric integer required edit-input-short-width form-control' type='number' step='1' name='plan[price]' id='plan_price'></div>
-    <trix-toolbar id='trix-toolbar-2'><div class='button_groups'>
-    <span class='button_group text_tools'>
-      <button type='button' class='bold' data-trix-attribute='bold' data-trix-key='b' title='Bold'>Bold</button>
-      <button type='button' class='italic' data-trix-attribute='italic' data-trix-key='i' title='Italic'>Italic</button>
-      <button type='button' class='strike' data-trix-attribute='strike' title='Strikethrough'>Strikethrough</button>
-      <button type='button' class='link' data-trix-attribute='href' data-trix-action='link' data-trix-key='k' title='Link'>Link</button>
-    </span>
+  var content = "<form id='plan" + planIndex + "InforForm'><div class='form-group'><div class='form-group integer required plan_price'><label class='integer required control-label' for='plan_price'><abbr title='required'>*</abbr> 支持金额</label><input class='numeric integer required edit-input-short-width form-control' type='number' step='1' name='plan[price]' id='plan_price" + planIndex + "'></div><p><strong>回报内容</strong></p><textarea id='plan_descrition" + planIndex + "' class='form-control' rows='3' name='plan[description]'></textarea><div class='form-group integer required plan_plan_goal'><label class='integer required control-label' for='plan_plan_goal'><abbr title='required'>*</abbr> 人数上限</label><input class='numeric integer required edit-input-short-width form-control' type='number' step='1' name='plan[plan_goal]' id='plan_plan_goal" + planIndex + "'></div></form><input type='button' class='btn btn-success pull-right' planNum='" + planIndex + "' id='savePlan" + planIndex + "' value='保存'/><input type='button' class='btn btn-danger pull-right removePlan" + planIndex + "' data-confirm='确认删除该方案么?' planNum='" + planIndex + "' value='删除'/>";
+  return content;
+}
 
-    <span class='button_group block_tools'>
-      <button type='button' class='quote' data-trix-attribute='quote' title='Quote'>Quote</button>
-      <button type='button' class='code' data-trix-attribute='code' title='Code'>Code</button>
-      <button type='button' class='list bullets' data-trix-attribute='bullet' title='Bullets'>Bullets</button>
-      <button type='button' class='list numbers' data-trix-attribute='number' title='Numbers'>Numbers</button>
-      <button type='button' class='block-level decrease' data-trix-action='decreaseBlockLevel' title='Decrease Level'>Decrease Level</button>
-      <button type='button' class='block-level increase' data-trix-action='increaseBlockLevel' title='Increase Level'>Increase Level</button>
-    </span>
+function stepToggle() {
+  if ($(".stepone").is(":visible")) {
+    $(".stepone").hide();
+    $(".steptwo").show();
+  } else {
+    $(".stepone").show();
+    $(".steptwo").hide();
+  }
+}
 
-    <span class='button_group history_tools'>
-      <button type='button' class='undo' data-trix-action='undo' data-trix-key='z' title='Undo'>Undo</button>
-      <button type='button' class='redo' data-trix-action='redo' data-trix-key='shift+z' title='Redo'>Redo</button>
-    </span>
-  </div>
+function planABToggle(planNum) {
+  if ($("#plan" + planNum + "A").is(":visible")) {
+    $("#plan" + planNum + "A").hide();
+    $("#plan" + planNum + "B").show();
+  } else {
+    $("#plan" + planNum + "A").show();
+    $("#plan" + planNum + "B").hide();
+  }
+  refreshPlanB(planNum)
+}
 
-  <div class='dialogs'>
-    <div class='dialog link_dialog' data-trix-attribute='href' data-trix-dialog='href'>
-      <div class='link_url_fields'>
-        <input type='url' required='' name='href' placeholder='Enter a URL…' disabled='disabled'>
-        <div class='button_group'>
-          <input type='button' value='Link' data-trix-method='setAttribute'>
-          <input type='button' value='Unlink' data-trix-method='removeAttribute'>
-        </div>
-      </div>
-    </div>
-  </div></trix-toolbar><trix-editor class='formatted_content' input='plan_description_trix_input_plan' contenteditable='' trix-id='2' toolbar='trix-toolbar-2'></trix-editor><input type='hidden' name='plan[description]' id='plan_description_trix_input_plan'>
-    <div class='form-group integer required plan_plan_goal'><label class='integer required control-label' for='plan_plan_goal'><abbr title='required'>*</abbr> 人数上限</label><input class='numeric integer required edit-input-short-width form-control' type='number' step='1' name='plan[plan_goal]' id='plan_plan_goal'></div>
-    <input type='submit' name='commit' value='申请审核' class='btn btn-warning' data-disable-with='申请审核...'>
-  </form>";
+function refreshPlanB(planNum) {
+  var planPrice = $("#plan_price" + planNum).val();
+  var planGoal = $("#plan_plan_goal" + planNum).val();
+  var planDescription = $("#plan_descrition" + planNum).val();
+  $("#plan" + planNum + "B").find("p").first().text("¥ " + planPrice + " 限 " + planGoal + "人");
+  $("#plan" + planNum + "B").find("p").last().text(planDescription)
+}
+
+function containerToggle() {
+  if ($("#projectInfor").is(":visible")) {
+    $("#projectInfor").hide();
+    $("#plansInfor").show();
+    $(".newPlan").show();
+  } else {
+    $("#projectInfor").show();
+    $("#plansInfor").hide();
+    $(".newPlan").hide();
+  }
+}
+
+function generatePlanB(planPrice, planGoal, planDescription, planIndex, planNum) {
+  var content = "<div class='row'>" +
+              "<div class='col-md-4 col-md-offset-4 well project-well'>" +
+                "<h3>回报" + planIndex + "</h3>" +
+                "<p>¥ " + planPrice + " 限 " + planGoal + "人</p>" +
+                "<p>" + planDescription + "</p>"+
+                "<input type='button' class='btn btn-success pull-right' planNum='" + planNum + "' id='showPlan" + planNum + "A' value='修改'/><input type='button' class='btn btn-danger pull-right removePlan" + planNum + "' data-confirm='确认删除该方案么?' planNum='" + planNum + "' value='删除'/>"
+              "</div>" +
+            "</div>";
+  return content;
 }

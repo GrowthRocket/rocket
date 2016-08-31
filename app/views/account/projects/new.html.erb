@@ -1,13 +1,42 @@
-<div class="row">
-  <div class="col-md-4 col-md-offset-4">
-      <i class="fa fa-dot-circle-o fa-4x project-circle" aria-hidden="true"></i>
-      <span style="border: 1px solid black; width:100px"></span>
-      <i class="fa fa-check-circle fa-4x project-circle" aria-hidden="true"></i>
+<div id="projectInfor">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <i class="fa fa-dot-circle-o fa-4x project-circle" aria-hidden="true"></i>
+        <span style="border: 1px solid black; width:100px"></span>
+        <i class="fa fa-check-circle fa-4x project-circle" aria-hidden="true"></i>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4 well project-well">
+      <h1>项目信息</h1>
+      <%= render "form" %>
+    </div>
   </div>
 </div>
-<div class="row">
-  <div class="col-md-4 col-md-offset-4 well project-well">
-    <h1>项目信息</h1>
-    <%= render "form" %>
+<div id="plansInfor">
+
+</div>
+<div>
+  <div class="row text-center newPlan" style="display:none">
+    <div class="col-md-4 col-md-offset-4">
+      <a id="generateNewPlanContainer" href='javascript:void(0)'>+继续添加新的回报</a>
+    </div>
   </div>
+</div>
+<div id="operation">
+
+  <div class="row stepone">
+    <div class="col-md-4 col-md-offset-4">
+      <input type="button" class="btn btn-success pull-right" value="下一步" id="nextStep"/>
+    </div>
+  </div>
+  <div class="row steptwo" style="display:none">
+    <div class="col-md-4 col-md-offset-4">
+      <input type='button' name='commit' value='提交审核' class='btn btn-success pull-right' data-disable-with='提交审核' id='applyVerify'><input type='button' value='上一步' id='preStep' class='btn btn-default pull-right'/>
+    </div>
+  </div>
+</div>
+
+<div id="successContainer">
+  
 </div>

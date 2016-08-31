@@ -30,6 +30,7 @@ class ApplicationController < ActionController::Base
       render :new
     else
       if plan.save
+
         flash[:notice] = "您已成功新建筹款方案。"
         if current_user.is_admin?
           redirect_to admin_project_plans_path
@@ -37,6 +38,7 @@ class ApplicationController < ActionController::Base
           redirect_to account_project_plans_path
         end
       else
+        binding.pry
         render :new
       end
     end
