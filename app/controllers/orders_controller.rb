@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
 
   def new
     @plan = Plan.find(params[:plan_id])
-    if @plan.plan_type == 0
+    if @plan.plan_type.zero?
       custom_price = params[:custom_price]
       if custom_price == ""
         flash[:alert] = "请输入自定义金额"
@@ -28,7 +28,6 @@ class OrdersController < ApplicationController
     @order = @plan.orders.build(order_params)
     @order.creator_name = current_user.user_name
     @order.user = current_user
-    binding.pry
     @order.project = @project
 
     if @order.save

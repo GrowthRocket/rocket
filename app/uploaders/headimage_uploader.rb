@@ -6,7 +6,7 @@ class HeadimageUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
   include CarrierWave::MiniMagick
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  # storage :file
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
@@ -47,7 +47,7 @@ class HeadimageUploader < CarrierWave::Uploader::Base
   end
 
   version :mdimage do
-    process resize_to_fill: [200,200]
+    process resize_to_fill: [200, 200]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

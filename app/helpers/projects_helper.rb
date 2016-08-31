@@ -11,7 +11,7 @@ module ProjectsHelper
     number_with_precision(project.fund_progress.to_f / project.fund_goal * 100, precision: 2) + " %"
   end
 
-  def render_highlight_content(project,query_string)
+  def render_highlight_content(project, query_string)
     excerpt_cont = excerpt(project.name, query_string, radius: 500)
     highlight(excerpt_cont, query_string)
   end
@@ -21,6 +21,4 @@ module ProjectsHelper
       content_tag :span, "暂时还没有以这个名称命名的项目哦，请换一个项目名字再试一下"
     end
   end
-
-
 end

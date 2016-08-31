@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => {:registrations => "devise/users/registrations"}
+  devise_for :users, controllers: { registrations: "devise/users/registrations" }
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :welcome
+  root "welcome#index"
 
   namespace :admin do
     resources :orders
@@ -27,7 +27,6 @@ Rails.application.routes.draw do
         post :demote
       end
     end
-
     resources :bills do
       collection do
         get :show_bill_payments
@@ -36,13 +35,11 @@ Rails.application.routes.draw do
         get :payments_index
         post :custom_fund_rate
       end
-
       member do
         post :show_bill_payments_by_project
         post :payout
       end
     end
-
     resources :users_verify do
       member do
         post :pass_verify
@@ -77,7 +74,6 @@ Rails.application.routes.draw do
         post :show_orders_for_one_project
       end
     end
-
     resources :bills
   end
 
@@ -91,8 +87,6 @@ Rails.application.routes.draw do
     end
   end
 
-  root "projects#index"
-
   resources :projects do
     resources :plans
     collection do
@@ -100,5 +94,4 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :welcome
 end
