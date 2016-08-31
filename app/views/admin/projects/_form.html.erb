@@ -1,7 +1,8 @@
 <%= simple_form_for [:admin, @project] do |f| %>
 
   <%= f.input :name, :label =>"项目名称" ,input_html: { id: 'edit-input-long-width' }%>
-  <%= f.trix_editor :description, :label =>"项目描述" %>
+  <%= f.text_area :description, :class => "tinymce", :rows => 10, :cols => 120 %>
+  <%= tinymce :alternate%>
   <% if ["new", "create"].include?(controller.action_name) %>
     <%= f.input :user_id, :label =>"项目发起者" ,input_html: { class: 'edit-input-short-width'},:placeholder => "请填入用户ID"%>
   <% end %>
