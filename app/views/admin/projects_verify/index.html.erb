@@ -1,9 +1,7 @@
-<div>
-  <h2>
-    <span><%= link_to("所有项目",  admin_projects_path, ) %></span>
-    <span> | 待认证项目</span>
-  </h2>
-</div>
+
+
+<%= render "admin/projects/head" %>
+
 <table class="table table-boldered">
     <thead>
         <tr>
@@ -36,7 +34,7 @@
                 <%= render_project_status(project) %>
             </td>
             <td>
-                <%= link_to("查看项目申请详情", admin_projects_verify_path(id: project), :class => "btn btn-sm btn-default") %>
+                <%= link_to("审核项目", admin_projects_verify_path(id: project), :class => "btn btn-sm btn-default") %>
             </td>
         </tr>
         <% end %>
