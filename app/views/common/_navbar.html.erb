@@ -9,6 +9,7 @@
         <span>人才火箭</span>
       </a>
       <%= link_to("用户指南", how_it_works_path, class:"hiw-btn btn btn-default btn-sm") %>
+      <%= link_to("发现好项目", projects_path, class:"hiw-btn btn btn-default btn-sm") %>
     </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -21,7 +22,7 @@
               <% else %>
 
               <li class="nav-item btn-group" data-behavior="notifications" data-notifications='<%= render template: "notifications/index", formats: [:json] %>'>
-                <a class="dropdown-toggle nav-link" type="button" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="dropdown-toggle nav-link notice-ring" type="button" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <%= fa_icon "bell" %> <span data-behavior="unread-count"></span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu1" data-behavior="notification-items">
@@ -36,7 +37,7 @@
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
-                    <img src="<%=current_user.image.headimage%>" class="nav-img img-circle"/>      
+                    <img src="<%=current_user.image.headimage%>" class="nav-img img-circle"/>
                     你好， <%= current_user.email %>
                   <b class="caret"></b>
                   </a>
