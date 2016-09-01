@@ -6,52 +6,144 @@
     .projects-container {
         min-width: 1200px;
         overflow: hidden;
-
+        .project-text {
+            font-size: 14px;
+            line-height: 28px;
+        }
         .bg-container {
             background-color: #fff;
-            margin-top:10px;
+            margin-top: 20px;
             overflow: hidden;
             width: 1200px;
             margin-left: auto;
             margin-right: auto;
+            padding-top: 19px;
             .image {
-                padding: 19px 0;
                 text-align: center;
                 width: 790px;
                 float: left;
             }
-
-             .project-card {
+            .project-card {
                 float: left;
                 position: relative;
                 width: 360px;
                 margin-left: 30px;
-
+                text-align: left;
+                // background-color: #ccc;
+                line-height: 30px;
+                padding-right: 40px;
+                .profile-card {
+                    margin-top: 45px;
+                    width: 360px;
+                    height: auto;
+                    display: block;
+                    .profile-icon {
+                        width: 60px;
+                        height: 60px;
+                        border-radius: 50%;
+                        overflow: hidden;
+                        float: left;
+                    }
+                    .profile-text {
+                        margin-left: 15px;
+                        width: 285px;
+                        float: left;
+                        position: relative;
+                        margin-right: auto;
+                        margin-bottom: 15px;
+                        font-size: 13px;
+                    }
+                }
+                h1 {
+                    font-size: 24px;
+                    line-height: 28px;
+                    font-weight: normal;
+                    margin: 0;
+                }
+                .project-sm-text {
+                    margin-top: 15px;
+                    font-size: 13px;
+                    line-height: 18px;
+                    color: #888888;
+                }
+                .process-bar {
+                    margin-top: 40px;
+                    .sh-progress-whole {
+                        margin: 10px 0 5px;
+                        width: 100%;
+                        height: 15px;
+                    }
+                    .sh-progress-content {
+                        background-color: #43CB83;
+                    }
+                    .text-col {
+                        width: 360px;
+                        height: 80px;
+                        font-size: 12px;
+                        line-height: 20px;
+                        color: #888888;
+                        .text-col-left {
+                            position: relative;
+                            float: left;
+                        }
+                        .text-col-right {
+                            padding-right: 35px;
+                            position: relative;
+                            float: right;
+                        }
+                    }
+                    .container-figure {
+                        color: black;
+                    }
+                }
             }
-
         }
-        .left-container {
-            width: 790px;
-            overflow: hidden;
-            float: left;
-            margin: 30px 0 30px 0;
-            .md-container {
-                background-color: #fff;
+        .low-container {
+            width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            .left-container {
                 width: 790px;
-            }
-
-          }
-            .right-container {
-                margin: 0 0 30px 30px;
-                width: 360px;
                 overflow: hidden;
                 float: left;
-                position: relative;
+                .md-container {
+                    margin-top: 30px;
+                    padding-top: 5px;
+                    padding-left: 5px;
+                    padding-right: 5px;
+                    background-color: #fff;
+                    width: 790px;
+                    h2 {
+                        font-size: 22px;
+                        line-height: 28px;
+                        font-weight: normal;
+                        margin-left: 40px;
+                    }
+                    .thick {
+                        border-width: 2px;
+                        margin-left: 40px;
+                        margin-right: 40px;
+                        border-color: #d7d5d6;
+                    }
+                }
             }
-            .sm-container {
-                background-color: #fff;
+            .right-container {
+                margin-left: 30px;
+                width: 380px;
+                overflow: hidden;
+                float: left;
+                .sm-container {
+                    margin-top: 30px;
+                    background-color: #fff;
+                    width: 380px;
+                    padding: 20px 20px 20px 20px;
+                    .plan-price {
+                        font-size: 18px;
+                        font-weight: bold;
+                    }
+                }
             }
-
+        }
         .content {
             background-color: #fff;
             font-family: tahoma;
@@ -71,39 +163,30 @@
             float: left;
             position: relative;
         }
-
-        .content .project-text {
-            font-size: 14px;
-            text-align: left;
-            padding: 5px 30px 11px 45px;
-            line-height: 28px;
-        }
-
         .reserve-btn {
-            margin-top: 25px;
             border-radius: 3px;
-            width: 278px;
+            width: 260px;
             height: 40px;
-            line-height: 38px;
+            line-height: 32px;
             font-weight: 700;
             color: #fff;
             font-size: 17px;
-            text-align: center;
             display: inline-block;
-            background-color: #41ccb4;
+            background-color: #43CB83;
             margin-bottom: 30px;
+
         }
         .reserve-sm-btn {
             border-radius: 3px;
-            width: 135px;
-            height: 40px;
-            line-height: 38px;
-            font-weight: 700;
+            width: 125px;
+            height: 38px;
+            line-height: 28px;
+            font-weight: 500;
             color: #fff;
-            font-size: 17px;
+            font-size: 15px;
             display: inline-block;
-            background-color: #41ccb4;
-            margin: 20px 0 30px 45px;
+            background-color: #43CB83;
+            margin-top: 20px;
         }
         .reserve-btn:hover {
             color: white;
@@ -112,12 +195,6 @@
         .reserve-sm-btn:hover {
             color: white;
             text-decoration: none;
-        }
-        .project h1 {
-            font-size: 24px;
-            text-align: left;
-            padding: 0 10px 10px 45px;
-            line-height: 28px;
         }
         .content h2 {
             text-align: left;
@@ -131,7 +208,7 @@
         .text {
             font-size: 14px;
             text-align: left;
-            padding: 5px 100px 31px;
+            padding: 5px 40px 31px 40px;
             line-height: 28px;
         }
         .text .post-date {

@@ -6,117 +6,150 @@
             </div>
 
             <div class="project-card">
-              <div class="project-text">
-
-                  <h1>
-                      <%= @project.name %>
-                  </h1>
-
-              </div>
-              <p class="project-text">
-                  已筹到 ¥
-                  <%= @project.fund_progress %>， 已有<%= @project.backer_quantity %>人支持<%= render_progress(number_with_precision(@project.fund_progress.to_f / @project.fund_goal * 100, :precision => 2)) %>
-                  <% if @project.offline? %>
-                  <%= link_to("该项目已结束众筹", project_plans_path(@project), :class => "reserve-btn btn disabled" ) %>
-              <% else %>
-                  <%= link_to("支持项目", project_plans_path(@project), :class => "reserve-btn", style: "margin-left:45px") %>
-                  <% end %>
-              </p>
-
-            </div>
-
-        </div>
-
-        <div class="left-container">
-
-            <div class="md-container">
-                <h2>项目详情</h2>
-                <p>
-                    <div class="trix">
-                        <div class="text">
-                            <%= sanitize(@project.description) %>
-                        </div>
+                <h1>
+                    <%= @project.name %>
+                </h1>
+                <div class="profile-card">
+                    <div class="profile-icon">
+                        <%=image_tag(@user.image.mdimage,style:"width:60px; height:60px")%>
                     </div>
-                </p>
-            </div>
-
-            <div class="bg-content">
-                <h2 class="title">最新动态</h2>
-                <% @posts.each do |post| %>
-                <div class="trix">
-                    <div class="text">
-                        <%= sanitize(post.description)%>
-                        <div class="post-date">
-                            <%= render_order_created_at(post.created_at) %>
+                    <div class="profile-text">
+                        <div style="font-size:16px">
+                            <%= @user.user_name%>
+                            <% if !@user.weibo.blank? %>
+                            <%= link_to @user.weibo, class:"btn btn-xs btn-default" do%>
+                            <i class="fa fa-weibo" style="margin-right: 2px; "></i>
+                            <% end %>
+                            <% end %>
                         </div>
-                        <hr>
+
+                        已有<%= @project.backer_quantity %>人支持
+
                     </div>
                 </div>
-                <% end %>
-            </div>
+                <div class="project-sm-text">
+                    <p>
+                        <% if @user.description.blank? %>
+                        感谢你的来访，如果你对我的项目有兴趣，可以支持我的项目。
+                    <% else %>
+                        <%= @user.description%>
+                        <% end %>
+                    </p>
+                </div>
 
-        </div>
+                <div class="process-bar">
+                    已筹到 ¥
+                    <%= @project.fund_progress %>
+                    <%= render_progress_show(number_with_precision(@project.fund_progress.to_f / @project.fund_goal * 100, :precision => 2))%>
 
-        <div class="right-container">
+                    <div class="text-col">
+                        <div class="text-col-left">
+                            <div class="container-figure">
+                                <%= number_with_precision(@project.fund_progress.to_f / @project.fund_goal * 100, :precision => 0) %>%
+                            </div>
+                            筹款进度
+                        </div>
+                        <div class="text-col-right">
+                            <div class="container-figure">
+                                <%= @project.fund_progress %>元
+                            </div>
+                            已筹款
+                        </div>
+                    </div>
 
-            <p class="project-text">
-                <%=image_tag((@user.image.mdimage), class: "img-circle" ,style: "width:60px; height:60px")%>
-                <%= @user.user_name %>
+                </div>
 
-                的筹款目标为¥
-                <%= @project.fund_goal %>
-                <% if !@user.weibo.blank? %>
-                <%= link_to @user.weibo, class:"btn btn-xs btn-default" do%>
-                <i class="fa fa-weibo" style="margin-right: 2px; "></i>
-                微博
-                <% end %>
+                <% if @project.offline? %>
+                <%= link_to("筹款结束", project_plans_path(@project), :class => "reserve-btn btn disabled" ) %>
+            <% else %>
+                <%= link_to("支持TA", project_plans_path(@project), :class => "reserve-btn btn") %>
                 <% end %>
             </p>
+        </div>
+        </div>
+        <div class="low-container">
+          <div class="left-container">
 
-                    <% @plans.each do |plan| %>
-                    <div class="sm-content">
-                        <p>
-                            <div class="trix">
-                                <div class="project-text">
-                                    <%= sanitize(plan.description) %>
-                                </div>
-                            </div>
-                        </p>
-                        <p class="project-text" style="font-weight:bold ">
-                            限额
-                            <%= plan.plan_goal %>位 | 剩余<%= plan.plan_goal - plan.plan_progress %>位
-                        </p>
-                        <% if @project.offline? %>
-                        <p>
-                            <%= link_to("该项目已结束众筹", new_plan_order_path(plan), :class => "reserve-sm-btn btn disabled") %>
-                        </p>
-                    <% else %>
-                        <% if plan.plan_type == 1 %>
-                        <%= link_to("支持#{plan.price}元", new_plan_order_path(plan), :class => "reserve-sm-btn" ) %>
-                    <% else %>
-                        <p>
-                            <%= form_tag new_plan_order_path(plan), method: "get", class: "form-inline" do %>
-                            <input type="text" name="custom_price" class="form-control" placeholder="请输入自定义金额"/>
-                            <% if @project.offline? %>
-                            <%= submit_tag "该项目已结束众筹", class: "form-control btn btn-primary ", disabled: true %>
-                        <% else %>
-                            <%= submit_tag "支持", class: "form-control btn btn-primary" %>
-                            <% end %>
-                            <% end %>
-                        </p>
-                        <% end %>
-                        <% end %>
-                    </div>
-                    <% end %>
+              <div class="md-container">
+                  <h2>项目详情</h2>
+                  <hr class="thick">
+                  <p>
+                      <div class="trix">
+                          <div class="text">
+                              <%= sanitize(@project.description) %>
+                          </div>
+                      </div>
+                  </p>
+              </div>
 
-                </div>
+              <div class="md-container">
+                  <h2 class="title">最新动态</h2>
+                      <hr class="thick">
+                  <% @posts.each do |post| %>
+                  <div class="trix">
+                      <div class="text">
+                          <%= sanitize(post.description)%>
+                          <div class="post-date">
+                              <%= render_order_created_at(post.created_at) %>
+                          </div>
+                          <hr>
+                      </div>
+                  </div>
+                  <% end %>
+              </div>
+          </div>
+          <div class="right-container">
+
+              <% @plans.each do |plan| %>
+              <div class="sm-container">
+                <p class="plan-price">
+                  ￥<%= plan.price %>
+                  <hr>
+                </p>
+                  <p>
+                      <div class="trix">
+                          <div class="project-text">
+                              <%= sanitize(plan.description) %>
+                          </div>
+                      </div>
+                  </p>
+                  <p class="project-text" style="font-weight:bold ">
+                      限额
+                      <%= plan.plan_goal %>位 | 剩余<%= plan.plan_goal - plan.plan_progress %>位
+                  </p>
+                  <% if @project.offline? %>
+                  <p>
+                      <%= link_to("筹款结束", new_plan_order_path(plan), :class => "reserve-sm-btn btn disabled", disabled: true ) %>
+                  </p>
+              <% else %>
+                  <% if plan.plan_type == 1 %>
+                  <%= link_to("支持TA", new_plan_order_path(plan), :class => "reserve-sm-btn btn" ) %>
+              <% else %>
+                  <p>
+                      <%= form_tag new_plan_order_path(plan), method: "get", class: "form-inline" do %>
+                      <input type="text" name="custom_price" class="form-control" placeholder="请输入自定义金额"/>
+                      <% if @project.offline? %>
+                      <%= submit_tag "筹款结束", class: "reserve-sm-btn btn disabled ", disabled: true %>
+                  <% else %>
+                  <p>
+                      <%= submit_tag "支持TA", class: "reserve-sm-btn btn" %>
+                  </p>
+
+                      <% end %>
+                      <% end %>
+                  </p>
+                  <% end %>
+                  <% end %>
+              </div>
+              <% end %>
+
+          </div>
         </div>
 
 
     </div>
 
 </div>
-
 
 <!-- 演示样式参考 -->
 <!-- <img style="width:100%" src="/uploads/17.png"></img> -->
