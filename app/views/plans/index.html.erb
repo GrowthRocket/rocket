@@ -3,7 +3,7 @@
     <h1>支持<span><%= @user.user_name %></span>的项目</h1>
   </div>
   <div>
-    <p><%= @project.name %></p>
+    <p><%= link_to(@project.name,project_path(@project)) %></p>
   </div>
 </div>
 <div> </div>

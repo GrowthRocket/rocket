@@ -14,6 +14,28 @@
   position:relative;
 }
 
+.plans-head h1{
+  font-size:1.6em;
+  margin: 10;
+  padding: 0;
+}
+
+.plans-head p{
+  font-size:1.2em;
+  margin: 5;
+  padding: 0;
+  a:link {color: #333333};
+  a:visited {color: #333333}	;
+  a:hover {color: #666666}	;
+  a:active {color: #666666};
+}
+
+.plans-head span{
+  font-weight: bold;
+  color: #3499E0;
+  margin: 0 5px;
+}
+
 .plans-body{
   margin-top:20px;
   width: 900px;
