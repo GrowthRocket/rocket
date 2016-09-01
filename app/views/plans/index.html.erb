@@ -10,6 +10,9 @@
 
 <div class="plans-body">
   <!-- <div>请选择你要支持的方案</div> -->
+  <div class="plans-info">
+    当前进度
+  </div>
   <% @plans.each do |plan| %>
   <div class="plans-des">
     <p class="plan-price">
@@ -48,8 +51,4 @@
       <% end %>
   </div>
   <% end %>
-
-  <div class="plans-info">
-    当前进度
-  </div>
 </div>
