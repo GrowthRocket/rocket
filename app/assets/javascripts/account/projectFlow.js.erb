@@ -29,6 +29,13 @@ $(function() {
     stepToggle();
   });
 
+  $("#preview").click(function() {
+    window.open(
+      "/projects/" + projectId + "/preview",
+      '_blank' // <- This is what makes it open in a new window.
+    );
+  });
+
   $("#generateNewPlanContainer").click(function() {
     fillPlanInfo(showPlan(flowType));
     increaseNum();

@@ -116,7 +116,6 @@ class Account::ProjectsController < AccountController
      @current_project ||= find_project
   end
 
-
   private
 
   def find_project
