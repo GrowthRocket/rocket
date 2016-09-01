@@ -9,137 +9,92 @@ body {
   margin-bottom: 100px;
   background: #FBFBFB;
   font-family: arial, sans-serif;
-  a:link { text-decoration: none; color: #666666 };
-  a:visited { text-decoration: none; color: #666666 }	;
-  a:hover { text-decoration: none; color: #888888 }	;
-  a:active { text-decoration: none; color: #888888 };
+  line-height: 1.8em;
+  letter-spacing: 0.1em;
+  color: #333333;
+  // font-size: 14px;
+}
+
+a:active,
+a:hover {
+  text-decoration: none;
+}
+
+hr{
+  border: 0;
+  height: 0;
+  margin: 0;
+  border-bottom: 1px solid #CCCCCC;
+}
+
+.container {
+  padding: 0;
+}
+
+.notice-ring{
+  margin-top:5px;
 }
 
 // config navbar
-//
+
 .navbar{
   min-height: 60px;
   margin-bottom: 0px;
 }
 
 .navbar-default {
-  background-color: rgba(245, 245, 245, 0.96);
-  border-color: #CACACACA;
+  background-color: rgba(255, 255, 255, 0.96);
+  border-color: #CCCCCC;
 }
-// .navbar-default .navbar-brand {
-//   margin: 10px 0 0 0;
-//   color: #FFFFFF;
-// }
-// .navbar-default .navbar-brand:hover,
-// .navbar-default .navbar-brand:focus {
-//   color: #B9B9B9;
-//   background-color: #323232;
-// }
-// .navbar-default .navbar-text {
-//   color: #FFFFFF;
-// }
-// .navbar-default .navbar-nav > li > a {
-//   color: #FFFFFF;
-// }
-// .navbar-default .navbar-nav > li > a:hover,
-// .navbar-default .navbar-nav > li > a:focus {
-//   color: #B9B9B9;
-//   background-color: #323232;
-// }
-// .navbar-default .navbar-nav > .active > a,
-// .navbar-default .navbar-nav > .active > a:hover,
-// .navbar-default .navbar-nav > .active > a:focus {
-//   color: #B9B9B9;
-//   background-color: #323232;
-// }
-// .navbar-default .navbar-nav > .disabled > a,
-// .navbar-default .navbar-nav > .disabled > a:hover,
-// .navbar-default .navbar-nav > .disabled > a:focus {
-//   color: #B9B9B9;
-//   background-color: #323232;
-// }
-// .navbar-default .navbar-toggle {
-//   border-color: #323232;
-// }
-// .navbar-default .navbar-toggle:hover,
-// .navbar-default .navbar-toggle:focus {
-//   background-color: #323232;
-// }
-// .navbar-default .navbar-toggle .icon-bar {
-//   background-color: #323232;
-// }
-// .navbar-default .navbar-collapse,
-// .navbar-default .navbar-form {
-//   border-color: #323232;
-//   margin-top: 10px;
-// }
-// .navbar-default .navbar-nav > .open > a,
-// .navbar-default .navbar-nav > .open > a:hover,
-// .navbar-default .navbar-nav > .open > a:focus {
-//   color: #B9B9B9;
-//   background-color: #323232;
-// }
-// @media (max-width: 767px) {
-//   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
-//     color: #FFFFFF;
-//   }
-//   .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
-//   .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-//     color: #B9B9B9;
-//     background-color: #323232;
-//   }
-//   .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
-//   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
-//   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
-//     color: #FFFFFF;
-//     background-color: #B9B9B9;
-//   }
-//   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a,
-//   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:hover,
-//   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:focus {
-//     color: #B9B9B9;
-//     background-color: #323232;
-//   }
-// }
-// .navbar-default .navbar-link {
-//   color: #FFFFFF;
-// }
-// .navbar-default .navbar-link:hover {
-//   color: #B9B9B9;
-// }
-// .navbar-default .btn-link {
-//   color: #FFFFFF;
-// }
-// .navbar-default .btn-link:hover,
-// .navbar-default .btn-link:focus {
-//   color: #B9B9B9;
-// }
-// .navbar-default .btn-link[disabled]:hover,
-// fieldset[disabled] .navbar-default .btn-link:hover,
-// .navbar-default .btn-link[disabled]:focus,
-// fieldset[disabled] .navbar-default .btn-link:focus {
-//   color: #B9B9B9;
-// }
+
+.navbar-default .navbar-brand {
+    color: #666666;
+    float: left;
+    padding: 18px 25px;
+    font-size: 18px;
+    line-height: 20px;
+    height: 60px;
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #666666;
+}
+
+.navbar-default .navbar-nav > li > a{
+  color: #666666;
+}
+
+.dropdown-menu {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.dropdown-menu > li > a {
+  color: #666666;
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+    color: #888888;
+    border-bottom: 1px solid #CCCCCC;
+}
+
 
 // config navbar end
 
 #footer {
   background: #323232;
-  color: #CACACA;
+  color: #CCCCCC;
   bottom: 0;
   height: 100px;
   position: absolute;
   width: 100%;
   margin-top: 20px;
   padding-top: 20px;
-  a:link {text-decoration: none; color: #FFFFFF};
-  a:visited {text-decoration: none; color: #FFFFFF}	;
-  a:hover {text-decoration: none; color: #B9B9B9}	;
-  a:active {text-decoration: none; color: #B9B9B9};
-}
-
-.searchbar {
-  margin-bottom: 10px
+  a:link {color: #CCCCCC};
+  a:visited {color: #CCCCCC}	;
+  a:hover {color: #FFFFFF}	;
+  a:active {color: #FFFFFF};
 }
 
 .formatted_content {
@@ -149,10 +104,87 @@ body {
   margin-bottom: 10px;
 }
 
-.searchbar {
-  margin-bottom: 0;
+.nav-search {
+  margin-top: 4px;
 }
 
 .progress-bar {
   max-width: 100%;
+}
+
+// config index
+.index-out{
+  min-width:1200px;
+  // text-align:center;
+}
+
+.index-project{
+  margin-top:2px;
+  width:1150px;
+  background-color: #cacaca;
+  margin-left: auto;
+  margin-right: auto;
+  // margin-bottom: -15px;
+  // float: left;
+  // display: inline-block;
+}
+
+.index-project-img{
+  height: 400px;
+  width: 600px;
+  margin: 10px 20px 30px 30px;
+  float: left;
+}
+
+.index-project-detail{
+  text-align: left;
+  background-color: #f8f8f8;
+  height: 400px;
+  width: 400px;
+  padding-left: 20px;
+  padding-top: 10px;
+  margin-top: 10px;
+  margin-left: 40px;
+  position: relative;
+  float: left;
+}
+
+.index-project-detail h2{
+  font-size:2em;
+  margin-top: -5px;
+  margin-bottom: 20px;
+  a:link {color: #333333};
+  a:visited {color: #333333}	;
+  a:hover {color: #666666}	;
+  a:active {color: #666666};
+}
+
+// .index-project-detail span{
+// // text-align:left !important;
+// }
+
+.index-project-detail .index-num{
+  margin-top: 15px;
+  font-size:1.8em;
+  color: #666666;
+}
+
+.index-project-detail .index-user-info{
+  font-size:1em;
+  margin-top: -15px;
+  margin-bottom: 20px;
+  color: #888888;
+}
+.index-project-detail .index-text{
+  font-size:1em;
+  color: #666666;
+}
+
+.index-project-detail .progress-whole {
+  margin-top: 10px;
+  width: 360px;
+  height: 8px;
+}
+.index-project-detail .progress-content {
+    background-color: #3499E0;
 }

@@ -47,7 +47,7 @@
 
                     的筹款目标为¥
                     <%= @project.fund_goal %>
-                    <% if @user.weibo.include? "weibo" %>
+                    <% unless @user.weibo.blank?   %>
                       <%= link_to @user.weibo, class:"btn btn-xs btn-default" do%>
                         <i class="fa fa-weibo" style="margin-right: 2px; "></i>
                         微博
