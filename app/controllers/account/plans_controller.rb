@@ -50,6 +50,11 @@ class Account::PlansController < AccountController
     end
   end
 
+  def get_plans
+    @plans = @project.plans.normal
+    render json: @plans
+  end
+
   def create
     @plan = @project.plans.build(plan_params)
     require_create_plan_judgment(@plan)

@@ -1,3 +1,47 @@
-<h1>编辑众筹项目</h1>
+<div id="projectInfor" class="addflow-container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <i class="fa fa-dot-circle-o fa-4x project-circle" aria-hidden="true"></i>
+        <span style="border: 1px solid black; width:100px"></span>
+        <i class="fa fa-check-circle fa-4x project-circle" aria-hidden="true"></i>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4 well project-well">
+      <h1>编辑项目信息</h1>
+      <input type="hidden" vaue="<%= @flowType %>" id="flowType"/>
+      <%= render "form" %>
+    </div>
+  </div>
+</div>
+<div id="plansInfor" class="addflow-container">
 
-<%= render "form" %>
+</div>
+<div class="addflow-container">
+  <div class="row text-center newPlan" style="display:none">
+    <div class="col-md-4 col-md-offset-4">
+      <a id="generateNewPlanContainer" href='javascript:void(0)'>+继续添加新的回报</a>
+    </div>
+  </div>
+</div>
+<div id="operation" class="addflow-container">
+
+  <div class="row stepone">
+    <div class="col-md-4 col-md-offset-4">
+      <input type="button" class="btn btn-success pull-right" value="下一步" id="nextStep"/>
+    </div>
+  </div>
+  <div class="row steptwo" style="display:none">
+    <div class="col-md-4 col-md-offset-4">
+      <input type='button' name='commit' value='提交审核' class='btn btn-success pull-right' data-disable-with='提交审核' id='applyVerify'><input type='button' value='上一步' id='preStep' class='btn btn-default pull-right'/>
+    </div>
+  </div>
+</div>
+
+<div id="successContainer" class="addflow-container">
+
+</div>
+
+<div id="mobileContainer">
+
+</div>

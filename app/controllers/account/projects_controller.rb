@@ -22,6 +22,8 @@ class Account::ProjectsController < AccountController
 
   def edit
     @project = current_user.projects.find(params[:id])
+    @flowType = "edit"
+    session[:project_id] = @project.id
     @categories = Category.all
   end
 
@@ -38,7 +40,7 @@ class Account::ProjectsController < AccountController
     else
       @project = current_project
       if @project.update(project_params)
-        render json: {status: "r"}
+        render json: {status: "r", project_id: @project.id}
       else
         @errors = @project.errors
         render json: {status: "n", errors: @errors}
@@ -153,7 +155,7 @@ class Account::ProjectsController < AccountController
     binding.pry
     unless current_user.passed_verified?
       info[:status] = "verifyID"
-      info[:message] = "您尚未通过实名认证"
+      info[:message] = "当前项目已经自动保存。您尚未通过实名认证，通过实名认证后即可申请上线。"
       return info
     end
 
@@ -165,7 +167,7 @@ class Account::ProjectsController < AccountController
 
     if @projects.where("aasm_state = ? OR aasm_state = ?", "online", "verifying").count != 0
       info[:status] = "e"
-      info[:message] = "您已有在线项目或已有项目在审核中，但当前项目已经自动保存。"
+      info[:message] = "当前项目已经自动保存。但您已有在线项目或已有项目在审核中（一次只能上线一个项目）"
       return info
     end
     return info

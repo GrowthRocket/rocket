@@ -66,6 +66,7 @@ Rails.application.routes.draw do
       resources :plans do
         collection do
           post :create_plan
+          get :get_plans
         end
       end
       member do
