@@ -34,5 +34,5 @@ end
 #  plan_goal       :integer
 #  plan_progress   :integer          default(0)
 #  backer_quantity :integer          default(0)
-#  plan_type       :byte             default("1")
+#  plan_type       :integer          default(1)
 #
