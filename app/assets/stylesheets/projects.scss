@@ -24,7 +24,6 @@
   text-align: left;
   padding: 5px 30px 11px 45px;
   line-height: 28px;
-
 }
 
 .content .image{
@@ -46,7 +45,6 @@
     background-color: #41ccb4;
     margin-bottom: 30px;
 }
-
 
 .reserve-sm-btn {
       border-radius: 3px;
@@ -133,29 +131,34 @@
 }
 
 .index-project-img{
-  height: 400px;
+  height: 340px;
   width: 600px;
   margin: 10px 0px;
   float: left;
 }
 
+.index-project-img img{
+    height: 340px;
+    width: 600px;
+    margin: 0;
+  }
 .index-project-detail{
   // text-align: left;
-  background-color: #f8f8f8;
-  height: 400px;
-  width: 440px;
+  background-color: #fff;
+  height: 340px;
+  width: 300px;
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 10px;
-  margin: 10px 0px;
+  margin: 10px 0;
   position: relative;
   float: left;
 }
 
 .index-project-detail h2{
-  font-size:2em;
-  margin-top: 10px;
-  margin-bottom: 20px;
+  font-size:1.6em;
+  margin: 0;
+  padding: 0;
   a:link {color: #333333};
   a:visited {color: #333333}	;
   a:hover {color: #666666}	;
@@ -163,15 +166,14 @@
 }
 
 .index-project-detail .index-num{
-  margin-top: 30px;
-  font-size:1.8em;
+  margin-top: 20px;
+  font-size:1.5em;
   color: #666666;
 }
 
 .index-project-detail .index-user-info{
   font-size:1em;
-  margin-top: -15px;
-  margin-bottom: 20px;
+  margin: 10px 0 5px;
   color: #888888;
 }
 .index-project-detail .index-text{
@@ -180,8 +182,8 @@
 }
 
 .index-project-detail .progress-whole {
-  margin-top: 10px;
-  width: 400px;
+  margin-top: 5px;
+  width: 260px;
   height: 12px;
   border-radius: 1px;
 }
