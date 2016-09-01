@@ -157,7 +157,6 @@ class Account::UsersController < ApplicationController
       return
     end
     @verification_code = VerificationCode.select("verification_code").where(phone_number: phone_number, code_status: true).take
-    binding.pry
     if @verification_code.blank?
       @info[:status] = "n"
       @info[:message] = "验证码错误"

@@ -380,12 +380,20 @@ function refreshPlanB(planNum) {
 
 function containerToggle() {
   if ($("#projectInfor").is(":visible")) {
-    $("#projectInfor").hide();
-    $("#plansInfor").show();
+    $("#projectInfor").animate({
+            width: 'toggle'
+        }, "fast");
+    $("#plansInfor").animate({
+            width: 'toggle'
+        }, "fast");
     $(".newPlan").show();
   } else {
-    $("#projectInfor").show();
-    $("#plansInfor").hide();
+    $("#projectInfor").animate({
+            width: 'toggle'
+        }, "fast");
+    $("#plansInfor").animate({
+            width: 'toggle'
+        }, "fast");
     $(".newPlan").hide();
   }
 }

@@ -15,7 +15,6 @@ class Account::PlansController < AccountController
     if find_plan.nil?
       @plan = @project.plans.build(plan_params)
       message = verifyPlan(@plan)
-      # binding.pry
       if message[:status] == "y"
         if @plan.save
           message[:plan_id] = @plan.id
@@ -33,7 +32,6 @@ class Account::PlansController < AccountController
       @plan = find_plan
       @plan_new = @project.plans.build(plan_params)
       message = verifyPlan(@plan_new)
-      binding.pry
       if message[:status] == "y"
         if @plan.update(plan_params)
           message[:status] = "r"

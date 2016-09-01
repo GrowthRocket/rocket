@@ -38,7 +38,6 @@ class ApplicationController < ActionController::Base
           redirect_to account_project_plans_path
         end
       else
-        binding.pry
         render :new
       end
     end

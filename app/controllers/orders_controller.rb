@@ -28,7 +28,6 @@ class OrdersController < ApplicationController
     @order = @plan.orders.build(order_params)
     @order.creator_name = current_user.user_name
     @order.user = current_user
-    binding.pry
     @order.project = @project
 
     if @order.save
