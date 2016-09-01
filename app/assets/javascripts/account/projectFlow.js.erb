@@ -1,6 +1,7 @@
 var planIndex = 1;
 var projectId;
 var planQueue = [-1, 0];
+var flowType = "";
 
 function showError(error, containerId) {
   $(".alert-danger").remove();
@@ -12,8 +13,15 @@ function showError(error, containerId) {
 }
 
 $(function() {
+  flowType = $("#flowType").val();
+  projectId = $("#projectId").val();
+  if (flowType == "edit") {
+    $("input[name='_method']").val("post");
+  }
+  var fromId = (flowType == "edit" ? "#edit_project_" + projectId : "#new_project");
   $("#nextStep").click(function() {
-    $('#new_project').submit();
+    $(fromId).attr("action", "/account/projects");
+    $(fromId).submit();
   });
 
   $("#preStep").click(function() {
@@ -22,14 +30,12 @@ $(function() {
   });
 
   $("#generateNewPlanContainer").click(function() {
-    planIndex++;
-    var index = getCurrentPlanIndex();
-    planQueue[index] = 1;
-    planQueue.push(0);
-    fillPlanInfo(showPlan());
+    fillPlanInfo(showPlan(flowType));
+    increaseNum();
     $("html, body").animate({
         scrollTop: (0,document.body.scrollHeight)
     }, 600);
+
     return false;
     // $("#plan" + (planIndex) + "container").siblings().each(function(index) {
     //   $(this).children().each(function(index) {
@@ -68,19 +74,19 @@ $(function() {
     });
   });
 
-  $('#new_project').ajaxForm({
+  $(fromId).ajaxForm({
     success: function(data) {
       $("#new_project").find(":submit").attr("disabled", false);
       if (data.status == "y") {
         $("#projectInfor").hide();
-        fillPlanInfo(showPlan())
+        fillPlanInfo(showPlan(flowType));
+        increaseNum();
         // $("#plansInfor").append(showPlan())
         stepToggle();
         projectId = data.project_id;
         $(".newPlan").show();
       } else if(data.status == "r") {
-        if ($("#flowType").val() == "edit") {
-          projectId = data.project_id;
+        if (flowType == "edit") {
           generatePlans();
         }
         containerToggle();
@@ -100,6 +106,15 @@ $(function() {
   });
 
 })
+
+
+function increaseNum() {
+  planIndex++;
+  var index = getCurrentPlanIndex(flowType, planIndex);
+  planQueue[index] = 1;
+  planQueue.push(0);
+}
+
 // TODO: 实现当为编辑状态时去后台获得 plan 信息，然后填充页面，改变 planQueue
 function generatePlans() {
   $.ajax({
@@ -107,20 +122,29 @@ function generatePlans() {
     method: "get",
     dataType: "json",
     success: function(data){
-      planIndex = 0;
-      planQueue = [-1];
-      $.each(data, function(index, item) {
-        planIndex++;
-        planQueue << 1
-
-      });
-
+      if (data.length == 0) {
+        fillPlanInfo(showPlan(""));
+        flowType = "";
+        increaseNum();
+      } else {
+        planIndex = 0;
+        planQueue = [-1];
+        $.each(data, function(index, item) {
+          planIndex++;
+          planQueue.push(1);
+          fillPlanInfo(showPlan("edit", item));
+          showPlanInforB(planIndex);
+        });
+        flowType = "";
+        planQueue.push(0);
+      }
     }
   });
 }
 
 function showSuccess(message) {
-  $("#successContainer").siblings().hide();
+  // $("#successContainer").siblings().hide();
+  $(".addflow-container").not($("#successContainer")).hide();
   var content = "";
   content = "<div class='row'>" +
               "<div class='col-md-4 col-md-offset-4 well project-well text-center'>" +
@@ -130,30 +154,50 @@ function showSuccess(message) {
             "</div>";
 
   $("#successContainer").append(content);
+  $("#successContainer").show();
 }
 
 function showMobileVerify() {
-  $(".addflow-container").hide();
-  $("#mobileContainer").siblings().hide();
+  $(".addflow-container").not($("#mobileContainer")).hide();
+  // $("#mobileContainer").siblings().hide();
   var content = "";
   content = "<div class='row'>" +
               "<div class='col-md-4 col-md-offset-4 well project-well text-center'>" +
                 "<h2>验证手机</h2>" +
-                "<form>" +
+                "<form id='verify_phone_number' action='/account/users/2/verify_phone_number_new' method='post'>" +
                   "<div class='form-group'>" +
                    "<input type='tel' placeholder='请输入手机号码' id='user_phone_number' name='user[phone_number]' class='string tel required form-control'>" +
                   "</div>" +
                   "<div class='form-inline'>" +
                     "<input type='text' id='user_captcha' name='user[captcha]' placeholder='请输入验证码' class='string required form-control '>" +
                     "<input type='button' class='btn btn-sm btn-default' value='发送短信验证码' id='send_verification_code'>" +
-                  "</div>" +
-                  "<div class='form-group'>" +
-                    "<a href='/account/projects/' class='btn btn-default'>返回用户中心</a>"
+                  "</div><br />" +
+                  "<div class='form-inline'>" +
+                    "<input type='submit' class='btn btn-success form-control' value='提交'/>" +
+                    "<a href='/account/projects/' class='btn btn-default form-control'>返回用户中心</a>" +
                   "</div>" +
                 "</form>" +
               "</div>" +
             "</div>";
   $("#mobileContainer").append(content);
+$("#mobileContainer").show();
+  $("#verify_phone_number").ajaxForm({
+    success: function(data) {
+      var status = data.status
+      var message = data.message
+      if (status == "y") {
+        // showSuccess(message)
+        $("#applyVerify").click()
+
+      } else if (status == "n") {
+        showError(message, "mobileContainer");
+      } else {
+        showError(message, "mobileContainer");
+      }
+    }
+  });
+
+
   $("#send_verification_code").bind("click", function() {
     phoneNumber = $.trim($("#user_phone_number").val())
     if(phoneNumber != undefined && phoneNumber != "") {
@@ -237,20 +281,24 @@ function createPlan(projectId, planNum) {
   });
 }
 
-function getCurrentPlanIndex() {
-  var planIndex = planQueue.indexOf(0);
-  return planIndex;
+function getCurrentPlanIndex(flowType, planIndex) {
+  if (flowType == "edit") {
+    return planIndex;
+  } else {
+    var planIndex = planQueue.indexOf(0);
+    return planIndex;
+  }
 }
 
-function showPlan() {
+function showPlan(flowType, data) {
   var content = '';
   content = "<div id=plan" + planIndex + "container>" +
             "<div id='plan" + planIndex + "B'></div>" +
             "<div id='plan" + planIndex + "A'>" +
               "<div class='row'>" +
                 "<div class='col-md-4 col-md-offset-4 well project-well'>" +
-                  "<h1>回报" + getCurrentPlanIndex() + "设置</h1>" +
-                    generateForm() +
+                  "<h1>回报" + getCurrentPlanIndex(flowType, planIndex) + "设置</h1>" +
+                    generateForm(flowType, data) +
                 "</div>" +
               "</div>" +
             "</div>"+
@@ -291,9 +339,14 @@ function refreshPlanNum() {
   });
 }
 
-function generateForm() {
-  var content = "<form id='plan" + planIndex + "InforForm'><div class='form-group'><div class='form-group integer required plan_price'><label class='integer required control-label' for='plan_price'><abbr title='required'>*</abbr> 支持金额</label><input class='numeric integer required edit-input-short-width form-control' type='number' step='1' name='plan[price]' id='plan_price" + planIndex + "'></div><p><strong>回报内容</strong></p><textarea id='plan_descrition" + planIndex + "' class='form-control' rows='3' name='plan[description]'></textarea><div class='form-group integer required plan_plan_goal'><label class='integer required control-label' for='plan_plan_goal'><abbr title='required'>*</abbr> 人数上限</label><input class='numeric integer required edit-input-short-width form-control' type='number' step='1' name='plan[plan_goal]' id='plan_plan_goal" + planIndex + "'></div></form><input type='button' class='btn btn-success pull-right' planNum='" + planIndex + "' id='savePlan" + planIndex + "' value='保存'/><input type='button' class='btn btn-danger pull-right removePlan" + planIndex + "' data-confirm='确认删除该方案么?' planNum='" + planIndex + "' value='删除'/>";
-  return content;
+function generateForm(flowType, data) {
+  if (flowType == "edit") {
+    var content = "<form id='plan" + planIndex + "InforForm'><div class='form-group'><div class='form-group integer required plan_price'><label class='integer required control-label' for='plan_price'><abbr title='required'>*</abbr> 支持金额</label><input class='numeric integer required edit-input-short-width form-control' type='number' step='1' name='plan[price]' value='"+data.price+"' id='plan_price" + planIndex + "'></div><p><strong>回报内容</strong></p><textarea id='plan_descrition" + planIndex + "' class='form-control' rows='3' name='plan[description]'>" + data.description + "</textarea><div class='form-group integer required plan_plan_goal'><label class='integer required control-label' for='plan_plan_goal'><abbr title='required'>*</abbr> 人数上限</label><input class='numeric integer required edit-input-short-width form-control' value='" + data.plan_goal + "' type='number' step='1' name='plan[plan_goal]' id='plan_plan_goal" + planIndex + "'></div></form><input type='button' class='btn btn-success pull-right' planNum='" + planIndex + "' id='savePlan" + planIndex + "' value='保存'/><input type='button' class='btn btn-danger pull-right removePlan" + planIndex + "' data-confirm='确认删除该方案么?' planNum='" + planIndex + "' value='删除'/>";
+    return content;
+  } else {
+    var content = "<form id='plan" + planIndex + "InforForm'><div class='form-group'><div class='form-group integer required plan_price'><label class='integer required control-label' for='plan_price'><abbr title='required'>*</abbr> 支持金额</label><input class='numeric integer required edit-input-short-width form-control' type='number' step='1' name='plan[price]' id='plan_price" + planIndex + "'></div><p><strong>回报内容</strong></p><textarea id='plan_descrition" + planIndex + "' class='form-control' rows='3' name='plan[description]'></textarea><div class='form-group integer required plan_plan_goal'><label class='integer required control-label' for='plan_plan_goal'><abbr title='required'>*</abbr> 人数上限</label><input class='numeric integer required edit-input-short-width form-control' type='number' step='1' name='plan[plan_goal]' id='plan_plan_goal" + planIndex + "'></div></form><input type='button' class='btn btn-success pull-right' planNum='" + planIndex + "' id='savePlan" + planIndex + "' value='保存'/><input type='button' class='btn btn-danger pull-right removePlan" + planIndex + "' data-confirm='确认删除该方案么?' planNum='" + planIndex + "' value='删除'/>";
+    return content;
+  }
 }
 
 function stepToggle() {

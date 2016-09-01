@@ -40,7 +40,7 @@ class Account::ProjectsController < AccountController
     else
       @project = current_project
       if @project.update(project_params)
-        render json: {status: "r", project_id: @project.id}
+        render json: {status: "r"}
       else
         @errors = @project.errors
         render json: {status: "n", errors: @errors}
@@ -152,7 +152,6 @@ class Account::ProjectsController < AccountController
   def check_project_apply_valid_new
     info = {}
     info[:status] = "y"
-    binding.pry
     unless current_user.passed_verified?
       info[:status] = "verifyID"
       info[:message] = "当前项目已经自动保存。您尚未通过实名认证，通过实名认证后即可申请上线。"

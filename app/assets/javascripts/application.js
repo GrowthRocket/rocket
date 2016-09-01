@@ -19,4 +19,4 @@
 //= require bootstrap/tab
 //= require jquery-cookie
 //= require trix
-// = require_tree .
+//  require_tree .
