@@ -40,6 +40,7 @@ hr{
 .navbar{
   min-height: 60px;
   margin-bottom: 0px;
+  letter-spacing: 0.05em;
 }
 
 .navbar-default {
@@ -110,81 +111,4 @@ hr{
 
 .progress-bar {
   max-width: 100%;
-}
-
-// config index
-.index-out{
-  min-width:1200px;
-  // text-align:center;
-}
-
-.index-project{
-  margin-top:2px;
-  width:1150px;
-  background-color: #cacaca;
-  margin-left: auto;
-  margin-right: auto;
-  // margin-bottom: -15px;
-  // float: left;
-  // display: inline-block;
-}
-
-.index-project-img{
-  height: 400px;
-  width: 600px;
-  margin: 10px 20px 30px 30px;
-  float: left;
-}
-
-.index-project-detail{
-  text-align: left;
-  background-color: #f8f8f8;
-  height: 400px;
-  width: 400px;
-  padding-left: 20px;
-  padding-top: 10px;
-  margin-top: 10px;
-  margin-left: 40px;
-  position: relative;
-  float: left;
-}
-
-.index-project-detail h2{
-  font-size:2em;
-  margin-top: -5px;
-  margin-bottom: 20px;
-  a:link {color: #333333};
-  a:visited {color: #333333}	;
-  a:hover {color: #666666}	;
-  a:active {color: #666666};
-}
-
-// .index-project-detail span{
-// // text-align:left !important;
-// }
-
-.index-project-detail .index-num{
-  margin-top: 15px;
-  font-size:1.8em;
-  color: #666666;
-}
-
-.index-project-detail .index-user-info{
-  font-size:1em;
-  margin-top: -15px;
-  margin-bottom: 20px;
-  color: #888888;
-}
-.index-project-detail .index-text{
-  font-size:1em;
-  color: #666666;
-}
-
-.index-project-detail .progress-whole {
-  margin-top: 10px;
-  width: 360px;
-  height: 8px;
-}
-.index-project-detail .progress-content {
-    background-color: #3499E0;
 }
