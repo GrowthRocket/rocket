@@ -213,7 +213,7 @@
     margin-right: auto;
     margin-bottom: 0;
     border-radius: 0;
-    height: 380px;
+    min-height: 380px;
     position: relative;
     color: #333;
     .cta-button {
@@ -240,6 +240,6 @@
     }
     p {
         padding-top: 18px;
-        font-size: 18px;
+        font-size: 14px;
     }
 }
