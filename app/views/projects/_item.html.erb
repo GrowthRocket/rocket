@@ -1,5 +1,5 @@
 <div class="col-md-6 col-md-offset-0 index-show">
-    <%= link_to(image_tag(project.image.show), project_path(project), class: "thumbnail") %>
+    <%= link_to(image_tag(project.image.large), project_path(project), class: "thumbnail") %>
     <h2><%= link_to(render_highlight_content(project, @query_string), project_path(project)) %></h2>
     <p>筹集目标金额 ¥
         <%= project.fund_goal %>
