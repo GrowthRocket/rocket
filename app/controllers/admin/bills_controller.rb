@@ -1,5 +1,5 @@
 class Admin::BillsController < AdminController
-  before_action :get_fund_rate, only: %i(index payout_index payments_index show_bill_payments show_bill_payouts)
+  before_action :find_fund_rate, only: %i(index payout_index payments_index show_bill_payments show_bill_payouts)
 
   def index
     @bill_payments = BillPayment.bill_payment_by_project_id(%w(success paid))
@@ -21,7 +21,7 @@ class Admin::BillsController < AdminController
     redirect_back(fallback_location: root_path)
   end
 
-  def get_fund_rate
+  def find_fund_rate
     @fund_rate = ENV["fund_rate"]
   end
 
@@ -65,8 +65,7 @@ class Admin::BillsController < AdminController
     @project = Project.find(params[:id])
     amount = BillPayment.where(bill_status: "success", project_id: params[:id]).sum(:amount)
     final_amount = ((100 - ENV["fund_rate"].to_f) / 100) * amount
-    options = { project: @project, amount: final_amount }
-    if FundingService.new(options).payout!
+    if PayoutService.new(@project, final_amount).perform!
       BillPayment.where(project_id: params[:id]).update_all(bill_status: "paid")
       flash[:notice] = "资金发放成功！"
     else

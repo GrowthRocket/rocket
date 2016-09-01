@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   def resource_name
     :user
-   end
+  end
 
   def resource
     @resource ||= User.new
@@ -30,9 +30,22 @@ class ApplicationController < ActionController::Base
   def check_plan_valid_for_create
     if @plan.price.blank?
       flash[:alert] = "请填写回报价格"
+      render :new
     end
     if @plan.price.to_i > @project.fund_goal.to_i
       flash[:alert] = "回报价格不能大于项目筹款目标哦！"
+      render :new
+    else
+      if @planplan.save
+        flash[:notice] = "您已成功新建筹款方案。"
+        if current_user.is_admin?
+          redirect_to admin_project_plans_path
+        else
+          redirect_to account_project_plans_path
+        end
+      else
+        render :new
+      end
     end
   end
 

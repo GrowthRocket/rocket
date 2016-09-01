@@ -5,6 +5,6 @@ class WelcomeController < ApplicationController
   end
 
   def how_it_works
-    @projects  = Project.find(8,6,9)
+    @projects  = Project.find(1,2,3)
   end
 end
