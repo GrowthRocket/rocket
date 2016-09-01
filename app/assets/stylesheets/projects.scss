@@ -177,7 +177,11 @@
 .index-project-detail .index-user-info{
   font-size:1em;
   margin: 10px 0 5px;
-  color: #888888;
+  color: #666666;
+  .name{
+    font-weight:bold;
+    color: #3499E0;
+  }
 }
 .index-project-detail .index-text{
   font-size: 12px;
@@ -199,7 +203,7 @@
 // add index banner
 
 .index-banner{
-    background: linear-gradient( rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6) ), url("images/banner-1.jpg");
+    background: linear-gradient( rgba(255, 255, 255, 0.5), rgba(51, 51, 51, 0.7) ), url("images/banner-1.jpg");
     display: block;
     // background-attachment: fixed;
     background-repeat: no-repeat;
@@ -215,7 +219,7 @@
     border-radius: 0;
     min-height: 380px;
     position: relative;
-    color: #333;
+    color: #fff;
     .cta-button {
         padding-top: 30px;
         margin: 0 auto;
@@ -235,8 +239,8 @@
     padding-left: 30px;
     padding-right: 30px;
     h1 {
-        font-size: 30px;
-        color: #fff;
+        font-size: 32px;
+        font-weight: bold;
     }
     p {
         padding-top: 18px;
