@@ -20,4 +20,4 @@
 //= require jquery-cookie
 //= require trix
 //= require tinymce
-// = require_tree .
+//  require_tree .

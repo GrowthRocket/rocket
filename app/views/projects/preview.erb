@@ -1,0 +1,103 @@
+<div class="project">
+    <div>
+        <div class="col-md-8 ">
+            <div class="content">
+                <div class="image">
+                    <%= render_project_video_or_image(@project) %>
+                </div>
+            </div>
+
+            <div class="content">
+                <h2>项目详情</h2>
+                <p>
+                    <div class="trix">
+                        <div class="text">
+                            <%= sanitize(@project.description) %>
+                        </div>
+                    </div>
+                </p>
+            </div>
+
+            <div class="content">
+                <h2 class="title">最新动态</h2>
+                <% @posts.each do |post| %>
+                <div class="trix">
+                    <div class="text">
+                        <%= sanitize(post.description)%>
+                        <div class="post-date">
+                            <%= render_order_created_at(post.created_at) %>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="project-card">
+            <div class="content">
+                <h1>
+                    <%= @project.name %>
+                </h1>
+                <p class="project-text">
+                    <%=image_tag((@user.image.mdimage), class: "img-circle" ,style: "width:80px; height:80px")%>
+                    <%= @user.user_name %>
+                    的筹款目标为¥
+                    <%= @project.fund_goal %>
+                </p>
+                <p class="project-text">
+                    已筹到 ¥
+                    <%= @project.fund_progress %>， 已有<%= @project.backer_quantity %>人支持<%= render_progress(number_with_precision(@project.fund_progress.to_f / @project.fund_goal * 100, :precision => 2)) %>
+                    <% if @project.aasm_state == "offline" %>
+                      <%= link_to("该项目已下线", project_plans_path(@project), :class => "reserve-btn btn disabled" ) %>
+                    <% else %>
+                      <%= link_to("支持项目", project_plans_path(@project), :class => "reserve-btn", style: "margin-left:45px") %>
+                    <% end %>
+                </p>
+            </div>
+        </div>
+
+        <% @plans.each do |plan| %>
+        <div class="content text-center">
+            <p>
+                <div class="trix">
+                    <div class="project-text">
+                        <%= sanitize(plan.description) %>
+                    </div>
+                </div>
+            </p>
+            <p class="project-text" style="font-weight:bold ">
+                限额
+                <%= plan.plan_goal %>位 | 剩余<%= plan.plan_goal - plan.plan_progress %>位
+            </p>
+            <% if @project.aasm_state == "offline" %>
+            <p>
+              <%= link_to("该项目已下线", new_plan_order_path(plan), :class => "reserve-sm-btn btn disabled") %>
+            </p>
+            <% else %>
+              <% if plan.plan_type == 1 %>
+                <%= link_to("支持#{plan.price}元", new_plan_order_path(plan), :class => "reserve-sm-btn" ) %>
+              <% else %>
+                <p>
+                    <%= form_tag new_plan_order_path(plan), method: "get", class: "form-inline" do %>
+                      <input type="text" name="custom_price" class="form-control" placeholder="请输入自定义金额"/>
+                      <% if @project.aasm_state == "offline" %>
+                        <%= submit_tag "该项目已下线", class: "form-control btn btn-primary ", disabled: true %>
+                      <% else %>
+                        <%= submit_tag "支持", class: "form-control btn btn-primary" %>
+                      <% end %>
+                    <% end %>
+                </p>
+              <% end %>
+            <% end %>
+        </div>
+        <% end %>
+
+    </div>
+
+</div>
+
+<!-- 演示样式参考 -->
+<!-- <img style="width:100%" src="/uploads/17.png"></img> -->
