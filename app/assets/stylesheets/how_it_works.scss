@@ -7,34 +7,50 @@
 //   height: 600px;
 //   width: 100%;
 // }
-
-.hiw-btn{
-  margin-top: 10px;
+.hiw-btn {
+    margin-top: 10px;
 }
-
-.hiw-header h1 {
-    color: black;
-    margin-top: 70px;
-    font-size: 4em;
-    // font-weight: bold;
-}
-.hiw-header h2 {
-    color: black;
+.hiw-header-button {
+    font-family: "Microsoft YaHei","Helvetica","sans-serif";
     font-size: 20px;
-    margin: 35px 0 50px;
-    // font-weight: bold;
+    font-weight: bold;
+    line-height: 26px;
+    letter-spacing: 0;
+    height: 50px;
+    width: 160px;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    background-color: #fa1681;
+    border-color: #fa1681;
+    color: #ffffff;
+    margin-top: 20px;
+    padding: 10px;
+}
+.hiw-header {
+  margin-bottom: 50px;
+    h1 {
+        color: black;
+        margin-top: 70px;
+        margin-bottom: 40px;
+        font-size: 4em;
+        // font-weight: bold;
+    }
+
 }
 .hiw-flow {
     // min-width: 1200px;
-    background: #fff;
+    background: #f3f3f3;
     height: 600px;
     font-family: "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-align: center;
     // overflow: hidden;
-    height: 200px;
+    height: 450;
     img {
+        padding: 50px;
         width: 800px;
         height: auto;
+        vertical-align: middle;
     }
 }
 .hiw-faq {
@@ -53,7 +69,7 @@
     // width: 50%;
     margin-bottom: 40px;
 }
-.hiw-faq-block h2{
+.hiw-faq-block h2 {
     font-family: "Microsoft YaHei", "Helvetica Neue", "Benton Sans","Helvetica","sans-serif";
     font-size: 20px;
     font-weight: bold;
@@ -61,126 +77,76 @@
     letter-spacing: 0;
     // display: block;
 }
-.hiw-faq-block p{
+.hiw-faq-block p {
     font-family: "Benton Sans","Helvetica","sans-serif";
     font-size: 16px;
     font-weight: normal;
     line-height: 26px;
     letter-spacing: 0;
 }
-//
-//
-// .hiw-btn-primary{
-// margin-top: 40px;
-// color: white;
-// background: #f3506a;
-// border: none;
-// font-weight: 200;
-// padding: 18px 32px;
-// border-radius: 6px;
-// font-weight: bold;
-// font-size: 14px;
-//
-// }
-//
-//
-// .hiw-btn-primary-sm{
-//   margin-top: auto;
-//   color: white;
-//   background: #f3506a;
-//   border: none;
-//   font-weight: 200;
-//   padding: 10px 16px;
-//   border-radius: 6px;
-//   font-weight: bold;
-//   font-size: 12px;
-// }
-//
-//
-// .hiw-btn-primary-sm:hover{
-// color: white;
-// }
-//
-// .hiw-btn-primary:hover{
-// color: white;
-// }
-//
-//
-//
-//
-//
-//
-//
-// .hiw-container-flex {
-//     max-width: 1080px;
-//     margin-right: auto;
-//     margin-left: auto;
-// }
-// .hiw-container-col {
-//     width: 320px;
-//     position: relative;
-//     float: left;
-//     margin: 30px 20px 20px;
-//     background-color: #fff;
-//     height: 440px;
-//     border: solid 1px #F1EEEA;
-//     border-radius: 8px;
-//     overflow: hidden;
-// }
-// //定义框
-// .hiw-container-col .image {
-//     display: block;
-//     position: relative;
-// }
-// .hiw-container-col .hiw-container-title {
-//     margin: 0 20px;
-//     overflow: hidden;
-//     line-height: 40px;
-//     font-weight: bold;
-//     font-size: 13px;
-//     overflow: hidden;
-//     color: black;
-// }
-// .hiw-container-col .hiw-container-title:hover {
-//     text-decoration: none;
-// }
-// .hiw-container-col .hiw-container-text {
-//     margin: 0 20px;
-//     height: 60px;
-//     overflow: hidden;
-//     font-size: 12px;
-//     line-height: 20px;
-//     color: #888888;
-// }
-// .hiw-container-col .progress-whole {
-//     margin: 40px 0 5px 20px;
-//     width: 280px;
-//     height: 5px;
-// }
-// .hiw-container-col .progress-content {
-//     background-color: #3fcbd0;
-// }
-// //以上为进度条
-// .hiw-container-col .hiw-text-col {
-//     width: 25%;
-//     position: relative;
-//     float: left;
-//     margin: 10px 0 10px 20px;
-//     font-size: 12px;
-//     line-height: 20px;
-//     color: #888888;
-// }
-// .hiw-container-col .hiw-container-figure {
-//     color: black;
-// }
-// .btn-bordered {
-//     color: #3fcbd0;
-//     background: transparent;
-//     border: 2px solid #3fcbd0;
-//     font-weight: 200;
-//     padding: 10px 16px;
-//     border-radius: 6px;
-// }
-// .btn-bordered:hover{
-//   color: #3fcbd0;
-// }
+.hiw-fees {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: #238C6B;
+    // background-origin: padding-box;
+    background-size: auto;
+    box-sizing: border-box;
+    color: #fff;
+    font-family: "Microsoft YaHei", "Helvetica Neue", "Benton Sans","Helvetica","sans-serif";
+    font-size: 14px;
+    height: 400px;
+    line-height: 20px;
+    padding: 50px 0;
+    text-align: center;
+    .hiw-fees-header {
+        font-size: 25px;
+        margin-bottom: 60px;
+    }
+    .hiw-fees-desktop {
+        font-size: 12px;
+        font-weight: normal;
+        line-height: 18px;
+        color: #ddd;
+    }
+    .hiw-fees-blocks {
+        max-width: 1200px;
+        display: flex;
+flex-direction: row;
+        margin-left: 400px;
+        margin-right: 400px;
+    }
+    .hiw-fees-container {
+        border: 1px solid;
+        box-sizing: border-box;
+        // display: inline-block;
+        list-style-type: none;
+
+        height: 95px;
+        text-align: left;
+        padding-left: 30px;
+        width: 300px;
+        p {
+          margin-top: 20px;
+        }
+
+    }
+
+    .hiw-fees-platform {
+        text-decoration: none;
+        font-size: 30px;
+        font-weight: normal;
+        // line-height: 38px;
+        margin-left: 20px;
+        margin-top: 20px;
+        color: red;
+    }
+    #free{
+      text-decoration: line-through;
+      font-size: 30px;
+      color: white;
+    }
+    .hiw-fees-payment {
+        margin-top: 40px;
+        font-size: 20px;
+    }
+}
