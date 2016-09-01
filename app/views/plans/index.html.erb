@@ -6,23 +6,23 @@
     <p><%= link_to(@project.name,project_path(@project)) %></p>
   </div>
 </div>
-<div> </div>
 
 <div class="plans-body">
   <!-- <div>请选择你要支持的方案</div> -->
 
   <% @plans.each do |plan| %>
   <div class="plans-des">
-    <p class="plan-price">
+    <div class="plan-price">
+    <p>
       ￥<%= plan.price %>
       <hr>
     </p>
+  </div>
+  <div>
       <p>
-          <div class="trix">
-              <div class="project-text">
+              <div>
                   <%= sanitize(plan.description) %>
               </div>
-          </div>
       </p>
       <% if @project.offline? %>
       <p>
@@ -48,6 +48,7 @@
       <% end %>
       <% end %>
   </div>
+</div>
   <% end %>
   <!-- <div class="plans-info">
     <div>
