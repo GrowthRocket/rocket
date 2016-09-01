@@ -1,116 +1,153 @@
 // Place all the styles related to the projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.projects {
+    background-color: #F4F4f4;
+    .projects-container {
+        min-width: 1200px;
+        overflow: hidden;
 
-.projects{
- // font-family: 'Microsoft Yahei';
-}
+        .bg-container {
+            background-color: #fff;
+            margin-top:10px;
+            overflow: hidden;
+            width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            .image {
+                padding: 19px 0;
+                text-align: center;
+                width: 790px;
+                float: left;
+            }
 
-.content{
-  background-color: #fff;
-  font-family: tahoma;
-  margin: 0 0 30px 0;
-  border: 1px solid #e8eced;
-  overflow: hidden;
-}
+             .project-card {
+                float: left;
+                position: relative;
+                width: 360px;
+                margin-left: 30px;
 
-.content .project-card {
-  float: right;
-  position: relative;
-}
+            }
 
-.content .project-text{
-  font-size: 14px;
-  text-align: left;
-  padding: 5px 30px 11px 45px;
-  line-height: 28px;
+        }
+        .left-container {
+            width: 790px;
+            overflow: hidden;
+            float: left;
+            margin: 30px 0 30px 0;
+            .md-container {
+                background-color: #fff;
+                width: 790px;
+            }
 
-}
+          }
+            .right-container {
+                margin: 0 0 30px 30px;
+                width: 360px;
+                overflow: hidden;
+                float: left;
+                position: relative;
+            }
+            .sm-container {
+                background-color: #fff;
+            }
 
-.content .image{
- padding: 19px 0;
- text-align: center;
-}
+        .content {
+            background-color: #fff;
+            font-family: tahoma;
+            margin: 0 0 30px;
+            border: 1px solid #e8eced;
+            overflow: hidden;
+        }
+        .content .image-box {
+            margin-left: 30px;
+            height: auto;
+            float: left;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+        .content .text-box {
+            margin-left: 10px;
+            float: left;
+            position: relative;
+        }
 
-.reserve-btn {
-    margin-top: 25px;
-    border-radius: 3px;
-    width: 278px;
-    height: 40px;
-    line-height: 38px;
-    font-weight: 700;
-    color: #fff;
-    font-size: 17px;
-    text-align: center;
-    display: inline-block;
-    background-color: #41ccb4;
-    margin-bottom: 30px;
-}
+        .content .project-text {
+            font-size: 14px;
+            text-align: left;
+            padding: 5px 30px 11px 45px;
+            line-height: 28px;
+        }
 
-
-.reserve-sm-btn {
-      border-radius: 3px;
-      width: 135px;
-      height: 40px;
-      line-height: 38px;
-      font-weight: 700;
-      color: #fff;
-      font-size: 17px;
-      display: inline-block;
-      background-color: #41ccb4;
-      margin: 20px 0 30px 45px;
-}
-
-.reserve-btn:hover{
-  color: white;
- text-decoration: none;
-}
-
-.reserve-sm-btn:hover {
-   color: white;
-   text-decoration: none;
-}
-
-.project h1{
-  font-size: 24px;
-  text-align: left;
-  padding: 0 10px 10px 45px;
-  line-height: 28px;
-}
-
-.content h2{
-  text-align: left;
-  font-size: 24px;
-  padding: 19px 50px 11px 50px;
-  line-height: 28px;
-}
-
-.content hr{
-  margin: 40px 0 0 0;
-}
-
-.text{
-  font-size: 14px;
-  text-align: left;
-  padding: 5px 100px 31px 100px;
-  line-height: 28px;
-}
-
-.text .post-date{
-  font-size: 10px;
-  color: #a5a5a5
-}
-
-.index-show{
-  background-color: #fff;
-  // margin: 5px;
-  padding: 5px;
-}
-
-#edit-input-long-width{
-  width: 600px;
-}
-
-.edit-input-short-width{
-  width: 200px !important;
+        .reserve-btn {
+            margin-top: 25px;
+            border-radius: 3px;
+            width: 278px;
+            height: 40px;
+            line-height: 38px;
+            font-weight: 700;
+            color: #fff;
+            font-size: 17px;
+            text-align: center;
+            display: inline-block;
+            background-color: #41ccb4;
+            margin-bottom: 30px;
+        }
+        .reserve-sm-btn {
+            border-radius: 3px;
+            width: 135px;
+            height: 40px;
+            line-height: 38px;
+            font-weight: 700;
+            color: #fff;
+            font-size: 17px;
+            display: inline-block;
+            background-color: #41ccb4;
+            margin: 20px 0 30px 45px;
+        }
+        .reserve-btn:hover {
+            color: white;
+            text-decoration: none;
+        }
+        .reserve-sm-btn:hover {
+            color: white;
+            text-decoration: none;
+        }
+        .project h1 {
+            font-size: 24px;
+            text-align: left;
+            padding: 0 10px 10px 45px;
+            line-height: 28px;
+        }
+        .content h2 {
+            text-align: left;
+            font-size: 24px;
+            padding: 19px 50px 11px;
+            line-height: 28px;
+        }
+        .content hr {
+            margin: 40px 0 0;
+        }
+        .text {
+            font-size: 14px;
+            text-align: left;
+            padding: 5px 100px 31px;
+            line-height: 28px;
+        }
+        .text .post-date {
+            font-size: 10px;
+            color: #a5a5a5;
+        }
+        .index-show {
+            background-color: #fff;
+            // margin: 5px;
+            padding: 5px;
+        }
+        #edit-input-long-width {
+            width: 600px;
+        }
+        .edit-input-short-width {
+            width: 200px !important;
+        }
+    }
 }
