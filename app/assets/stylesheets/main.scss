@@ -124,6 +124,7 @@ hr{
   background-color: #cacaca;
   margin-left: auto;
   margin-right: auto;
+  // margin-bottom: -15px;
   // float: left;
   // display: inline-block;
 }
@@ -136,7 +137,7 @@ hr{
 }
 
 .index-project-detail{
-  // text-align: left;
+  text-align: left;
   background-color: #f8f8f8;
   height: 400px;
   width: 400px;
@@ -150,6 +151,8 @@ hr{
 
 .index-project-detail h2{
   font-size:2em;
+  margin-top: -5px;
+  margin-bottom: 20px;
   a:link {color: #333333};
   a:visited {color: #333333}	;
   a:hover {color: #666666}	;
@@ -160,20 +163,28 @@ hr{
 // // text-align:left !important;
 // }
 
-.index-project-detail .num{
-  font-size:2.2em;
-  height: 38px;
+.index-project-detail .index-num{
+  margin-top: 15px;
+  font-size:1.8em;
   color: #666666;
 }
 
-.index-project-detail .text{
-  height: 38px;
-  width: 380px;
-  // margin-right: 300px;
-  background-color: #ccc;
+.index-project-detail .index-user-info{
   font-size:1em;
+  margin-top: -15px;
+  margin-bottom: 20px;
   color: #888888;
 }
+.index-project-detail .index-text{
+  font-size:1em;
+  color: #666666;
+}
 
-.index-project-detail .bar{
+.index-project-detail .progress-whole {
+  margin-top: 10px;
+  width: 360px;
+  height: 8px;
+}
+.index-project-detail .progress-content {
+    background-color: #3499E0;
 }

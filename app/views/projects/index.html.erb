@@ -10,25 +10,29 @@
       <div>
         <h2><%= link_to(project.name, project_path(project)) %></h2>
       </div>
-      <div class="num">
+      <div class="index-user-info">
+        <span><%= project.user.user_name %>&nbsp <%= render_project_created_at(project.created_at) %>&nbsp发起</span>
+      </div>
+      <div class="index-num">
         <span><%= project.backer_quantity %></span>
       </div>
-        <div class="text">
+        <div class="index-text">
             <span>支持人数</span>
       </div>
-      <div  class="num">
-          <span><%= project.fund_progress %></span>
+      <div  class="index-num">
+          <span>¥ <%= project.fund_progress %></span>
       </div>
-      <div class="text">
+      <div class="index-text">
           <span>已筹资金</span>
     </div>
-      <div  class="num">
+      <div  class="index-num">
           <span><%= number_with_precision(project.fund_progress.to_f / project.fund_goal * 100, :precision => 0) %>%</span>
       </div>
-      <div class="text">
+      <div class="index-text">
           <span>筹款进度</span>
     </div>
-      <div class="bar">
+      <!-- <div class="progress-whole progress-content"> -->
+      <div>
           <%= render_progress_landing_page(number_with_precision(project.fund_progress.to_f / project.fund_goal * 100, :precision => 2)) %>
       </div>
     </div>
