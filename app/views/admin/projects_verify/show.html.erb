@@ -16,7 +16,7 @@
                 <%= link_to("通过发布请求", pass_verify_admin_projects_verify_path(@project), :method => :post, :class => "btn btn-success" ) %>
                 <br/>
                 <br/>
-                <%= form_tag reject_verify_admin_projects_verify_path(@project) do %>
+                 <%= form_tag reject_verify_admin_projects_verify_path(@project) do %>
                 <input name="message" type="text" placeholder="请填写拒绝原因"/>
                 <br/>
                 <input type="submit" value="拒绝发布请求" class="btn btn-danger"/>
