@@ -20,7 +20,7 @@
     <div id="collapse<%= item_iteration.index %>" orderId="<%= item.id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%= item_iteration.index %>">
   <% end %>
     <div class="paenl-body">
-        <p><%= simple_format(item.project.description) %></p>
+        <p><%= sanitize(item.project.description) %></p>
         <div class="orderInfo"></div>
     </div>
   </div>
