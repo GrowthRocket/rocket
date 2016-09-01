@@ -124,7 +124,7 @@
 }
 
 .index-project{
-  margin-top:2px;
+  margin-top:20px;
   width:900px;
   background-color: #cacaca;
   margin-left: auto;
@@ -198,10 +198,7 @@
     background-color: #43CB83;
 }
 
-// config project index end
-
-// add index banner
-
+// index banner
 .index-banner{
     background: linear-gradient( rgba(255, 255, 255, 0.5), rgba(51, 51, 51, 0.7) ), url("images/banner-1.jpg");
     display: block;
@@ -247,3 +244,19 @@
         font-size: 14px;
     }
 }
+// index banner
+
+// index menu
+.index-menu{
+  background-color: #888;
+  margin-top: 20px;
+  width: 900px;
+  height: 30px;
+  text-align: left;
+
+  }
+
+
+// index menu
+
+// config project index end
