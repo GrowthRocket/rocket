@@ -118,22 +118,24 @@
 // config project index
 
 .index-out{
-  min-width:1200px;
+  min-width:900px;
   margin: auto;
+  text-align:center;
 }
 
 .index-project{
   margin-top:2px;
-  width:1200px;
+  width:900px;
   background-color: #cacaca;
   margin-left: auto;
   margin-right: auto;
+  position:relative;
 }
 
 .index-project-img{
   height: 340px;
   width: 600px;
-  margin: 10px 0px;
+  margin: 10px 0px 20px;
   float: left;
 }
 
@@ -143,14 +145,14 @@
     margin: 0;
   }
 .index-project-detail{
-  // text-align: left;
+  text-align: left;
   background-color: #fff;
   height: 340px;
   width: 300px;
   padding-left: 20px;
   padding-right: 20px;
   padding-top: 10px;
-  margin: 10px 0;
+  margin: 10px 0 20px;
   position: relative;
   float: left;
 }
@@ -168,7 +170,8 @@
 .index-project-detail .index-num{
   margin-top: 20px;
   font-size:1.5em;
-  color: #666666;
+  color: #43CB83;
+  font-weight: bold;
 }
 
 .index-project-detail .index-user-info{
@@ -177,18 +180,18 @@
   color: #888888;
 }
 .index-project-detail .index-text{
-  font-size:1em;
+  font-size: 12px;
   color: #666666;
 }
 
 .index-project-detail .progress-whole {
   margin-top: 5px;
   width: 260px;
-  height: 12px;
+  height: 4px;
   border-radius: 1px;
 }
 .index-project-detail .progress-content {
-    background-color: #3499E0;
+    background-color: #43CB83;
 }
 
 // config project index end
