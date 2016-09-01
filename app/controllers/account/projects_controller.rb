@@ -28,9 +28,20 @@ class Account::ProjectsController < AccountController
   end
 
   def create
+    user_name = params[:project][:user][:user_name]
+    if user_name.blank?
+      render json: {status: "n", message: "请输入姓名"}
+      return
+    else
+      if enduser_name.length > 8
+        render json: {status: "n", message: "姓名最长为8个汉字"}
+        return
+      end
+    end
     if current_project.nil?
       @project = current_user.projects.build(project_params)
       if @project.save
+        current_user.update_column(:user_name, user_name)
         session[:project_id] = @project.id
         render json: {status: "y", project_id: @project.id}
       else
@@ -40,6 +51,8 @@ class Account::ProjectsController < AccountController
     else
       @project = current_project
       if @project.update(project_params)
+        user_name = params[:project][:user][:user_name]
+        current_user.update_column(:user_name, user_name)
         render json: {status: "r"}
       else
         @errors = @project.errors

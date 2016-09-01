@@ -1,5 +1,7 @@
 <%= simple_form_for [:account, @project] do |f| %>
-
+  <%= f.simple_fields_for current_user do |user| %>
+    <%= user.input :user_name, label: "发起人姓名", maxlength: 8 %>
+  <% end %>
   <%= f.input :image, :label =>"封面图片" %>
   <%= f.input :name, :label =>"项目名称" %>
   <p><strong>项目描述</strong></p>
