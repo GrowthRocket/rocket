@@ -20,7 +20,7 @@
     <div id="collapse<%= item_iteration.index %>" orderId="<%= item.id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%= item_iteration.index %>">
   <% end %>
     <div class="paenl-body">
-        <p><%= simple_format(item.project.description) %></p>
+        <p><%= sanitize(item.project.description) %></p>
         <div class="orderInfo"></div>
     </div>
   </div>
@@ -60,7 +60,7 @@ var tmp = 1
       success: function(data){
         var content = "";
         if(data.length > 0) {
-          content = "<table class='table table-stripe'> <thead><th>#</th><th>订单编号</th><th>发起人</th><th>所选方案描述</th><th>支付方式</th><th>合计金额</th><th>下单时间</th></thead><tbody>"
+          content = "<table class='table table-stripe'> <thead><th>#</th><th>订单编号</th><th>发起人</th><th>所选回报描述</th><th>支付方式</th><th>合计金额</th><th>下单时间</th></thead><tbody>"
           $.each(data, function(index, item) {
             content += "<tr>" +
               "<td>" + (index + 1) + "</td>" +

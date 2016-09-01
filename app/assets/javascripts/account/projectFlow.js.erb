@@ -100,6 +100,9 @@ $(function() {
         stepToggle();
       } else {
         var errors = data.errors
+        if (data.message != undefined) {
+          showError(data.message, "projectInfor");
+        }
         if (errors.name != undefined) {
           showError("项目名称不能为空", "projectInfor");
         } else if (errors.description != undefined) {

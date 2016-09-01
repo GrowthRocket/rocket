@@ -1,9 +1,10 @@
 <%= simple_form_for [:admin, @project, @plan] do |f| %>
-<%= f.input :price, label: "方案价格", input_html: {class: "edit-input-short-width"} %>
-<%= f.trix_editor :description, label: "方案描述", input_html: {class: "form-control"} %>
+<%= f.input :price, label: "回报价格", input_html: {class: "edit-input-short-width"} %>
+<%= f.text_area :description, :class => "tinymce", :rows => 10, :cols => 120 %>
+<%= tinymce :alternate%>
 <%= f.input :plan_goal, label: "限额", input_html: {class: "edit-input-short-width"}%>
 <% if ["new", "create"].include?(controller.action_name) %>
-  <%= f.submit "创建方案", class: "btn btn-warning" %>
+  <%= f.submit "创建回报", class: "btn btn-warning" %>
 <% else %>
 <%= link_to("放弃更新", admin_projects_path, class: "btn btn-default" ) %>
   <%= f.submit "提交更新", class: "btn btn-warning" %>

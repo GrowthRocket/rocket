@@ -1,6 +1,6 @@
 class Admin::UsersVerifyController < AdminController
   def index
-    @users = User.where(:verify_status == 0)
+    @users = User.where(:verify_status.zero?)
   end
 
   def show

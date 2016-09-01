@@ -1,5 +1,5 @@
   <h2 class="text-center">新建动态</h2>
   <%= simple_form_for [:account, @project, @post] do |f| %>
-  <%= f.trix_editor :description, label: "方案描述", input_html: {class: "form-control"} %>
+  <%= f.trix_editor :description, label: "回报描述", input_html: {class: "form-control"} %>
   <%= f.submit "发布动态", class: "btn btn-warning" %>
   <% end %>

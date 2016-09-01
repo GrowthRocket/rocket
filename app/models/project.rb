@@ -10,6 +10,9 @@ class Project < ApplicationRecord
   belongs_to :user
   belongs_to :category
 
+
+  attr_accessor :user_email
+
   scope :recent, -> { order("created_at DESC") }
 
   include AASM
@@ -22,7 +25,7 @@ class Project < ApplicationRecord
     state :offline
 
     event :apply_verify do
-      transitions from: [:project_created, :unverified, :offline], to: :verifying
+      transitions from: [:project_created, :unverified], to: :verifying
     end
 
     event :approve do
@@ -39,16 +42,11 @@ class Project < ApplicationRecord
   end
 
   def generate_custom_price_plan
-
-
-    begin
-      @plan = self.plans.create!(title: "自定义金额", description: "单纯地想支持Ta。", price: 1, plan_goal: 999_999, plan_type: 0)
-    rescue => e
-      logger.error e.message
-      logger.error e.backtrace.join("\n")
-    end
+    @plan = plans.create!(title: "自定义金额", description: "单纯地想支持Ta。", price: 1, plan_goal: 999_999, plan_type: 0)
+  rescue => e
+    logger.error e.message
+    logger.error e.backtrace.join("\n")
   end
-
 end
 
 # == Schema Information

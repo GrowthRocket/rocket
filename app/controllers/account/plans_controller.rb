@@ -1,6 +1,5 @@
 class Account::PlansController < AccountController
   before_action :find_project
-
   authorize_resource
 
   def index
@@ -55,7 +54,14 @@ class Account::PlansController < AccountController
 
   def create
     @plan = @project.plans.build(plan_params)
-    require_create_plan_judgment(@plan)
+
+    check_plan_valid_for_create
+
+    if @plan.save
+      redirect_to account_project_plans_path
+    else
+      render :new
+    end
   end
 
   def edit
@@ -64,7 +70,18 @@ class Account::PlansController < AccountController
 
   def update
     @plan = @project.plans.find(params[:id])
-    require_update_plan_judgment(@plan, plan_params)
+    check_plan_valid_for_edit
+
+    if @plan.update(plan_params)
+      flash[:notice] = "您已成功新建筹款回报。"
+      if current_user.is_admin?
+        redirect_to admin_project_plans_path
+      else
+        redirect_to account_project_plans_path
+      end
+    else
+      render :edit
+    end
   end
 
   def destroy

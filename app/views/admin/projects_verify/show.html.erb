@@ -16,7 +16,7 @@
                 <%= link_to("通过发布请求", pass_verify_admin_projects_verify_path(@project), :method => :post, :class => "btn btn-success" ) %>
                 <br/>
                 <br/>
-                <%= form_tag reject_verify_admin_projects_verify_path(@project) do %>
+                 <%= form_tag reject_verify_admin_projects_verify_path(@project) do %>
                 <input name="message" type="text" placeholder="请填写拒绝原因"/>
                 <br/>
                 <input type="submit" value="拒绝发布请求" class="btn btn-danger"/>
@@ -27,21 +27,20 @@
 
                 <%#= link_to("拒绝发布请求", reject_verify_admin_projects_verify_path(@project), :method => :post, :class => "btn btn-danger" ) %>
 
-            </div>
         </div>
     </div>
 </div>
 <div class="container-fluid well">
     <div class="row">
         <div class="col-xs-12 col-sm-9 col-md-8-offset-1">
-            筹款方案：
+            筹款回报：
             <% @plans.each do |plan| %>
             <div class="well">
                 <p>
                     <%= plan.title %>
                 </p>
                 <p>
-                    <%= simple_format(plan.description) %>
+                    <%= sanitize(plan.description) %>
                 </p>
             </div>
             <% end %>
@@ -52,7 +51,7 @@
     <div class="row">
         <div class="col-xs-12 col-sm-9 col-md-8-offset-1">
             筹款项目描述：
-            <p><%= simple_format(@project.description) %></p>
+            <p><%= sanitize(@project.description) %></p>
         </div>
     </div>
 </div>

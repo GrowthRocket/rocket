@@ -1,22 +1,7 @@
-<div class="row">
-  <div class="col-md-4 col-md-offset-4">
-      <i class="fa fa-dot-circle-o fa-4x project-circle" aria-hidden="true"></i>
-      <span style="border: 1px solid black; width:100px"></span>
-      <i class="fa fa-check-circle fa-4x project-circle" aria-hidden="true"></i>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-4 col-md-offset-4 well">
-    <h2>回报设置</h2>
-    <%= simple_form_for [:account, @project, @plan] do |f| %>
-    <%= f.input :price, label: "方案价格", input_html: {class: "edit-input-short-width"} %>
-    <%#= f.trix_editor :description, label: "方案描述", input_html: {class: "form-control"} %>
-    <%#= f.input :description, label: "方案描述" %>
-    <p><strong>回报描述</strong></p>
-    <textarea class="form-control" rows="3"></textarea>
-    <%= f.input :plan_goal, label: "限额", input_html: {class: "edit-input-short-width"} %>
-    <%= f.submit "下一步", class: "btn btn-success pull-right" %>
-    <input type="button" value="上一步" class="btn btn-default pull-right"/>
-    <% end %>
-  </div>
-</div>
+  <h2 class="text-center">新建回报</h2>
+  <%= simple_form_for [:account, @project, @plan] do |f| %>
+  <%= f.input :price, label: "回报价格", input_html: {class: "edit-input-short-width"} %>
+  <%= f.trix_editor :description, label: "回报描述", input_html: {class: "form-control"} %>
+  <%= f.input :plan_goal, label: "限额", input_html: {class: "edit-input-short-width"} %>
+  <%= f.submit "创建回报", class: "btn btn-warning" %>
+  <% end %>

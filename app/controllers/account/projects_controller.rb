@@ -2,12 +2,11 @@ class Account::ProjectsController < AccountController
   authorize_resource
 
   def index
-    @projects =
-      if params[:category_id]
-        current_user.projects.where(category_id: params[:category_id])
-      else
-        current_user.projects
-      end
+    @projects = current_user.projects
+
+    if params[:category_id]
+      @projects = current_user.projects.where(category_id: params[:category_id])
+    end
   end
 
   def new
@@ -33,7 +32,7 @@ class Account::ProjectsController < AccountController
       render json: {status: "n", message: "请输入姓名"}
       return
     else
-      if enduser_name.length > 8
+      if user_name.length > 8
         render json: {status: "n", message: "姓名最长为8个汉字"}
         return
       end
@@ -71,28 +70,29 @@ class Account::ProjectsController < AccountController
     end
   end
 
-  def destroy
-    @project = current_user.projects.find(params[:id])
-    plans = @project.plans
-    plans.destroy
-    @project.destroy
-    flash[:alert] = "项目删除成功"
-    redirect_to :back
-  end
+  # def destroy
+  #   @project = current_user.projects.find(params[:id])
+  #   plans = @project.plans
+  #   plans.destroy
+  #   @project.destroy
+  #   flash[:alert] = "项目删除成功"
+  #   redirect_to :back
+  # end
 
   def apply_for_verification
     @projects = current_user.projects
     @project = current_user.projects.find(params[:id])
 
-    check_project_apply_valid
+    if check_project_apply_valid
+      @project.apply_verify!
+      IdentityVerification.create!(
+        verify_type: 2, user_id: current_user.id,
+        title: @project.name, image: @project.image, project_id: params[:id],
+        verify_status: 0, message: "apply"
+      )
+      flash[:notice] = "申请成功，请耐心等待..."
 
-    @project.apply_verify!
-    IdentityVerification.create!(
-      verify_type: 2, user_id: current_user.id,
-      title: @project.name, image: @project.image, project_id: params[:id],
-      verify_status: 0, message: "apply"
-    )
-    flash[:notice] = "申请成功，请耐心等待..."
+    end
     redirect_to :back
   end
 
@@ -142,23 +142,22 @@ class Account::ProjectsController < AccountController
   end
 
   def check_project_apply_valid
+    # binding.pry
     unless current_user.passed_verified?
-      flash[:alert] = "您尚未通过实名认证"
-      redirect_to :back
-      return
+      flash[:alert] = "为了保证项目的真实性，请到我的资料页验证手机号。"
+      return false
     end
 
-    if @project.plans_count == 0
-      flash[:alert] = "您尚未创建筹款方案"
-      redirect_to :back
-      return
+    if @project.plans_count < 2
+      flash[:alert] = "您尚未创建筹款回报"
+      return false
     end
 
-    if @projects.where("aasm_state = ? OR aasm_state = ?", "online", "verifying").count != 0
+    if @projects.where("aasm_state = ? OR aasm_state = ?", "online", "verifying").count.nonzero?
       flash[:alert] = "您已有在线项目或已有项目在审核中"
-      redirect_to :back
-      return
+      return false
     end
+    true
   end
 
   def check_project_apply_valid_new

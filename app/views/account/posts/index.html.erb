@@ -18,7 +18,7 @@
             <td><%= index + 1 %></td>
             <td><%= render_post_description(post) %></td>
             <td>
-                <%= link_to("删除", account_project_post_path(post.project, post), method: :delete,  class: "btn btn-sm btn-danger" , data: {confirm: "确认删除该方案么?"}) %>
+                <%= link_to("删除", account_project_post_path(post.project, post), method: :delete,  class: "btn btn-sm btn-danger" , data: {confirm: "确认删除该回报么?"}) %>
             </td>
 
             <td><%= render_order_created_at(post.created_at) %></td>
@@ -26,3 +26,7 @@
         <% end %>
     </tbody>
 </table>
+
+<div class="text-center">
+  <%= will_paginate @projects %>
+</div>

@@ -10,7 +10,12 @@ class Account::UsersController < ApplicationController
   end
 
   def edit
+    @user = current_user
     @user = User.find(params[:id])
+  end
+
+  def show
+    @user = current_user
   end
 
   def update
@@ -22,21 +27,19 @@ class Account::UsersController < ApplicationController
     end
   end
 
-  def show
-    @user = User.find(params[:id])
-  end
-
   def apply_for_certify
     @user = User.find(params[:id])
     @user.apply_for_certify!
 
-    if @user.passed_verified?
-      flash[:notice] = "您已通过实名认证！"
-      redirect_to :back
-    else
-      flash[:notice] = "您已提交申请实名认证！"
-      redirect_to :back
-    end
+    flash[:notice] =
+      if @user.passed_verified?
+        "您已通过实名认证！"
+
+      else
+        "您已提交申请实名认证！"
+
+      end
+    redirect_to :back
   end
 
   # TODO: 加事务 判断接口返回的状态
@@ -68,6 +71,15 @@ class Account::UsersController < ApplicationController
   def change_password
     @user = current_user
   end
+
+  # def update_password
+  #   @user = current_user
+  #   if @user.update(user_params)
+  #     redirect_to account_users_path, notice: "Update Success"
+  #   else
+  #     render :change_password
+  #   end
+  # end
 
   def verify_phone_number
     if @verification_code.verification_code != @user.captcha

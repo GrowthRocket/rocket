@@ -4,7 +4,7 @@ class Account::PostsController < AccountController
   authorize_resource
 
   def index
-    @posts = @project.posts.recent
+    @posts = @project.posts.recent.paginate(page: params[:page], per_page: 5)
   end
 
   def new

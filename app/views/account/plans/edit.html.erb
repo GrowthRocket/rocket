@@ -1,7 +1,8 @@
-  <h2 class="text-center">编辑方案</h2>
+  <h2 class="text-center">编辑回报</h2>
   <%= simple_form_for [:account, @project, @plan] do |f| %>
-  <%= f.input :price, readonly: true, label: "方案价格(修改请联系客服)",  input_html: {class: "edit-input-short-width"} %>
-  <%= f.trix_editor :description, label: "方案描述", input_html: {class: "form-control"} %>
+  <%= f.input :price, readonly: true, label: "回报价格(修改请联系客服)",  input_html: {class: "edit-input-short-width"} %>
+  <%= f.text_area :description, :class => "tinymce", :rows => 10, :cols => 120 %>
+  <%= tinymce%>
   <%= f.input :plan_goal, label: "限额", input_html: {class: "edit-input-short-width"} %>
   <%= link_to("放弃更新", account_projects_path, class: "btn btn-default" ) %>
   <%= f.submit "提交更新", class: "btn btn-info" %>

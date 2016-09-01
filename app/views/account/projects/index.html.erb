@@ -2,19 +2,15 @@
 <div class="pull-right">
     <%= link_to("新建众筹项目", new_account_project_path, :class => "btn btn-success" ) %>
 </div>
-<% if @projects.count == 0 %>
-<div>
-   <p>您尚无发起的项目，请创建</p>
-</div>
-
-
+<% if @projects.size == 0 %>
+<%= render_project_empty_warning %>
 <% else %>
 
 <table class="table table-boldered">
     <thead>
         <tr>
             <th>众筹项目</th>
-            <th>方案数量</th>
+            <th>回报数量</th>
             <th>动态数量</th>
             <th>筹款目标</th>
             <th>支持人数</th>
@@ -51,17 +47,6 @@
                 <%= render_project_status(project) %>
             </td>
             <td>
-              <% if ["unverified", "project_created", "offline"].include?(project.aasm_state) %>
-                <%= link_to("编辑项目", edit_account_project_path(project), :class => "btn btn-sm btn-default") %>
-              <% end %>
-
-                <%= link_to("申请上线", apply_for_verification_account_project_path(project), :method => :post,  :class => "btn btn-sm btn-default") %>
-
-                <%= link_to("管理筹款方案", account_project_plans_path(project), :class => "btn btn-sm btn-default") %>
-                <%= link_to("管理动态", account_project_posts_path(project), :class => "btn btn-sm btn-default") %>
-                <% if ["project_created", "unverified"].include?(project.aasm_state) %>
-                  <%= link_to("删除", account_project_path(project), :method => :delete, :data => { :confirm => "删除项目后不可恢复，您确定要删除吗?" }, :class => "btn btn-sm btn-default") %>
-                <% end %>
                 <%= render_project_operation(project) %>
             </td>
         </tr>
