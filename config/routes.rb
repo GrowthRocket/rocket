@@ -58,14 +58,21 @@ Rails.application.routes.draw do
         post :send_verification_code
         get :show_verify_phone_number
         post :verify_phone_number
-        get :change_password
+        post :change_password
+        post :verify_phone_number_new
       end
     end
     resources :projects do
       resources :posts
-      resources :plans
+      resources :plans do
+        collection do
+          post :create_plan
+          get :get_plans
+        end
+      end
       member do
         post :apply_for_verification
+        post :apply_for_verification_new
         post :offline
         post :reject_message
       end
@@ -94,6 +101,9 @@ Rails.application.routes.draw do
     resources :plans
     collection do
       get :search
+    end
+    member do
+      get :preview
     end
   end
 
