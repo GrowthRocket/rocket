@@ -1,118 +1,232 @@
 // Place all the styles related to the projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.projects {
+    background-color: #F4F4f4;
+    .projects-container {
+        min-width: 1200px;
+        overflow: hidden;
+        .project-text {
+            font-size: 14px;
+            line-height: 28px;
+        }
+        .bg-container {
+            background-color: #fff;
+            margin-top: 20px;
+            overflow: hidden;
+            width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-top: 19px;
+            .image {
+                text-align: center;
+                width: 790px;
+                float: left;
+            }
+            .project-card {
+                float: left;
+                position: relative;
+                width: 360px;
+                margin-left: 30px;
+                text-align: left;
+                // background-color: #ccc;
+                line-height: 30px;
+                padding-right: 40px;
+                .profile-card {
+                    margin-top: 45px;
+                    width: 360px;
+                    height: auto;
+                    display: block;
+                    .profile-icon {
+                        width: 60px;
+                        height: 60px;
+                        border-radius: 50%;
+                        overflow: hidden;
+                        float: left;
+                    }
+                    .profile-text {
+                        margin-left: 15px;
+                        width: 285px;
+                        float: left;
+                        position: relative;
+                        margin-right: auto;
+                        margin-bottom: 15px;
+                        font-size: 13px;
+                    }
+                }
+                h1 {
+                    font-size: 24px;
+                    line-height: 28px;
+                    font-weight: normal;
+                    margin: 0;
+                }
+                .project-sm-text {
+                    margin-top: 15px;
+                    font-size: 13px;
+                    line-height: 18px;
+                    color: #888888;
+                }
+                .process-bar {
+                    margin-top: 40px;
+                    .sh-progress-whole {
+                        margin: 10px 0 5px;
+                        width: 100%;
+                        height: 15px;
+                    }
+                    .sh-progress-content {
+                        background-color: #43CB83;
+                    }
+                    .text-col {
+                        width: 360px;
+                        height: 80px;
+                        font-size: 12px;
+                        line-height: 20px;
+                        color: #888888;
+                        .text-col-left {
+                            position: relative;
+                            float: left;
+                        }
+                        .text-col-right {
+                            padding-right: 35px;
+                            position: relative;
+                            float: right;
+                        }
+                    }
+                    .container-figure {
+                        color: black;
+                    }
+                }
+            }
+        }
+        .low-container {
+            width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            .left-container {
+                width: 790px;
+                overflow: hidden;
+                float: left;
+                .md-container {
+                    margin-top: 30px;
+                    padding-top: 5px;
+                    padding-left: 5px;
+                    padding-right: 5px;
+                    background-color: #fff;
+                    width: 790px;
+                    h2 {
+                        font-size: 22px;
+                        line-height: 28px;
+                        font-weight: normal;
+                        margin-left: 40px;
+                    }
+                    .thick {
+                        border-width: 2px;
+                        margin-left: 40px;
+                        margin-right: 40px;
+                        border-color: #d7d5d6;
+                    }
+                }
+            }
+            .right-container {
+                margin-left: 30px;
+                width: 380px;
+                overflow: hidden;
+                float: left;
+                .sm-container {
+                    margin-top: 30px;
+                    background-color: #fff;
+                    width: 380px;
+                    padding: 20px 20px 20px 20px;
+                    .plan-price {
+                        font-size: 18px;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+        .content {
+            background-color: #fff;
+            font-family: tahoma;
+            margin: 0 0 30px;
+            border: 1px solid #e8eced;
+            overflow: hidden;
+        }
+        .content .image-box {
+            margin-left: 30px;
+            height: auto;
+            float: left;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+        .content .text-box {
+            margin-left: 10px;
+            float: left;
+            position: relative;
+        }
+        .reserve-btn {
+            border-radius: 3px;
+            width: 260px;
+            height: 40px;
+            line-height: 32px;
+            font-weight: 700;
+            color: #fff;
+            font-size: 17px;
+            display: inline-block;
+            background-color: #43CB83;
+            margin-bottom: 30px;
 
-.projects{
- // font-family: 'Microsoft Yahei';
-}
-
-.content{
-  background-color: #fff;
-  font-family: tahoma;
-  margin: 0 0 30px 0;
-  border: 1px solid #e8eced;
-  overflow: hidden;
-}
-
-.content .project-card {
-  float: right;
-  position: relative;
-}
-
-.content .project-text{
-  font-size: 14px;
-  text-align: left;
-  padding: 5px 30px 11px 45px;
-  line-height: 28px;
-
-}
-
-.content .image{
- padding: 19px 0;
- text-align: center;
-}
-
-.reserve-btn {
-    margin-top: 25px;
-    border-radius: 3px;
-    width: 278px;
-    height: 40px;
-    line-height: 38px;
-    font-weight: 700;
-    color: #fff;
-    font-size: 17px;
-    text-align: center;
-    display: inline-block;
-    background-color: #41ccb4;
-    margin-bottom: 30px;
-}
-
-
-.reserve-sm-btn {
-      border-radius: 3px;
-      width: 135px;
-      height: 40px;
-      line-height: 38px;
-      font-weight: 700;
-      color: #fff;
-      font-size: 17px;
-      display: inline-block;
-      background-color: #41ccb4;
-      margin: 20px 0 30px 45px;
-}
-
-.reserve-btn:hover{
-  color: white;
- text-decoration: none;
-}
-
-.reserve-sm-btn:hover {
-   color: white;
-   text-decoration: none;
-}
-
-.project h1{
-  font-size: 24px;
-  text-align: left;
-  padding: 0 10px 10px 45px;
-  line-height: 28px;
-}
-
-.content h2{
-  text-align: left;
-  font-size: 24px;
-  padding: 19px 50px 11px 50px;
-  line-height: 28px;
-}
-
-.content hr{
-  margin: 40px 0 0 0;
-}
-
-.text{
-  font-size: 14px;
-  text-align: left;
-  padding: 5px 100px 31px 100px;
-  line-height: 28px;
-}
-
-.text .post-date{
-  font-size: 10px;
-  color: #a5a5a5
-}
-
-.index-show{
-  background-color: #fff;
-  // margin: 5px;
-  padding: 5px;
-}
-
-#edit-input-long-width{
-  width: 600px;
-}
-
-.edit-input-short-width{
-  width: 200px !important;
+        }
+        .reserve-sm-btn {
+            border-radius: 3px;
+            width: 125px;
+            height: 38px;
+            line-height: 28px;
+            font-weight: 500;
+            color: #fff;
+            font-size: 15px;
+            display: inline-block;
+            background-color: #43CB83;
+            margin-top: 20px;
+        }
+        .reserve-btn:hover {
+            color: white;
+            text-decoration: none;
+        }
+        .reserve-sm-btn:hover {
+            color: white;
+            text-decoration: none;
+        }
+        .content h2 {
+            text-align: left;
+            font-size: 24px;
+            padding: 19px 50px 11px;
+            line-height: 28px;
+        }
+        .content hr {
+            margin: 40px 0 0;
+        }
+        .text {
+            font-size: 14px;
+            text-align: left;
+            padding: 5px 40px 31px 40px;
+            line-height: 28px;
+        }
+        .text .post-date {
+            font-size: 10px;
+            color: #a5a5a5;
+        }
+        .index-show {
+            background-color: #fff;
+            // margin: 5px;
+            padding: 5px;
+        }
+        #edit-input-long-width {
+            width: 600px;
+        }
+        .edit-input-short-width {
+            width: 200px !important;
+        }
+    }
 }
 
 

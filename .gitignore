@@ -29,3 +29,6 @@ public/uploads/*
 .DS_Store
 
 .atomignore
+
+
+/app/assets/stylesheets/images/*
