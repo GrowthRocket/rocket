@@ -10,9 +10,7 @@
 
 <div class="plans-body">
   <!-- <div>请选择你要支持的方案</div> -->
-  <div class="plans-info">
-    当前进度
-  </div>
+
   <% @plans.each do |plan| %>
   <div class="plans-des">
     <p class="plan-price">
@@ -51,4 +49,21 @@
       <% end %>
   </div>
   <% end %>
+  <!-- <div class="plans-info">
+    <div>
+    <%= image_tag(@user.image.mdimage) %>
+  </div>
+  <hr />
+    <div >
+        <p>
+            <%# if @user.description.blank? %>
+            感谢你的来访，如果你对我的项目有兴趣，可以支持我的项目。
+        <% else %>
+            <%#= @user.user_name %>,<%#= @user.description%>
+            <br />
+            感谢你对本项目的支持。
+            <%# end %>
+        </p>
+    </div>
+  </div> -->
 </div>
