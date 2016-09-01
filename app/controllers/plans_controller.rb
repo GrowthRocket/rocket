@@ -2,8 +2,8 @@ class PlansController < ApplicationController
   # before_action :check_project_status
   def index
     @project = Project.find(params[:project_id])
-    @plans = @project.plans.price
-
+    @plans = @project.plans
+    @user = @project.user
   end
 
   def check_project_status

@@ -2,14 +2,47 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.plans-show{
+.plans-head{
   margin-top:20px;
   width: 900px;
-  height: 220px;
-  padding-top: 100px;
+  height: 150px;
+  padding-top: 40px;
   text-align: center;
   background-color: #cccccc;
   margin-left: auto;
   margin-right: auto;
   position:relative;
+}
+
+.plans-body{
+  margin-top:20px;
+  width: 900px;
+  min-height: 450px;
+  padding-top: 20px;
+  background-color: #cccccc;
+  margin-left: auto;
+  margin-right: auto;
+  position:relative;
+}
+
+.plans-des{
+  min-height: 80px;
+  width: 500px;
+  margin: 20px;
+  float: left;
+  background-color: #fbfbfb;
+}
+
+.plans-info{
+  text-align: left;
+  background-color: #fff;
+  height: 340px;
+  width: 300px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  margin: 10px 0 20px;
+  position: relative;
+  float: left;
+  background-color: #fff;
 }
