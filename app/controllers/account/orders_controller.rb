@@ -42,8 +42,7 @@ class Account::OrdersController < AccountController
   end
 
   def add_payment_log(payment_method)
-    options = { order: @order, user: current_user, payment_method: payment_method }
-    FundingService.new(options).add_progress!
+    FundingService.new(@order, current_user, payment_method).add_progress!
   end
 
   private

@@ -4,7 +4,7 @@ module Account::ProjectsHelper
       project.video.html_safe
     else
       image_tag(project.image.large)
-   end
+    end
   end
 
   def render_project_operation(project)

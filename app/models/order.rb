@@ -4,6 +4,8 @@ class Order < ApplicationRecord
   belongs_to :project
   belongs_to :plan
 
+  scope :paid, -> { where(aasm_state: "paid") }
+
   before_create :calculate_total
 
   def calculate_total
