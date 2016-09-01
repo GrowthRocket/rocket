@@ -1,7 +1,6 @@
 
-
-<% @projects.each do |project| %>
 <div class="index-out">
+<% @projects.each do |project| %>
   <div class="index-project">
     <div class="index-project-img">
       <%= link_to(image_tag(project.image.show), project_path(project)) %>
@@ -38,5 +37,5 @@
       </div>
     </div>
   </div>
-</div>
 <% end %>
+</div>
