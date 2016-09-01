@@ -72,7 +72,7 @@
         <% @projects.each do |project| %>
         <div class="lp-container-col">
             <div class="image">
-                <%= link_to(image_tag(project.image.landing_page), project_path(project)) %>
+                <%= link_to(image_tag(project.image.small), project_path(project)) %>
             </div>
 
             <%= link_to(project.name, project_path(project), class:"lp-container-title" )%>
@@ -94,7 +94,7 @@
                 <div class="lp-container-figure">
                     <%= project.fund_progress %>元
                 </div>
-                已筹款
+                已筹资金
             </div>
             <div class="lp-text-col">
                 <div class="lp-container-figure">

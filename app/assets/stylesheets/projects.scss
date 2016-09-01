@@ -233,3 +233,151 @@
 .project-circle {
   color: green
 }
+
+//
+
+// config project index
+
+.index-out{
+  min-width:900px;
+  margin: auto;
+  text-align:center;
+}
+
+.index-project{
+  margin-top:20px;
+  width:900px;
+  background-color: #cacaca;
+  margin-left: auto;
+  margin-right: auto;
+  position:relative;
+}
+
+.index-project-img{
+  height: 340px;
+  width: 600px;
+  margin: 10px 0px 20px;
+  float: left;
+}
+
+.index-project-img img{
+    height: 340px;
+    width: 600px;
+    margin: 0;
+  }
+.index-project-detail{
+  text-align: left;
+  background-color: #fff;
+  height: 340px;
+  width: 300px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  margin: 10px 0 20px;
+  position: relative;
+  float: left;
+}
+
+.index-project-detail h2{
+  font-size:1.6em;
+  margin: 0;
+  padding: 0;
+  a:link {color: #333333};
+  a:visited {color: #333333}	;
+  a:hover {color: #666666}	;
+  a:active {color: #666666};
+}
+
+.index-project-detail .index-num{
+  margin-top: 20px;
+  font-size:1.5em;
+  color: #43CB83;
+  font-weight: bold;
+}
+
+.index-project-detail .index-user-info{
+  font-size:1em;
+  margin: 10px 0 5px;
+  color: #666666;
+  .name{
+    font-weight:bold;
+    color: #3499E0;
+  }
+}
+.index-project-detail .index-text{
+  font-size: 12px;
+  color: #666666;
+}
+
+.index-project-detail .progress-whole {
+  margin-top: 5px;
+  width: 260px;
+  height: 4px;
+  border-radius: 1px;
+}
+.index-project-detail .progress-content {
+    background-color: #43CB83;
+}
+
+// index banner
+.index-banner{
+    background: linear-gradient( rgba(255, 255, 255, 0.5), rgba(51, 51, 51, 0.7) ), url("images/banner-1.jpg");
+    display: block;
+    // background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center top;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    border-style: none;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+    border-radius: 0;
+    min-height: 380px;
+    position: relative;
+    color: #fff;
+    .cta-button {
+        padding-top: 30px;
+        margin: 0 auto;
+        width: 200px;
+        padding-bottom: 30px;
+    }
+    .hero-item-wrapper {
+        width: 100%;
+    }
+    .course-cost {
+        font-size: 40px;
+    }
+}
+
+.hero-title {
+    padding-top: 200px;
+    padding-left: 30px;
+    padding-right: 30px;
+    h1 {
+        font-size: 32px;
+        font-weight: bold;
+    }
+    p {
+        padding-top: 18px;
+        font-size: 14px;
+    }
+}
+// index banner
+
+// index menu
+.index-menu{
+  background-color: #888;
+  margin-top: 20px;
+  width: 900px;
+  height: 30px;
+  text-align: left;
+
+  }
+
+
+// index menu
+
+// config project index end

@@ -4,7 +4,7 @@ module ProjectsHelper
   end
 
   def render_project_image(project, _size = :thumb)
-    image_tag(project.image.thumb, width: 123, height: 90)
+    image_tag(project.image.small, width: 120, height: 75)
   end
 
   def render_project_funding_progress(project)

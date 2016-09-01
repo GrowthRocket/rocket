@@ -41,14 +41,14 @@ class HeadimageUploader < CarrierWave::Uploader::Base
     "/images/user#{rand_num}.png"
   end
 
-  process resize_to_fit: [990, 618]
+  process resize_to_fit: [145, 145]
 
   version :headimage do
     process resize_to_fill: [30, 30]
   end
 
   version :mdimage do
-    process resize_to_fill: [200, 200]
+    process resize_to_fill: [145, 145]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
