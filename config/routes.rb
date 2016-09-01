@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: "devise/users/registrations" }
+  devise_for :users, controllers: { registrations: "devise/users/registrations"}
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -58,7 +58,7 @@ Rails.application.routes.draw do
         post :send_verification_code
         get :show_verify_phone_number
         post :verify_phone_number
-        post :change_password
+        get :change_password
         post :verify_phone_number_new
       end
     end
