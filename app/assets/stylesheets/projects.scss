@@ -195,3 +195,51 @@
 }
 
 // config project index end
+
+// add index banner
+
+.index-banner{
+    background: linear-gradient( rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6) ), url("images/banner-1.jpg");
+    display: block;
+    // background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center top;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    border-style: none;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+    border-radius: 0;
+    height: 380px;
+    position: relative;
+    color: #333;
+    .cta-button {
+        padding-top: 30px;
+        margin: 0 auto;
+        width: 200px;
+        padding-bottom: 30px;
+    }
+    .hero-item-wrapper {
+        width: 100%;
+    }
+    .course-cost {
+        font-size: 40px;
+    }
+}
+
+.hero-title {
+    padding-top: 200px;
+    padding-left: 30px;
+    padding-right: 30px;
+    h1 {
+        font-size: 30px;
+        color: #fff;
+    }
+    p {
+        padding-top: 18px;
+        font-size: 18px;
+    }
+}
