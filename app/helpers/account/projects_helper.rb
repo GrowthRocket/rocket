@@ -8,28 +8,20 @@ module Account::ProjectsHelper
   end
 
   def render_project_operation(project)
-    if project.project_created?
-      link_to("编辑项目", edit_account_project_path(project), class: "btn btn-sm btn-default")
-      link_to("申请上线", apply_for_verification_account_project_path(project), method:  :post,  class: "btn btn-sm btn-default")
-      # link_to("管理回报", account_project_plans_path(project), class:"btn btn-sm btn-default")
-    elsif project.verifying?
-      link_to("申请上线", apply_for_verification_account_project_path(project), method:  :post,  class: "btn btn-sm btn-default")
-      # link_to("管理回报", account_project_plans_path(project), class:"btn btn-sm btn-default")
-    elsif project.online?
-      # link_to("管理回报", account_project_plans_path(project), class:"btn btn-sm btn-default")
-      link_to("管理动态", account_project_posts_path(project), class:"btn btn-sm btn-default")
-      link_to("结束众筹", offline_account_project_path(project), method: :post, class: "btn btn-sm btn-default", data: { confirm: "结束众筹后项目将下线，操作不可恢复，你确定结束么？" })
-    elsif project.unverified?
-      link_to("查看审核详情", reject_message_account_project_path(project), method: :post, class: "btn btn-sm btn-default")
-      link_to("编辑项目", edit_account_project_path(project), class: "btn btn-sm btn-default")
-      link_to("申请上线", apply_for_verification_account_project_path(project), method: :post,  class: "btn btn-sm btn-default")
-      # link_to("管理回报", account_project_plans_path(project), class:"btn btn-sm btn-default")
-    elsif project.offline?
-      link_to("管理动态", account_project_posts_path(project), class:"btn btn-sm btn-default")
+    case project.aasm_state
+    when 'project_created'
+      render partial: "account/projects/render_project_created", locals: { project: project }
+    #when 'verifying'
+    when 'online'
+      render partial: "account/projects/render_online", locals: { project: project }
+    when 'unverified'
+      render partial: "account/projects/render_unverified", locals: { project: project }
+    #when 'offline'
+      # link_to("管理动态", account_project_posts_path(project), class:"btn btn-sm btn-default")
       # link_to("管理回报", account_project_plans_path(project), class:"btn btn-sm btn-default")
     end
   end
-
+  
     # TODO controller里需要对project不同状态进行判断，不同状态下操作不同。
 
 

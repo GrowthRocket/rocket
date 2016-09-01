@@ -9,6 +9,9 @@ class Project < ApplicationRecord
   belongs_to :user
   belongs_to :category
 
+
+  attr_accessor :user_email
+
   scope :recent, -> { order("created_at DESC") }
 
   include AASM
@@ -21,7 +24,7 @@ class Project < ApplicationRecord
     state :offline
 
     event :apply_verify do
-      transitions from: %i(project_created unverified offline), to: :verifying
+      transitions from: [:project_created, :unverified], to: :verifying
     end
 
     event :approve do

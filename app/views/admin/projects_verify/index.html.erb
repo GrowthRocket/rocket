@@ -1,30 +1,37 @@
-<div>
-  <h2>
-    <span><%= link_to("所有项目",  admin_projects_path, ) %></span>
-    <span> | 待认证项目</span>
-  </h2>
-</div>
+
+<%= render "admin/projects/head" %>
+
 <table class="table table-boldered">
     <thead>
         <tr>
-            <th>ID</th>
+            <th>#</th>
             <th>众筹项目</th>
+            <th>类型</th>
+            <th>项目发起者</th>
             <th>回报数量</th>
             <th>筹款目标</th>
+            <!-- <th>ID</th> -->
             <th>状态</th>
             <th>操作</th>
         </tr>
     </thead>
     <tbody>
-        <% @projects.each do |project| %>
+        <% @projects_verifying.each_with_index do |project, index| %>
         <tr>
-            <td>
-                <%= project.id %>
-            </td>
+          <td>
+            <%= index + 1 %>
+          </td>
             <td>
                 <%= link_to(project.name, project_path(project)) %>
                 <br/>
                 <%= render_project_image(project,:thumb) %>
+            </td>
+            <td>
+                <%= project.category.chs_name %>
+            </td>
+            <td>
+                <%#= User.find(project.user_id).user_name %>
+                <%= project.user.user_name %>
             </td>
             <td>
                 <%= link_to(project.plans_count, account_project_plans_path(project)) %>
@@ -32,11 +39,16 @@
             <td>
                 ¥<%= project.fund_goal %>
             </td>
+            <!-- <td>
+                <%#= project.id %>
+            </td> -->
             <td>
                 <%= render_project_status(project) %>
             </td>
             <td>
-                <%= link_to("查看项目申请详情", admin_projects_verify_path(id: project), :class => "btn btn-sm btn-default") %>
+              <%= link_to("审核项目", admin_projects_verify_path(id: project), :class => "btn btn-sm btn-default") %>
+              <%= link_to("编辑项目", edit_admin_project_path(project), :class => "btn btn-sm btn-default") %>
+              <%= link_to("删除", admin_project_path(project), :method => :delete, :data => { :confirm => "删除项目后不可恢复，您确定要删除吗?" }, :class => "btn btn-sm btn-default") %>
             </td>
         </tr>
         <% end %>
