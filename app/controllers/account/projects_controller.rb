@@ -1,4 +1,5 @@
 class Account::ProjectsController < AccountController
+  before_action :method, :only => [:action, :action], :except => [:action, :action]
   authorize_resource
 
   def index
@@ -13,6 +14,7 @@ class Account::ProjectsController < AccountController
     @project = current_user.projects.build
     @categories = Category.all
     session.delete(:project_id)
+    render layout: "application"
   end
 
   def show
@@ -24,6 +26,7 @@ class Account::ProjectsController < AccountController
     @flowType = "edit"
     session[:project_id] = @project.id
     @categories = Category.all
+    render layout: "application"
   end
 
   def create
