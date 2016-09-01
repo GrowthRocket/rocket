@@ -1,11 +1,13 @@
-<div class="col-sm-12 col-md-12 col-lg-12">
+<div class="order-new-body">
+  <div class="detail">
+  <div>
   <h1>支持回报详情</h1>
   <table class="table table-bordered table-hover">
     <thead>
       <tr>
         <td>项目名称</td>
-        <td>项目发起人</td>
-        <td>筹款回报金额</td>
+        <td>发起人</td>
+        <td>筹款金额</td>
         <td>支持份数</td>
         <td>回报描述</td>
       </tr>
@@ -16,12 +18,12 @@
   </table>
 </div>
 
-<div class="col-sm-12 col-md-12 col-lg-12 text-right">
+<div>
   <p>
       总计：¥ <%= @order.total_price %>
   </p>
 </div>
-<div class="col-sm-12 col-md-12 col-lg-12">
+<!-- <div>
   <table class="table table-striped table-bordered">
     <tr>
       <td>支持者</td>
@@ -29,14 +31,14 @@
     <tr>
       <td>
         <address>
-          <%= @order.backer_name %>
+          <%#= @order.backer_name %>
         </address>
       </td>
     </tr>
   </table>
-</div>
+</div> -->
 
-<div class="pull-right">
+<div>
   <% if @order.paid? %>
   <% if @order.payment_method == 'Alipay' %>
   <%= link_to("您已使用支付宝支付", "#", :class => "btn btn-info disabled") %>
@@ -48,4 +50,6 @@
     <%= link_to("支付宝支付", pay_with_alipay_account_order_path(@order.token), method: :post, class: "btn btn-info") %>
     <%= link_to("微信支付", pay_with_wechat_account_order_path(@order.token), method: :post, class: "btn btn-success") %>
   <% end %>
+</div>
+</div>
 </div>
