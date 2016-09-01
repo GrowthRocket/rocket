@@ -18,6 +18,14 @@ class ProjectsController < ApplicationController
     @plans = @project.plans.price
   end
 
+  def preview
+    flash[:warning] = "此页面为预览页面"
+    @project = Project.find(params[:id])
+    @user = @project.user
+    @posts = @project.posts.recent
+    @plans = @project.plans
+  end
+
   def search
     if @query_string.present?
       search_result = Project.ransack(@search_criteria).result(distinct: true)

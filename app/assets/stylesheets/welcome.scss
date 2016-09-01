@@ -220,16 +220,18 @@
       line-height: 20px;
       color: #888888;
   }
-  .lp-container-col .progress-whole {
+   .progress-whole {
       margin: 40px 0 5px 20px;
       width: 280px;
       height: 5px;
   }
-  .lp-container-col .progress-content {
-      background-color: #3499E0;
+  .progress-content {
+      background-color: #3fcbd0;
+  // .lp-container-col .progress-content {
+  //     background-color: #3499E0;
   }
   //以上为进度条
-  .lp-container-col .lp-text-col {
+ .lp-text-col {
       width: 25%;
       position: relative;
       float: left;
@@ -238,7 +240,7 @@
       line-height: 20px;
       color: #888888;
   }
-  .lp-container-col .lp-container-figure {
+.lp-container-figure {
       color: black;
   }
   .btn-bordered {

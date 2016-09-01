@@ -37,7 +37,8 @@ class HeadimageUploader < CarrierWave::Uploader::Base
 
   def default_url
     # "/images/fallback/" + [thumb, "avatar.jpg"].compact.join('_')
-    "/images/user.jpg"
+    rand_num = rand(4) + 1
+    "/images/user#{rand_num}.png"
   end
 
   process resize_to_fit: [145, 145]
