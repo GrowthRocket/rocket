@@ -13,10 +13,18 @@
   <% @plans.each do |plan| %>
   <div class="plans-des">
     <div class="plan-price">
-    <p>
-      ￥<%= plan.price %>
-      <hr>
-    </p>
+      <% if plan.plan_type == 1 %>
+        <p>
+          ￥<%= plan.price %>
+          <hr>
+        </p>
+      <% else %>
+        <p>
+          无私奉献
+          <hr>
+        </p>
+      <% end %>
+
   </div>
   <div>
       <p>
