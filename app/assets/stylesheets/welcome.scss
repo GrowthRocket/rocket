@@ -112,11 +112,12 @@
 // 以下为rebecca定义的样式
 
   .lp-container .lp-background-img{
-    background: url(images/lp-bg.jpg) no-repeat center top;
+    background: url(images/bg2.jpg) no-repeat center top;
     // background: #dedede;
     // background-attachment: fixed;
     background-size:cover;
     position: absolute;
+
     height: 600px;
     width: 100%;
   }
@@ -220,16 +221,15 @@
       line-height: 20px;
       color: #888888;
   }
-   .progress-whole {
+  .lp-container-col .progress-whole {
       margin: 40px 0 5px 20px;
       width: 280px;
       height: 5px;
   }
-  .progress-content {
+  .lp-container-col .progress-content {
       background-color: #3fcbd0;
-  // .lp-container-col .progress-content {
-  //     background-color: #3499E0;
   }
+  //
   //以上为进度条
  .lp-text-col {
       width: 25%;
