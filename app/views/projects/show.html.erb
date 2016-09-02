@@ -102,10 +102,18 @@
 
               <% @plans.each do |plan| %>
               <div class="sm-container">
-                <p class="plan-price">
-                  ￥<%= plan.price %>
-                  <hr>
-                </p>
+                <% if plan.plan_type == 1 %>
+                  <p class="plan-price">
+                    ￥<%= plan.price %>
+                    <hr>
+                  </p>
+                <% else %>
+                  <p class="plan-price">
+                    无私奉献
+                    <hr>
+                  </p>
+                <% end %>
+
                   <p>
                       <div class="trix">
                           <div class="project-text">

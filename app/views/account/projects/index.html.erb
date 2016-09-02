@@ -23,7 +23,11 @@
         <% @projects.each do |project| %>
         <tr>
             <td>
-                <%= link_to(project.name, project_path(project)) %>
+                <% if project.online? || project.offline? %>
+                  <%= link_to(project.name, project_path(project)) %>
+                <% else %>
+                  <%= link_to(project.name, preview_project_path(project)) %>
+                <% end %>
                 <br/>
                 <img src="<%= project.image.small %>" width="120" height="75">
             </td>
