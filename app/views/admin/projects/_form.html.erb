@@ -7,7 +7,8 @@
     <%= f.input :user_email, :label =>"项目发起者" ,input_html: { class: 'edit-input-short-width'},:placeholder => "请填入用户邮箱"%>
   <% end %>
   <%= f.input :category_id,:collection => @categories,:label_method => :chs_name,:value_method => :id,:label => "请选择分类",:include_blank => false ,input_html: { class: 'edit-input-short-width'}%>
-  <%= f.input :fund_goal, :label =>"筹款目标" ,input_html: { class: 'edit-input-short-width'}%>
+  <p><strong>筹款目标</strong></p>
+  <input class="numeric integer optional form-control" type="text" step="1" name="project[fund_goal]" id="project_fund_goal">
   <%= f.input :video, :label => "宣传视频（请贴优酷视频公开链接）" ,input_html: { id: 'edit-input-long-width'}%>
   <%= f.input :image, :label =>"封面图片" %>
 
