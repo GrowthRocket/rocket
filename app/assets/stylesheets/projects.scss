@@ -236,7 +236,6 @@
   color: green
 }
 
-//
 
 // config project index
 
@@ -267,6 +266,7 @@
     width: 600px;
     margin: 0;
   }
+
 .index-project-detail{
   text-align: left;
   background-color: #fff;
@@ -312,7 +312,7 @@
 }
 
 .index-project-detail .progress-whole {
-  margin-top: 5px;
+  margin: 5px 0 0;
   width: 260px;
   height: 4px;
   border-radius: 1px;

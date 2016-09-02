@@ -45,7 +45,6 @@
       <div class="index-text">
           <span>筹款进度</span>
     </div>
-      <!-- <div class="progress-whole progress-content"> -->
       <div>
           <%= render_progress_landing_page(number_with_precision(project.fund_progress.to_f / project.fund_goal * 100, :precision => 2)) %>
       </div>

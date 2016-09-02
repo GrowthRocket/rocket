@@ -34,7 +34,7 @@ class OrdersController < ApplicationController
       @order.plan_description = @plan.description
       @order.project_name = @project.name
       @order.save
-      flash[:notice] = "感谢您对本项目的支持！"
+      # flash[:notice] = "感谢您对本项目的支持！"
       redirect_to account_order_path(@order.token)
     else
       render "new"
