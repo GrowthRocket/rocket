@@ -60,9 +60,9 @@
                 </div>
 
                 <% if @project.offline? %>
-                <%= link_to("筹款结束", "#", :class => "reserve-btn btn disabled" ) %>
+                <%= link_to("筹款结束", project_plans_path(@project), :class => "reserve-btn btn disabled" ) %>
             <% else %>
-                <%= link_to("支持TA", project_plans_path(@project), :class => "reserve-btn btn") %>
+                <%= link_to("支持TA", "javascript:void(0)", :class => "reserve-btn btn") %>
                 <% end %>
             </p>
         </div>
@@ -92,7 +92,7 @@
                           <div class="post-date">
                               <%= render_order_created_at(post.created_at) %>
                           </div>
-                          <hr class="thin">
+                          <hr>
                       </div>
                   </div>
                   <% end %>
@@ -119,20 +119,20 @@
                   </p>
                   <% if @project.offline? %>
                   <p>
-                      <%= link_to("筹款结束", "#", :class => "reserve-sm-btn btn disabled", disabled: true ) %>
+                      <%= link_to("筹款结束", "javascript:void(0)", :class => "reserve-sm-btn btn disabled", disabled: true ) %>
                   </p>
               <% else %>
                   <% if plan.plan_type == 1 %>
-                  <%= link_to("支持TA", project_plans_path(@project), :class => "reserve-sm-btn btn" ) %>
+                  <%= link_to("支持TA", "javascript:void(0)", :class => "reserve-sm-btn btn" ) %>
               <% else %>
                   <p>
-                      <%= form_tag project_plans_path(@project), method: "get", class: "form-inline" do %>
+                      <%= form_tag "javascript:void(0)", method: "get", class: "form-inline" do %>
                       <input type="text" name="custom_price" class="form-control" placeholder="请输入自定义金额"/>
                       <% if @project.offline? %>
                       <%= submit_tag "筹款结束", class: "reserve-sm-btn btn disabled ", disabled: true %>
                   <% else %>
                   <p>
-                      <%= submit_tag "支持TA", class: "reserve-sm-btn btn" %>
+                      <%= link_to("支持TA", "javascript:void(0)",class: "reserve-sm-btn btn") %>
                   </p>
 
                       <% end %>
@@ -150,6 +150,3 @@
     </div>
 
 </div>
-
-<!-- 演示样式参考 -->
-<!-- <img style="width:100%" src="/uploads/17.png"></img> -->
