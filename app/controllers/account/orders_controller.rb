@@ -23,6 +23,7 @@ class Account::OrdersController < AccountController
     @order = current_user.orders.find_by_token(params[:id])
     if add_payment_log("Alipay")
       flash[:notice] = "您已成功付款，感谢您的支持！"
+      binding.pry
       OrderMailer.notify_order_placed(@order).deliver!
     else
       flash[:alert] = "付款失败，请重新尝试。"
