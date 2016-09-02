@@ -90,7 +90,6 @@ class Devise::Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
   def after_update_path_for(resource_name)
-    # binding.pry
     account_users_path
   end
 end

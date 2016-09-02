@@ -60,7 +60,7 @@
                 </div>
 
                 <% if @project.offline? %>
-                <%= link_to("筹款结束", project_plans_path(@project), :class => "reserve-btn btn disabled" ) %>
+                <%= link_to("筹款结束", "#", :class => "reserve-btn btn disabled" ) %>
             <% else %>
                 <%= link_to("支持TA", project_plans_path(@project), :class => "reserve-btn btn") %>
                 <% end %>
@@ -119,7 +119,7 @@
                   </p>
                   <% if @project.offline? %>
                   <p>
-                      <%= link_to("筹款结束", new_plan_order_path(plan), :class => "reserve-sm-btn btn disabled", disabled: true ) %>
+                      <%= link_to("筹款结束", "#", :class => "reserve-sm-btn btn disabled", disabled: true ) %>
                   </p>
               <% else %>
                   <% if plan.plan_type == 1 %>
@@ -130,9 +130,8 @@
                         <% end %>
 
                   <% else %>
-
                   <p>
-                      <%= form_tag new_plan_order_path(plan), method: "get", class: "form-inline" do %>
+                      <%= form_tag project_plans_path(@project), method: "get", class: "form-inline" do %>
                       <input type="text" name="custom_price" class="form-control" placeholder="请输入自定义金额"/>
 
                   <p>

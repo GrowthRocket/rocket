@@ -1,53 +1,54 @@
 .hiw-header {
     margin-bottom: 50px;
-    margin-top: 10px;
+    padding-top: 30px;
     // background: #FBFBFB;
-    h1 {
-        // color: #333333;
-        margin-top: 70px;
-        margin-bottom: 40px;
-        font-size: 4em;
-        // font-weight: bold;
-    }
-    .hiw-header-button {
-        font-family: "Microsoft YaHei","Helvetica","sans-serif";
-        font-size: 20px;
-        font-weight: bold;
-        line-height: 26px;
-        letter-spacing: 0;
-        height: 50px;
-        width: 160px;
-        margin: 0 auto;
-        display: block;
-        text-align: center;
-        background-color: #43CB83;
-        border-color: #fa1681;
-        color: #ffffff;
-        letter-spacing: 0.1em;
-        margin-top: 25px;
-        padding: 10px;
-        a:link {
-            color: #FFF;
-        };
-        a:visited {
-            color: #FFF;
-        };
-        a:hover {
-            color: #FBFBFB;
-        };
-        a:active {
-            color: #FBFBFB;
-        };
-    }
+
+h1 {
+    color: #333333;
+    // background-color: #FBFBFB;
+    margin-bottom: 40px;
+    font-size: 5em;
+    // font-weight: bold;
+}
+}
+.hiw-header-button {
+    font-family: "Microsoft YaHei","Helvetica","sans-serif";
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 26px;
+    letter-spacing: 0;
+    height: 50px;
+    width: 160px;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    background-color: #43CB83;
+    border-color: #fa1681;
+    color: #ffffff;
+    letter-spacing: 0.1em;
+    margin-top: 25px;
+    padding: 10px;
+    a:link {
+        color: #FFF;
+    };
+    a:visited {
+        color: #FFF;
+    };
+    a:hover {
+        color: #FBFBFB;
+    };
+    a:active {
+        color: #FBFBFB;
+    };
 }
 .hiw-flow {
     // min-width: 1200px;
     background: #f3f3f3;
-    height: 600px;
+
     font-family: "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-align: center;
     // overflow: hidden;
-    height: 450;
+    height: 450px;
     img {
         padding: 50px;
         width: 800px;
@@ -59,7 +60,7 @@
     margin-top: 100px;
     clear: left;
     background: #FBFBFB;
-    padding: 80px 30px 40px;
+    padding: 80px 50px 40px;
 }
 .hiw-faq-block-container {
     display: flex;
@@ -71,7 +72,7 @@
     // width: 50%;
     margin-bottom: 40px;
 }
-.hiw-faq-block h2 {
+.hiw-faq-block h3 {
     font-family: "Microsoft YaHei", "Helvetica Neue", "Benton Sans","Helvetica","sans-serif";
     font-size: 20px;
     font-weight: bold;
