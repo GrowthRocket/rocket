@@ -8,7 +8,7 @@
   </div>
   <div class="row">
     <div class="col-md-4 col-md-offset-4 well project-well">
-      <a href="/template.html" class="pull-right" target="_blank"><i class="fa fa-question-circle-o" aria-hidden="true"></i>项目示范</a> 
+      <a href="/template.html" class="pull-right" target="_blank"><i class="fa fa-question-circle-o" aria-hidden="true"></i>项目示范</a>
       <h1>编辑项目信息</h1>
       <input type="hidden" value="<%= @flowType %>" id="flowType"/>
       <input type="hidden" value="<%= @project.id %>" id="projectId"/>
@@ -31,6 +31,7 @@
   <div class="row stepone">
     <div class="col-md-4 col-md-offset-4">
       <%= link_to("放弃更新", account_projects_path, class: "btn btn-default pull-right" ) %>
+
       <input type="button" class="btn btn-success pull-right" value="下一步" id="nextStep"/>
     </div>
   </div>
