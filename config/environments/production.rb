@@ -103,6 +103,11 @@ Rails.application.configure do
   config.action_mailer.default_options = {
     reply_to: "shaojunda@gmail.com"
   }
+  # Twilio configure
+  Twilio.configure do |config|
+    config.account_sid = ENV["TWILIO_SID"]
+    config.auth_token = ENV["TWILIO_TOKEN"]
+  end
 
 
 end
