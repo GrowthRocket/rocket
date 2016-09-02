@@ -1,37 +1,70 @@
-<div class="plans-show">
+<div class="plans-head">
   <div>
-    <h1>支持<span>user_name</span>的项目</h1>
+    <h1>支持<span><%= @user.user_name %></span>的项目</h1>
   </div>
   <div>
-    <p>project_name</p>
+    <p><%= link_to(@project.name,project_path(@project)) %></p>
   </div>
 </div>
 
-  <!-- <%# @plans.each do |plan| %>
+<div class="plans-body">
+  <!-- <div>请选择你要支持的方案</div> -->
 
-    <div class="well">
-        <p class="trix">
-          <%#= sanitize(plan.description) %>
-        </p>
+  <% @plans.each do |plan| %>
+  <div class="plans-des">
+    <div class="plan-price">
+    <p>
+      ￥<%= plan.price %>
+      <hr>
+    </p>
+  </div>
+  <div>
+      <p>
+              <div>
+                  <%= sanitize(plan.description) %>
+              </div>
+      </p>
+      <% if @project.offline? %>
+      <p>
+          <%= link_to("筹款结束", "#", :class => "reserve-sm-btn btn disabled", disabled: true ) %>
+      </p>
+  <% else %>
+      <% if plan.plan_type == 1 %>
+      <%= link_to("支持TA", new_plan_order_path(plan), :class => "reserve-sm-btn btn" ) %>
+  <% else %>
+      <p>
+          <%= form_tag new_plan_order_path(plan), method: "get", class: "form-inline" do %>
+          <input type="text" name="custom_price" class="form-control" placeholder="请输入自定义金额"/>
+          <% if @project.offline? %>
+          <%= submit_tag "筹款结束", class: "reserve-sm-btn btn disabled ", disabled: true %>
+      <% else %>
+      <p>
+          <%= submit_tag "支持TA", class: "reserve-sm-btn btn" %>
+      </p>
+
+          <% end %>
+          <% end %>
+      </p>
+      <% end %>
+      <% end %>
+  </div>
+</div>
+  <% end %>
+  <!-- <div class="plans-info">
+    <div>
+    <%= image_tag(@user.image.mdimage) %>
+  </div>
+  <hr />
+    <div >
         <p>
-          限额 <%#= plan.plan_goal %>位 | 剩余<%#= plan.plan_goal - plan.plan_progress %>位
+            <%# if @user.description.blank? %>
+            感谢你的来访，如果你对我的项目有兴趣，可以支持我的项目。
+        <% else %>
+            <%#= @user.user_name %>,<%#= @user.description%>
+            <br />
+            感谢你对本项目的支持。
+            <%# end %>
         </p>
-        <%# if plan.plan_type == 1 %>
-          <p>
-            <%# if plan.plan_progress >= plan.plan_goal  %>
-              <%#= link_to(("限额已满"), '#', class: "btn btn-default disabled") %>
-            <%# else %>
-              <%#= link_to("支持#{plan.price}元", new_plan_order_path(plan), :class => "btn btn-success" ) %>
-            <%# end %>
-          </p>
-        <%# else %>
-          <p>
-            <%#= form_tag new_plan_order_path(plan), method: "get", class: "form-inline" do %>
-              <input type="text" name="custom_price" class="form-control" placeholder="请输入自定义金额"/>
-              <%#= submit_tag "支持", class: "form-control btn btn-primary" %>
-            <%# end %>
-          </p>
-        <%# end %>
-
-      </div>
-  <%# end %> -->
+    </div>
+  </div> -->
+</div>

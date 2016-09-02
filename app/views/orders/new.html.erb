@@ -1,5 +1,6 @@
-<div class="col-sm-12 col-md-12 col-ld-6 col-ld-offset-3">
-  <%= simple_form_for [:plan, @order] do |f|%>
+<div class="order-new-body">
+  <div class="from">
+   <%= simple_form_for [:plan, @order] do |f|%>
     <div class="form-group">
       <%= f.input :backer_name, input_html:{class: "form-control"}, label: "赞助者姓名", placeholder: "请填写您的姓名" %>
       <%= f.input :price, input_html: {class: "form-control", :readonly => true, value: @order.price }, label: "赞助金额", placeholder: "请填写价格"%>
@@ -7,4 +8,5 @@
       <%= f.submit "提交", class: "btn btn-primary", data: {disable_with: "Submitting.."} %>
     </div>
   <% end %>
+  </div>
 </div>
