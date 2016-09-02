@@ -323,7 +323,7 @@
 
 // index banner
 .index-banner{
-    background: linear-gradient( rgba(255, 255, 255, 0.5), rgba(51, 51, 51, 0.7) ), url("images/banner-1.jpg");
+    background: linear-gradient( rgba(255, 255, 255, 0.5), rgba(51, 51, 51, 0.7) ), url('<%= asset_path("banner-1.jpg") %>');
     display: block;
     // background-attachment: fixed;
     background-repeat: no-repeat;
