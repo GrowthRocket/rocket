@@ -17,6 +17,6 @@ module Rocket
     config.active_record.default_timezone = :local
     config.generators.test_framework = nil
 
-    config.serve_static_assets = true
+    # config.serve_static_assets = true
   end
 end
