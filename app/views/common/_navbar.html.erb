@@ -39,7 +39,11 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
                     <img src="<%=current_user.image.headimage%>" class="nav-img img-circle"/>
-                    你好， <%= current_user.email %>
+                    你好， <% if current_user.user_name? %>
+                    <%= current_user.user_name %>
+                    <% else %>
+                    <%= current_user.email %>
+                    <% end %>
                   <b class="caret"></b>
                   </a>
                 <ul class="dropdown-menu">
