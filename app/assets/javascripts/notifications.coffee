@@ -44,4 +44,4 @@ class Notifications
 
 jQuery ->
   # TODO: 生产环境要打开
-  new Notifications
+  # new Notifications
