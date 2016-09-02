@@ -13,17 +13,21 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    @user = @project.user
-    @posts = @project.posts.recent
-    @plans = @project.plans.price
+    if @project.online? || @project.offline?
+      @user = @project.user
+      @posts = @project.posts.recent
+      @plans = @project.plans.price
+    else
+      redirect_to projects_path
+    end
   end
 
   def preview
-    flash[:warning] = "此页面为预览页面"
     @project = Project.find(params[:id])
     @user = @project.user
     @posts = @project.posts.recent
     @plans = @project.plans
+    flash[:warning] = "此页面为预览页面"
   end
 
   def search

@@ -7,6 +7,7 @@
       <tr>
         <td>项目名称</td>
         <td>发起人</td>
+        <td>支持者</td>
         <td>筹款金额</td>
         <td>支持份数</td>
         <td>回报描述</td>
@@ -41,10 +42,12 @@
 <div>
   <% if @order.paid? %>
   <% if @order.payment_method == 'Alipay' %>
-  <%= link_to("您已使用支付宝支付", "#", :class => "btn btn-info disabled") %>
+    <%= link_to("您已使用支付宝支付", "#", :class => "btn btn-info disabled") %>
+    <%= link_to("查看项目", project_path(@order.project_id), :class => "btn btn-default") %>
   <% else %>
   <% @order.payment_method == 'WeChat' %>
-  <%= link_to("您已使用微信支付", "#", :class => "btn btn-success disabled") %>
+    <%= link_to("您已使用微信支付", "#", :class => "btn btn-success disabled") %>
+    <%= link_to("查看项目", project_path(@order.project_id), :class => "btn btn-default") %>
   <% end %>
 <% else %>
     <%= link_to("支付宝支付", pay_with_alipay_account_order_path(@order.token), method: :post, class: "btn btn-info") %>
