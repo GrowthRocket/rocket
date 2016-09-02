@@ -51,9 +51,9 @@
                         </div>
                         <div class="text-col-right">
                             <div class="container-figure">
-                                <%= @project.fund_progress %>元
+                                <%= @project.fund_goal %>元
                             </div>
-                            已筹款
+                            筹款目标
                         </div>
                     </div>
 
@@ -92,7 +92,7 @@
                           <div class="post-date">
                               <%= render_order_created_at(post.created_at) %>
                           </div>
-                          <hr>
+                          <hr class="thin">
                       </div>
                   </div>
                   <% end %>
@@ -131,9 +131,23 @@
                   </p>
               <% else %>
                   <% if plan.plan_type == 1 %>
-                  <%= link_to("支持TA", project_plans_path(@project), :class => "reserve-sm-btn btn" ) %>
-              <% else %>
-                  <%= link_to("支持TA", project_plans_path(@project), :class => "reserve-sm-btn btn" ) %>
+                        <% if plan.backer_quantity < plan.plan_goal %>
+                        <%= link_to("支持TA", new_plan_order_path(plan), :class => "reserve-sm-btn btn" ) %>
+                        <% else %>
+                        <%= link_to("限额已满", new_plan_order_path(plan), :class => "reserve-sm-btn btn disabled", disabled: true ) %>
+                        <% end %>
+
+                  <% else %>
+                  <p>
+                      <%= form_tag project_plans_path(@project), method: "get", class: "form-inline" do %>
+                      <input type="text" name="custom_price" class="form-control" placeholder="请输入自定义金额"/>
+
+                  <p>
+                      <%= submit_tag "支持TA", class: "reserve-sm-btn btn" %>
+                  </p>
+
+                      <% end %>
+                  </p>
                   <% end %>
                   <% end %>
               </div>
