@@ -88,4 +88,21 @@ Rails.application.configure do
     config.account_sid = ENV["TWILIO_SID"]
     config.auth_token = ENV["TWILIO_TOKEN"]
   end
+
+  # Default Mailer Host
+  Rails.application.routes.default_url_options[:host] = 'talent-rocket.herokuapp.com'
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              ENV["EMAIL_ADDRESS"],
+    port:                 ENV["EMAIL_PORT"],
+    user_name:            ENV["EMAIL_USER_NAME"],
+    password:             ENV["EMAIL_PASSWORD"],
+    openssl_verify_mode: 'none',
+    enable_starttls_auto: false  }
+
+  config.action_mailer.default_options = {
+    reply_to: "shaojunda@gmail.com"
+  }
+
+
 end
