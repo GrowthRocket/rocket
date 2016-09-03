@@ -110,5 +110,5 @@ Rails.application.configure do
     config.auth_token = ENV["TWILIO_TOKEN"]
   end
 
-
+  config.action_controller.asset_host = "talent-rocket.herokuapp.com"
 end

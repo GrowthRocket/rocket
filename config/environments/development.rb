@@ -74,4 +74,6 @@ Rails.application.configure do
   config.action_mailer.default_options = {
     reply_to: "shaojunda@gmail.com"
   }
+
+  config.action_controller.asset_host = "localhost:3000"
 end
