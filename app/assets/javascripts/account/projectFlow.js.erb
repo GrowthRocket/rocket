@@ -5,7 +5,7 @@ var flowType = "";
 
 function showError(error, containerId) {
   $(".alert-danger").remove();
-  $(".navbar-fixed-top").siblings("#" + containerId).find(".row:visible").first().prepend("<div class='alert alert-dismissable alert-danger'><button class='close' data-dismiss='alert'>×</button>" + error + "</div>");
+  $("#" + containerId).find(".row:visible").first().prepend("<div class='alert alert-dismissable alert-danger'><button class='close' data-dismiss='alert'>×</button>" + error + "</div>");
   $("html, body").animate({
       scrollTop: 0
   }, 200);

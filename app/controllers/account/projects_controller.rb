@@ -132,6 +132,10 @@ class Account::ProjectsController < AccountController
      @current_project ||= find_project
   end
 
+  def demo
+    render("demo")
+  end
+
   private
 
   def find_project
