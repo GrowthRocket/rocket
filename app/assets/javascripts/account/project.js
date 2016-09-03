@@ -10,14 +10,8 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
-//= require turbolinks
-//= require bootstrap/alert
-//= require bootstrap/dropdown
-//= require bootstrap/collapse
-//= require bootstrap/tab
+//= require verify-phone-number
+//= require projectFlow
+//= require jquery.form.min
 //= require jquery-cookie
-//= require trix
-//= require tinymce
-//= require_tree .
+//= require_directory .
