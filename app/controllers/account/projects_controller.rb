@@ -40,8 +40,10 @@ class Account::ProjectsController < AccountController
         return
       end
     end
+    # binding.pry
     if current_project.nil?
       @project = current_user.projects.build(project_params)
+      # binding.pry
       if @project.save
         current_user.update_column(:user_name, user_name)
         session[:project_id] = @project.id

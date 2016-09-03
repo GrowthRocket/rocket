@@ -10,8 +10,8 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require verify-phone-number
-//= require projectFlow
-//= require jquery.form.min
-//= require jquery-cookie
+//= require account/verify-phone-number
+//= require account/projectFlow
+//= require account/jquery.form.min
+// require account/jquery-cookie
 //= require_directory .
