@@ -2,16 +2,16 @@ class Account::OrdersController < AccountController
   # after_action :add_payment_log, only: %i(pay_with_alipay pay_with_wechat)
 
   def index
-    @project_ids = current_user.orders.select("project_id").group(:project_id)
-    @orders = current_user.orders.where(project_id: @project_ids)
+    @orders = current_user.orders.select("project_id, project_name").group(:project_id, :project_name)
+    # @orders = current_user.orders.select("id").where(project_id: @project_ids).distinct
   end
 
   def show_orders_for_one_project
-    @order = current_user.orders.find(params[:id])
-    @project = @order.project
+    # @order = current_user.orders.find(params[:id])
+    # @project = @order.project
     # @plans = @project.plans
 
-    @orders = current_user.orders.where(project_id: @project.id)
+    @orders = current_user.orders.where(project_id: params[:id])
 
     render json: @orders
   end
