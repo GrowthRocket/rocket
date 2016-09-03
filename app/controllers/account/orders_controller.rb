@@ -2,7 +2,7 @@ class Account::OrdersController < AccountController
   # after_action :add_payment_log, only: %i(pay_with_alipay pay_with_wechat)
 
   def index
-    @orders = current_user.orders.select("project_name, project_id, id").group(:project_id, :project_name)
+    @orders = current_user.orders.select("project_name, project_id, id, avg(id)").group(:project_id, :project_name)
   end
 
   def show_orders_for_one_project
