@@ -20,4 +20,8 @@
 //= require jquery-cookie
 //= require trix
 //= require tinymce
+//= require account/verify-phone-number
+//= require account/projectFlow
+//= require jquery.form.min
+//= require jquery-cookie
 //  require_tree .
