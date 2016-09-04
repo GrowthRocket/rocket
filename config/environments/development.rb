@@ -26,8 +26,7 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-  config.action_mailer.default_url_options = { host: "localhost:3000" }
-  config.action_mailer.delivery_method = :letter_opener
+
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
@@ -60,4 +59,21 @@ Rails.application.configure do
     config.account_sid = ENV["TWILIO_SID"]
     config.auth_token = ENV["TWILIO_TOKEN"]
   end
+
+  config.action_mailer.default_url_options = { host: "localhost:3000" }
+  # config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              ENV["EMAIL_ADDRESS"],
+    port:                 ENV["EMAIL_PORT"],
+    user_name:            ENV["EMAIL_USER_NAME"],
+    password:             ENV["EMAIL_PASSWORD"],
+    openssl_verify_mode: 'none',
+    enable_starttls_auto: false  }
+
+  config.action_mailer.default_options = {
+    reply_to: "shaojunda@gmail.com"
+  }
+
+  config.action_controller.asset_host = "localhost:3000"
 end
