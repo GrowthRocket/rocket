@@ -134,6 +134,11 @@ class Account::ProjectsController < AccountController
      @current_project ||= find_project
   end
 
+  def demo
+    # render("demo")
+    render layout: "application"
+  end
+
   private
 
   def find_project

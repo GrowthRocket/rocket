@@ -63,6 +63,9 @@ Rails.application.routes.draw do
       end
     end
     resources :projects do
+      collection do
+        get :demo
+      end
       resources :posts
       resources :plans do
         collection do
