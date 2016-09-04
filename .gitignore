@@ -31,4 +31,4 @@ public/uploads/*
 .atomignore
 
 
-/app/assets/stylesheets/images/*
+# /app/assets/stylesheets/images/*

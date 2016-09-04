@@ -116,6 +116,10 @@ $(function() {
   });
 
 })
+// TODO: 实现当为编辑状态时去后台获得 plan 信息，然后填充页面，改变 planQueue
+function generatePlans() {
+
+}
 
 
 function increaseNum() {
@@ -208,6 +212,39 @@ $("#mobileContainer").show();
   });
 
 
+  $("#send_verification_code").bind("click", function() {
+    phoneNumber = $.trim($("#user_phone_number").val())
+    if(phoneNumber != undefined && phoneNumber != "") {
+      $('#send_verification_code').attr("disabled", true);
+      send_verification_code(phoneNumber);
+    } else {
+      alert("请先输入手机号码");
+    }
+  });
+}
+
+function showMobileVerify() {
+  $(".addflow-container").hide();
+  $("#mobileContainer").siblings().hide();
+  var content = "";
+  content = "<div class='row'>" +
+              "<div class='col-md-4 col-md-offset-4 well project-well text-center'>" +
+                "<h2>验证手机</h2>" +
+                "<form>" +
+                  "<div class='form-group'>" +
+                   "<input type='tel' placeholder='请输入手机号码' id='user_phone_number' name='user[phone_number]' class='string tel required form-control'>" +
+                  "</div>" +
+                  "<div class='form-inline'>" +
+                    "<input type='text' id='user_captcha' name='user[captcha]' placeholder='请输入验证码' class='string required form-control '>" +
+                    "<input type='button' class='btn btn-sm btn-default' value='发送短信验证码' id='send_verification_code'>" +
+                  "</div>" +
+                  "<div class='form-group'>" +
+                    "<a href='/account/projects/' class='btn btn-default'>返回用户中心</a>"
+                  "</div>" +
+                "</form>" +
+              "</div>" +
+            "</div>";
+  $("#mobileContainer").append(content);
   $("#send_verification_code").bind("click", function() {
     phoneNumber = $.trim($("#user_phone_number").val())
     if(phoneNumber != undefined && phoneNumber != "") {

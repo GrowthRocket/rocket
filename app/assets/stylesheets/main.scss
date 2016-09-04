@@ -86,7 +86,7 @@ hr{
 
 #footer {
   background: #323232;
-  color: #CCCCCC;
+  color: #ffffff;
   bottom: 0;
   height: 100px;
   position: absolute;
@@ -99,8 +99,25 @@ hr{
   a:active {color: #FFFFFF};
 }
 
+.def-footer{
+  position:relative;
+  .help-link{
+    float:left;
+    margin:0 40px;
+    li{
+    padding:0 10px;
+    }
+  }
+
+  .copyright-info{
+    float:left;
+    margin:0 40px;
+  }
+}
+
+
 .formatted_content {
-  background-color: #fff;
+  background-color: #ffffff;
   min-height: 200px;
   // width: 600px;
   margin-bottom: 10px;

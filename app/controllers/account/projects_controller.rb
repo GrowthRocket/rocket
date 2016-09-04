@@ -133,7 +133,8 @@ class Account::ProjectsController < AccountController
   end
 
   def demo
-    render("demo")
+    # render("demo")
+    render layout: "application"
   end
 
   private

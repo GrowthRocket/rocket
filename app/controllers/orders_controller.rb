@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
       custom_price = params[:custom_price]
       if custom_price == ""
         flash[:alert] = "请输入自定义金额"
-        redirect_to new_plan_path
+        redirect_to project_plans_path(@plan.project)
       else
         @plan.price = custom_price
         if @plan.save
@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
     @project = @plan.project
 
     @order = @plan.orders.build(order_params)
-    @order.creator_name = current_user.user_name
+    @order.creator_name = @project.user.user_name
     @order.user = current_user
     @order.project = @project
 

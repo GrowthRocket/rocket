@@ -102,10 +102,17 @@
 
               <% @plans.each do |plan| %>
               <div class="sm-container">
-                <p class="plan-price">
-                  ￥<%= plan.price %>
-                  <hr>
-                </p>
+                <% if plan.plan_type == 1 %>
+                  <p class="plan-price">
+                    ￥<%= plan.price %>
+                    <hr>
+                  </p>
+                <% else %>
+                  <p class="plan-price">
+                    无私奉献
+                    <hr>
+                  </p>
+                <% end %>
                   <p>
                       <div class="trix">
                           <div class="project-text">
@@ -125,19 +132,7 @@
                   <% if plan.plan_type == 1 %>
                   <%= link_to("支持TA", "javascript:void(0)", :class => "reserve-sm-btn btn" ) %>
               <% else %>
-                  <p>
-                      <%= form_tag "javascript:void(0)", method: "get", class: "form-inline" do %>
-                      <input type="text" name="custom_price" class="form-control" placeholder="请输入自定义金额"/>
-                      <% if @project.offline? %>
-                      <%= submit_tag "筹款结束", class: "reserve-sm-btn btn disabled ", disabled: true %>
-                  <% else %>
-                  <p>
-                      <%= link_to("支持TA", "javascript:void(0)",class: "reserve-sm-btn btn") %>
-                  </p>
-
-                      <% end %>
-                      <% end %>
-                  </p>
+                  <%= link_to("支持TA", project_plans_path(@project), :class => "reserve-sm-btn btn" ) %>
                   <% end %>
                   <% end %>
               </div>
