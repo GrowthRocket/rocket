@@ -1,6 +1,7 @@
 
 class Plan < ApplicationRecord
   validates :description, presence: true
+  validates :need_add, inclusion: {in: [true, false]}
   validates :price, presence: true
   validates :price, numericality: { greater_than: 0, less_than: 1_000_000 }
   validates :plan_goal, numericality: { greater_than: 0, less_than: 1_000_000 }
@@ -35,5 +36,5 @@ end
 #  plan_progress   :integer          default(0)
 #  backer_quantity :integer          default(0)
 #  plan_type       :integer          default(1)
-#  need_add        :boolean          default(FALSE)
+#  need_add        :boolean
 #

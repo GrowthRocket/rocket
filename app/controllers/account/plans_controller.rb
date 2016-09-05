@@ -53,6 +53,7 @@ class Account::PlansController < AccountController
   end
 
   def create
+
     @plan = @project.plans.build(plan_params)
 
     check_plan_valid_for_create
@@ -71,7 +72,6 @@ class Account::PlansController < AccountController
   def update
     @plan = @project.plans.find(params[:id])
     check_plan_valid_for_edit
-
     if @plan.update(plan_params)
       flash[:notice] = "您已成功新建筹款回报。"
       if current_user.is_admin?
@@ -119,6 +119,6 @@ class Account::PlansController < AccountController
   end
 
   def plan_params
-    params.require(:plan).permit(:description, :price, :plan_goal)
+    params.require(:plan).permit(:description, :price, :plan_goal, :need_add)
   end
 end
