@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160905064157) do
+ActiveRecord::Schema.define(version: 20160905073523) do
 
   create_table "accounts", force: :cascade do |t|
     t.integer  "balance",      default: 0
@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(version: 20160905064157) do
     t.integer  "project_id"
     t.text     "plan_description"
     t.string   "project_name"
+    t.string   "address"
     t.index ["aasm_state"], name: "index_orders_on_aasm_state"
   end
 

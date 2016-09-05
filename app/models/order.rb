@@ -90,6 +90,7 @@ end
 #  project_id       :integer
 #  plan_description :text
 #  project_name     :string
+#  address          :string
 #
 # Indexes
 #
