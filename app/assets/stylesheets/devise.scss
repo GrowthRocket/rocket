@@ -6,10 +6,30 @@
 }
 
 #devise-input-width{
-  width: 350px;
+  width: 310px;
 }
 
 .devise-form{
   margin-top: 15px;
   margin-bottom: 15px;
+}
+
+.devise-sign-up {
+  margin: 50px auto;
+   background-color: #cacaca;
+   color: #ffffff;
+   width: 900px;
+   height: 500px;
+  .left{
+   padding: 20px;
+   width: 550px;
+   height: 500px;
+   float: left;
+  }
+  .right{
+   padding: 50px 20px 0;
+   width: 350px;
+   height: 500px;
+   float: left;
+  }
 }
