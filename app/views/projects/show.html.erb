@@ -102,9 +102,15 @@ var jiathis_config = {
 
               <div class="md-container">
                   <h2>项目详情</h2>
-                  <%= @project.video.html_safe %>
+
                   <hr class="thick">
                   <p>
+                    <div style="text-align: center;">
+                      <% if @project.video && @project.video.include?("youku") %>
+                      <%= @project.video.html_safe %>
+                      <% end %>
+                    </div>
+
                       <div class="trix">
                           <div class="text">
                               <%= sanitize(@project.description) %>

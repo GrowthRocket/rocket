@@ -21,7 +21,7 @@ module Account::ProjectsHelper
       # link_to("管理回报", account_project_plans_path(project), class:"btn btn-sm btn-default")
     end
   end
-  
+
     # TODO controller里需要对project不同状态进行判断，不同状态下操作不同。
 
 
