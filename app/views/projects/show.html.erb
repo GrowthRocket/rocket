@@ -36,12 +36,10 @@
                         <% end %>
                     </p>
                 </div>
-
                 <div class="process-bar">
                     已筹到 ¥
                     <%= @project.fund_progress %>
                     <%= render_progress_show(number_with_precision(@project.fund_progress.to_f / @project.fund_goal * 100, :precision => 2))%>
-
                     <div class="text-col">
                         <div class="text-col-left">
                             <div class="container-figure">
@@ -56,9 +54,7 @@
                             筹款目标
                         </div>
                     </div>
-
                 </div>
-
                 <% if @project.offline? %>
                 <%= link_to("筹款结束", "#", :class => "reserve-btn btn disabled" ) %>
             <% else %>
@@ -69,7 +65,6 @@
         </div>
         <div class="low-container">
           <div class="left-container">
-
               <div class="md-container">
                   <h2>项目详情</h2>
                   <hr class="thick">
@@ -81,7 +76,6 @@
                       </div>
                   </p>
               </div>
-
               <div class="md-container">
                   <h2 class="title">最新动态</h2>
                       <hr class="thick">
@@ -99,7 +93,6 @@
               </div>
           </div>
           <div class="right-container">
-
               <% @plans.each do |plan| %>
               <div class="sm-container">
                 <% if plan.plan_type == 1 %>
@@ -113,7 +106,6 @@
                     <hr>
                   </p>
                 <% end %>
-
                   <p>
                       <div class="trix">
                           <div class="project-text">
@@ -136,30 +128,20 @@
                         <% else %>
                         <%= link_to("限额已满", new_plan_order_path(plan), :class => "reserve-sm-btn btn disabled", disabled: true ) %>
                         <% end %>
-
                   <% else %>
                   <p>
                       <%= form_tag project_plans_path(@project), method: "get", class: "form-inline" do %>
                       <input type="text" name="custom_price" class="form-control" placeholder="请输入自定义金额"/>
-
                   <p>
                       <%= submit_tag "支持TA", class: "reserve-sm-btn btn" %>
                   </p>
-
                       <% end %>
                   </p>
                   <% end %>
                   <% end %>
               </div>
               <% end %>
-
           </div>
         </div>
-
-
     </div>
-
 </div>
-
-<!-- 演示样式参考 -->
-<!-- <img style="width:100%" src="/uploads/17.png"></img> -->
