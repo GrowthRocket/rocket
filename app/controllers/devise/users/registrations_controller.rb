@@ -1,7 +1,7 @@
 class Devise::Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-  before_action :check_geetest, only: [:create]
+  # before_action :check_geetest, only: [:create]
   # GET /resource/sign_up
   # def new
   #   super
@@ -9,12 +9,12 @@ class Devise::Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    if @geetest
+    # if @geetest
       super
-    else
-      flash[:alert] = "请先滑动滑块"
-      redirect_to new_user_registration_path
-    end
+    # else
+      # flash[:alert] = "请先滑动滑块"
+      # redirect_to new_user_registration_path
+    # end
   end
 
   # GET /resource/edit

@@ -1,5 +1,5 @@
 class Account::UsersController < ApplicationController
-  before_action :authenticate_user!, except: [:send_verification_code]
+  before_action :authenticate_user!
   # before_action :check_geetest, only: [:send_verification_code]
   before_action :phone_number_validates, only: [:verify_phone_number]
   before_action :phone_number_validates_new, only: [:verify_phone_number_new]
@@ -90,6 +90,7 @@ class Account::UsersController < ApplicationController
 
     VerificationCode.where(phone_number: @user.phone_number, code_status: true).update_all(code_status: false)
     current_user.phone_number = @user.phone_number
+    binding.pry
     if current_user.save!
       current_user.approve!
       flash[:notice] = "手机验证成功"
