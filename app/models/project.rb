@@ -1,6 +1,7 @@
 class Project < ApplicationRecord
   after_create :generate_custom_price_plan
   validates :name, presence: true
+  validates :description, presence: true
   validates :fund_goal, numericality: { greater_than: 0, less_than: 1_000_000 }
 
   mount_uploader :image, ImageUploader
@@ -8,6 +9,9 @@ class Project < ApplicationRecord
   has_many :posts
   belongs_to :user
   belongs_to :category
+
+
+  attr_accessor :user_email
 
   scope :recent, -> { order("created_at DESC") }
 
@@ -21,7 +25,7 @@ class Project < ApplicationRecord
     state :offline
 
     event :apply_verify do
-      transitions from: %i(project_created unverified offline), to: :verifying
+      transitions from: [:project_created, :unverified], to: :verifying
     end
 
     event :approve do

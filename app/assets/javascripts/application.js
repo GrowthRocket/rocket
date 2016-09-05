@@ -17,6 +17,6 @@
 //= require bootstrap/dropdown
 //= require bootstrap/collapse
 //= require bootstrap/tab
-//= require jquery-cookie
 //= require trix
-// = require_tree .
+//= require tinymce
+// require_tree .

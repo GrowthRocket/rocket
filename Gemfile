@@ -54,6 +54,7 @@ gem "rotp"
 gem "ransack"
 gem "seo_helper"
 gem "active_link_to"
+gem "tinymce-rails"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -66,6 +67,7 @@ end
 
 group :production do
   gem "pg"
+  gem 'rails_12factor'
 end
 
 group :development do

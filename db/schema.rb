@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160828070020) do
+ActiveRecord::Schema.define(version: 20160902064444) do
 
   create_table "accounts", force: :cascade do |t|
     t.integer  "balance",      default: 0
     t.integer  "amount",       default: 0
     t.integer  "user_id"
-    t.integer  "profit",       default: 0
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.float    "profit",       default: 0.0
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "account_name"
   end
 
@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 20160828070020) do
     t.string   "creator_name"
     t.string   "backer_name"
     t.integer  "price"
-    t.integer  "quantity"
+    t.integer  "quantity",         default: 1
     t.string   "payment_method"
     t.string   "token"
     t.string   "aasm_state",       default: "order_placed"
@@ -105,14 +105,14 @@ ActiveRecord::Schema.define(version: 20160828070020) do
     t.string   "title"
     t.text     "description"
     t.integer  "quantity",        default: 1
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.integer  "price"
     t.integer  "project_id"
     t.integer  "plan_goal"
     t.integer  "plan_progress",   default: 0
     t.integer  "backer_quantity", default: 0
-    t.         "plan_type",       default: "1"
+    t.integer  "plan_type",       default: 1
   end
 
   create_table "posts", force: :cascade do |t|

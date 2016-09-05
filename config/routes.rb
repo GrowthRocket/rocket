@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: "devise/users/registrations" }
+  devise_for :users, controllers: { registrations: "devise/users/registrations"}
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root "welcome#index"
+
+  get "/how_it_works", to: "welcome#how_it_works"
+  get "/about_us", to: "welcome#about_us"
 
   namespace :admin do
     resources :orders
@@ -56,13 +59,23 @@ Rails.application.routes.draw do
         get :show_verify_phone_number
         post :verify_phone_number
         get :change_password
+        post :verify_phone_number_new
       end
     end
     resources :projects do
+      collection do
+        get :demo
+      end
       resources :posts
-      resources :plans
+      resources :plans do
+        collection do
+          post :create_plan
+          get :get_plans
+        end
+      end
       member do
         post :apply_for_verification
+        post :apply_for_verification_new
         post :offline
         post :reject_message
       end
@@ -91,6 +104,9 @@ Rails.application.routes.draw do
     resources :plans
     collection do
       get :search
+    end
+    member do
+      get :preview
     end
   end
 

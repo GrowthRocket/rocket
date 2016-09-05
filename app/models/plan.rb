@@ -8,6 +8,7 @@ class Plan < ApplicationRecord
   has_many :orders
   scope :normal, -> { where(plan_type: 1) }
   scope :recent, -> { order("created_at DESC") }
+  scope :price, -> {order("price DESC")}
 
   before_validation :check_plan_goal
 
@@ -33,5 +34,5 @@ end
 #  plan_goal       :integer
 #  plan_progress   :integer          default(0)
 #  backer_quantity :integer          default(0)
-#  plan_type       :byte             default("1")
+#  plan_type       :integer          default(1)
 #

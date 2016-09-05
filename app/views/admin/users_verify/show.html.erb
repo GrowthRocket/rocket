@@ -11,11 +11,11 @@
  <p>  注册时间：    <%= render_order_created_at(@user.created_at) %> </p>
  <p>  申请认证时间：    <%= render_order_created_at(@user.created_at)%> </p>
  <p>身份证正面图片 </p>
- <%#= image_tag(@user.image.show), user_path(user), class: "thumbnail") %>
+ <%#= image_tag(@user.image.large), user_path(user), class: "thumbnail") %>
  <p>身份证反面图片   </p>
- <%#= image_tag(@user.image.show), user_path(user), class: "thumbnail") %>
+ <%#= image_tag(@user.image.large), user_path(user), class: "thumbnail") %>
  <p>双手持身份证图片   </p>
- <%#= image_tag(@user.image.show), user_path(user), class: "thumbnail") %>
+ <%#= image_tag(@user.image.large), user_path(user), class: "thumbnail") %>
 <div class="well">
   <%= link_to("通过认证请求", pass_verify_admin_users_verify_path(@user) , :method => :post, :class => "btn btn-sm btn-success") %>
 </div>

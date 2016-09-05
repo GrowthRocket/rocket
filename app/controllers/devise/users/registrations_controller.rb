@@ -1,7 +1,7 @@
 class Devise::Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-  before_action :check_geetest, only: [:create]
+  # before_action :check_geetest, only: [:create]
   # GET /resource/sign_up
   # def new
   #   super
@@ -9,12 +9,12 @@ class Devise::Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    if @geetest
+    # if @geetest
       super
-    else
-      flash[:alert] = "请先滑动滑块"
-      redirect_to new_user_registration_path
-    end
+    # else
+      # flash[:alert] = "请先滑动滑块"
+      # redirect_to new_user_registration_path
+    # end
   end
 
   # GET /resource/edit
@@ -39,7 +39,6 @@ class Devise::Users::RegistrationsController < Devise::RegistrationsController
       bypass_sign_in resource, scope: resource_name
       respond_with resource, location: after_update_path_for(resource)
     else
-      puts "-------"
       clean_up_passwords resource
       flash[:alert] = "请重新输入密码"
       redirect_to change_password_account_user_path(resource)
@@ -69,7 +68,7 @@ class Devise::Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   #  def configure_sign_up_params
@@ -90,4 +89,7 @@ class Devise::Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  def after_update_path_for(resource_name)
+    account_users_path
+  end
 end

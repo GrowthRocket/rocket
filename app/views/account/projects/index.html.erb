@@ -23,9 +23,13 @@
         <% @projects.each do |project| %>
         <tr>
             <td>
-                <%= link_to(project.name, project_path(project)) %>
+                <% if project.online? || project.offline? %>
+                  <%= link_to(project.name, project_path(project)) %>
+                <% else %>
+                  <%= link_to(project.name, preview_project_path(project)) %>
+                <% end %>
                 <br/>
-                <img src="<%= project.image.thumb %>" width="120" height="90">
+                <img src="<%= project.image.small %>" width="120" height="75">
             </td>
             <td>
                 <%= link_to(project.plans_count, account_project_plans_path(project)) %>
@@ -47,17 +51,6 @@
                 <%= render_project_status(project) %>
             </td>
             <td>
-              <% if ["unverified", "project_created", "offline"].include?(project.aasm_state) %>
-                <%= link_to("编辑项目", edit_account_project_path(project), :class => "btn btn-sm btn-default") %>
-              <% end %>
-
-                <%= link_to("申请上线", apply_for_verification_account_project_path(project), :method => :post,  :class => "btn btn-sm btn-default") %>
-
-                <%#= link_to("管理筹款回报", account_project_plans_path(project), :class => "btn btn-sm btn-default") %>
-                <%= link_to("管理动态", account_project_posts_path(project), :class => "btn btn-sm btn-default") %>
-                <% if ["project_created", "unverified"].include?(project.aasm_state) %>
-                  <%= link_to("删除", account_project_path(project), :method => :delete, :data => { :confirm => "删除项目后不可恢复，您确定要删除吗?" }, :class => "btn btn-sm btn-default") %>
-                <% end %>
                 <%= render_project_operation(project) %>
             </td>
         </tr>

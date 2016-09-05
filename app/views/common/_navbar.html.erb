@@ -6,12 +6,15 @@
       <!-- <h1><a class="navbar-brand" href="/">人才火箭</a></h1> -->
       <a class="navbar-brand" href="/">
         <i class="fa fa-rocket fa-lg logo_icon" aria-hidden="true"></i>
-        人才火箭
+        <span>人才火箭</span>
       </a>
     </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
+          <ul class="nav navbar-nav navbar-left">
+            <%= link_to("发现好项目", projects_path, class:" btn btn-default btn-sm", style:"margin-top:12px;") %>
+            <%= link_to("用户指南", how_it_works_path, class:"btn btn-default btn-sm", style:"margin-top:12px;") %>
+            </ul>
             <ul class="nav navbar-nav navbar-right">
 
               <% if !current_user %>
@@ -20,7 +23,7 @@
               <% else %>
 
               <li class="nav-item btn-group" data-behavior="notifications" data-notifications='<%= render template: "notifications/index", formats: [:json] %>'>
-                <a class="dropdown-toggle nav-link" type="button" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="dropdown-toggle nav-link notice-ring" type="button" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <%= fa_icon "bell" %> <span data-behavior="unread-count"></span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu1" data-behavior="notification-items">
@@ -34,8 +37,13 @@
 
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                      <img src="<%=current_user.image.headimage %>" class="img-circle"/>
-                    你好， <%= current_user.email %>
+
+                    <img src="<%=current_user.image.headimage%>" class="nav-img img-circle"/>
+                    你好， <% if current_user.user_name? %>
+                    <%= current_user.user_name %>
+                    <% else %>
+                    <%= current_user.email %>
+                    <% end %>
                   <b class="caret"></b>
                   </a>
                 <ul class="dropdown-menu">
@@ -51,9 +59,11 @@
               <% end %>
             </ul>
             <form action="<%= new_account_project_path %>" class="navbar-form navbar-right" role="search">
-              <button type="submit" class="btn lp-btn-primary-sm">发起众筹</button>
+              <button type="submit" class="btn lp-action btn sm">发起众筹</button>
             </form>
+            <div class="hidden-sm hidden-xs">
             <%= render :partial => "projects/search_bar" %>
+          </div>
         </div>
         <!-- /.navbar-collapse -->
     </div>

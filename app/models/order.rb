@@ -4,6 +4,8 @@ class Order < ApplicationRecord
   belongs_to :project
   belongs_to :plan
 
+  scope :paid, -> { where(aasm_state: "paid") }
+
   before_create :calculate_total
 
   def calculate_total
@@ -80,7 +82,7 @@ end
 #  creator_name     :string
 #  backer_name      :string
 #  price            :integer
-#  quantity         :integer
+#  quantity         :integer          default(1)
 #  payment_method   :string
 #  token            :string
 #  aasm_state       :string           default("order_placed")

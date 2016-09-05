@@ -307,6 +307,11 @@ GEM
       ruby-graphviz (~> 1.2)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.5)
+    rails_stdout_logging (0.0.5)
     railties (5.0.0.1)
       actionpack (= 5.0.0.1)
       activesupport (= 5.0.0.1)
@@ -366,6 +371,8 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.5)
+    tinymce-rails (4.4.1)
+      railties (>= 3.1.1)
     trix (0.9.7)
       rails
     trollop (2.1.2)
@@ -425,6 +432,7 @@ DEPENDENCIES
   puma (~> 3.0)
   rails (~> 5.0.0)
   rails-erd
+  rails_12factor
   ransack
   rotp
   rubocop
@@ -434,6 +442,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
+  tinymce-rails
   trix
   turbolinks (~> 5)
   twilio-ruby (~> 4.11.1)

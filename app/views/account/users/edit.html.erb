@@ -1,7 +1,7 @@
 <h2> 修改个人资料 </h2>
 <%= simple_form_for [:account,@user] do |f| %>
 <div>
-  <img src="<%=@user.image.mdimage%>" class="img-responsive">
+  <img src="<%=current_user.image.mdimage%>" class="img-responsive">
 </div>
 <div>
 <%= f.input :image, :label =>"用户头像" %>

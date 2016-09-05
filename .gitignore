@@ -27,3 +27,5 @@ public/uploads/*
 
 /erd.pdf
 .DS_Store
+
+.atomignore

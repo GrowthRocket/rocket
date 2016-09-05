@@ -16,5 +16,8 @@ module Rocket
     config.time_zone = "Beijing"
     config.active_record.default_timezone = :local
     config.generators.test_framework = nil
+    
+
+    # config.serve_static_assets = true
   end
 end

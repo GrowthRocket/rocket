@@ -7,6 +7,7 @@ class Admin::ProjectsController < AdminController
         Project.all.recent.paginate(page: params[:page], per_page: 5)
       end
     @categories = Category.all
+    @projects_verifying = Project.where(aasm_state: "verifying")
   end
 
   def new
@@ -25,11 +26,18 @@ class Admin::ProjectsController < AdminController
 
   def create
     @project = Project.new(project_params)
-
-    if @project.save
-      redirect_to admin_projects_path
-    else
+    @user = User.find_by(email: params[:project][:user_email])
+    if !@user.present?
       render :new
+      flash[:alert] = "无此用户"
+      return
+    else
+      @project.user = @user
+      if @project.save
+        redirect_to admin_projects_path
+      else
+        render :new
+      end
     end
   end
 
@@ -67,6 +75,6 @@ class Admin::ProjectsController < AdminController
   private
 
   def project_params
-    params.require(:project).permit(:name, :description, :user_id, :fund_goal, :image, :plans_count, :category_id, :video)
+    params.require(:project).permit(:name, :description, :fund_goal, :image, :plans_count, :category_id, :video, :user_email)
   end
 end
