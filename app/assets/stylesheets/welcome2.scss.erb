@@ -1,0 +1,293 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// 以下为nfreeness定义的样式
+.lp-feature{
+  background: #FFF;
+}
+
+.lp-feature-head h3{
+  color: #393939;
+  font-size: 2em;
+  text-align: center;
+  margin: 60px 0 32px;
+}
+
+.lp-feature-head p{
+  color: #393939;
+  font-size: 1em;
+  text-align: center;
+  margin: 32px 25%;
+  width: 50%;
+}
+
+.lp-feature-detail{
+  width:100%;
+  margin:10px;
+  line-height: 20px;
+
+  padding:0 10px;
+}
+
+.lp-feature-detail img{
+  position: relative;
+  padding: 10px;
+  margin: 0 15%;
+}
+
+.lp-feature-detail h4{
+  text-align: center;
+  font-size: 1em;
+  margin: 25px 0 20px;
+}
+
+.lp-feature-detail p{
+  font-size: 12px;
+  margin: 20px 0 50px;
+}
+
+.lp-user{
+  height: 300px;
+  margin:100px 0 0;
+}
+
+.lp-user img{
+  width: 100px;
+  margin: 25px 0 0 30px;
+}
+
+.lp-user.title{
+  font-weight: bold;
+}
+
+.lp-user-desciption {
+  margin: 25px 0 0;
+}
+
+.lp-action{
+  margin-bottom: -10px;
+  background: rgba(0, 0, 0, 0.35);
+    text-align: center;
+    // background: url(images/lp-bg.jpg) no-repeat center;
+}
+
+.lp-action p{
+    color: #ffffff;
+    font-size: 3em;
+    margin: 0px 0 10px;
+    padding: 60px 0 20px;
+  }
+
+.lp-action.btn{
+    background: #43CB83;
+    color: #FFF;
+    font-size: 1.5em;
+    text-align: center;
+    // margin: 0 auto;
+    padding: 8px 20px ;
+    margin: 0 40% 60px;
+    // width: 20%;
+    a:link {color: #FFF};
+    a:visited {color: #FFF}	;
+    a:hover {color: #e9e9e9}	;
+    a:active {color: #e9e9e9};
+  }
+
+.lp-action.btn.sm{
+    font-size: 1em;
+    text-align: center;
+    padding: 5px;
+    margin: 3px;
+    width: 95px;
+    height: 35px;
+    letter-spacing: 0.2em;
+    a:link {color: #FFFFFF};
+    a:visited {color: #FFFFFF}	;
+    a:hover {color: #FBFBFB}	;
+    a:active {color: #FBFBFB};
+}
+// nfreeness定义样式结束
+
+// 以下为rebecca定义的样式
+
+  .lp-container .lp-background-img{
+    background: url('<%= asset_path("bg2.jpg") %>') no-repeat center top;
+
+    // background: #dedede;
+    // background-attachment: fixed;
+    background-size:cover;
+    position: absolute;
+
+    height: 600px;
+    width: 100%;
+  }
+
+  .lp-container{
+      // min-width: 1200px;
+      background: #fff;
+      height: 600px;
+      // font-family: "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      text-align: center;
+      overflow: hidden;
+
+    }
+
+  .lp-container h1{
+    color: white;
+    margin-top: 280px;
+    font-size: 4em;
+    // font-weight: bold;
+  }
+
+  .lp-container h2{
+    color: white;
+    font-size: 20px;
+    margin: 35px 0 50px;
+    // font-weight: bold;
+  }
+
+  .lp-btn-primary{
+  margin-top: 40px;
+  color: white;
+  background: #43CB83;
+  border: none;
+  font-weight: 200;
+  padding: 18px 32px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 14px;
+
+  }
+
+  .lp-btn-primary-sm{
+    margin-top: auto;
+    color: white;
+    background: #43CB83;
+    border: none;
+    font-weight: 200;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 12px;
+  }
+
+  .lp-btn-primary-sm:hover{
+  color: white;
+  }
+
+  .lp-btn-primary:hover{
+  color: white;
+  }
+
+  .lp-container-flex {
+      max-width: 1080px;
+      margin-right: auto;
+      margin-left: auto;
+  }
+
+  .lp-container-col {
+      width: 320px;
+      position: relative;
+      float: left;
+      margin: 30px 20px 20px;
+      background-color: #fff;
+      height: 440px;
+      border: solid 1px #F1EEEA;
+      border-radius: 8px;
+      overflow: hidden;
+  }
+  //定义框
+  .lp-container-col .image {
+      display: block;
+      position: relative;
+  }
+  .lp-container-col .lp-container-title {
+      margin: 0 20px;
+      overflow: hidden;
+      line-height: 40px;
+      font-weight: bold;
+      font-size: 13px;
+      overflow: hidden;
+      color: black;
+  }
+  .lp-container-col .lp-container-title:hover {
+      text-decoration: none;
+  }
+  .lp-container-col .lp-container-text {
+      margin: 0 20px;
+      height: 60px;
+      overflow: hidden;
+      font-size: 12px;
+      line-height: 20px;
+      color: #888888;
+  }
+  .lp-container-col .progress-whole {
+      margin: 40px 0 5px 20px;
+      width: 280px;
+      height: 5px;
+  }
+  .lp-container-col .progress-content {
+      background-color: #3fcbd0;
+  }
+  //
+  //以上为进度条
+ .lp-text-col {
+      width: 25%;
+      position: relative;
+      float: left;
+      margin: 10px 0 10px 20px;
+      font-size: 12px;
+      line-height: 20px;
+      color: #888888;
+  }
+.lp-container-figure {
+      color: black;
+  }
+  .btn-bordered {
+      color: #3fcbd0;
+      background: transparent;
+      border: 2px solid #3fcbd0;
+      font-weight: 200;
+      padding: 10px 16px;
+      border-radius: 6px;
+  }
+  .btn-bordered:hover{
+    color: #3fcbd0;
+  }
+
+// rebecca定义样式结束
+
+// 以下为liyanzeng定义的样式
+
+  .aboutus-article-head{
+    color: #55acef;
+    font-size: 18px;
+    line-height: 30px;
+  }
+  .aboutus-set-left{
+    width: 218px;
+    float: left;
+    border: 1px solid #e5e5e5;
+    padding: 20px 0px;
+  }
+  .aboutus-set-left-li{
+    display: block;
+    font-weight: bold;
+    font-size: 14px;
+    color: #999999;
+    padding: 0 10px 0 34px;
+    height: 100%;
+  }
+  .aboutus-set-right{
+    min-width: 820;
+    border: 1px solid #e5e5e5;
+    margin-bottom: 30px;
+    padding: 20px 30px;
+  }
+  .personal-set_topImg {
+    margin: 15px 0px;
+    height: 110px;
+  }
+
+// liyanzeng定义样式结束
