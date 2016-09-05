@@ -1,16 +1,16 @@
 <div class="devise-view">
 <div class="devise-sign-up">
   <div class="left">
-    <h2>欢迎来到人才火箭</h2>
+    <h1>欢迎来到人才火箭</h1>
     <div class="description">
-      <h3>实现你的梦想</h3>
+      <h2>实现你的梦想</h2>
       <p>发布自己的项目进行众筹，获取更多物质帮助和精神鼓舞，专注投入伟大项目的拓荒与腾飞。</p>
-      <h3>帮助更多人实现梦想</h3>
+      <h2>帮助更多人实现梦想</h2>
       <p>成为一个理解和支持创作者小众天使，给予他们真诚的支持和反馈，助推才华青年最后一把。</p>
     </div>
   </div>
 <div class="right">
-<h1>注册用户</h1>
+  <div class="input-block">
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
       <%#= f.input :user_name, required: true, label:false, autofocus: true, :placeholder => "用户名" %>
@@ -44,6 +44,7 @@
   <% end %>
   <br />
   已经有账号？<%= render "devise/shared/links" %>
+  </div>
   </div>
   </div>
 </div>
