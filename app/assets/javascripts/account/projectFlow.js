@@ -116,10 +116,7 @@ $(function() {
   });
 
 })
-// TODO: 实现当为编辑状态时去后台获得 plan 信息，然后填充页面，改变 planQueue
-function generatePlans() {
 
-}
 
 
 function increaseNum() {
@@ -129,7 +126,6 @@ function increaseNum() {
   planQueue.push(0);
 }
 
-// TODO: 实现当为编辑状态时去后台获得 plan 信息，然后填充页面，改变 planQueue
 function generatePlans() {
   $.ajax({
     url: "/account/projects/" + projectId + "/plans/get_plans/",
@@ -289,6 +285,8 @@ function createPlan(projectId, planNum) {
           showError("支持金额不能为空", "plansInfor");
         } else if (errors.plan_goal != undefined) {
           showError("人数上限不能为空", "plansInfor");
+        } else if(errors.need_add != undefined) {
+          showError("请选择是否为实物回报", "plansInfor");
         }
       }
     }
@@ -353,12 +351,22 @@ function refreshPlanNum() {
   });
 }
 
+function getNeedAdd(data) {
+  var content = "";
+  if (data.need_add == true) {
+    content = "<input name='plan[need_add]' value='true' type='radio' checked='checked'>是 <input name='plan[need_add]' value='false' type='radio'>否"
+  } else {
+    content = "<input name='plan[need_add]' value='true' type='radio'>是 <input name='plan[need_add]' value='false' type='radio' checked='checked'>否"
+  }
+  return content;
+}
+
 function generateForm(flowType, data) {
   if (flowType == "edit") {
-    var content = "<form id='plan" + planIndex + "InforForm'><div class='form-group'><div class='form-group integer required plan_price'><label class='integer required control-label' for='plan_price'><abbr title='required'>*</abbr> 支持金额</label><input class='numeric integer required edit-input-short-width form-control' type='number' step='1' name='plan[price]' value='"+data.price+"' id='plan_price" + planIndex + "'></div><p><strong>回报内容</strong></p><textarea id='plan_descrition" + planIndex + "' class='form-control' rows='3' name='plan[description]'>" + data.description + "</textarea><div class='form-group integer required plan_plan_goal'><label class='integer required control-label' for='plan_plan_goal'><abbr title='required'>*</abbr> 人数上限</label><input class='numeric integer required edit-input-short-width form-control' value='" + data.plan_goal + "' type='number' step='1' name='plan[plan_goal]' id='plan_plan_goal" + planIndex + "'></div></form><input type='button' class='btn btn-success pull-right' planNum='" + planIndex + "' id='savePlan" + planIndex + "' value='保存'/><input type='button' class='btn btn-danger pull-right removePlan" + planIndex + "' data-confirm='确认删除该方案么?' planNum='" + planIndex + "' value='删除'/>";
+    var content = "<form id='plan" + planIndex + "InforForm'><div class='form-group'><div class='form-group integer required plan_price'><input type='hidden' name='plan_id' value='" + data.id + "'><label class='integer required control-label' for='plan_price'><abbr title='required'>*</abbr> 支持金额</label><input class='numeric integer required edit-input-short-width form-control' type='number' step='1' name='plan[price]' min='1' max='1000000' value='"+data.price+"' id='plan_price" + planIndex + "'></div><p><b>是实物回报吗？</b></p>" + getNeedAdd(data) + " <p><b>回报内容</b></p><textarea id='plan_descrition" + planIndex + "' class='form-control' rows='3' name='plan[description]'>" + data.description + "</textarea><div class='form-group integer required plan_plan_goal'><label class='integer required control-label' for='plan_plan_goal'><abbr title='required'>*</abbr> 份数上限</label><input class='numeric integer required edit-input-short-width form-control' value='" + data.plan_goal + "' type='number' min='1' max='1000000' step='1' name='plan[plan_goal]' id='plan_plan_goal" + planIndex + "'></div></form><input type='button' class='btn btn-success pull-right' planNum='" + planIndex + "' id='savePlan" + planIndex + "' value='保存'/><input type='button' class='btn btn-danger pull-right removePlan" + planIndex + "' data-confirm='确认删除该方案么?' planNum='" + planIndex + "' value='删除'/>";
     return content;
   } else {
-    var content = "<form id='plan" + planIndex + "InforForm'><div class='form-group'><div class='form-group integer required plan_price'><label class='integer required control-label' for='plan_price'><abbr title='required'>*</abbr> 支持金额</label><input class='numeric integer required edit-input-short-width form-control' type='number' step='1' name='plan[price]' id='plan_price" + planIndex + "'></div><p><strong>回报内容</strong></p><textarea id='plan_descrition" + planIndex + "' class='form-control' rows='3' name='plan[description]'></textarea><div class='form-group integer required plan_plan_goal'><label class='integer required control-label' for='plan_plan_goal'><abbr title='required'>*</abbr> 人数上限</label><input class='numeric integer required edit-input-short-width form-control' type='number' step='1' name='plan[plan_goal]' id='plan_plan_goal" + planIndex + "'></div></form><input type='button' class='btn btn-success pull-right' planNum='" + planIndex + "' id='savePlan" + planIndex + "' value='保存'/><input type='button' class='btn btn-danger pull-right removePlan" + planIndex + "' data-confirm='确认删除该方案么?' planNum='" + planIndex + "' value='删除'/>";
+    var content = "<form id='plan" + planIndex + "InforForm'><div class='form-group'><div class='form-group integer required plan_price'><label class='integer required control-label' for='plan_price'><abbr title='required'>*</abbr> 支持金额</label><input class='numeric integer required edit-input-short-width form-control' type='number' step='1' name='plan[price]' min='1' max='1000000' id='plan_price" + planIndex + "'></div><p><b>是实物回报吗？</b></p><input name='plan[need_add]' value='true' type='radio'>是 <input name='plan[need_add]' value='false' type='radio'>否 <p><b>回报内容</b></p><textarea id='plan_descrition" + planIndex + "' class='form-control' rows='3' name='plan[description]'></textarea><div class='form-group integer required plan_plan_goal'><label class='integer required control-label' for='plan_plan_goal'><abbr title='required'>*</abbr> 人数上限</label><input class='numeric integer required edit-input-short-width form-control' min='1' max='1000000' type='number' step='1' name='plan[plan_goal]' id='plan_plan_goal" + planIndex + "'></div></form><input type='button' class='btn btn-success pull-right' planNum='" + planIndex + "' id='savePlan" + planIndex + "' value='保存'/><input type='button' class='btn btn-danger pull-right removePlan" + planIndex + "' data-confirm='确认删除该方案么?' planNum='" + planIndex + "' value='删除'/>";
     return content;
   }
 }

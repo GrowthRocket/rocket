@@ -30,11 +30,11 @@ class Admin::ProjectsController < AdminController
     if !@user.present?
       render :new
       flash[:alert] = "无此用户"
-      return
     else
       @project.user = @user
       if @project.save
         redirect_to admin_projects_path
+        flash[:alert] = "项目创建成功"
       else
         render :new
       end

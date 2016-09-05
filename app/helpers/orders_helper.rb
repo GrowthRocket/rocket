@@ -14,4 +14,10 @@ module OrdersHelper
       content_tag :span, "暂无支持项目"
     end
   end
+
+  def render_need_add(f, order)
+    if order.plan.need_add
+      render partial: "account/orders/render_address", locals: { order: order, f: f}
+    end
+  end
 end

@@ -1,0 +1,37 @@
+# Ignore files
+/app/assets/config/*
+# /app/assets/images/*
+/app/channels/*
+/app/jobs/*
+
+/app/controllers/concerns/*
+/app/controllers/devise/*
+/app/models/concerns/*
+
+
+
+
+
+/bin/*
+
+/config/*
+!/config/routes.rb
+
+
+/vendor/*
+/log/*
+/tmp/*
+/lib/*
+
+config.ru
+Rakefile
+Gemfile.lock
+.rubocop.yml
+README.md
+
+
+
+# 为了方便看 以下内容可随时剔除
+/app/mailers/*
+/app/services/*
+/app/uploaders/*

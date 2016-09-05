@@ -1,8 +1,28 @@
+<script type="text/javascript">
+var jiathis_config = {
+  boldNum:0,
+  siteNum:7,
+  showClose:false,
+  sm:"t163,kaixin001,renren,douban,tsina,tqq,tsohu",
+  imageUrl:"http://localhost:3000/images/default_pic.jpg",
+  imageWidth:26,
+  marginTop:150,
+  url:"http://localhost:3000/projects/1",
+  title:"我正在关注一个好项目，推荐你也来关注",
+  summary:"",
+  pic:"自定义分享的图片连接地址",
+  data_track_clickback:true
+}
+</script>
+
+
+
+
 <div class="projects">
     <div class="projects-container">
         <div class="bg-container">
             <div class="image">
-                <%= render_project_video_or_image(@project) %>
+                <%= image_tag(@project.image.large) %>
             </div>
 
             <div class="project-card">
@@ -60,6 +80,16 @@
             <% else %>
                 <%= link_to("支持TA", project_plans_path(@project), :class => "reserve-btn btn") %>
                 <% end %>
+
+                <!-- JiaThis Button BEGIN -->
+                <div class="jiathis_style_24x24">
+                  <a class="jiathis_button_tsina"></a>
+                	<a class="jiathis_button_qzone"></a>
+                	<a class="jiathis_button_weixin"></a>
+
+
+                </div>
+                <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
             </p>
         </div>
         </div>
@@ -67,8 +97,15 @@
           <div class="left-container">
               <div class="md-container">
                   <h2>项目详情</h2>
+
                   <hr class="thick">
                   <p>
+                    <div style="text-align: center;">
+                      <% if @project.video && @project.video.include?("youku") %>
+                      <%= @project.video.html_safe %>
+                      <% end %>
+                    </div>
+
                       <div class="trix">
                           <div class="text">
                               <%= sanitize(@project.description) %>

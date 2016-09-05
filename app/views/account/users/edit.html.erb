@@ -4,10 +4,10 @@
   <img src="<%=current_user.image.mdimage%>" class="img-responsive">
 </div>
 <div>
-<%= f.input :image, :label =>"用户头像" %>
+<%= f.input :image, :label =>"用户头像（有头像的用户发起的项目会额外获得50%的关注哦）" %>
 <%= f.input :user_name, :label =>"用户名",:input_html => { class: 'user-name-input-witdth'} %>
-<%= f.input :email, readonly: true, :label =>"邮箱地址(暂时不支持更改)",:input_html => { class: 'user-name-input-witdth'}  %>
-<%= f.input :weibo, :label =>"微博",:input_html => { class: 'user-weibo-input-witdth'} %>
+<%= f.input :email, :label =>"邮箱地址",:input_html => { class: 'user-name-input-witdth'}  %>
+<%= f.input :weibo, :label =>"微博", :placeholder => "有微博的用户更能获得支持者的信任哦", :input_html => { class: 'user-weibo-input-witdth'} %>
 <%= f.input :description, :label =>"个人简介", input_html: {class: 'user-info-input-witdth'}  %>
 <%#= link_to("放弃更新", account_users_path, class: "btn btn-sm btn-default" ) %>
 <%= f.submit "提交", class: "btn btn-sm btn-default" %>
