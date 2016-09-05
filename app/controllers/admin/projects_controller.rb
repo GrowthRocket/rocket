@@ -4,7 +4,7 @@ class Admin::ProjectsController < AdminController
       if params[:category_id]
         Project.recent.where(category_id: params[:category_id]).paginate(page: params[:page], per_page: 5)
       else
-        Project.all.recent.paginate(page: params[:page], per_page: 5)
+        Project.all.recent.paginate(page: params[:page], per_page: 20)
       end
     @categories = Category.all
     @projects_verifying = Project.where(aasm_state: "verifying")
