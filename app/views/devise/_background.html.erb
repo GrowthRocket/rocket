@@ -1,0 +1,20 @@
+<div class="devise-view">
+<div class="devise-sign-up">
+  <div class="left">
+    <h1>欢迎来到人才火箭</h1>
+    <div class="description">
+      <h2>实现你的梦想</h2>
+      <p>发布自己的项目进行众筹，获取更多物质帮助和精神鼓舞，专注投入伟大项目的拓荒与腾飞。</p>
+      <h2>帮助更多人实现梦想</h2>
+      <p>成为一个理解和支持创作者小众天使，给予他们真诚的支持和反馈，助推才华青年最后一把。</p>
+    </div>
+  </div>
+  <div class="right">
+    <% if params[:controller] == "devise/users/registrations" %>
+      <%= render partial: "sign_up" %>
+    <% else %>
+      <%= render partial: "log_in" %>
+    <% end %>
+  </div>
+  </div>
+</div>
