@@ -1,14 +1,15 @@
 <div class="col-md-2 aboutus-set-left">
   <ul>
-    <li class="aboutus-set-left-li">关于我们</li><br/>
+    <li class="aboutus-set-left-li">
+      <%= link_to("关于我们", about_us_path)%>
+    </li><br/>
     <li class="aboutus-set-left-li">
       <a href="mailto:support@rocket.com?subject=我有问题咨询：">联系我们</a>
       </li><br/>
     <li class="aboutus-set-left-li">隐私政策</li><br/>
-    <li class="aboutus-set-left-li">帮助中心</li><br/>
     <li class="aboutus-set-left-li">
-      <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=289798795&amp;site=qq&amp;menu=yes" target="_blank" class="qq">网站客服</a>
-      </li><br/>
+      <%= link_to("帮助中心", how_it_works_path)%>
+    </li><br/>
   </ul>
 </div>
 
