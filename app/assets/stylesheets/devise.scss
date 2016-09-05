@@ -1,12 +1,12 @@
-.devise-h2{
-  font-size: 2em;
-  padding-top: 10px;
-  padding-bottom: 20px;
+h2{
+  font-size: 1.5em;
+  padding-top: 5px;
+  padding-bottom: 10px;
   text-align: center;
 }
 
 #devise-input-width{
-  width: 310px;
+  width: 330px;
 }
 
 .devise-form{
@@ -22,14 +22,37 @@
    height: 500px;
   .left{
    padding: 20px;
-   width: 550px;
+   width: 580px;
    height: 500px;
    float: left;
+   p{
+     font-size: 12px;
+     width: 400px;
+   }
+   h2{
+     font-size: 1.8em;
+     padding-top: 5px;
+     padding-bottom: 5px;
+     text-align: left;
+   }
+   h3{
+     font-size: 1.3em;
+     padding-top: 5px;
+     padding-bottom: 5px;
+     text-align: left;
+   }
   }
   .right{
    padding: 50px 20px 0;
-   width: 350px;
+   margin: auto;
+   width: 320px;
    height: 500px;
    float: left;
+   h1{
+     font-size: 1.5em;
+     padding-top: 5px;
+     padding-bottom: 10px;
+     text-align: center;
+   }
   }
 }
