@@ -39,6 +39,14 @@ class Project < ApplicationRecord
     event :finish do
       transitions from: :online, to: :offline
     end
+
+    event :admin_prove do
+      transitions from: :project_created, to: :online
+    end
+
+    event :admin_reject do
+      transitions from: :project_created, to: :unverified
+    end
   end
 
   def generate_custom_price_plan

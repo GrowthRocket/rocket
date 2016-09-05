@@ -70,7 +70,7 @@
             <% if project.online? %>
             <%= link_to("结束众筹", offline_admin_project_path(project),method: :post, :class => "btn btn-sm btn-default") %>
             <% end %>
-            <% if project.project_created? %>
+            <% if ["project_created", "verifying"].include?(project.aasm_state) %>
             <%= link_to("审核", admin_projects_verify_path(id: project), :class => "btn btn-sm btn-default") %>
             <% end %>
 
