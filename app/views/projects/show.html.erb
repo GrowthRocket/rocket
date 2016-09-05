@@ -18,12 +18,11 @@ var jiathis_config = {
 
 
 
-
 <div class="projects">
     <div class="projects-container">
         <div class="bg-container">
             <div class="image">
-                <%= render_project_video_or_image(@project) %>
+                <%= image_tag(@project.image.large) %>
             </div>
 
             <div class="project-card">
@@ -103,6 +102,7 @@ var jiathis_config = {
 
               <div class="md-container">
                   <h2>项目详情</h2>
+                  <%= @project.video.html_safe %>
                   <hr class="thick">
                   <p>
                       <div class="trix">
