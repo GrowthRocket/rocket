@@ -1,3 +1,8 @@
 <div class="search-view">
-    <%= render(:partial => "projects/item", :collection => @projects, :as => :project) || render_search_empty_result %>
+  <div class="search-detail">
+      <div class="search-info">
+        <p>以下是&nbsp"<span><%= @query_string %></span>"&nbsp的搜索结果：</p>
+      </div>
+      <%= render(:partial => "projects/item", :collection => @projects, :as => :project) || render_search_empty_result %>
+    </div>
 </div>
