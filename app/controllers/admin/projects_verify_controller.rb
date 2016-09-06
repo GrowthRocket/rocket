@@ -14,7 +14,7 @@ class Admin::ProjectsVerifyController < AdminController
 
   def pass_verify
     @project = Project.find(params[:id])
-    if @project.aasm_state == "online"
+    if @project.online?
       @project.approve!
     else
       @project.admin_approve!
@@ -27,7 +27,7 @@ class Admin::ProjectsVerifyController < AdminController
 
   def reject_verify
     @project = Project.find(params[:id])
-    if @project.aasm_state == "online"
+    if @project.online
       @project.reject!
     else
       @project.admin_reject!

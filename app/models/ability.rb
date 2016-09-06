@@ -18,6 +18,7 @@ class Ability
       user_project_management
       user_plan_management
       user_post_management(user)
+      user_order_management
     end
   end
 
@@ -31,7 +32,9 @@ class Ability
   # all 是指所有 object (resource)
 
   def admin_project_management
-    can :read, Project, aasm_state: "online"
+    can :read, Project do |project|
+      project.online? || project.offline?
+    end
     can :search,  Project
     can %i(edit update), Project do |project|
       (project.project_created? || project.online? || project.unverified?)
@@ -50,7 +53,7 @@ class Ability
     end
 
     can :read, Project do |project|
-      project.verifying? 
+      project.verifying?
     end
 
     can :offline, Project do |project|
@@ -98,8 +101,14 @@ class Ability
       (post.project.user_id == user.id && post.project.online?)
     end
 
-    can %i(create update), Post do |post|
+    can :create, Post do |post|
       post.project.user_id == user.id && post.project.online?
+    end
+  end
+
+  def user_order_management
+    can :create, Plan do |plan|
+      plan.project.online?
     end
   end
 

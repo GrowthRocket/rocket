@@ -1,13 +1,13 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  load_and_authorize_resource
+  authorize_resource :plan
 
   def new
     @plan = Plan.find(params[:plan_id])
     @order = @plan.orders.build(price: @plan.price, quantity: @plan.quantity)
+    authorize! :create, @plan
   end
 
-  # TODO: 实现创建订单并修改状态。
   def create
     payment_method = case params[:commit]
     when "微信支付"
