@@ -40,7 +40,7 @@ class Project < ApplicationRecord
       transitions from: :online, to: :offline
     end
 
-    event :admin_prove do
+    event :admin_approve do
       transitions from: :project_created, to: :online
     end
 
