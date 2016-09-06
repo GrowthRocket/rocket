@@ -1,3 +1,21 @@
 // Place all the styles related to the account::projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// config account project by nfreeness
+.account-project-index{
+  min-width:500px;
+  min-height: 400px;
+  margin:auto;
+  background-color: #cacaca;
+  .project-box{
+     width: 500px ;
+     height: 390px ;
+     background-color: #fff;
+     position: relative;
+       .project-title{
+         height: 70px;
+         padding-left: 20px;
+       }
+  }
+}
