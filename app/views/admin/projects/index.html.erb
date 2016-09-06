@@ -71,16 +71,8 @@
     </td>
     <td>
 
-        <% if project.online? %>
-        <%= link_to("结束众筹", offline_admin_project_path(project),method: :post, :class => "btn btn-sm btn-default") %>
-        <% end %>
-        <% if ["project_created", "verifying"].include?(project.aasm_state) %>
-        <%= link_to("审核", admin_projects_verify_path(id: project), :class => "btn btn-sm btn-default") %>
-        <% end %>
+        <%= render_admin_project_operation(project) %>
 
-        <%= link_to("编辑", edit_admin_project_path(project), :class => "btn btn-sm btn-default") %>
-        <%= link_to("管理筹款回报", admin_project_plans_path(project), :class => "btn btn-sm btn-default") %>
-        <%= link_to("删除", admin_project_path(project), :method => :delete, :data => { :confirm => "删除项目后不可恢复，您确定要删除吗?" }, :class => "btn btn-sm btn-default") %>
     </td>
 </tr>
 <% end %>
