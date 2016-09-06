@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
+  load_and_authorize_resource
 
   def new
     @plan = Plan.find(params[:plan_id])

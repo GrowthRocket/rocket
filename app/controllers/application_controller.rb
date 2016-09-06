@@ -4,6 +4,11 @@ class ApplicationController < ActionController::Base
 
   helper_method :resource, :resource_name, :devise_mapping
 
+  rescue_from CanCan::AccessDenied do |exception|
+    puts "Access denied on #{exception.action} #{exception.subject.inspect}"
+    redirect_to main_app.root_url, :alert => exception.message
+  end
+
   def resource_name
     :user
   end

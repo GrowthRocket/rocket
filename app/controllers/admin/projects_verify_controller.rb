@@ -1,4 +1,5 @@
 class Admin::ProjectsVerifyController < AdminController
+  load_and_authorize_resource :project
   def index
     @projects_verifying = Project.where(aasm_state: "verifying")
     @categories = Category.all
@@ -8,6 +9,7 @@ class Admin::ProjectsVerifyController < AdminController
     @project = Project.find(params[:id])
     @plans = @project.plans
     @identity_verification = IdentityVerification.find_by(project_id: @project.id)
+    authorize! :read, @project
   end
 
   def pass_verify

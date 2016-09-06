@@ -21,3 +21,10 @@
 
 en:
   hello: "Hello world"
+  unauthorized:
+    default: "你没有权限浏览该页面"
+    manage:
+      # all: "Not authorized to %{action} %{subject}."
+      # user: "Not allowed to manage other user accounts."
+    update:
+      project: "你没有权限更改这个项目"
