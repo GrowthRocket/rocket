@@ -12,10 +12,25 @@
      width: 500px ;
      height: 390px ;
      background-color: #fff;
-     position: relative;
        .project-title{
          height: 70px;
          padding-left: 20px;
+       }
+       .project-info{
+         position: relative;
+         .project-image{
+           margin:20px 10px 20px 20px;
+           float:left;
+         }
+         .project-detail{
+           margin:20px 20px 20px 10px;
+           float:left;
+         }
+       }
+       .project-oprate{
+         height:70px;
+         padding-left: 20px;
+         clear:both;
        }
   }
 }
