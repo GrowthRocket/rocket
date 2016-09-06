@@ -60,7 +60,9 @@ Rails.application.configure do
     config.auth_token = ENV["TWILIO_TOKEN"]
   end
 
-  config.action_mailer.default_url_options = { host: "localhost:3000" }
+  # config.action_mailer.default_url_options = { host: "localhost:3000" }
+  config.action_mailer.default_url_options = { host: "192.168.22.9:3000" }
+
   config.action_mailer.delivery_method = :letter_opener
   # config.action_mailer.delivery_method = :smtp
   # config.action_mailer.smtp_settings = {
@@ -75,5 +77,7 @@ Rails.application.configure do
   #   reply_to: "shaojunda@gmail.com"
   # }
 
-  config.action_controller.asset_host = "localhost:3000"
+  # config.action_controller.asset_host = "localhost:3000"
+  config.action_controller.asset_host = "192.168.22.9:3000"
+
 end
