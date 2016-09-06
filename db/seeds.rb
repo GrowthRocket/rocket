@@ -10,14 +10,14 @@ puts "创建一个 admin 账户, admin创建 5 个项目，每个项目 3 个回
 4 个 user 账户，每个user创建1个项目，每个项目3个回报，每个回报1笔订单，每笔订单1条流水。
 共6 种分类。"
 
-User.create([email: "admin@gmail.com", password: "111111", password_confirmation: "111111", is_admin: "true"])
+User.create([email: "admin@gmail.com", password: "11111111", password_confirmation: "11111111", is_admin: "true"])
 puts "Admin account created."
 
 create_users = for i in 1..3 do
-                 User.create([email: "user#{i}@gmail.com", password: "111111", password_confirmation: "111111", is_admin: "false", user_name: "user#{i}"])
+                 User.create([email: "user#{i}@gmail.com", password: "11111111", password_confirmation: "11111111", is_admin: "false", user_name: "user#{i}"])
 end
 
-User.create([email: "user4@gmail.com", password: "111111", password_confirmation: "111111", is_admin: "false", user_name: "许昕"])
+User.create([email: "user4@gmail.com", password: "11111111", password_confirmation: "11111111", is_admin: "false", user_name: "许昕"])
 
 puts "4 Users' accounts created."
 
