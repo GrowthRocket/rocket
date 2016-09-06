@@ -22,4 +22,17 @@ module Admin::ProjectsHelper
       content_tag :span, "暂时还没有项目哦"
     end
   end
+
+  def render_admin_project_operation(project)
+    if project.project_created?
+      render partial: "admin/projects/render_project_created", locals: { project: project }
+    elsif project.verifying?
+      render partial: "admin/projects/render_project_verifying", locals: { project: project }
+    elsif project.online?
+      render partial: "admin/projects/render_online", locals: { project: project }
+    elsif project.unverified?
+      render partial: "admin/projects/render_unverified", locals: { project: project }
+    end
+
+  end
 end

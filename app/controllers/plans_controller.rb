@@ -1,9 +1,12 @@
 class PlansController < ApplicationController
   # before_action :check_project_status
+  load_and_authorize_resource
+
   def index
     @project = Project.find(params[:project_id])
     @plans = @project.plans.price
     @user = @project.user
+    authorize! :read, @plans.first
   end
 
   def check_project_status

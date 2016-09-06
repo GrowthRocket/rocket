@@ -1,6 +1,6 @@
 class Account::PlansController < AccountController
   before_action :find_project
-  authorize_resource
+  load_and_authorize_resource
 
   def index
     @plans = @project.plans.normal.recent
@@ -85,7 +85,7 @@ class Account::PlansController < AccountController
   end
 
   def destroy
-    @plan = Plan.find(params[:id]);
+    @plan = current_user.project.plans.find(params[:id]);
     @plan.destroy
   end
 
@@ -115,7 +115,7 @@ class Account::PlansController < AccountController
   end
 
   def find_project
-    @project = Project.find(params[:project_id])
+    @project = current_user.projects.find(params[:project_id])
   end
 
   def plan_params
