@@ -17,7 +17,7 @@ class Admin::ProjectsVerifyController < AdminController
     if @project.aasm_state == "online"
       @project.approve!
     else
-      @project.admin_prove!
+      @project.admin_approve!
     end
     @project.save
     flash[:notice] = "已通过该项目的发布申请!"
