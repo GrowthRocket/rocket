@@ -1,8 +1,9 @@
+<%= controller.action_name %>
 <% if ["new", "create"].include?(controller.action_name) %>
   <tr>
     <td><%= item.project.name %></td>
     <td><%= item.project.user.user_name %></td>
-    <td><%= current_user.user_name %></td>
+    <td><%= current_user.user_name.blank? ? current_user.email : current_user %></td>
     <td><%= item.price %></td>
     <td><%= item.quantity %></td>
     <td><%= render_payment_plan_description(item.description) %></td>

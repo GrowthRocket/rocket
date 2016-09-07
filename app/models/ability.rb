@@ -20,7 +20,7 @@ class Ability
       user_project_management
       user_plan_management
       user_post_management(user)
-      user_order_management
+      # user_order_management
     end
   end
 
@@ -34,6 +34,9 @@ class Ability
   # all 是指所有 object (resource)
 
   def admin_project_management
+
+    can :create, Project
+
     can :read, Project do |project|
       project.online? || project.offline?
     end
@@ -111,9 +114,7 @@ class Ability
       (post.project.user_id == user.id && post.project.online?)
     end
 
-    can :create, Post do |post|
-      post.project.user_id == user.id && post.project.online?
-    end
+    can :create, Post
 
     can :destroy, Post
   end

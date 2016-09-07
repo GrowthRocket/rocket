@@ -15,12 +15,6 @@ class Admin::PlansController < AdminController
     @plan.project = @project
 
     check_plan_valid_for_create
-
-    if @plan.save
-      redirect_to admin_project_plans_path
-    else
-      render :new
-    end
   end
 
   def edit
@@ -46,9 +40,16 @@ class Admin::PlansController < AdminController
     end
   end
 
+  def destroy
+    @plan = Project.find(params[:project_id]).plans.find(params[:id])
+    @plan.destroy
+    flash[:alert] = "您已成功删除该回报。"
+    redirect_to :back
+  end
+
   private
 
   def plan_params
-    params.require(:plan).permit(:description, :price, :plan_goal)
+    params.require(:plan).permit(:description, :price, :plan_goal, :need_add)
   end
 end

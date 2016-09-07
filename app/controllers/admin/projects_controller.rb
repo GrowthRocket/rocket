@@ -35,7 +35,7 @@ class Admin::ProjectsController < AdminController
       @project.user = @user
       if @project.save
         redirect_to admin_projects_path
-        flash[:alert] = "项目创建成功"
+        flash[:notice] = "项目创建成功"
       else
         render :new
       end

@@ -53,16 +53,8 @@ class Account::PlansController < AccountController
   end
 
   def create
-
     @plan = @project.plans.build(plan_params)
-
     check_plan_valid_for_create
-
-    if @plan.save
-      redirect_to account_project_plans_path
-    else
-      render :new
-    end
   end
 
   def edit
@@ -72,8 +64,9 @@ class Account::PlansController < AccountController
   def update
     @plan = @project.plans.find(params[:id])
     check_plan_valid_for_edit
+    binding.pry
     if @plan.update(plan_params)
-      flash[:notice] = "您已成功新建筹款回报。"
+      flash[:notice] = "回报更新成功。"
       if current_user.is_admin?
         redirect_to admin_project_plans_path
       else
@@ -85,8 +78,10 @@ class Account::PlansController < AccountController
   end
 
   def destroy
-    @plan = current_user.project.plans.find(params[:id]);
+    @plan = current_user.projects.find(@project).plans.find(params[:id]);
     @plan.destroy
+    flash[:alert] = "您已成功删除该回报。"
+    redirect_to :back
   end
 
   private

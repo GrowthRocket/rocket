@@ -4,6 +4,15 @@ class OrdersController < ApplicationController
 
   def new
     @plan = Plan.find(params[:plan_id])
+    custom_price = params[:custom_price]
+    unless custom_price.nil?
+      if custom_price.blank?
+        flash[:alert] = "请填写自定义价格"
+        redirect_to :back
+      else
+        @plan.price = custom_price
+      end
+    end
     @order = @plan.orders.build(price: @plan.price, quantity: @plan.quantity)
     authorize! :create, @plan
   end
