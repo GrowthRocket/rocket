@@ -1,13 +1,13 @@
 class ProjectsController < ApplicationController
   before_action :validate_search_key, only: [:search]
   load_and_authorize_resource
-  
+
   def index
     @projects =
       if params[:category_id]
         Project.where("category_id = ? AND aasm_state = ? OR aasm_state = ?", params[:category_id], "online", "offline")
       else
-        Project.where("aasm_state = ? OR aasm_state = ?", "online", "offline")
+        Project.where("aasm_state = ? OR aasm_state = ?", "online", "offline").includes(:user)
       end
     @categories = Category.all
   end
