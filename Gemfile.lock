@@ -373,8 +373,6 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.5)
-    tinymce-rails (4.4.1)
-      railties (>= 3.1.1)
     trix (0.9.7)
       rails
     trollop (2.1.2)
@@ -445,7 +443,6 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
-  tinymce-rails
   trix
   turbolinks (~> 5)
   twilio-ruby (~> 4.11.1)

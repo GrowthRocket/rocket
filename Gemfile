@@ -54,8 +54,8 @@ gem "rotp"
 gem "ransack"
 gem "seo_helper"
 gem "active_link_to"
-gem "tinymce-rails"
-gem "rack-mini-profiler"
+# gem "tinymce-rails"
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -63,6 +63,8 @@ group :development, :test do
   gem "sqlite3"
   gem "pry"
   gem "pry-nav"
+  gem "rack-mini-profiler"
+  gem "bullet"
   #  如果 controller 报错，将 binding.pry 加入 controller 报错的那一行代码之前，然后在rails s的环境里可以实时调试
 end
 
