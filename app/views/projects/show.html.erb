@@ -36,6 +36,9 @@ var jiathis_config = {
                     <div class="profile-text">
                         <div style="font-size:16px">
                             <%= @user.user_name%>
+                            <% if current_user.passed_verified? %>
+                            <img class="watermark" src="/images/free.png"></img>
+                            <% end %>
                             <% if !@user.weibo.blank? %>
                             <%= link_to @user.weibo, class:"btn btn-xs btn-default" do%>
                             <i class="fa fa-weibo" style="margin-right: 2px; "></i>
