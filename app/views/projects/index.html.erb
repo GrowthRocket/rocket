@@ -7,12 +7,15 @@
     </div>
   </div>
 
-  <!-- <div class="index-menu">
-    <ul class="list-inline">
-      <%#= active_link_to("全部项目", projects_path , :active => :inclusive, :wrap_tag => :li ) %>
-      <%#= active_link_to("最新项目", projects_path , :active => :inclusive, :wrap_tag => :li ) %>
+  <div class="index-block">
+    <div class="index-menu">
+    <ul class="list-inline line-menu">
+      <%= active_link_to("最新项目", projects_path , :active => :inclusive, :wrap_tag => :li ) %>
+      <%= active_link_to("过往项目", projects_path , :active => :inclusive, :wrap_tag => :li ) %>
     </ul>
-  </div> -->
+    <hr />
+  </div>
+  </div>
 
 <% @projects.each do |project| %>
   <div class="index-project">
