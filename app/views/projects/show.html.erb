@@ -31,13 +31,13 @@ var jiathis_config = {
                 </h1>
                 <div class="profile-card">
                     <div class="profile-icon">
-                        <%=image_tag(@user.image.mdimage,style:"width:60px; height:60px")%>
+                        <%=image_tag(@project.user.image.mdimage,style:"width:60px; height:60px")%>
                     </div>
                     <div class="profile-text">
                         <div style="font-size:16px">
-                            <%= @user.user_name%>
-                            <% if !@user.weibo.blank? %>
-                            <%= link_to @user.weibo, class:"btn btn-xs btn-default" do%>
+                            <%= @project.user.user_name%>
+                            <% if !@project.user.weibo.blank? %>
+                            <%= link_to @project.user.weibo, class:"btn btn-xs btn-default" do%>
                             <i class="fa fa-weibo" style="margin-right: 2px; "></i>
                             <% end %>
                             <% end %>
@@ -49,10 +49,10 @@ var jiathis_config = {
                 </div>
                 <div class="project-sm-text">
                     <p>
-                        <% if @user.description.blank? %>
+                        <% if @project.user.description.blank? %>
                         感谢你的来访，如果你对我的项目有兴趣，可以支持我的项目。
                     <% else %>
-                        <%= @user.description%>
+                        <%= @project.user.description%>
                         <% end %>
                     </p>
                 </div>
@@ -167,7 +167,7 @@ var jiathis_config = {
                         <% end %>
                   <% else %>
                   <p>
-                      <%= form_tag project_plans_path(@project), method: "get", class: "form-inline" do %>
+                      <%= form_tag new_plan_order_path(@project), method: "get", class: "form-inline" do %>
                       <input type="text" name="custom_price" class="form-control" placeholder="请输入自定义金额"/>
                   <p>
                       <%= submit_tag "支持TA", class: "reserve-sm-btn btn" %>

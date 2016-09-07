@@ -2,7 +2,6 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    # binding.pry
     if user.blank?
       # not logged in
       cannot :manage, :all
@@ -12,13 +11,17 @@ class Ability
       # admin
       # can :manage, :all
       admin_project_management
+      user_plan_management
+      user_post_management(user)
+      can :read, User 
     else
       #  basic_read_only
       # basic_management
       user_project_management
       user_plan_management
       user_post_management(user)
-      user_order_management
+      cannot :read, User
+      # user_order_management
     end
   end
 
@@ -32,6 +35,9 @@ class Ability
   # all 是指所有 object (resource)
 
   def admin_project_management
+
+    can :create, Project
+
     can :read, Project do |project|
       project.online? || project.offline?
     end
@@ -65,6 +71,8 @@ class Ability
 
     can :read, Project
     can :search,  Project
+    can :create, Project
+    can :demo, Project
     can %i(edit update), Project do |project|
       (project.project_created? || project.unverified?)
     end
@@ -88,12 +96,23 @@ class Ability
       project.project_created? || project.verifying? || project.unverified?
     end
 
+    can :destroy, Project do |project|
+      project.project_created?
+    end
+
   end
 
   def user_plan_management
+    can :create, Plan
+    can :update, Plan do |plan|
+      plan.project.online?
+    end
     can :read, Plan do |plan|
       plan.project.online?
     end
+    can :get_plans, Plan
+    can :create_plan, Plan
+    can :destroy, Plan
   end
 
   def user_post_management(user)
@@ -101,9 +120,9 @@ class Ability
       (post.project.user_id == user.id && post.project.online?)
     end
 
-    can :create, Post do |post|
-      post.project.user_id == user.id && post.project.online?
-    end
+    can :create, Post
+
+    can :destroy, Post
   end
 
   def user_order_management

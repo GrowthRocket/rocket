@@ -1,18 +1,23 @@
 class Admin::UsersController < AdminController
   def index
     @users = User.all
+    set_page_title_and_description("用户管理", nil)
   end
 
   def new
     @user = User.new
+    set_page_title_and_description("新建用户", nil)
   end
 
   def show
     @user = User.find(params[:id])
+    set_page_title_and_description("用户-#{@user.email}", nil)
   end
 
   def edit
     @user = User.find(params[:id])
+    set_page_title_and_description("编辑用户信息", nil)
+
   end
 
   def create

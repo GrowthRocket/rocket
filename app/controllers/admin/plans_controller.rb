@@ -2,11 +2,13 @@ class Admin::PlansController < AdminController
   def index
     @project = Project.find(params[:project_id])
     @plans = @project.plans.recent
+    set_page_title_and_description("管理回报", nil)
   end
 
   def new
     @project = Project.find(params[:project_id])
     @plan = Plan.new
+    set_page_title_and_description("新建项目回报", nil)
   end
 
   def create
@@ -15,17 +17,12 @@ class Admin::PlansController < AdminController
     @plan.project = @project
 
     check_plan_valid_for_create
-
-    if @plan.save
-      redirect_to admin_project_plans_path
-    else
-      render :new
-    end
   end
 
   def edit
     @project = Project.find(params[:project_id])
     @plan = Plan.find(params[:id])
+    set_page_title_and_description("编辑项目回报", nil)
   end
 
   def update
@@ -46,9 +43,16 @@ class Admin::PlansController < AdminController
     end
   end
 
+  def destroy
+    @plan = Project.find(params[:project_id]).plans.find(params[:id])
+    @plan.destroy
+    flash[:alert] = "您已成功删除该回报。"
+    redirect_to :back
+  end
+
   private
 
   def plan_params
-    params.require(:plan).permit(:description, :price, :plan_goal)
+    params.require(:plan).permit(:description, :price, :plan_goal, :need_add)
   end
 end

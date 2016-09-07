@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>管理员面板</title>
+      <%= render_page_title_tag %>
+      <%= render_page_description_meta_tag %>
         <%= csrf_meta_tags %>
         <link rel="shortcut icon" href="/images/rocket2.ico">
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
     </head>
 
     <body>
@@ -34,5 +36,7 @@
             </div>
       </div>
         <%= render "common/footer" %>
+        <%= yield :bills_javascript %>
+        <%= yield :payout_javascript %>
     </body>
 </html>
