@@ -12,6 +12,8 @@ class Ability
       # admin
       # can :manage, :all
       admin_project_management
+      user_plan_management
+      user_post_management(user)
     else
       #  basic_read_only
       # basic_management
@@ -99,6 +101,9 @@ class Ability
     can :read, Plan do |plan|
       plan.project.online?
     end
+    can :get_plans, Plan
+    can :create_plan, Plan
+    can :destroy, Plan
   end
 
   def user_post_management(user)
@@ -109,6 +114,8 @@ class Ability
     can :create, Post do |post|
       post.project.user_id == user.id && post.project.online?
     end
+
+    can :destroy, Post
   end
 
   def user_order_management
