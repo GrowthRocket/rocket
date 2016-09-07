@@ -14,4 +14,4 @@
 //= require account/jquery-cookie
 //= require account/verify-phone-number
 //= require account/projectFlow
-//= require_directory .
+// require_self .

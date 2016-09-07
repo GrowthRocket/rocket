@@ -18,5 +18,5 @@
 //= require bootstrap/collapse
 //= require bootstrap/tab
 //= require trix
-//= require tinymce
+// require tinymce
 // require_tree .

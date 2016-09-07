@@ -4,18 +4,23 @@ class Account::UsersController < ApplicationController
   before_action :phone_number_validates, only: [:verify_phone_number]
   before_action :phone_number_validates_new, only: [:verify_phone_number_new]
   layout "user"
+  authorize_resource
+  skip_authorize_resource :except => :show
 
   def index
     @user = current_user
+    set_page_title_and_description("个人中心", view_context.truncate(@user.email, :length => 100))
   end
 
   def edit
     @user = current_user
     @user = User.find(params[:id])
+    set_page_title_and_description("修改个人资料", view_context.truncate(@user.email, :length => 100))
   end
 
   def show
     @user = current_user
+    set_page_title_and_description("用户信息列表", @user.email)
   end
 
   def update
@@ -66,10 +71,12 @@ class Account::UsersController < ApplicationController
 
   def show_verify_phone_number
     @user = current_user
+    set_page_title_and_description("验证手机", view_context.truncate(@user.email, :length => 100))
   end
 
   def change_password
     @user = current_user
+    set_page_title_and_description("修改密码", view_context.truncate(@user.email, :length => 100))
   end
 
   # def update_password

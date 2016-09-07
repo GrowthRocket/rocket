@@ -1,13 +1,15 @@
 class Account::PlansController < AccountController
   before_action :find_project
-  load_and_authorize_resource
+  authorize_resource
 
   def index
     @plans = @project.plans.normal.recent
+    set_page_title_and_description("管理回报", view_context.truncate(@project.name, :length => 100))
   end
 
   def new
     @plan = @project.plans.build
+    set_page_title_and_description("新建回报", view_context.truncate(@project.name, :length => 100))
   end
 
   def create_plan
@@ -59,6 +61,9 @@ class Account::PlansController < AccountController
 
   def edit
     @plan = @project.plans.normal.find(params[:id])
+    set_page_title_and_description("修改回报", view_context.truncate(@project.name, :length => 100))
+    authorize! :update, @plan
+    # update
   end
 
   def update

@@ -4,6 +4,7 @@ class Account::OrdersController < AccountController
   def index
     @orders = current_user.orders.select("project_id, project_name").group(:project_id, :project_name)
     # @orders = current_user.orders.select("id").where(project_id: @project_ids).distinct
+    set_page_title_and_description("我支持的项目", view_context.truncate(@orders.first.project_name, :length => 100))
   end
 
   def show_orders_for_one_project
@@ -18,6 +19,7 @@ class Account::OrdersController < AccountController
 
   def show
     @order = current_user.orders.find_by_token(params[:id])
+    set_page_title_and_description("订单", view_context.truncate(@order.project_name, :length => 100))
   end
 
   def pay_with_alipay

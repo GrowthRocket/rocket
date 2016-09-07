@@ -39,6 +39,9 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
                     <img src="<%=current_user.image.headimage%>" class="nav-img img-circle"/>
+                    <% if current_user.passed_verified? %>
+                    <img class="headverify" src="/images/free.png"></img>
+                    <% end %>
                     你好， <% if current_user.user_name? %>
                     <%= current_user.user_name %>
                     <% else %>
@@ -58,9 +61,11 @@
               </li>
               <% end %>
             </ul>
-            <form action="<%= new_account_project_path %>" class="navbar-form navbar-right" role="search">
-              <button type="submit" class="btn lp-action btn sm">发起众筹</button>
-            </form>
+            <% if !current_user || (current_user && !current_user.admin?) %>
+              <form action="<%= new_account_project_path %>" class="navbar-form navbar-right" role="search">
+                <button type="submit" class="btn lp-action btn sm">发起众筹</button>
+              </form>
+            <% end %>
             <div class="hidden-sm hidden-xs">
             <%= render :partial => "projects/search_bar" %>
           </div>

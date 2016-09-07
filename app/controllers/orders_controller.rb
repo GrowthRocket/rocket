@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   authorize_resource :plan
 
   def new
-    @plan = Plan.find(params[:plan_id])
+    @plan = Plan.includes(:project).find(params[:plan_id])
     custom_price = params[:custom_price]
     unless custom_price.nil?
       if custom_price.blank?
@@ -15,6 +15,7 @@ class OrdersController < ApplicationController
     end
     @order = @plan.orders.build(price: @plan.price, quantity: @plan.quantity)
     authorize! :create, @plan
+    set_page_title_and_description("新建订单-#{view_context.truncate(@plan.description, :length => 10)}", view_context.truncate(@plan.description, :length => 100))
   end
 
   def create

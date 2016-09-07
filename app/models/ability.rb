@@ -2,7 +2,6 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    # binding.pry
     if user.blank?
       # not logged in
       cannot :manage, :all
@@ -14,12 +13,14 @@ class Ability
       admin_project_management
       user_plan_management
       user_post_management(user)
+      can :read, User 
     else
       #  basic_read_only
       # basic_management
       user_project_management
       user_plan_management
       user_post_management(user)
+      cannot :read, User
       # user_order_management
     end
   end
@@ -71,6 +72,7 @@ class Ability
     can :read, Project
     can :search,  Project
     can :create, Project
+    can :demo, Project
     can %i(edit update), Project do |project|
       (project.project_created? || project.unverified?)
     end
@@ -92,6 +94,10 @@ class Ability
 
     can :preview, Project do |project|
       project.project_created? || project.verifying? || project.unverified?
+    end
+
+    can :destroy, Project do |project|
+      project.project_created?
     end
 
   end
