@@ -1,57 +1,34 @@
-
 <div class="index-out">
   <div class="index-banner">
     <div class="hero-title">
       <h1>无后顾之忧，全职专心投入创作</h1>
-      <p>我们致力成为人才界的 KickStarter / Indiegogo，资助下一个脑力项目、文艺作品、开源项目背后的大神、文豪，<br />摆脱现实最后一套金钱枷锁，专注投入伟大项目的拓荒与腾飞。</p>
+      <p>我们致力成为人才界的 KickStarter / Indiegogo，资助下一个脑力项目、文艺作品、开源项目背后的大神、文豪，
+        <br />摆脱现实最后一套金钱枷锁，专注投入伟大项目的拓荒与腾飞。</p>
     </div>
   </div>
-
-  <div class="index-block">
-    <div class="index-menu">
-    <ul class="list-inline line-menu">
-      <%= active_link_to("最新项目", projects_path , :active => :inclusive, :wrap_tag => :li ) %>
-      <%= active_link_to("过往项目", projects_path , :active => :inclusive, :wrap_tag => :li ) %>
-    </ul>
-    <hr />
+  <div class="container">
+  			<div class="tabbable-panel">
+  				<div class="tabbable-line">
+  					<ul class="nav nav-tabs ">
+  						<li class="active">
+  							<a href="#tab_default_1" data-toggle="tab">
+  							最新项目</a>
+  						</li>
+  						<li>
+  							<a href="#tab_default_2" data-toggle="tab">
+  							往期项目</a>
+  						</li>
+  					</ul>
+            <!-- <hr /> -->
+  					<div class="tab-content">
+  						<div class="tab-pane active" id="tab_default_1">
+                <%= render "online_projects" %>
+  						</div>
+  						<div class="tab-pane" id="tab_default_2">
+                <%= render "history_projects" %>
+  						</div>
+  					</div>
+  				</div>
+  	</div>
   </div>
-  </div>
-
-<% @projects.each do |project| %>
-  <div class="index-project">
-    <div class="index-project-img">
-      <%= link_to(image_tag(project.image.large), project_path(project)) %>
-    </div>
-    <div class="index-project-detail">
-      <div>
-        <h2><%= link_to(project.name, project_path(project)) %></h2>
-      </div>
-      <div class="index-user-info">
-        <span class="name"><%= project.user.user_name %></span>&nbsp <%= render_project_created_at(project.created_at) %>&nbsp发起</span>
-      </div>
-      <hr />
-      <div class="index-num">
-        <span><%= project.backer_quantity %></span>
-      </div>
-        <div class="index-text">
-            <span>支持人数</span>
-      </div>
-      <div  class="index-num">
-          <span>¥ <%= project.fund_progress %></span>
-      </div>
-      <div class="index-text">
-          <span>已筹资金</span>
-    </div>
-      <div  class="index-num">
-          <span><%= number_with_precision(project.fund_progress.to_f / project.fund_goal * 100, :precision => 0) %>%</span>
-      </div>
-      <div class="index-text">
-          <span>筹款进度</span>
-    </div>
-      <div>
-          <%= render_progress_landing_page(number_with_precision(project.fund_progress.to_f / project.fund_goal * 100, :precision => 2)) %>
-      </div>
-    </div>
-  </div>
-<% end %>
 </div>
