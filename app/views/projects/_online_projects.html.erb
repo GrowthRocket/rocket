@@ -1,4 +1,4 @@
-<% @projects.each do |project| %>
+<% @projects.where("aasm_state = ? ", "online").each do |project| %>
 <div class="index-project">
   <div class="index-project-img">
     <%= link_to(image_tag(project.image.large), project_path(project)) %>
