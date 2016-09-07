@@ -1,6 +1,6 @@
 <div class="plans-head">
   <div>
-    <h1>支持<span><%= @user.user_name %></span>的项目</h1>
+    <h1>支持<span><%= @project.user.user_name %></span>的项目</h1>
   </div>
   <div>
     <p><%= link_to(@project.name,project_path(@project)) %></p>
@@ -58,21 +58,4 @@
   </div>
 </div>
   <% end %>
-  <!-- <div class="plans-info">
-    <div>
-    <%= image_tag(@user.image.mdimage) %>
-  </div>
-  <hr />
-    <div >
-        <p>
-            <%# if @user.description.blank? %>
-            感谢你的来访，如果你对我的项目有兴趣，可以支持我的项目。
-        <% else %>
-            <%#= @user.user_name %>,<%#= @user.description%>
-            <br />
-            感谢你对本项目的支持。
-            <%# end %>
-        </p>
-    </div>
-  </div> -->
 </div>

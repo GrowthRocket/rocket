@@ -1,10 +1,12 @@
 class Admin::OrdersController < AdminController
   def index
-    @orders = Order.all
+    @orders = Order.all.paginate(page: params[:page], per_page: 10)
+    set_page_title_and_description("订单管理", nil)
   end
 
   def show
     @order = Order.find_by_token(params[:id])
+    set_page_title_and_description("订单-#{@order.project_name}", nil)
   end
 
   def new

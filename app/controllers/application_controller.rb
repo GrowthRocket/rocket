@@ -9,6 +9,15 @@ class ApplicationController < ActionController::Base
     redirect_to main_app.root_url, :alert => exception.message
   end
 
+  def set_page_title_and_description(title, description)
+    unless title.blank?
+      set_page_title title
+    end
+    unless description.blank?
+      set_page_description description
+    end
+  end
+
   def resource_name
     :user
   end
@@ -41,7 +50,7 @@ class ApplicationController < ActionController::Base
       flash[:alert] = "回报价格不能大于项目筹款目标哦！"
       render :new
     else
-      if @planplan.save
+      if @plan.save
         flash[:notice] = "您已成功新建筹款方案。"
         if current_user.is_admin?
           redirect_to admin_project_plans_path

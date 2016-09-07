@@ -64,74 +64,78 @@
 
     </div>
   </div>
-
+<input type="hidden" id="fundRate" value="<%= @fund_rate %>">
 </div>
-<script>
-  $(function() {
-    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-      var cur_tab = e.target; // newly activated tab
-      var id = $(cur_tab).attr("href").substring(1);
-      getBillsInfo(id);
-    })
-  });
 
-  function getBillsInfo(id) {
-    $.ajax({
-      url: "/admin/bills/show_bill_payments",
-      method: "get",
-      data: {query_type: id},
-      dataType: "json",
-      success: function(data){
-        $("#" + id).empty();
-        showTabContent(id, data)
-      }
+
+<% content_for :bills_javascript do %>
+  <script>
+    $(function() {
+      $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        var cur_tab = e.target; // newly activated tab
+        var id = $(cur_tab).attr("href").substring(1);
+        getBillsInfo(id);
+      })
     });
-  }
 
-  function showTabContent(id, data) {
-    content = "<table class='table table-stripe'> <thead><th>#</th><th>项目名称</th><th>项目合计募得金额</th><th>项目待支付金额</th><th>账单生成时间</th><th>操作</th></thead><tbody>"
-    $.each(data, function(index, item) {
-      content += "<tr>" +
-        "<td>" + (index + 1) + "</td>" +
-        "<td>"  + item.project_name +
-        render_bill_state(item) +  "</td>" +
-        "<td> ¥" + item.amount + "</td>" +
-        "<td>" + render_fund_rate(item.amount) + "</td>" +
-        "<td>" + render_created_at(item.created_at)  + "</td>" +
-        "<td>" + render_payment_button(item.bill_status, item.project_id)
-      "</td></tr>";
-    })
-      content += "</tbody></table>"
-
-    $("#" + id).append(content);
-  }
-
-  function render_bill_state(bill) {
-    var content = "";
-    if (bill.bill_status == "faild") {
-      content += "<span class='label label-danger'>失败</span>";
-    } else if(bill.bill_status == "success") {
-      content += "<span class='label label-warning'>待打款</span>";
-    } else if(bill.bill_status == "paid") {
-      content += "<span class='label label-success'>已打款</span>";
+    function getBillsInfo(id) {
+      $.ajax({
+        url: "/admin/bills/show_bill_payments",
+        method: "get",
+        data: {query_type: id},
+        dataType: "json",
+        success: function(data){
+          $("#" + id).empty();
+          showTabContent(id, data)
+        }
+      });
     }
-    return content;
-  }
 
-  function render_payment_button(billStatus, projectId) {
-    return billStatus == "success" ? "<a data-method='post' class='btn btn-primary' href='admin/bills/" + projectId + "/payout'>发放资金</a>" : "";
-  }
+    function showTabContent(id, data) {
+      content = "<table class='table table-stripe'> <thead><th>#</th><th>项目名称</th><th>项目合计募得金额</th><th>项目待支付金额</th><th>账单生成时间</th><th>操作</th></thead><tbody>"
+      $.each(data, function(index, item) {
+        content += "<tr>" +
+          "<td>" + (index + 1) + "</td>" +
+          "<td>"  + item.project_name +
+          render_bill_state(item) +  "</td>" +
+          "<td> ¥" + item.amount + "</td>" +
+          "<td>" + render_fund_rate(item.amount) + "</td>" +
+          "<td>" + render_created_at(item.created_at)  + "</td>" +
+          "<td>" + render_payment_button(item.bill_status, item.project_id)
+        "</td></tr>";
+      })
+        content += "</tbody></table>"
 
-  function render_fund_rate(amount) {
-    var fund_rate = "<%= @fund_rate %>"
-    return "¥" + (parseFloat(100 - fund_rate) / 100 * amount).toFixed(2)
-  }
+      $("#" + id).append(content);
+    }
 
-  function render_created_at(createdAt) {
-    var d = new Date(createdAt)
-    var render_date = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate() + " " +
-    d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
-    console.log(render_date)
-    return render_date;
-  }
-</script>
+    function render_bill_state(bill) {
+      var content = "";
+      if (bill.bill_status == "faild") {
+        content += "<span class='label label-danger'>失败</span>";
+      } else if(bill.bill_status == "success") {
+        content += "<span class='label label-warning'>待打款</span>";
+      } else if(bill.bill_status == "paid") {
+        content += "<span class='label label-success'>已打款</span>";
+      }
+      return content;
+    }
+
+    function render_payment_button(billStatus, projectId) {
+      return billStatus == "success" ? "<a data-method='post' class='btn btn-primary' href='admin/bills/" + projectId + "/payout'>发放资金</a>" : "";
+    }
+
+    function render_fund_rate(amount) {
+      var fund_rate = parseInt($("#fundRate").val());
+      return "¥" + (parseFloat(100 - fund_rate) / 100 * amount).toFixed(2)
+    }
+
+    function render_created_at(createdAt) {
+      var d = new Date(createdAt)
+      var render_date = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate() + " " +
+      d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+      console.log(render_date)
+      return render_date;
+    }
+  </script>
+<% end %>
