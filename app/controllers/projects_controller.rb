@@ -13,7 +13,8 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find(params[:id])
+    @project = Project.includes(:user).find(params[:id])
+    binding.pry
     if @project.online? || @project.offline?
       @user = @project.user
       @posts = @project.posts.recent
