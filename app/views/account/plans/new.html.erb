@@ -3,5 +3,6 @@
   <%= f.input :price, label: "回报价格", input_html: {class: "edit-input-short-width"} %>
   <%= f.trix_editor :description, label: "回报描述", input_html: {class: "form-control"} %>
   <%= f.input :plan_goal, label: "限额", input_html: {class: "edit-input-short-width"} %>
+  <%= f.input :need_add, label: "是实物回报吗？"%>
   <%= f.submit "创建回报", class: "btn btn-warning" %>
   <% end %>

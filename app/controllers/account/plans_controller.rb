@@ -57,12 +57,7 @@ class Account::PlansController < AccountController
     @plan = @project.plans.build(plan_params)
 
     check_plan_valid_for_create
-
-    if @plan.save
-      redirect_to account_project_plans_path
-    else
-      render :new
-    end
+    
   end
 
   def edit
