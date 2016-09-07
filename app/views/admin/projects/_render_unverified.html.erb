@@ -1,3 +1,3 @@
-<%= link_to("上线", publish_admin_project_path(project), :class => "btn btn-sm btn-default") %>
+<%= link_to("上线", publish_admin_project_path(project), :method => :post, :class => "btn btn-sm btn-default") %>
 <%= link_to("编辑", edit_admin_project_path(project), :class => "btn btn-sm btn-default") %>
 <%= link_to("删除", admin_project_path(project), :method => :delete, :data => { :confirm => "删除项目后不可恢复，您确定要删除吗?" }, :class => "btn btn-sm btn-default") %>

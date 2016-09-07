@@ -7,6 +7,7 @@ class Admin::ProjectsVerifyController < AdminController
   end
 
   def show
+    @categories = Category.all
     @project = Project.includes(:plans).find(params[:id])
     # @plans = @project.plans
     @identity_verification = IdentityVerification.find_by(project_id: @project.id)
@@ -16,6 +17,7 @@ class Admin::ProjectsVerifyController < AdminController
 
   def pass_verify
     @project = Project.find(params[:id])
+    @project.update(project_params)
     if @project.online?
       @project.approve!
     else
@@ -29,7 +31,7 @@ class Admin::ProjectsVerifyController < AdminController
 
   def reject_verify
     @project = Project.find(params[:id])
-    if @project.online
+    if @project.verifying?
       @project.reject!
     else
       @project.admin_reject!
@@ -44,8 +46,8 @@ class Admin::ProjectsVerifyController < AdminController
   end
 
   private
-
-  def project_verify
-    params.require(:identiy_verification).permit(:verify_status, :message)
+  def project_params
+    params.require(:project).permit(:name, :description, :fund_goal, :image, :plans_count, :category_id, :video, :user_email)
   end
+
 end
