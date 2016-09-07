@@ -5,7 +5,6 @@ class PlansController < ApplicationController
   def index
     @project = Project.includes(:user).find(params[:project_id])
     @plans = @project.plans.price
-    # @user = @project.user
     authorize! :read, @plans.first
   end
 

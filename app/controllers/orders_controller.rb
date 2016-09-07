@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   authorize_resource :plan
 
   def new
-    @plan = Plan.find(params[:plan_id])
+    @plan = Plan.includes(:project).find(params[:plan_id])
     custom_price = params[:custom_price]
     unless custom_price.nil?
       if custom_price.blank?

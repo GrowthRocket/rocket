@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   def index
     @projects =
       if params[:category_id]
-        Project.where("category_id = ? AND aasm_state = ? OR aasm_state = ?", params[:category_id], "online", "offline")
+        Project.where("category_id = ? AND aasm_state = ? OR aasm_state = ?", params[:category_id], "online", "offline").includes(:user)
       else
         Project.where("aasm_state = ? OR aasm_state = ?", "online", "offline").includes(:user)
       end
@@ -15,7 +15,6 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.includes(:user).find(params[:id])
     if @project.online? || @project.offline?
-      @user = @project.user
       @posts = @project.posts.recent
       @plans = @project.plans.price
     else
