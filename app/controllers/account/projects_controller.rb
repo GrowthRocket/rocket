@@ -7,17 +7,20 @@ class Account::ProjectsController < AccountController
     if params[:category_id]
       @projects = current_user.projects.where(category_id: params[:category_id])
     end
+    set_page_title_and_description("我发起的项目", view_context.truncate(@projects.first.name, :length => 100))
   end
 
   def new
     @project = current_user.projects.build
     @categories = Category.all
     session.delete(:project_id)
+    set_page_title_and_description("新建项目", view_context.truncate("又一个火箭项目#{current_user.email}", :length => 100))
     render layout: "application"
   end
 
   def show
     @project = current_user.projects.find(params[:id])
+    set_page_title_and_description(@project.name, view_context.truncate(@project.description, :length => 100))
   end
 
   def edit
@@ -26,6 +29,7 @@ class Account::ProjectsController < AccountController
     session[:project_id] = @project.id
     @categories = Category.all
     # authorize! :update, @project
+    set_page_title_and_description("修改项目", view_context.truncate(@project.description, :length => 100))
     render layout: "application"
   end
 
@@ -136,6 +140,7 @@ class Account::ProjectsController < AccountController
 
   def demo
     # render("demo")
+    set_page_title_and_description("发布项目案例", "按照步骤进行就有机会获得持续的支持")
     render layout: "application"
   end
 

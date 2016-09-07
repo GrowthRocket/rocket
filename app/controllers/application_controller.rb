@@ -9,6 +9,15 @@ class ApplicationController < ActionController::Base
     redirect_to main_app.root_url, :alert => exception.message
   end
 
+  def set_page_title_and_description(title, description)
+    unless title.blank?
+      set_page_title title
+    end
+    unless description.blank?
+      set_page_description description
+    end
+  end
+
   def resource_name
     :user
   end

@@ -1,10 +1,12 @@
 class Admin::CategoriesController < AdminController
   def index
     @categories = Category.all
+    set_page_title_and_description("分类管理", nil)
   end
 
   def new
     @category = Category.new
+    set_page_title_and_description("新建分类", nil)
   end
 
   def create
@@ -18,10 +20,12 @@ class Admin::CategoriesController < AdminController
 
   def show
     @category = Category.find(params[:id])
+    set_page_title_and_description("分类-#{@category.chs_name}", nil)
   end
 
   def edit
     @category = Category.find(params[:id])
+    set_page_title_and_description("编辑分类-#{@category.chs_name}", nil)
   end
 
   def update

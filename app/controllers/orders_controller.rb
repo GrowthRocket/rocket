@@ -15,6 +15,7 @@ class OrdersController < ApplicationController
     end
     @order = @plan.orders.build(price: @plan.price, quantity: @plan.quantity)
     authorize! :create, @plan
+    set_page_title_and_description("新建订单-#{view_context.truncate(@plan.description, :length => 10)}", view_context.truncate(@plan.description, :length => 100))
   end
 
   def create

@@ -10,11 +10,14 @@ class ProjectsController < ApplicationController
         Project.where("aasm_state = ? OR aasm_state = ?", "online", "offline").includes(:user)
       end
     @categories = Category.all
-    # set_page_title "sfsdfsd"
+    set_page_title_and_description("热门项目", view_context.truncate(@projects.first.description, :length => 100))
   end
 
   def show
     @project = Project.includes(:user).find(params[:id])
+
+    set_page_title_and_description(@project.name, view_context.truncate(@project.description, :length => 100))
+
     if @project.online? || @project.offline?
       @posts = @project.posts.recent
       @plans = @project.plans.price
@@ -29,13 +32,14 @@ class ProjectsController < ApplicationController
     @posts = @project.posts.recent
     @plans = @project.plans.price
     flash[:warning] = "此页面为预览页面"
+    set_page_title_and_description(@project.name, view_context.truncate(@project.description, :length => 100))
   end
 
   def search
     if @query_string.present?
       search_result = Project.ransack(@search_criteria).result(distinct: true)
       @projects = search_result.paginate(page: params[:page], per_page: 20)
-      # set_page_title "搜索 #{@query_string}"
+      set_page_title "搜索 #{@query_string}"
     end
   end
 

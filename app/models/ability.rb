@@ -13,12 +13,14 @@ class Ability
       admin_project_management
       user_plan_management
       user_post_management(user)
+      can :read, User 
     else
       #  basic_read_only
       # basic_management
       user_project_management
       user_plan_management
       user_post_management(user)
+      cannot :read, User
       # user_order_management
     end
   end

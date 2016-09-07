@@ -6,6 +6,7 @@ class PlansController < ApplicationController
     @project = Project.includes(:user).find(params[:project_id])
     @plans = @project.plans.price
     authorize! :read, @plans.first
+    set_page_title_and_description("#{@project.name}-回报列表", view_context.truncate(@plan.description, :length => 100))
   end
 
   def check_project_status

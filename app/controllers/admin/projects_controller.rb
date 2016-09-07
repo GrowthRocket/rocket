@@ -9,20 +9,24 @@ class Admin::ProjectsController < AdminController
       end
     @categories = Category.all
     @projects_verifying = Project.where(aasm_state: "verifying")
+    set_page_title_and_description("众筹项目管理", nil)
   end
 
   def new
     @project = Project.new
     @categories = Category.all
+    set_page_title_and_description("新建项目", nil)
   end
 
   def show
     @project = Project.find(params[:id])
+    set_page_title_and_description("项目-#{@project.name}", nil)
   end
 
   def edit
     @project = Project.find(params[:id])
     @categories = Category.all
+    set_page_title_and_description("修改项目-#{@project.name}", nil)
   end
 
   def create
