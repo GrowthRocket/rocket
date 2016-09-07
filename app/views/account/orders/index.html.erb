@@ -10,8 +10,79 @@
     点击项目名称展开查看详情
   </div>
 <% end %>
+<input type="hidden" id="ordersSize" value="<%= @orders.size %>" >
+<% content_for :orders_javascript do %>
+  <script>
+    var tmp = 1
+      $(function() {
+        var orderSize = parseInt($("#ordersSize").val());
+        bindShowOrder(orderSize)
+      })
 
+      function bindShowOrder(ordersize) {
+        for(i=0; i<ordersize; i++) {
+          $('#collapse' + i).on('shown.bs.collapse', function (event) {
+            event.stopPropagation();
+            if(tmp == 1) {
+              var orderId = $(this).attr("orderId");
+              showOrders(orderId, $(this))
+              tmp ++;
+            }
+          })
+          $('#collapse' + i).on('hidden.bs.collapse', function (event) {
+            event.stopPropagation();
+            if(tmp != 1) {
+              tmp = 1;
+            }
+          })
+        }
+      }
 
-  <%# @orders.each_with_index do |order, index| %>
+      function showOrders(orderId, panel) {
+        panel.find("div.orderInfo").empty();
+        $.ajax({
+          url: "/account/orders/" + orderId + "/show_orders_for_one_project",
+          method: "post",
+          dataType: "json",
+          success: function(data){
+            var content = "";
+            if(data.length > 0) {
+              content = "<table class='table table-stripe'> <thead><th>#</th><th>订单编号</th><th>发起人</th><th>所选回报描述</th><th>支付方式</th><th>合计金额</th><th>下单时间</th></thead><tbody>"
+              $.each(data, function(index, item) {
+                content += "<tr>" +
+                  "<td>" + (index + 1) + "</td>" +
+                  "<td>" + "<a href='/account/orders/"+item.token+"'>" + item.token +render_order_state(item) + "</a>" +
+                  "</td>" +
+                  "<td>" + item.creator_name + "</td>" +
+                  "<td>" + item.plan_description + "</td>" +
+                  "<td>" + (item.payment_method == undefined ? "" : item.payment_method) + "</td>" +
+                  "<td>" + item.total_price + "</td>" +
+                  "<td>" +render_created_at(item.created_at) + "</td>"
+                "</tr>";
+              })
+              content += "</tbody></table>"
+            }
+            panel.find("div.orderInfo").append(content)
+          }
+        });
+      }
 
-  <%# end %>
+      function render_order_state(order) {
+        var content = "";
+        if (order.aasm_state == "order_placed") {
+          content += "<span class='label label-warning'>待支付</span>";
+        } else {
+          content += "<span class='label label-success'>已支付</span>";
+        }
+        return content;
+      }
+
+      function render_created_at(createdAt) {
+        var d = new Date(createdAt)
+        var render_date = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate() + " " +
+        d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+        console.log(render_date)
+        return render_date;
+      }
+  </script>
+<% end %>

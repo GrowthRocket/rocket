@@ -1,15 +1,17 @@
 class Admin::ProjectsVerifyController < AdminController
   load_and_authorize_resource :project
   def index
-    @projects_verifying = Project.where(aasm_state: "verifying")
-    @categories = Category.all
+    @projects_verifying = Project.where(aasm_state: "verifying").includes(:category, :user)
+    # @categories = Category.all
+    set_page_title_and_description("待审核项目", nil)
   end
 
   def show
-    @project = Project.find(params[:id])
-    @plans = @project.plans
+    @project = Project.includes(:plans).find(params[:id])
+    # @plans = @project.plans
     @identity_verification = IdentityVerification.find_by(project_id: @project.id)
     authorize! :read, @project
+    set_page_title_and_description("审核-#{@project.name}", nil)
   end
 
   def pass_verify

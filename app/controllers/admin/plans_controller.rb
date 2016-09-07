@@ -2,11 +2,13 @@ class Admin::PlansController < AdminController
   def index
     @project = Project.find(params[:project_id])
     @plans = @project.plans.recent
+    set_page_title_and_description("管理回报", nil)
   end
 
   def new
     @project = Project.find(params[:project_id])
     @plan = Plan.new
+    set_page_title_and_description("新建项目回报", nil)
   end
 
   def create
@@ -20,6 +22,7 @@ class Admin::PlansController < AdminController
   def edit
     @project = Project.find(params[:project_id])
     @plan = Plan.find(params[:id])
+    set_page_title_and_description("编辑项目回报", nil)
   end
 
   def update

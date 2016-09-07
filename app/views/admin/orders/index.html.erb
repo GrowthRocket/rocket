@@ -15,3 +15,7 @@
       <%= render(partial: "order_item", collection: @orders, as: "item") || render_order_empty_warning %>
     </tbody>
   </table>
+  
+  <div class="text-center">
+    <%= will_paginate @projects %>
+  </div>

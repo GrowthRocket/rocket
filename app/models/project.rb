@@ -79,4 +79,5 @@ end
 # Indexes
 #
 #  index_projects_on_aasm_state  (aasm_state)
+#  index_projects_on_user_id     (user_id)
 #

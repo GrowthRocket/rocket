@@ -4,15 +4,18 @@ class Admin::BillsController < AdminController
   def index
     @bill_payments = BillPayment.bill_payment_by_project_id(%w(success paid))
     # @bill_payout = BillPayment.where(bill_status: "success")
+    set_page_title_and_description("收入流水", nil)
   end
 
   def payout_index
     @bill_payouts = BillPayout.bill_payout_by_project_id(%w(success paid))
+    set_page_title_and_description("支出流水", nil)
   end
 
   def payments_index
     @payment_amount = BillPayment.where(bill_status: %w(success paid)).sum(:amount)
     @payout_amount = BillPayout.where(bill_status: "paid").sum(:amount)
+    set_page_title_and_description("收支情况", nil)
   end
 
   def custom_fund_rate
@@ -59,6 +62,7 @@ class Admin::BillsController < AdminController
 
   def show_bill_payments_by_project
     @payments = BillPayment.success_payment_by_project(params[:id])
+    set_page_title_and_description("项目详细收入流水", nil)
   end
 
   def payout
