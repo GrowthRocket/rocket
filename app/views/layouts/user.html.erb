@@ -5,6 +5,7 @@
         <%= csrf_meta_tags %>
         <link rel="shortcut icon" href="/images/rocket2.ico">
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     </head>
 
@@ -27,7 +28,6 @@
             </div>
       </div>
         <%= render "common/footer" %>
-        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
         <%= yield :project_and_mobile_javascript %>
     </body>
 </html>

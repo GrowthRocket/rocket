@@ -71,6 +71,7 @@ class Ability
     can :read, Project
     can :search,  Project
     can :create, Project
+    can :demo, Project
     can %i(edit update), Project do |project|
       (project.project_created? || project.unverified?)
     end

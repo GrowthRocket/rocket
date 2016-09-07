@@ -25,11 +25,13 @@
     </div>
   </div>
 </div>
+<input type="hidden" id="ordersSize" value="<%= @orders.size %>" >
 
 <script>
 var tmp = 1
   $(function() {
-    bindShowOrder(<%= @orders.size %>)
+    var orderSize = parseInt($("#ordersSize").val());
+    bindShowOrder(orderSize)
   })
 
   function bindShowOrder(ordersize) {

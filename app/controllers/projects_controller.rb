@@ -23,10 +23,10 @@ class ProjectsController < ApplicationController
   end
 
   def preview
-    @project = Project.find(params[:id])
-    @user = @project.user
+    @project = Project.includes(:user).find(params[:id])
+    # @user = @project.user
     @posts = @project.posts.recent
-    @plans = @project.plans
+    @plans = @project.plans.price
     flash[:warning] = "此页面为预览页面"
   end
 
