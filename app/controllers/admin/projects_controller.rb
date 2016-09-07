@@ -63,7 +63,7 @@ class Admin::ProjectsController < AdminController
 
   def publish
     @project = Project.find(params[:id])
-    @project.publish!
+    @project.admin_approve!
     redirect_to :back
   end
 

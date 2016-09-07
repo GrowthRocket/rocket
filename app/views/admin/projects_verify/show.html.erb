@@ -1,57 +1,42 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-0">
-            <p class="thumbnail">
-                <%= image_tag(@project.image.large) %>
-            </p>
-        </div>
-
-        <div class="col-md-6">
-            <div class="pull-right">
-                <h1>
-                    <%= @project.name %>
-                </h1>
-                <h3>筹款目标 ¥
-                    <%= @project.fund_goal %></h3>
-                <%= link_to("通过发布请求", pass_verify_admin_projects_verify_path(@project), :method => :post, :class => "btn btn-success" ) %>
-                <br/>
-                <br/>
-                 <%= form_tag reject_verify_admin_projects_verify_path(@project) do %>
-                <input name="message" type="text" placeholder="请填写拒绝原因"/>
-                <br/>
-                <input type="submit" value="拒绝发布请求" class="btn btn-danger"/>
-                <% end %>
-                <%#= simple_form_for  @identity_verification do |f| %>
-                <%#= f.input :message, :placeholder => "请填写拒绝原因" %>
-                <%# end %>
-
-                <%#= link_to("拒绝发布请求", reject_verify_admin_projects_verify_path(@project), :method => :post, :class => "btn btn-danger" ) %>
-
-        </div>
-    </div>
-</div>
 <div class="container-fluid well">
     <div class="row">
         <div class="col-xs-12 col-sm-9 col-md-8-offset-1">
-            筹款回报：
-            <% @plans.each do |plan| %>
-            <div class="well">
-                <p>
-                    <%= plan.title %>
-                </p>
-                <p>
-                    <%= sanitize(plan.description) %>
-                </p>
-            </div>
+          <p class="thumbnail">
+              <%= image_tag(@project.image.large) %>
+          </p>
+          <%= simple_form_for @project do |f| %>
+
+            <%= f.input :name, :label =>"项目名称" %>
+            <p><strong>项目描述</strong></p>
+            <%= f.trix_editor :description, :label =>"项目描述" %>
+            <%= f.input :category_id,:collection => @categories,:label_method => :chs_name,:value_method => :id,:label => "请选择分类",:include_blank => false %>
+
+
+            <%= f.simple_fields_for current_user do |user| %>
+              <%= user.input :user_name, label: "发起人姓名", maxlength: 8 %>
             <% end %>
-        </div>
-    </div>
-</div>
-<div class="container-fluid well">
-    <div class="row">
-        <div class="col-xs-12 col-sm-9 col-md-8-offset-1">
-            筹款项目描述：
-            <p><%= sanitize(@project.description) %></p>
+            <%= f.input :fund_goal, label: "筹款目标", input_html:{min:1, max:1_000_000} %>
+            <%= f.input :video, :label => "宣传视频（请贴优酷视频公开链接）", :placeholder => "有宣传视频的项目可以额外获得50%的关注哦" %>
+            <%= f.input :image, :label =>"封面图片" %>
+            <%# if ["new", "create"].include?(controller.action_name) %>
+              <%#= f.submit "下一步", class: "btn btn-success pull-right" %>
+            <%# else %>
+            <%#= link_to("放弃更新", admin_projects_path, class: "btn btn-default" ) %>
+              <%#= f.submit "提交更新", class: "btn btn-success" %>
+            <%# end %>
+          <% end %>
+
+
+
+            <%= link_to("通过发布请求", pass_verify_admin_projects_verify_path(@project), :method => :post, :class => "btn btn-success" ) %>
+            <br />
+            <br />
+            <%= form_tag reject_verify_admin_projects_verify_path(@project) do %>
+
+            <input type="submit" value="拒绝发布请求" class="btn btn-danger"/>
+            <input name="message" type="text" placeholder="请填写拒绝原因"/>
+
+            <% end %>
         </div>
     </div>
 </div>
