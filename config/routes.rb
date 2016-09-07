@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   get "/how_it_works", to: "welcome#how_it_works"
   get "/about_us", to: "welcome#about_us"
+  get "/help_term", to: "welcome#help_term"
 
   namespace :admin do
     resources :orders

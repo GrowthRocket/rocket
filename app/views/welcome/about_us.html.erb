@@ -1,3 +1,4 @@
+<div class="row">
 <div class="col-md-2 aboutus-set-left">
   <ul>
     <li class="aboutus-set-left-li">
@@ -6,7 +7,9 @@
     <li class="aboutus-set-left-li">
       <a href="mailto:support@rocket.com?subject=我有问题咨询：">联系我们</a>
       </li><br/>
-    <li class="aboutus-set-left-li">隐私政策</li><br/>
+    <li class="aboutus-set-left-li">
+      <%= link_to("服务协议", help_term_path)%>
+    </li><br/>
     <li class="aboutus-set-left-li">
       <%= link_to("帮助中心", how_it_works_path)%>
     </li><br/>
@@ -33,4 +36,5 @@
 <b>款项结算</b>——预先扣除掉平台服务费后按7:3分两次进行，项目成功结束后在个人中心申请。</p>
 <p><br />
 </p>
+</div>
 </div>
