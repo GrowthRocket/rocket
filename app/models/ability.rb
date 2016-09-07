@@ -92,8 +92,8 @@ class Ability
   end
 
   def user_plan_management
-    can :create Plan
-    can :update Plan do |plan|
+    can :create, Plan
+    can :update, Plan do |plan|
       plan.project.online?
     end
     can :read, Plan do |plan|
