@@ -1,11 +1,11 @@
 
 
-
+ <%= simple_form_for [:plan, @order] do |f|%>
 <div class="order-new-body">
   <div class="detail">
   <div>
   <div class="form">
-   <%= simple_form_for [:plan, @order] do |f|%>
+
     <div class="form-group">
       <%= f.input :price, as: "hidden",  input_html: {value: @order.price }, label: "赞助金额", placeholder: "请填写价格"%>
       <%= render_need_add(f, @order) %>

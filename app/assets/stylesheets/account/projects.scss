@@ -1,3 +1,66 @@
 // Place all the styles related to the account::projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// config account project by nfreeness
+.account-project-index{
+  min-width:500px;
+  min-height: 450px;
+  margin:auto;
+  background-color: #cacaca;
+  .project-box{
+     width: 760px ;
+     height: 440px ;
+     background-color: #fff;
+       p{
+       font-weight: bold;
+       font-size: 1em;
+       }
+       span{
+         padding-left: 10px;
+         color: #43cb83;
+         font-size: 1.2em;
+         a:link {color: #43cb83};
+         a:visited {color: #43cb83}	;
+         a:hover {color: #43cb83}	;
+         a:active {color: #43cb83};
+         .state{
+           color:#fff !important;
+         }
+       }
+       .project-title{
+         height: 60px;
+         padding-left: 20px;
+        //  background-color: #3499E0;
+         h2 {
+           font-size: 1.5em;
+           font-weight: bold;
+           padding-top: 20px;
+         }
+       }
+       .project-info{
+         position: relative;
+         .project-image{
+           margin:20px 10px 20px 20px;
+           float: left;
+           img{
+             width: 400px;
+             height: 220px;
+           }
+
+         }
+         .project-detail{
+           margin:20px 20px 20px 10px;
+           float:left;
+           width:300px;
+           height: 260px;
+         }
+       }
+       .project-oprate{
+         height:50px;
+         padding-left: 20px;
+         clear:both;
+         background-color: #f4f4f4;
+       }
+  }
+}
