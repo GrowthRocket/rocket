@@ -1,3 +1,14 @@
 // Place all the styles related to the admin::projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.admin-new-project-btn {
+    border-radius: 3px;
+    width: 120px;
+    height: 32px;
+    line-height: 32px;
+    font-weight: 700;
+    color: #fff;
+    display: inline-block;
+    background-color: #43CB83;
+    margin-bottom: 30px;
+}

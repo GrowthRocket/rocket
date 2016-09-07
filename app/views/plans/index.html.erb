@@ -5,11 +5,11 @@
   <div>
     <p><%= link_to(@project.name,project_path(@project)) %></p>
   </div>
+  <div class="plans-tips"><p>请选择回报方案</p></div>
+
 </div>
 
 <div class="plans-body">
-  <!-- <div>请选择你要支持的方案</div> -->
-
   <% @plans.each do |plan| %>
   <div class="plans-des">
     <div class="plan-price">

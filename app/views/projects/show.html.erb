@@ -119,17 +119,26 @@ var jiathis_config = {
               <div class="md-container">
                   <h2 class="title">最新动态</h2>
                       <hr class="thick">
-                  <% @posts.each do |post| %>
+                  <% if @posts.size <= 0 %>
                   <div class="trix">
                       <div class="text">
-                          <%= sanitize(post.description)%>
-                          <div class="post-date">
-                              <%= render_order_created_at(post.created_at) %>
-                          </div>
-                          <hr class="thin">
+                          我刚刚发起了<strong> <%= @project.name %> </strong>项目，请多多支持。
                       </div>
                   </div>
+                  <% else %>
+                    <% @posts.each do |post| %>
+                          <div class="trix">
+                              <div class="text">
+                                  <%= sanitize(post.description)%>
+                                  <div class="post-date">
+                                      <%= render_order_created_at(post.created_at) %>
+                                  </div>
+                                  <hr class="thin">
+                              </div>
+                          </div>
+                    <% end %>
                   <% end %>
+
               </div>
           </div>
           <div class="right-container">

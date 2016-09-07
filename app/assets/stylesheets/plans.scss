@@ -17,10 +17,10 @@
 }
 
 .plans-head{
-  margin-top:20px;
-  width: 900px;
+  // margin-top:20px;
+  width: 530px;
   height: 150px;
-  padding-top: 40px;
+  padding-top: 20px;
   text-align: center;
   background-color: #ffffff;
   margin-left: auto;
@@ -43,6 +43,11 @@
   a:hover {color: #666666}	;
   a:active {color: #666666};
 }
+.plans-tips p{
+  font-size:14px;
+  margin: 5;
+  padding: 0;
+}
 
 .plans-head span{
   font-weight: bold;
@@ -51,12 +56,8 @@
 }
 
 .plans-body{
-  // margin-top:20px;
-  width: 900px;
-  // padding-top: 20px;
-  background-color: #ffffff;
-  margin-left: auto;
-  margin-right: auto;
+  width: 530px;
+  margin:20px auto;
   position:relative;
 }
 
@@ -66,15 +67,12 @@
   margin: 10px 0 20px;
   padding: 15px;
   float: left;
-  background-color: #f9f9f9;
+  background-color: #fff;
 }
 
 .plans-des .plan-price{
   font-size: 16px;
   font-weight: bold;
-  // padding: -15px;
-  // display: block;
-  // background-color: #ffffff;
 }
 
 .plans-info{
