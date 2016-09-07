@@ -1292,7 +1292,7 @@ hr {
 
 /* line 230, /Users/dennis/apps/rocket/app/assets/stylesheets/welcome.scss.erb */
 .lp-container-col .progress-content {
-  background-color: #3fcbd0;
+  background-color: #43CB83;
 }
 
 /* line 235, /Users/dennis/apps/rocket/app/assets/stylesheets/welcome.scss.erb */
@@ -1313,9 +1313,9 @@ hr {
 
 /* line 247, /Users/dennis/apps/rocket/app/assets/stylesheets/welcome.scss.erb */
 .btn-bordered {
-  color: #3fcbd0;
+  color: #43CB83;
   background: transparent;
-  border: 2px solid #3fcbd0;
+  border: 2px solid #43CB83;
   font-weight: 200;
   padding: 10px 16px;
   border-radius: 6px;
@@ -1323,7 +1323,7 @@ hr {
 
 /* line 255, /Users/dennis/apps/rocket/app/assets/stylesheets/welcome.scss.erb */
 .btn-bordered:hover {
-  color: #3fcbd0;
+  color: #43CB83;
 }
 
 /* line 263, /Users/dennis/apps/rocket/app/assets/stylesheets/welcome.scss.erb */
