@@ -27,13 +27,13 @@ class Admin::ProjectsVerifyController < AdminController
 
   def reject_verify
     @project = Project.find(params[:id])
-    if @project.online
+    if @project.verifying?
       @project.reject!
     else
       @project.admin_reject!
     end
     @project.save
-    flash[:notice] = "已拒绝该项目的发布申请!"
+    flash[:danger] = "已拒绝该项目的发布申请!"
     @identity_verification = IdentityVerification.find_by(project_id: params[:id])
     message = params[:message]
     @identity_verification.update(verify_status: -1, message: message)

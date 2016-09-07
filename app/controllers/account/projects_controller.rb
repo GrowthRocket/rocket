@@ -95,7 +95,7 @@ class Account::ProjectsController < AccountController
         title: @project.name, image: @project.image, project_id: params[:id],
         verify_status: 0, message: "apply"
       )
-      flash[:notice] = "申请成功，请耐心等待..."
+      flash[:notice] = "已经提交上线申请，审核结果会通过邮件通知您，请注意查收。..."
 
     end
     redirect_to :back
@@ -113,7 +113,7 @@ class Account::ProjectsController < AccountController
         title: @project.name, image: @project.image, project_id: params[:id],
         verify_status: 0, message: "apply"
       )
-      message[:message] = "申请成功，请耐心等待..."
+      message[:message] = "已经提交上线申请，审核结果会通过邮件通知您，请注意查收。..."
       render json: message
     else
       render json: message
