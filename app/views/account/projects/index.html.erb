@@ -1,8 +1,21 @@
+<h2>我发起的项目</h2>
+<div class="pull-right">
+    <%= link_to("新建众筹项目", new_account_project_path, :class => "btn btn-success" ) %>
+</div>
+<% if @projects.size == 0 %>
+<%= render_project_empty_warning %>
+<% else %>
 <div class="account-project-index">
   <% @projects.each do |project| %>
     <div class="project-box">
       <div class="project-title">
-        <h2><%= project.name %></h2>
+        <h3>
+             <% if project.online? || project.offline? %>
+                  <%= link_to(project.name, project_path(project)) %>
+                <% else %>
+                  <%= link_to(project.name, preview_project_path(project)) %>
+                <% end %>
+        </h3>
       </div>
       <hr />
       <div class="project-info">
@@ -24,3 +37,4 @@
     </div>
   <% end %>
 </div>
+<% end %>
