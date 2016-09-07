@@ -4,6 +4,7 @@
   <%= f.text_area :description, :class => "tinymce", :rows => 10, :cols => 120 %>
   <%= tinymce%>
   <%= f.input :plan_goal, label: "限额", input_html: {class: "edit-input-short-width"} %>
+  <%= f.input :need_add, label: "是实物回报吗？"%>
   <%= link_to("放弃更新", account_projects_path, class: "btn btn-default" ) %>
   <%= f.submit "提交更新", class: "btn btn-info" %>
   <% end %>

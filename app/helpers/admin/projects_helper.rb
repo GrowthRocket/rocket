@@ -19,7 +19,7 @@ module Admin::ProjectsHelper
 
   def render_project_empty_warning
     content_tag :div, class: "text-center" do
-      content_tag :span, "暂时还没有项目哦"
+      content_tag :span, "您暂时还没有创建项目哦，请点击“发起众筹”开始创建一个新的项目。"
     end
   end
 

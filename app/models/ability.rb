@@ -98,6 +98,7 @@ class Ability
     can :update, Plan do |plan|
       plan.project.online?
     end
+
     can :read, Plan do |plan|
       plan.project.online?
     end
@@ -118,10 +119,9 @@ class Ability
     can :destroy, Post
   end
 
+  # TODO: 增加对下单对判断
   def user_order_management
-    can :create, Plan do |plan|
-      plan.project.online?
-    end
+    can :create, Plan
   end
 
 

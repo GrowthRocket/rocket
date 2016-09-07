@@ -7,7 +7,7 @@ class ProjectsController < ApplicationController
       if params[:category_id]
         Project.where("category_id = ? AND aasm_state = ? OR aasm_state = ?", params[:category_id], "online", "offline")
       else
-        Project.where("aasm_state = ? OR aasm_state = ?", "online", "offline")
+        Project.where("aasm_state = ? OR aasm_state = ?", "online", "offline").order("id DESC")
       end
     @categories = Category.all
   end
