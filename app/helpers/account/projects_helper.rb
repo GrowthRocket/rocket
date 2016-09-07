@@ -33,4 +33,5 @@ module Account::ProjectsHelper
       content_tag :span, "您暂时还没有创建项目哦，请点击“发起众筹”开始创建一个新的项目。"
     end
   end
+
 end

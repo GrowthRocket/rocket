@@ -2,7 +2,7 @@ class Account::ProjectsController < AccountController
   load_and_authorize_resource
 
   def index
-    @projects = current_user.projects
+    @projects = current_user.projects.order("id DESC")
 
     if params[:category_id]
       @projects = current_user.projects.where(category_id: params[:category_id])
