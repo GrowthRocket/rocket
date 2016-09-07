@@ -1,6 +1,6 @@
 <div class="plans-head">
   <div>
-    <h1>支持<span><%= @user.user_name %></span>的项目</h1>
+    <h1>支持<span><%= @project.user.user_name %></span>的项目</h1>
   </div>
   <div>
     <p><%= link_to(@project.name,project_path(@project)) %></p>

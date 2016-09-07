@@ -1,13 +1,13 @@
 <div>
     <h2>
-      项目列表
+        项目列表
     </h2>
   </div>
   <div class="pull-right">
       <%= link_to("新建众筹项目", new_admin_project_path, :class => "admin-new-project-btn btn" ) %>
   </div>
 <ul class="nav nav-tabs">
-  <%= active_link_to("全部项目", admin_projects_path, active: :inclusive, wrap_tag: :li) %>
-  <%= active_link_to("待审核项目(#{@projects_verifying.count})",  admin_projects_verify_index_path, active: :inclusive, wrap_tag: :li) %>
+    <%= active_link_to("全部项目", admin_projects_path, active: :inclusive, wrap_tag: :li) %>
+    <%= active_link_to("待审核项目(#{@projects_verifying.count})",  admin_projects_verify_index_path, active: :inclusive, wrap_tag: :li) %>
 </ul>
 <br><br>
