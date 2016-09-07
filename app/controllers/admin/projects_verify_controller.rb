@@ -1,8 +1,8 @@
 class Admin::ProjectsVerifyController < AdminController
   load_and_authorize_resource :project
   def index
-    @projects_verifying = Project.where(aasm_state: "verifying")
-    @categories = Category.all
+    @projects_verifying = Project.where(aasm_state: "verifying").includes(:category, :user)
+    # @categories = Category.all
   end
 
   def show
