@@ -39,6 +39,9 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
                     <img src="<%=current_user.image.headimage%>" class="nav-img img-circle"/>
+                    <% if current_user.passed_verified? %>
+                    <img class="headverify" src="/images/free.png"></img>
+                    <% end %>
                     你好， <% if current_user.user_name? %>
                     <%= current_user.user_name %>
                     <% else %>
