@@ -14,7 +14,6 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.includes(:user).find(params[:id])
-    binding.pry
     if @project.online? || @project.offline?
       @user = @project.user
       @posts = @project.posts.recent
