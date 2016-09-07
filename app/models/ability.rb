@@ -94,6 +94,10 @@ class Ability
       project.project_created? || project.verifying? || project.unverified?
     end
 
+    can :destroy, Project do |project|
+      project.project_created?
+    end
+
   end
 
   def user_plan_management

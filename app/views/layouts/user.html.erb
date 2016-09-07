@@ -5,7 +5,7 @@
         <%= csrf_meta_tags %>
         <link rel="shortcut icon" href="/images/rocket2.ico">
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
     </head>
 
     <body>
@@ -13,7 +13,7 @@
             <%= render "common/navbar" %>
             <div class="row">
               <div class="col-md-2 col-md-offset-0">
-                <ul class="nav nav-pills nav-stacked user-menu-li">
+              <ul class="nav nav-pills nav-stacked user-menu-li">
                 <%= active_link_to("我的资料", account_users_path , :active => :inclusive, :wrap_tag => :li ) %>
                 <%= active_link_to("我发起的项目", account_projects_path , :active => :inclusive, :wrap_tag => :li ) %>
                 <%= active_link_to("我的项目收入", account_bills_path , :active => :inclusive, :wrap_tag => :li ) %>
@@ -27,5 +27,7 @@
             </div>
       </div>
         <%= render "common/footer" %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+        <%= yield :project_and_mobile_javascript %>
     </body>
 </html>

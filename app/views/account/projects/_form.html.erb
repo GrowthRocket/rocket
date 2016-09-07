@@ -17,3 +17,8 @@
     <%#= f.submit "提交更新", class: "btn btn-success" %>
   <%# end %>
 <% end %>
+
+
+<%= content_for :project_and_mobile_javascript do %>
+  <%= javascript_include_tag 'account/project' %>
+<% end %>
