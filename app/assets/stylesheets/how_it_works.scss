@@ -3,44 +3,15 @@
     padding-top: 30px;
     // background: #FBFBFB;
 
-h1 {
-    color: #333333;
-    // background-color: #FBFBFB;
-    margin-bottom: 40px;
-    font-size: 5em;
-    // font-weight: bold;
+    h1 {
+        color: #333333;
+        // background-color: #FBFBFB;
+        margin-bottom: 40px;
+        font-size: 5em;
+        // font-weight: bold;
+    }
 }
-}
-.hiw-header-button {
-    font-family: "Microsoft YaHei","Helvetica","sans-serif";
-    font-size: 20px;
-    font-weight: bold;
-    line-height: 26px;
-    letter-spacing: 0;
-    height: 50px;
-    width: 160px;
-    margin: 0 auto;
-    display: block;
-    text-align: center;
-    background-color: #43CB83;
-    border-color: #fa1681;
-    color: #ffffff;
-    letter-spacing: 0.1em;
-    margin-top: 25px;
-    padding: 10px;
-    a:link {
-        color: #FFF;
-    };
-    a:visited {
-        color: #FFF;
-    };
-    a:hover {
-        color: #FBFBFB;
-    };
-    a:active {
-        color: #FBFBFB;
-    };
-}
+
 .hiw-flow {
     // min-width: 1200px;
     background: #f3f3f3;
@@ -89,7 +60,7 @@ h1 {
 .hiw-fees {
     background-attachment: scroll;
     background-clip: border-box;
-    background-color: #238C6B;
+    background-color: #43CB83;
     // background-origin: padding-box;
     background-size: auto;
     box-sizing: border-box;
@@ -133,7 +104,7 @@ h1 {
         // line-height: 38px;
         margin-left: 20px;
         margin-top: 20px;
-        color: red;
+        color: #EC2970;
     }
     #free {
         text-decoration: line-through;

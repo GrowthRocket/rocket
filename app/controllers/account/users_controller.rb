@@ -163,7 +163,7 @@ class Account::UsersController < ApplicationController
   def phone_number_validates_new
     @info = {}
     @info[:status] = "y"
-    @info[:message] = "申请成功，请耐心等待..."
+    @info[:message] = "已经提交上线申请，审核结果会通过邮件通知您，请注意查收。"
     @user = User.new(user_params)
     phone_number = @user.phone_number
     captcha = @user.captcha

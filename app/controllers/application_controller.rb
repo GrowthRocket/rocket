@@ -50,6 +50,7 @@ class ApplicationController < ActionController::Base
       flash[:alert] = "回报价格不能大于项目筹款目标哦！"
       render :new
     else
+
       if @plan.save
         flash[:notice] = "您已成功新建筹款方案。"
         if current_user.is_admin?

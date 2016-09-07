@@ -7,7 +7,7 @@ class ProjectsController < ApplicationController
       if params[:category_id]
         Project.where("category_id = ? AND aasm_state = ? OR aasm_state = ?", params[:category_id], "online", "offline").includes(:user)
       else
-        Project.where("aasm_state = ? OR aasm_state = ?", "online", "offline").includes(:user)
+        Project.where("aasm_state = ? OR aasm_state = ?", "online", "offline").order("id DESC").includes(:user)
       end
     @categories = Category.all
     set_page_title_and_description("热门项目", view_context.truncate(@projects.first.description, :length => 100))

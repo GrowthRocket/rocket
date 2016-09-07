@@ -15,12 +15,7 @@
             <%= render "common/navbar" %>
             <div class="row">
               <div class="col-md-2 col-md-offset-0">
-              <ul class="nav nav-pills nav-stacked user-menu-li">
-                <%= active_link_to("我的资料", account_users_path , :active => :inclusive, :wrap_tag => :li ) %>
-                <%= active_link_to("我发起的项目", account_projects_path , :active => :inclusive, :wrap_tag => :li ) %>
-                <%= active_link_to("我的项目收入", account_bills_path , :active => :inclusive, :wrap_tag => :li ) %>
-                <%= active_link_to("我的支持记录", account_orders_path , :active => :inclusive, :wrap_tag => :li ) %>
-              </ul>
+                <%= render_user_center_sidebar %>
               </div>
               <div class="col-md-10 col-md-offset-0">
                 <%= render "common/flashes" %>
