@@ -1,10 +1,11 @@
 class Account::PostsController < AccountController
   before_action :find_project
 
-  authorize_resource
+  load_and_authorize_resource
 
   def index
     @posts = @project.posts.recent.paginate(page: params[:page], per_page: 5)
+    authorize! :read, @posts.first
   end
 
   def new
@@ -29,7 +30,7 @@ class Account::PostsController < AccountController
   private
 
   def find_project
-    @project = Project.find(params[:project_id])
+    @project = current_user.projects.find(params[:project_id])
   end
 
   def post_params

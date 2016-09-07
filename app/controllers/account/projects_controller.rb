@@ -1,6 +1,5 @@
 class Account::ProjectsController < AccountController
-  before_action :method, :only => [:action, :action], :except => [:action, :action]
-  authorize_resource
+  load_and_authorize_resource
 
   def index
     @projects = current_user.projects
@@ -26,6 +25,7 @@ class Account::ProjectsController < AccountController
     @flowType = "edit"
     session[:project_id] = @project.id
     @categories = Category.all
+    # authorize! :update, @project
     render layout: "application"
   end
 
