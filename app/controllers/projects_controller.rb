@@ -10,6 +10,7 @@ class ProjectsController < ApplicationController
         Project.where("aasm_state = ? OR aasm_state = ?", "online", "offline").includes(:user)
       end
     @categories = Category.all
+    # set_page_title "sfsdfsd"
   end
 
   def show

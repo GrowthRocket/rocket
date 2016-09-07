@@ -52,7 +52,7 @@ gem "twilio-ruby", "~> 4.11.1"
 gem "phonelib"
 gem "rotp"
 gem "ransack"
-gem "seo_helper"
+gem 'seo_helper'
 gem "active_link_to"
 # gem "tinymce-rails"
 
