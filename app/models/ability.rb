@@ -65,6 +65,7 @@ class Ability
 
     can :read, Project
     can :search,  Project
+    can :create, Project
     can %i(edit update), Project do |project|
       (project.project_created? || project.unverified?)
     end
@@ -91,6 +92,10 @@ class Ability
   end
 
   def user_plan_management
+    can :create Plan
+    can :update Plan do |plan|
+      plan.project.online?
+    end
     can :read, Plan do |plan|
       plan.project.online?
     end
