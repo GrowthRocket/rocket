@@ -1,5 +1,11 @@
-<h1><%= link_to(@project.name,  project_plans_path(@project)) %>
-    筹款回报管理</h1>
+<h1>
+  <% if @project.online? || @project.offline? %>
+       <%= link_to(@project.name, project_path(@project)) %>
+     <% else %>
+       <%= link_to(@project.name, preview_project_path(@project)) %>
+     <% end %>
+    筹款回报管理
+  </h1>
 <div class="pull-right">
     <%= link_to("新增回报",   new_account_project_plan_path(@project), class: "btn btn-warning")  %>
 </div>

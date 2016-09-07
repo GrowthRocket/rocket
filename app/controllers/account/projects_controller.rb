@@ -75,14 +75,14 @@ class Account::ProjectsController < AccountController
     end
   end
 
-  # def destroy
-  #   @project = current_user.projects.find(params[:id])
-  #   plans = @project.plans
-  #   plans.destroy
-  #   @project.destroy
-  #   flash[:alert] = "项目删除成功"
-  #   redirect_to :back
-  # end
+  def destroy
+    @project = current_user.projects.find(params[:id])
+    plans = @project.plans
+    plans.destroy
+    @project.destroy
+    flash[:alert] = "项目删除成功"
+    redirect_to :back
+  end
 
   def apply_for_verification
     @projects = current_user.projects
@@ -95,7 +95,7 @@ class Account::ProjectsController < AccountController
         title: @project.name, image: @project.image, project_id: params[:id],
         verify_status: 0, message: "apply"
       )
-      flash[:notice] = "已经提交上线申请，审核结果会通过邮件通知您，请注意查收。..."
+      flash[:notice] = "已经提交上线申请，审核结果会通过邮件通知您，请注意查收。"
 
     end
     redirect_to :back
@@ -113,7 +113,7 @@ class Account::ProjectsController < AccountController
         title: @project.name, image: @project.image, project_id: params[:id],
         verify_status: 0, message: "apply"
       )
-      message[:message] = "已经提交上线申请，审核结果会通过邮件通知您，请注意查收。..."
+      message[:message] = "已经提交上线申请，审核结果会通过邮件通知您，请注意查收。"
       render json: message
     else
       render json: message
