@@ -25,7 +25,13 @@ class Account::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+
     if @user.update(user_params)
+      if @user.user_name.blank?
+        flash[:alert] = "请输入用户名"
+        render :edit
+        return
+      end
       redirect_to account_users_path
     else
       render :edit
