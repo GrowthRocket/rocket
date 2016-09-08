@@ -13,8 +13,10 @@
   <div class="right">
     <% if params[:controller] == "devise/users/registrations" %>
       <%= render partial: "sign_up" %>
-    <% else %>
+    <% elsif params[:controller] == "devise/sessions" %>
       <%= render partial: "log_in" %>
+    <% elsif params[:controller] == "devise/passwords" %>
+     <%= render partial: "new_password" %>
     <% end %>
   </div>
   </div>
