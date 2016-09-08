@@ -1,9 +1,11 @@
 class Admin::ProjectsController < AdminController
   load_and_authorize_resource
+  before_action :find_project_by_id, only: [:edit, :update, :destroy, :publish, :offline]
+
   def index
     @projects =
       if params[:category_id]
-        Project.recent.where(category_id: params[:category_id]).includes(:category, :user).paginate(page: params[:page], per_page: 5)
+        Project.recent.where(category_id: params[:category_id]).includes(:category, :user).paginate(page: params[:page], per_page: 20)
       else
         Project.all.recent.includes(:category, :user).paginate(page: params[:page], per_page: 20)
       end
@@ -18,13 +20,11 @@ class Admin::ProjectsController < AdminController
     set_page_title_and_description("新建项目", nil)
   end
 
-  def show
-    @project = Project.find(params[:id])
-    set_page_title_and_description("项目-#{@project.name}", nil)
-  end
+  # def show
+  #   set_page_title_and_description("项目-#{@project.name}", nil)
+  # end
 
   def edit
-    @project = Project.find(params[:id])
     @categories = Category.all
     set_page_title_and_description("修改项目-#{@project.name}", nil)
   end
@@ -47,7 +47,6 @@ class Admin::ProjectsController < AdminController
   end
 
   def update
-    @project = Project.find(params[:id])
     if @project.update(project_params)
       flash[:notice] = "项目更新成功"
       redirect_to admin_projects_path
@@ -57,24 +56,27 @@ class Admin::ProjectsController < AdminController
   end
 
   def destroy
-    @project = Project.find(params[:id])
-    plans = @project.plans
-    plans.destroy
-    @project.destroy
+    @plans = @project.plans
+    @plans.delete
+    @project.delete
     flash[:alert] = "项目删除成功"
     redirect_to :back
   end
 
   def publish
-    @project = Project.find(params[:id])
     @project.admin_approve!
     redirect_to :back
   end
 
   def offline
-    @project = Project.find(params[:id])
     @project.finish!
     redirect_to :back
+  end
+
+  protected
+
+  def find_project_by_id
+    @project = Project.find(params[:id])
   end
 
   private
