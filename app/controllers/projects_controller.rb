@@ -51,6 +51,6 @@ class ProjectsController < ApplicationController
   end
 
   def search_criteria(query_string)
-    { name_cont: query_string, aasm_state_eq: "online" }
+    { name_cont: query_string, aasm_state_in: %w(online offline)}
   end
 end

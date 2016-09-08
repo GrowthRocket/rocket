@@ -2,7 +2,6 @@ class PlansController < ApplicationController
   load_and_authorize_resource
 
   def index
-    binding.pry
     @project = Project.includes(:user).find(params[:project_id])
     @plans = @project.plans.price
     authorize! :read, @plans.first
