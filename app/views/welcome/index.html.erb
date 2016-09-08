@@ -66,9 +66,9 @@
     <div class="lp-center-block-large">
       <div class="lp-pom-box-98"></div>
       <div class="lp-pom-text-99">
-          <p id="lp-user-title">
+          <h3 id="lp-user-title">
               热门推荐
-          </p>
+          </h3>
 
       </div>
         <% @projects.each do |project| %>
@@ -77,7 +77,7 @@
                 <%= link_to(image_tag(project.image.small, style:"height:200px;"), project_path(project)) %>
             </div>
 
-            <%= link_to(truncate(project.name, escape: false, length: 21 ), project_path(project), class:"lp-container-title" )%>
+            <h4><%= link_to(truncate(project.name, escape: false, length: 21 ), project_path(project), class:"lp-container-title" )%></h4>
 
             <div class="lp-container-text trix">
                 <%= sanitize(project.description)%>
@@ -124,18 +124,18 @@
 
     </div>
 <div class="lp-pom-text-99">
-  <p id="lp-user-title">
+  <h2 id="lp-user-title">
       听听他们怎么说
-  </p>
+  </h2>
 </div>
 
 
     <div class="lp-pom-box-82">
 
-      <div class="lp-pom-text-83">
+      <p class="lp-pom-text-83">
 
         感谢 @李笑来 的初期支持。让我可以全职投入改变编程教学的下一波革命
-      </div>
+      </p>
       <div class="p-pom-image-76">
         <img src="/images/quotes3.png" alt="Project">
       </div>
@@ -156,10 +156,10 @@
 
     <div class="lp-pom-box-82">
 
-      <div class="lp-pom-text-83">
+      <p class="lp-pom-text-83">
 
         感谢 @郭达峰 (Strikingly) 和 @李笑来 的每月支持。让我可以全职投入 VueJS 开发
-      </div>
+      </p>
       <div class="p-pom-image-76">
         <img src="/images/quotes3.png" alt="Project">
       </div>
@@ -179,10 +179,10 @@
 
     <div class="lp-pom-box-82">
 
-      <div class="lp-pom-text-83">
+      <p class="lp-pom-text-83">
 
         感谢 @郭达峰 (Strikingly) 和 @李笑来 的每月支持。让我可以全职投入 VueJS 开发
-      </div>
+      </p>
       <div class="p-pom-image-76">
         <img src="/images/quotes3.png" alt="Project">
       </div>
