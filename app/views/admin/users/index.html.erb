@@ -37,7 +37,9 @@
       <% if !user.is_admin %>
         <%= link_to("设为管理员", promote_admin_user_path(user) , :method => :post, :data => { :confirm => "确定将该用户权限提升为管理员?" },:class => "btn btn-sm btn-default") %>
       <% else %>
+            <% if user.email != "admin@gmail.com" %>
         <%= link_to("设为普通用户", demote_admin_user_path(user) , :method => :post, :data => { :confirm => "确定将该用户权限降为普通用户?" },:class => "btn btn-sm btn-default") %>
+            <% end %>
       <% end %>
     </td>
   </tr>
