@@ -1,6 +1,6 @@
 <h1>
   <% if @project.online? || @project.offline? %>
-       <%= link_to(@project.name, project_path(@project)) %>
+       <%= render_project_name(@project) %>
      <% else %>
        <%= link_to(@project.name, preview_project_path(@project)) %>
      <% end %>

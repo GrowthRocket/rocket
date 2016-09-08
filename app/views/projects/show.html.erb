@@ -40,8 +40,8 @@ var jiathis_config = {
                             <img class="watermark" src="/images/user-v.png"></img>
                             <% end %>
                             <% if !@project.user.weibo.blank? %>
-                            <%= link_to @project.user.weibo, class:"btn btn-xs btn-default" do%>
-                            <i class="fa fa-weibo" style="margin-right: 2px; "></i>
+                            <%= link_to @project.user.weibo,  target:'_blank' do%>
+                                <i class="fa fa-weibo" style="margin-right: 2px; color:#ec2970;"></i>
                             <% end %>
                             <% end %>
                         </div>
@@ -116,8 +116,9 @@ var jiathis_config = {
                       </div>
                   </p>
               </div>
+              <% if !@post.blank? %>
               <div class="md-container">
-                  <h2 class="title">最新动态</h2>
+                <h2 class="title">最新动态</h2>
                       <hr class="thick">
                   <% if @posts.size <= 0 %>
                   <div class="trix">
@@ -138,9 +139,10 @@ var jiathis_config = {
                           </div>
                     <% end %>
                   <% end %>
-
               </div>
+          <% end %>
           </div>
+
           <div class="right-container">
               <% @plans.each do |plan| %>
               <div class="sm-container">
@@ -150,8 +152,8 @@ var jiathis_config = {
                     <hr>
                   </p>
                 <% else %>
+                  无私奉献
                   <p class="plan-price">
-                    无私奉献
                     <hr>
                   </p>
                 <% end %>
