@@ -29,7 +29,9 @@
             <%= link_to("修改个人资料", edit_account_user_path(@user), :class => "btn btn-sm btn-default") %>
             <%= link_to("修改密码", change_password_account_user_path(@user), class: "btn btn-sm btn-default" ) %>
             <% if @user.aasm_state == "user_registered" %>
+             <% if !current_user.is_admin %>
               <%= link_to("验证手机", show_verify_phone_number_account_user_path(@user), :class => "btn btn-sm btn-default") %>
+              <% end %>
             <% elsif @user.aasm_state == "passed_verified" %>
               <%= link_to("手机已验证", "javascript:void(0)", :class => "btn btn-sm btn-success disabled") %>
             <% end %>
