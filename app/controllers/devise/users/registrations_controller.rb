@@ -28,7 +28,7 @@ class Devise::Users::RegistrationsController < Devise::RegistrationsController
     prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
 
     resource_updated = update_resource(resource, account_update_params)
-    account_update_params
+
     yield resource if block_given?
     if resource_updated
       if is_flashing_format?
@@ -44,12 +44,19 @@ class Devise::Users::RegistrationsController < Devise::RegistrationsController
       errors = resource.errors.messages
       puts "#{resource.errors.messages}"
       if errors[:current_password].present?
-        flash[:alert] = "当前密码 #{errors[:current_password]}"
+        flash[:alert] = errors[:current_password].first
+        redirect_to change_password_account_user_path(resource)
+        return
       elsif errors[:password].present?
-        flash[:alert] = "新密码 #{errors[:password]}"
+        flash[:alert] = errors[:password].first
+        redirect_to change_password_account_user_path(resource)
+        return
       elsif errors[:password_confirmation].present?
-        flash[:alert] = "确认密码 #{errors[:password_confirmation]}"
+        flash[:alert] = errors[:password_confirmation].first
+        redirect_to change_password_account_user_path(resource)
+        return
       end
+
       redirect_to change_password_account_user_path(resource)
     end
   end
@@ -77,7 +84,7 @@ class Devise::Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
+  #   devise_parameter_sanitizer.permit(:account_update, keys: [:current_password, :password, :password_confirmation])
   # end
 
   # The path used after sign up.
