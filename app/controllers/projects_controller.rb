@@ -38,7 +38,7 @@ class ProjectsController < ApplicationController
   def search
     if @query_string.present?
       search_result = Project.ransack(@search_criteria).result(distinct: true)
-      @projects = search_result.paginate(page: params[:page], per_page: 20)
+      @projects_search = search_result.paginate(page: params[:page], per_page: 20)
       set_page_title "搜索 #{@query_string}"
     end
   end
@@ -51,6 +51,6 @@ class ProjectsController < ApplicationController
   end
 
   def search_criteria(query_string)
-    { name_cont: query_string, aasm_state_eq: "online" }
+    { name_cont: query_string, aasm_state_in: %w(online offline)}
   end
 end

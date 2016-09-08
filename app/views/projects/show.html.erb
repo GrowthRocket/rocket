@@ -37,7 +37,7 @@ var jiathis_config = {
                         <div style="font-size:16px">
                             <%= @project.user.user_name%>
                             <% if current_user.passed_verified? %>
-                            <img class="watermark" src="/images/free.png"></img>
+                            <img class="watermark" src="/images/user-v.png"></img>
                             <% end %>
                             <% if !@project.user.weibo.blank? %>
                             <%= link_to @project.user.weibo,  target:'_blank' do%>

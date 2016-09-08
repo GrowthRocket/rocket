@@ -9,11 +9,11 @@ class Ability
       # basic_management
     elsif user.admin?
       # admin
-      # can :manage, :all
-      admin_project_management
-      user_plan_management
-      user_post_management(user)
-      can :read, User 
+      can :manage, :all
+      # admin_project_management
+      # user_plan_management
+      # user_post_management(user)
+      # can :read, User
     else
       #  basic_read_only
       # basic_management
@@ -108,9 +108,8 @@ class Ability
       plan.project.online?
     end
 
-    can :read, Plan do |plan|
-      plan.project.online?
-    end
+    can :read, Plan
+    can :update, Plan
     can :get_plans, Plan
     can :create_plan, Plan
     can :destroy, Plan

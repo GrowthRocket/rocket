@@ -61,11 +61,13 @@ class Admin::ProjectsController < AdminController
 
   def publish
     @project.admin_approve!
+    flash[:notice] = "已将该项目上线"
     redirect_to :back
   end
 
   def offline
     @project.finish!
+    flash[:notice] = "已将该项目下线"
     redirect_to :back
   end
 
