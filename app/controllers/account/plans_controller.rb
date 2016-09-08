@@ -110,6 +110,8 @@ class Account::PlansController < AccountController
     end
   end
 
+protected
+
   def find_plan
     plan = @project.plans.find_by(id: params[:plan_id])
   end
@@ -117,6 +119,8 @@ class Account::PlansController < AccountController
   def find_project
     @project = current_user.projects.find(params[:project_id])
   end
+
+private
 
   def plan_params
     params.require(:plan).permit(:description, :price, :plan_goal, :need_add)
