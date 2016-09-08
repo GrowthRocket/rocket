@@ -17,7 +17,6 @@ class Admin::ProjectsVerifyController < AdminController
 
   def pass_verify
     @project = Project.find(params[:id])
-    # binding.pry
     @project.update(project_params)
     if @project.verifying?
       @project.approve!
