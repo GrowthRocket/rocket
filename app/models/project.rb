@@ -50,10 +50,7 @@ class Project < ApplicationRecord
   end
 
   def generate_custom_price_plan
-    @plan = plans.create!(title: "自定义金额", description: "单纯地想支持Ta。", price: 1, plan_goal: 999_999, plan_type: 0)
-  rescue => e
-    logger.error e.message
-    logger.error e.backtrace.join("\n")
+    @plan = plans.create!(description: "单纯地想支持Ta。", price: 1, plan_goal: 999_999, plan_type: 0, need_add: false)
   end
 end
 
@@ -79,5 +76,4 @@ end
 # Indexes
 #
 #  index_projects_on_aasm_state  (aasm_state)
-#  index_projects_on_user_id     (user_id)
 #
