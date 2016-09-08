@@ -50,20 +50,8 @@ class Devise::Users::RegistrationsController < Devise::RegistrationsController
       elsif errors[:password_confirmation].present?
         flash[:alert] = "确认密码 #{errors[:password_confirmation]}"
       end
-      # current_password
-      # password
-      # password_confirmation
       redirect_to change_password_account_user_path(resource)
     end
-    #
-    # if resource.save
-    #   binding.pry
-    #   flash[:alert] = "修改成功"
-    #   redirect_to account_users_path
-    # else
-    #   redirect_to change_password_account_user
-    # end
-    # super
   end
 
   # DELETE /resource

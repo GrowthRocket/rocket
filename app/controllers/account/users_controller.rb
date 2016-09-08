@@ -97,7 +97,6 @@ class Account::UsersController < ApplicationController
 
     VerificationCode.where(phone_number: @user.phone_number, code_status: true).update_all(code_status: false)
     current_user.phone_number = @user.phone_number
-    # binding.pry
     if current_user.save!
       current_user.approve!
       flash[:notice] = "手机验证成功"
