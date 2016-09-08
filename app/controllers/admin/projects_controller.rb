@@ -20,10 +20,6 @@ class Admin::ProjectsController < AdminController
     set_page_title_and_description("新建项目", nil)
   end
 
-  # def show
-  #   set_page_title_and_description("项目-#{@project.name}", nil)
-  # end
-
   def edit
     @categories = Category.all
     set_page_title_and_description("修改项目-#{@project.name}", nil)
