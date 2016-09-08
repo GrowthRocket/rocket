@@ -1,4 +1,5 @@
 class Admin::PlansController < AdminController
+  before_action :find_plan_by_project, only:[:edit,:update,:destroy]
   def index
     @project = Project.find(params[:project_id])
     @plans = @project.plans.recent
@@ -7,30 +8,22 @@ class Admin::PlansController < AdminController
 
   def new
     @project = Project.find(params[:project_id])
-    @plan = Plan.new
+    @plan = @project.plans.new
     set_page_title_and_description("新建项目回报", nil)
   end
 
   def create
     @project = Project.find(params[:project_id])
-    @plan = Plan.new(plan_params)
-    @plan.project = @project
-
+    @plan = @project.plans.new(plan_params)
     check_plan_valid_for_create
   end
 
   def edit
-    @project = Project.find(params[:project_id])
-    @plan = Plan.find(params[:id])
     set_page_title_and_description("编辑项目回报", nil)
   end
 
   def update
-    @project = Project.find(params[:project_id])
-    @plan = Plan.find(params[:id])
-
     check_plan_valid_for_edit
-
     if @plan.update(plan_params)
       flash[:notice] = "您已成功新建筹款回报。"
       if current_user.is_admin?
@@ -44,10 +37,16 @@ class Admin::PlansController < AdminController
   end
 
   def destroy
-    @plan = Project.find(params[:project_id]).plans.find(params[:id])
     @plan.destroy
     flash[:alert] = "您已成功删除该回报。"
     redirect_to :back
+  end
+
+  protected
+
+  def find_plan_by_project
+    @project = Project.find(params[:project_id])
+    @plan = @project.plans.find(params[:id])
   end
 
   private

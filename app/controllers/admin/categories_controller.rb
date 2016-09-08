@@ -1,4 +1,6 @@
 class Admin::CategoriesController < AdminController
+  before_action :find_category_by_id, only:[:edit,:update,:destroy]
+
   def index
     @categories = Category.all
     set_page_title_and_description("分类管理", nil)
@@ -18,18 +20,11 @@ class Admin::CategoriesController < AdminController
     end
   end
 
-  def show
-    @category = Category.find(params[:id])
-    set_page_title_and_description("分类-#{@category.chs_name}", nil)
-  end
-
   def edit
-    @category = Category.find(params[:id])
     set_page_title_and_description("编辑分类-#{@category.chs_name}", nil)
   end
 
   def update
-    @category = Category.find(params[:id])
     if @category.update(category_params)
       flash[:notice] = "分类更新成功"
       redirect_to admin_categories_path
@@ -39,12 +34,17 @@ class Admin::CategoriesController < AdminController
   end
 
   def destroy
-    @category = Category.find(params[:id])
     if @category.destroy
       flash[:notice] = "分类删除成功"
       redirect_to admin_categories_path
     end
   end
+
+ protected
+
+ def find_category_by_id
+   @category = Category.find(params[:id])
+ end
 
   private
 

@@ -1,4 +1,6 @@
 class Admin::UsersController < AdminController
+  before_action :find_user_by_id, only:[:edit,:update,:destroy,:promote,:demote]
+
   def index
     @users = User.all
     set_page_title_and_description("用户管理", nil)
@@ -9,15 +11,8 @@ class Admin::UsersController < AdminController
     set_page_title_and_description("新建用户", nil)
   end
 
-  def show
-    @user = User.find(params[:id])
-    set_page_title_and_description("用户-#{@user.email}", nil)
-  end
-
   def edit
-    @user = User.find(params[:id])
     set_page_title_and_description("编辑用户信息", nil)
-
   end
 
   def create
@@ -30,7 +25,6 @@ class Admin::UsersController < AdminController
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update(user_params)
       redirect_to admin_users_path
     else
@@ -39,7 +33,6 @@ class Admin::UsersController < AdminController
   end
 
   def promote
-    @user = User.find(params[:id])
     @user.is_admin = true
     @user.save
     flash[:notice] = "已将该用户权限提升为管理员!"
@@ -47,11 +40,20 @@ class Admin::UsersController < AdminController
   end
 
   def demote
-    @user = User.find(params[:id])
-    @user.is_admin = false
-    @user.save
-    flash[:alert] = "已将该用户权限降为普通用户！"
+    if @user.email != "admin@gmail.com"
+      @user.is_admin = false
+      @user.save
+      flash[:alert] = "已将该用户权限降为普通用户！"
+    else
+      flash[:alert] = "非法操作,超级管理员不可被降权限！"
+    end
     redirect_to :back
+  end
+
+  protected
+
+  def find_user_by_id
+    @user = User.find(params[:id])
   end
 
   private
