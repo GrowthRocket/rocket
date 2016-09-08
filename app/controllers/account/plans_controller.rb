@@ -69,7 +69,7 @@ class Account::PlansController < AccountController
   def update
     @plan = @project.plans.find(params[:id])
     check_plan_valid_for_edit
-    binding.pry
+    # binding.pry
     if @plan.update(plan_params)
       flash[:notice] = "回报更新成功。"
       if current_user.is_admin?
