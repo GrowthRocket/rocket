@@ -116,8 +116,9 @@ var jiathis_config = {
                       </div>
                   </p>
               </div>
+              <% if !@post.blank? %>
               <div class="md-container">
-                  <h2 class="title">最新动态</h2>
+                <h2 class="title">最新动态</h2>
                       <hr class="thick">
                   <% if @posts.size <= 0 %>
                   <div class="trix">
@@ -138,9 +139,10 @@ var jiathis_config = {
                           </div>
                     <% end %>
                   <% end %>
-
               </div>
+          <% end %>
           </div>
+
           <div class="right-container">
               <% @plans.each do |plan| %>
               <div class="sm-container">
