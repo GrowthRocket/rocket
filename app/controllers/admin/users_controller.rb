@@ -11,10 +11,6 @@ class Admin::UsersController < AdminController
     set_page_title_and_description("新建用户", nil)
   end
 
-  def show
-    set_page_title_and_description("用户-#{@user.email}", nil)
-  end
-
   def edit
     set_page_title_and_description("编辑用户信息", nil)
   end

@@ -1,5 +1,5 @@
 class Admin::CategoriesController < AdminController
-  before_action :find_category_by_id, only:[:show,:edit,:update,:destroy]
+  before_action :find_category_by_id, only:[:edit,:update,:destroy]
 
   def index
     @categories = Category.all
@@ -18,10 +18,6 @@ class Admin::CategoriesController < AdminController
     else
       render :new
     end
-  end
-
-  def show
-    set_page_title_and_description("分类-#{@category.chs_name}", nil)
   end
 
   def edit
