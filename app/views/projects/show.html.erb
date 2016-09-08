@@ -40,8 +40,8 @@ var jiathis_config = {
                             <img class="watermark" src="/images/free.png"></img>
                             <% end %>
                             <% if !@project.user.weibo.blank? %>
-                            <%= link_to @project.user.weibo, class:"btn btn-xs btn-default" do%>
-                            <i class="fa fa-weibo" style="margin-right: 2px; "></i>
+                            <%= link_to @project.user.weibo,  target:'_blank' do%>
+                                <i class="fa fa-weibo" style="margin-right: 2px; color:#ec2970;"></i>
                             <% end %>
                             <% end %>
                         </div>
