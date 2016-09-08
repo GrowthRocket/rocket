@@ -10,7 +10,7 @@ class ProjectsController < ApplicationController
         Project.where("aasm_state = ? OR aasm_state = ?", "online", "offline").order("id DESC").includes(:user)
       end
     @categories = Category.all
-    set_page_title_and_description("热门项目", view_context.truncate(@projects.first.description, :length => 100))
+    set_page_title_and_description("热门项目", view_context.truncate(@projects.first.nil? ? "热门项目" : @projects.first.description, :length => 100))
   end
 
   def show
