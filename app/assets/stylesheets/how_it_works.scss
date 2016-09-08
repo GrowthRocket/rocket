@@ -2,7 +2,6 @@
     margin-bottom: 50px;
     padding-top: 30px;
     // background: #FBFBFB;
-
     h1 {
         color: #333333;
         // background-color: #FBFBFB;
@@ -11,11 +10,35 @@
         // font-weight: bold;
     }
 }
-
+.hiw-btn-block {
+    text-align: center;
+    margin: auto;
+    .hiw-btn {
+        background: #43CB83;
+        color: #FFF;
+        font-size: 1.5em;
+        text-align: center;
+        padding: 15px 20px;
+        // margin: 20px 40% 60px;
+        margin: auto;
+        width: 180px;
+        a:link {
+            color: #fff;
+        };
+        a:visited {
+            color: #fff;
+        };
+        a:hover {
+            color: #FFFFFF;
+        };
+        a:active {
+            color: #FFFFFF;
+        };
+    }
+}
 .hiw-flow {
     // min-width: 1200px;
     background: #f3f3f3;
-
     font-family: "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-align: center;
     // overflow: hidden;
@@ -60,7 +83,7 @@
 .hiw-fees {
     background-attachment: scroll;
     background-clip: border-box;
-    background-color: #43CB83;
+    background-color: #248D6C;
     // background-origin: padding-box;
     background-size: auto;
     box-sizing: border-box;
@@ -70,58 +93,59 @@
     height: 400px;
     line-height: 20px;
     padding: 50px 0;
-    text-align: center;
     margin-bottom: -10px;
-    width: 100%;
-    .hiw-fees-header {
-        font-size: 25px;
-        margin-bottom: 60px;
-    }
-    .hiw-fees-desktop {
-        font-size: 12px;
-        font-weight: normal;
+}
+.hiw-fees-box {
+    text-align: center;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    p {
         line-height: 18px;
-        color: #ddd;
-    }
-
-    .hiw-fees-container {
-        border: 1px solid;
-        box-sizing: border-box;
-        // display: inline-block;
-        list-style-type: none;
-        height: 95px;
-        text-align: left;
-        padding-left: 20px;
-        min-width: 240px;
-        p {
-            margin-top: 20px;
-        }
-    }
-    .hiw-fees-platform {
-        text-decoration: none;
-        font-size: 20px;
-        font-weight: normal;
-        // line-height: 38px;
-        margin-left: 20px;
         margin-top: 20px;
-        color: #EC2970;
-    }
-    #free {
-        text-decoration: line-through;
-        font-size: 20px;
-        color: white;
-    }
-    .hiw-fees-payment {
-        margin-top: 40px;
-        font-size: 20px;
     }
 }
-
+.hiw-fees-header {
+    font-size: 25px;
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
 .hiw-fees-blocks {
-    width: 600px;
     display: flex;
     flex-direction: row;
     // margin: 0 auto;
-    margin-left: auto;
+    margin-left: 360px;
     margin-right: auto;
+}
+.hiw-fees-container {
+    border: 1px solid;
+    box-sizing: border-box;
+    // display: inline-block;
+    list-style-type: none;
+    height: 95px;
+    text-align: left;
+    padding-left: 20px;
+    min-width: 240px;
+    p {
+        margin-top: 20px;
+    }
+}
+.hiw-fees-platform {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: normal;
+    // line-height: 38px;
+    margin-left: 20px;
+    margin-top: 20px;
+    color: #EC2970;
+}
+#free {
+    text-decoration: line-through;
+    font-size: 20px;
+    color: white;
+}
+.hiw-fees-payment {
+    margin-top: 40px;
+    font-size: 20px;
 }
