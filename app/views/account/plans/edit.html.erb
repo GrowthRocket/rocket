@@ -3,7 +3,7 @@
   <%= f.input :price, readonly: true, label: "回报价格(修改请联系客服)",  input_html: {class: "edit-input-short-width"} %>
 <%= f.input :description, label: "回报描述", input_html: {class: "form-control"} %>
   <%= f.input :plan_goal, label: "限额", input_html: {class: "edit-input-short-width"} %>
-  <%= f.input :need_add, label: "是实物回报吗？" %>
+  <%= f.input :need_add, label: "是实物回报吗？", disabled: true%>
   <%= link_to("放弃更新", account_projects_path, class: "btn btn-default" ) %>
   <%= f.submit "提交更新", class: "btn btn-info" %>
   <% end %>
