@@ -108,9 +108,8 @@ class Ability
       plan.project.online?
     end
 
-    can :read, Plan do |plan|
-      plan.project.online?
-    end
+    can :read, Plan
+    can :update, Plan
     can :get_plans, Plan
     can :create_plan, Plan
     can :destroy, Plan
