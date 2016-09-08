@@ -68,12 +68,14 @@ class Admin::ProjectsController < AdminController
   def publish
     @project = Project.find(params[:id])
     @project.admin_approve!
+    flash[:notice] = "已将该项目上线"
     redirect_to :back
   end
 
   def offline
     @project = Project.find(params[:id])
     @project.finish!
+    flash[:notice] = "已将该项目下线"
     redirect_to :back
   end
 
