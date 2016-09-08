@@ -28,6 +28,7 @@ class Devise::Users::RegistrationsController < Devise::RegistrationsController
     prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
 
     resource_updated = update_resource(resource, account_update_params)
+    account_update_params
     yield resource if block_given?
     if resource_updated
       if is_flashing_format?
@@ -40,7 +41,18 @@ class Devise::Users::RegistrationsController < Devise::RegistrationsController
       respond_with resource, location: after_update_path_for(resource)
     else
       clean_up_passwords resource
-      flash[:alert] = "请重新输入密码"
+      errors = resource.errors.messages
+      puts "#{resource.errors.messages}"
+      if errors[:current_password].present?
+        flash[:alert] = "当前密码 #{errors[:current_password]}"
+      elsif errors[:password].present?
+        flash[:alert] = "新密码 #{errors[:password]}"
+      elsif errors[:password_confirmation].present?
+        flash[:alert] = "确认密码 #{errors[:password_confirmation]}"
+      end
+      # current_password
+      # password
+      # password_confirmation
       redirect_to change_password_account_user_path(resource)
     end
     #
