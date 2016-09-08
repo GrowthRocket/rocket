@@ -6,5 +6,6 @@ class WelcomeController < ApplicationController
 
   def how_it_works
     @projects  = Project.find(1,2,3)
+    set_page_title_and_description("用户指南", nil)
   end
 end
