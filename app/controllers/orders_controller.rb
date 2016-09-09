@@ -7,10 +7,11 @@ class OrdersController < ApplicationController
     custom_price = params[:custom_price]
     unless custom_price.nil?
       if custom_price.blank?
-        flash[:alert] = "请填写自定义价格"
+        flash[:alert] = "请输入 0-999999 之间的金额"
         redirect_back(fallback_location: root_path)
       else
-        if custom_price < 0 || custom_price > 999999
+        custom_price = Integer(custom_price) rescue nil
+        if custom_price.nil? || custom_price < 0 || custom_price > 999999
           flash[:alert] = "请输入 0-999999 之间的金额"
           redirect_back(fallback_location: root_path)
         end
