@@ -104,10 +104,6 @@ class Ability
 
   def user_plan_management
     can :create, Plan
-    can :update, Plan do |plan|
-      plan.project.online?
-    end
-
     can :read, Plan
     can :update, Plan
     can :get_plans, Plan
@@ -116,9 +112,7 @@ class Ability
   end
 
   def user_post_management(user)
-    can :read, Post do |post|
-      (post.project.user_id == user.id && post.project.online?)
-    end
+    can :read, Post
 
     can :create, Post
 
