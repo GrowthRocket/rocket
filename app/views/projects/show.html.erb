@@ -180,7 +180,7 @@ var jiathis_config = {
                         <% end %>
                   <% else %>
                   <p>
-                      <%= form_tag new_plan_order_path(@project), method: "get", class: "form-inline" do %>
+                      <%= form_tag new_plan_order_path(plan), method: "get", class: "form-inline" do %>
                       <input type="text" name="custom_price" class="form-control" placeholder="请输入自定义金额"/>
                   <p>
                       <%= submit_tag "支持TA", class: "reserve-sm-btn btn" %>
