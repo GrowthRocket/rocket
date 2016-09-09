@@ -122,7 +122,7 @@
     }
 
     function render_payment_button(billStatus, projectId) {
-      return billStatus == "success" ? "<a data-method='post' class='btn btn-primary' href='admin/bills/" + projectId + "/payout'>发放资金</a>" : "";
+      return billStatus == "success" ? "<a data-method='post' class='btn btn-default' href='admin/bills/" + projectId + "/payout'>发放资金</a>" : "";
     }
 
     function render_fund_rate(amount) {

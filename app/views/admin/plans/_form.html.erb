@@ -1,7 +1,7 @@
 <%= simple_form_for [:admin, @project, @plan] do |f| %>
 <%= f.input :price, label: "回报价格", input_html: {class: "edit-input-short-width"} %>
 <p><strong>回报描述</strong></p>
-<%= f.trix_editor :description, label: "回报描述", input_html: {class: "form-control"} %>
+<%= f.input :description, label: "回报描述", input_html: {class: "form-control"} %>
 <%= f.input :plan_goal, label: "限额", input_html: {class: "edit-input-short-width"}%>
 <%= f.input :need_add, label: "是实物回报吗？" %>
 <% if ["new", "create"].include?(controller.action_name) %>

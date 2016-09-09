@@ -62,7 +62,7 @@ class OrdersController < ApplicationController
   end
 
   def assemble_order
-    @plan = Plan.find(params[:plan_id])
+    @plan = Plan.includes(:project).find(params[:plan_id])
     @project = @plan.project
     @order = @plan.orders.build(order_params)
     @order.creator_name = @project.user.user_name

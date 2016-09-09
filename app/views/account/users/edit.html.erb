@@ -4,7 +4,7 @@
   <img src="<%=current_user.image.mdimage%>" class="img-responsive">
 </div>
 <div>
-<%= f.input :image, :label =>"用户头像（有头像的用户发起的项目会额外获得50%的关注哦）" %>
+<%= f.input :image, :label =>"用户头像（有头像的用户发起的项目会赢得信任感哦）" %>
 <%= f.input :user_name, :label =>"用户名",:input_html => { class: 'user-name-input-witdth'} %>
 <%= f.input :email, :label =>"邮箱地址",:input_html => { class: 'user-name-input-witdth'}  %>
 <%= f.input :weibo, :label =>"微博", :placeholder => "有微博的用户更能获得支持者的信任哦", :input_html => { class: 'user-weibo-input-witdth'} %>

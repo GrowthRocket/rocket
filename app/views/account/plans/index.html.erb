@@ -1,13 +1,13 @@
 <h1>
   <% if @project.online? || @project.offline? %>
-       <%= link_to(@project.name, project_path(@project)) %>
+       <%= render_project_name(@project) %>
      <% else %>
        <%= link_to(@project.name, preview_project_path(@project)) %>
      <% end %>
     筹款回报管理
   </h1>
 <div class="pull-right">
-    <%= link_to("新增回报",   new_account_project_plan_path(@project), class: "btn btn-warning")  %>
+    <%= link_to("新增回报",   new_account_project_plan_path(@project), class: "btn btn-default")  %>
 </div>
 <table class="table table-boldered" , style="width: 100%; table-layout: fixed;">
     <thead>
@@ -32,17 +32,22 @@
             <td>
                 <%= number_with_precision(plan.plan_progress.to_f / plan.plan_goal * 100, :precision => 2) %>
                 %
-                <%#= number_with_precision(plan.plan_progress.to_f/plan.plan_goal * 100, precision: 2) %>
             </td>
             <td>
               <%= plan.plan_goal %>份
             </td>
             <td>
-                <%= link_to("编辑", edit_account_project_plan_path(plan.project, plan), class: "btn btn-sm btn-info" )%>
-                <%= link_to("删除", account_project_plan_path(plan.project,plan), method: :delete,  class: "btn btn-sm btn-danger" , data: {confirm: "确认删除该回报么?"}) %>
+              <%#= render 'plans_oprate' %>
+              <% if plan.backer_quantity > 0 %>
+                    <%= link_to("编辑", edit_account_project_plan_path(plan.project, plan), class: "btn btn-sm btn-default") %>
+              <% else %>
+                   <%= link_to("编辑", edit_account_project_plan_path(plan.project, plan), class: "btn btn-sm btn-default" )%>
+                   <%= link_to("删除", account_project_plan_path(plan.project,plan), method: :delete,  class: "btn btn-sm btn-danger" , data: {confirm: "确认删除该回报么?"}) %>
+               <% end %>
             </td>
-
-            <td><%= render_order_created_at(plan.created_at) %></td>
+            <td>
+              <%= render_order_created_at(plan.created_at) %>
+            </td>
         </tr>
         <% end %>
     </tbody>

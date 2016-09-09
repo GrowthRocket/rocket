@@ -3,6 +3,10 @@ module ProjectsHelper
     sanitize(project.description)
   end
 
+  def render_project_name(project)
+    link_to(project.name, project_path(project))
+  end
+
   def render_project_image(project, _size = :thumb)
     image_tag(project.image.small, width: 120, height: 75)
   end

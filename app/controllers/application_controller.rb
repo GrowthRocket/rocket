@@ -45,12 +45,13 @@ class ApplicationController < ActionController::Base
     if @plan.price.blank?
       flash[:alert] = "请填写回报价格"
       render :new
+      return
     end
     if @plan.price.to_i > @project.fund_goal.to_i
       flash[:alert] = "回报价格不能大于项目筹款目标哦！"
       render :new
+      return
     else
-
       if @plan.save
         flash[:notice] = "您已成功新建筹款方案。"
         if current_user.is_admin?
@@ -67,17 +68,37 @@ class ApplicationController < ActionController::Base
   def check_plan_valid_for_edit
     if @plan.price.blank?
       flash[:alert] = "请填写回报价格"
+      render :edit
+      return
     end
+
     if @plan.plan_goal.blank?
       flash[:alert] = "请填写回报人数"
+      render :edit
+      return
     end
 
     if @plan.plan_goal.to_i < @plan.plan_progress.to_i
       flash[:alert] = "回报数量不可小于已支持人数"
+      render :edit
+      return
     end
 
     if @plan.price > @project.fund_goal.to_i
       flash[:alert] = "回报价格不能大于项目筹款目标哦！"
+      render :edit
+      return
+    end
+
+    if @plan.update(plan_params)
+      flash[:notice] = "回报更新成功。"
+      if current_user.is_admin?
+        redirect_to admin_project_plans_path
+      else
+        redirect_to account_project_plans_path
+      end
+    else
+      render :edit
     end
   end
 

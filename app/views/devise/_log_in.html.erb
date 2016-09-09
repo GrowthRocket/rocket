@@ -1,16 +1,14 @@
   <div class="input-block">
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="input-group margin-bottom-sm devise-form">
-        <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+      <div>
         <%= f.input :email, required: false, autofocus: true,label:false, :placeholder => "电子邮箱" %>
       </div>
-      <div class="input-group devise-form">
-        <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+      <div>
         <%= f.input :password, required: false,label:false, :placeholder => "密码"  %>
       </div>
-      <div class="devise-form">
+      <div>
         <%= f.input :remember_me, inline_label: '记住我', as: :boolean if devise_mapping.rememberable? %>
-        <%= f.button :submit, "登录", :class => "btn btn-success btn-block"  %>
+        <%= f.button :submit, "登录", :class => "btn btn-primary btn-block"  %>
       </div>
     <% end %>
     <br />
