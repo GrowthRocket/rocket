@@ -36,7 +36,7 @@ var jiathis_config = {
                     <div class="profile-text">
                         <div style="font-size:16px">
                             <%= @project.user.user_name%>
-                            <% if current_user.passed_verified? %>
+                            <% if @project.user.passed_verified? %>
                             <img class="watermark" src="/images/free.png"></img>
                             <% end %>
                             <% if !@project.user.weibo.blank? %>
