@@ -163,10 +163,17 @@ var jiathis_config = {
                           </div>
                       </div>
                   </p>
-                  <p class="project-text" style="font-weight:bold ">
-                      限额
-                      <%= plan.plan_goal %>位 | 剩余<%= plan.plan_goal - plan.plan_progress %>位
-                  </p>
+                  <% if plan.plan_type == 1 %>
+                    <p class="project-text" style="font-weight:bold ">
+                        限额
+                        <%= plan.plan_goal %>位 | 剩余<%= plan.plan_goal - plan.plan_progress %>位
+                    </p>
+                  <% else %>
+                    <p class="project-text" style="font-weight:bold ">
+                        无限额
+                    </p>
+                  <% end %>
+
                   <% if @project.offline? %>
                   <p>
                       <%= link_to("筹款结束", "#", :class => "reserve-sm-btn btn disabled", disabled: true ) %>
@@ -181,7 +188,7 @@ var jiathis_config = {
                   <% else %>
                   <p>
                       <%= form_tag new_plan_order_path(plan), method: "get", class: "form-inline" do %>
-                      <input type="text" name="custom_price" class="form-control" placeholder="请输入自定义金额"/>
+                      <input type="text" min="1" max="999999" name="custom_price" class="form-control" placeholder="请输入你想要支持的金额"/>
                   <p>
                       <%= submit_tag "支持TA", class: "reserve-sm-btn btn" %>
                   </p>
