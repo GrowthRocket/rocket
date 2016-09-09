@@ -188,7 +188,7 @@ var jiathis_config = {
                   <% else %>
                   <p>
                       <%= form_tag new_plan_order_path(plan), method: "get", class: "form-inline" do %>
-                      <input type="number" min="1" max="999999" name="custom_price" class="form-control" placeholder="请输入你想要支持的金额"/>
+                      <input type="number" min="1" max="999999" maxlength="6" name="custom_price" class="form-control" placeholder="请输入你想要支持的金额"/>
                   <p>
                       <%= submit_tag "支持TA", class: "reserve-sm-btn btn" %>
                   </p>
