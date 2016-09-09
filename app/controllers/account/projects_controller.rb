@@ -44,10 +44,8 @@ class Account::ProjectsController < AccountController
         return
       end
     end
-    # binding.pry
     if current_project.nil?
       @project = current_user.projects.build(project_params)
-      # binding.pry
       if @project.save
         current_user.update_column(:user_name, user_name)
         session[:project_id] = @project.id
@@ -157,7 +155,6 @@ class Account::ProjectsController < AccountController
   end
 
   def check_project_apply_valid
-    # binding.pry
     unless current_user.passed_verified?
       flash[:alert] = "为了保证项目的真实性，请到我的资料页验证手机号。"
       return false

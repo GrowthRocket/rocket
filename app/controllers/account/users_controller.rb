@@ -25,7 +25,13 @@ class Account::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+
     if @user.update(user_params)
+      if @user.user_name.blank?
+        flash[:alert] = "请输入用户名"
+        render :edit
+        return
+      end
       redirect_to account_users_path
     else
       render :edit
@@ -97,7 +103,6 @@ class Account::UsersController < ApplicationController
 
     VerificationCode.where(phone_number: @user.phone_number, code_status: true).update_all(code_status: false)
     current_user.phone_number = @user.phone_number
-    # binding.pry
     if current_user.save!
       current_user.approve!
       flash[:notice] = "手机验证成功"
