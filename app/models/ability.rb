@@ -135,6 +135,7 @@ class Ability
     can :read,    Project
     can :list,    Project
     can :search,  Project
+    can :read, Plan
   end
 
   def basic_management
