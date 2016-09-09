@@ -56,6 +56,7 @@ class User < ApplicationRecord
   # validates :phone_number, phone: { possible: false, allow_blank: true, types: [:mobile] }
   # validates :captcha, presence: true
 
+
   after_create :generate_account
 
   mount_uploader :image, HeadimageUploader
