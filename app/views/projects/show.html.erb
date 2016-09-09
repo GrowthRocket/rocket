@@ -36,7 +36,7 @@ var jiathis_config = {
                     <div class="profile-text">
                         <div style="font-size:16px">
                             <%= @project.user.user_name%>
-                            <% if current_user.passed_verified? %>
+                            <% if @project.user.passed_verified? %>
                             <img class="watermark" src="/images/user-v.png"></img>
                             <% end %>
                             <% if !@project.user.weibo.blank? %>
@@ -116,9 +116,8 @@ var jiathis_config = {
                       </div>
                   </p>
               </div>
-              <% if !@post.blank? %>
               <div class="md-container">
-                <h2 class="title">最新动态</h2>
+                  <h2 class="title">最新动态</h2>
                       <hr class="thick">
                   <% if @posts.size <= 0 %>
                   <div class="trix">
@@ -139,8 +138,8 @@ var jiathis_config = {
                           </div>
                     <% end %>
                   <% end %>
+
               </div>
-          <% end %>
           </div>
 
           <div class="right-container">
