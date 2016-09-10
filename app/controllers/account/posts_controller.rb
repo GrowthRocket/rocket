@@ -5,7 +5,6 @@ class Account::PostsController < AccountController
 
   def index
     @posts = @project.posts.recent.paginate(page: params[:page], per_page: 5)
-    authorize! :read, @posts.first
     set_page_title_and_description("管理动态", view_context.truncate(@project.name, :length => 100))
   end
 
