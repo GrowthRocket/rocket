@@ -1,0 +1,19 @@
+<div class="input-block">
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= f.error_notification %>
+    <div>
+      <%= f.input :email, required: true, label:false, autofocus: true, :placeholder => "电子邮箱"%>
+    </div>
+    <div>
+      <%= f.input :password, class: "form-control devise-form" ,required: true, label:false, :placeholder => "密码,至少8位英文数字组合"%>
+    </div>
+     <div>
+       <%= f.input :password_confirmation, class: "form-control", required: true , label:false,  :placeholder => "确认密码" %>
+      </div>
+      <div>
+        <%= f.button :submit, "注 册" , :class => "btn btn-devise btn-block"  %>
+      </div>
+  <% end %>
+  <br />
+  已经有账号？<%= render "devise/shared/links" %>
+</div>

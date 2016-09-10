@@ -1,55 +1,49 @@
-class Admin::PlansController < ApplicationController
-  before_action :authenticate_user!
-  before_action :require_is_admin
-  layout "admin"
-
+class Admin::PlansController < AdminController
+  before_action :find_plan_by_project, only:[:edit,:update,:destroy]
   def index
     @project = Project.find(params[:project_id])
-    @plans = @project.plans
+    @plans = @project.plans.recent
+    set_page_title_and_description("管理回报", nil)
   end
 
   def new
     @project = Project.find(params[:project_id])
-    @plan = Plan.new
+    @plan = @project.plans.new
+    set_page_title_and_description("新建项目回报", nil)
+  end
+
+  def edit
+    set_page_title_and_description("编辑项目回报", nil)
   end
 
   def create
     @project = Project.find(params[:project_id])
-    @plan = Plan.new(plan_params)
-    @plan.project = @project
-    if @plan.save
-      redirect_to admin_project_plans_path, notice: "您已成功新建筹款方案。"
-    else
-
-      render :new
-    end
+    @plan = @project.plans.new(plan_params)
+    check_plan_valid_for_create
   end
 
-  def edit
-    @project = Project.find(params[:project_id])
-    @plan = Plan.find(params[:id])
-  end
+
 
   def update
-    @project = Project.find(params[:project_id])
-
-    @plan = Plan.find(params[:id])
-    if @plan.update(plan_params)
-      redirect_to admin_project_plans_path, notice: "您已成功更新筹款方案。"
-    else
-      render :edit
-    end
+    check_plan_valid_for_edit
   end
 
   def destroy
-    @plan = Plan.find(params[:id])
     @plan.destroy
-    redirect_to :back, alert: "筹款方案删除成功"
+    flash[:alert] = "您已成功删除该回报。"
+    redirect_to :back
+  end
+
+  protected
+
+  def find_plan_by_project
+    @project = Project.find(params[:project_id])
+    @plan = @project.plans.find(params[:id])
   end
 
   private
 
   def plan_params
-    params.require(:plan).permit(:title, :description, :price, :plan_goal)
+    params.require(:plan).permit(:description, :price, :plan_goal, :need_add)
   end
 end

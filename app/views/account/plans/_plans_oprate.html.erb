@@ -1,0 +1,6 @@
+<% if plan.backer_quantity > 0 %>
+      <%= link_to("编辑", edit_account_project_plan_path(plan.project, plan), class: "btn btn-sm btn-default") %>
+<% else %>
+     <%= link_to("编辑", edit_account_project_plan_path(plan.project, plan), class: "btn btn-sm btn-default" )%>
+     <%= link_to("删除", account_project_plan_path(plan.project,plan), method: :delete,  class: "btn btn-sm btn-danger" , data: {confirm: "确认删除该回报么?"}) %>
+ <% end %>

@@ -1,3 +1,93 @@
 // Place all the styles related to the plans controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.reserve-sm-btn {
+    border-radius: 3px;
+    width: 125px;
+    height: 38px;
+    line-height: 28px;
+    font-weight: 500;
+    color: #fff;
+    font-size: 15px;
+    display: inline-block;
+    background-color: #43CB83;
+    margin-top: 20px;
+}
+
+.plans-head{
+  // margin-top:20px;
+  width: 530px;
+  height: 150px;
+  padding-top: 20px;
+  text-align: center;
+  background-color: #ffffff;
+  margin-left: auto;
+  margin-right: auto;
+  position:relative;
+}
+
+.plans-head h1{
+  font-size:1.6em;
+  margin: 10;
+  padding: 0;
+}
+
+.plans-head p{
+  font-size:1.2em;
+  margin: 5;
+  padding: 0;
+  a:link {color: #333333};
+  a:visited {color: #333333}	;
+  a:hover {color: #666666}	;
+  a:active {color: #666666};
+}
+.plans-tips p{
+  font-size:14px;
+  margin: 5;
+  padding: 0;
+}
+
+.plans-head span{
+  font-weight: bold;
+  color: #3499E0;
+  margin: 0 5px;
+}
+
+.plans-body{
+  width: 530px;
+  margin:20px auto;
+  position:relative;
+}
+
+.plans-des{
+  min-height: 80px;
+  width: 530px;
+  margin: 10px 0 20px;
+  padding: 15px;
+  float: left;
+  background-color: #fff;
+}
+
+.plans-des .plan-price{
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.plans-info{
+  text-align: center;
+  height: 350px;
+  width: 330px;
+  padding: 15px;
+  margin: 10px 0 20px 20px;
+  position: relative;
+  float: left;
+  background-color: #f9f9f9;
+}
+
+.plans-info img{
+  height: 80px;
+  width: 80px;
+  margin-bottom:10px;
+}

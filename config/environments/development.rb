@@ -13,12 +13,12 @@ Rails.application.configure do
   config.consider_all_requests_local = true
 
   # Enable/disable caching. By default caching is disabled.
-  if Rails.root.join('tmp/caching-dev.txt').exist?
+  if Rails.root.join("tmp/caching-dev.txt").exist?
     config.action_controller.perform_caching = true
 
     config.cache_store = :memory_store
     config.public_file_server.headers = {
-      'Cache-Control' => 'public, max-age=172800'
+      "Cache-Control" => "public, max-age=172800"
     }
   else
     config.action_controller.perform_caching = false
@@ -26,8 +26,7 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-  config.action_mailer.default_url_options = {host: 'localhost:3000'}
-  config.action_mailer.delivery_method = :letter_opener
+
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
@@ -54,4 +53,51 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  # Twilio configure
+  Twilio.configure do |config|
+    config.account_sid = ENV["TWILIO_SID"]
+    config.auth_token = ENV["TWILIO_TOKEN"]
+  end
+
+  config.action_mailer.default_url_options = { host: "localhost:3000" }
+  # config.action_mailer.default_url_options = { host: "192.168.22.9:3000" }
+
+  config.action_mailer.delivery_method = :letter_opener
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   address:              ENV["EMAIL_ADDRESS"],
+  #   port:                 ENV["EMAIL_PORT"],
+  #   user_name:            ENV["EMAIL_USER_NAME"],
+  #   password:             ENV["EMAIL_PASSWORD"],
+  #   openssl_verify_mode: 'none',
+  #   enable_starttls_auto: false  }
+  #
+  # config.action_mailer.default_options = {
+  #   reply_to: "shaojunda@gmail.com"
+  # }
+
+  config.action_controller.asset_host = "localhost:3000"
+
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.alert = true
+    Bullet.bullet_logger = true
+    Bullet.console = true
+    # Bullet.growl = true
+    # Bullet.xmpp = { :account  => 'bullets_account@jabber.org',
+                    # :password => 'bullets_password_for_jabber',
+                    # :receiver => 'your_account@jabber.org',
+                    # :show_online_status => true }
+    # Bullet.rails_logger = true
+    # Bullet.honeybadger = true
+    # Bullet.bugsnag = true
+    # Bullet.airbrake = true
+    # Bullet.rollbar = true
+    Bullet.add_footer = true
+    # Bullet.stacktrace_includes = [ 'your_gem', 'your_middleware' ]
+    # Bullet.stacktrace_excludes = [ 'their_gem', 'their_middleware' ]
+    # Bullet.slack = { webhook_url: 'http://some.slack.url', channel: '#default', username: 'notifier' }
+  end
+
 end

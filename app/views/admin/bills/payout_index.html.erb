@@ -1,0 +1,124 @@
+<%= render partial:"bill_nav" %>
+
+<div class="col-md-10">
+
+  <h2>支出流水</h2>
+  <ul class="nav nav-tabs" id="billTabs">
+    <li class="active">
+      <%= link_to("成功账单", "#success_bill", data: { 'toggle': "tab"}) %>
+    </li>
+    <li>
+      <%= link_to("失败账单", "#faild_bill", data: { 'toggle': "tab"}) %>
+    </li>
+    <li>
+      <%= link_to("待确认账单", "#wait_bill", data: { 'toggle': "tab"}) %>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="success_bill" class="tab-pane fade in active">
+      <table class="table table-stripe">
+        <thead>
+          <th>#</th>
+          <th>项目名称</th>
+          <th>项目已支付金额</th>
+          <th>账单生成时间</th>
+          <th>操作</th>
+        </thead>
+        <tbody>
+
+            <% @bill_payouts.each_with_index do |payout, index| %>
+            <tr>
+              <td>
+                <%= index + 1 %>
+              </td>
+              <td>
+                <%= payout.project_name %><%= render_bill_status(payout.bill_status) %>
+              </td>
+              <td>
+                <%= render_amount(payout.amount) %>
+              </td>
+              <td>
+                <%= render_order_created_at(payout.created_at) %>
+              </td>
+            </tr>
+            <% end %>
+        </tbody>
+      </table>
+
+    </div>
+    <div id="faild_bill" class="tab-pane fade">
+
+    </div>
+    <div id="wait_bill" class="tab-pane fade">
+
+    </div>
+  </div>
+
+</div>
+
+<% content_for :payout_javascript do %>
+  <script>
+    $(function() {
+      $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        var cur_tab = e.target; // newly activated tab
+        var id = $(cur_tab).attr("href").substring(1);
+        getBillsInfo(id);
+      })
+    });
+
+    function getBillsInfo(id) {
+      $.ajax({
+        url: "/admin/bills/show_bill_payouts",
+        method: "get",
+        data: {query_type: id},
+        dataType: "json",
+        success: function(data){
+          $("#" + id).empty();
+          showTabContent(id, data)
+        }
+      });
+    }
+
+    function showTabContent(id, data) {
+      content = "<table class='table table-stripe'> <thead><th>#</th><th>项目名称</th><th>项目已支付金额</th><th>账单生成时间</th><th>操作</th></thead><tbody>"
+      $.each(data, function(index, item) {
+        content += "<tr>" +
+          "<td>" + (index + 1) + "</td>" +
+          "<td>"  + item.project_name +
+          render_bill_state(item) +  "</td>" +
+          "<td> ¥" + item.amount + "</td>" +
+          "<td>" + render_created_at(item.created_at)  + "</td>" +
+          "<td>" + render_payout_button(item.bill_status, item.project_id)
+        "</td></tr>";
+      })
+        content += "</tbody></table>"
+
+      $("#" + id).append(content);
+    }
+
+    function render_bill_state(bill) {
+      var content = "";
+      if (bill.bill_status == "faild") {
+        content += "<span class='label label-danger'>失败</span>";
+      } else if(bill.bill_status == "success") {
+        content += "<span class='label label-warning'>待打款</span>";
+      } else if(bill.bill_status == "paid") {
+        content += "<span class='label label-success'>已打款</span>";
+      }
+      return content;
+    }
+
+    function render_payout_button(billStatus, projectId) {
+      return billStatus == "success" ? "<a data-method='post' class='btn btn-primary' href='admin/bills/" + projectId + "/payout'>发放资金</a>" : "";
+    }
+    function render_created_at(createdAt) {
+      var d = new Date(createdAt)
+      var render_date = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate() + " " +
+      d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+      console.log(render_date)
+      return render_date;
+    }
+
+  </script>
+<% end %>

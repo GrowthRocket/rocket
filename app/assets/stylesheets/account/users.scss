@@ -1,3 +1,20 @@
 // Place all the styles related to the account/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.nav-img{
+height: 30px;
+width: 30px;
+}
+.watermark {
+  position: relative;
+  right: 2px;
+  width: 20px;
+  height: 20px;
+}
+.headverify {
+  position: relative;
+  top: 10px;
+  right: 15px;
+  width: 16px;
+  height: 16px;
+}

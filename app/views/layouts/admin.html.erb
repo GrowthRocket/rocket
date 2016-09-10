@@ -1,35 +1,42 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>管理员面板</title>
+      <%= render_page_title_tag %>
+      <%= render_page_description_meta_tag %>
         <%= csrf_meta_tags %>
+        <link rel="shortcut icon" href="/images/rocket2.ico">
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
     </head>
 
-    <body style="background-image: url(/images/Body_bg.png);">
-
+    <body>
         <div class="container-fluid">
             <%= render "common/navbar" %>
-            <div class="row">
-            <%= render "common/flashes" %>
-              <div class="col-md-8 col-md-offset-2">
-                    <ul class="nav nav-tabs">
-                        <li role="presentation" class="active"><%= link_to("众筹项目管理", admin_projects_path,) %> </li>
-                        <li role="presentation" class="active"><%= link_to("订单管理", admin_orders_path,) %></li>
-                        <li role="presentation" class="active"><%= link_to("用户管理",  admin_users_path, ) %></li>
-                    </ul>
+              <div class="container col-md-2">
+                  <div class="notice notice-success">
+                    <li role="presentation" class="active"><%= link_to("众筹项目管理", admin_projects_path) %> </li>
+                  </div>
+                  <div class="notice notice-danger">
+                    <li role="presentation" class="active"><%= link_to("分类管理",  admin_categories_path) %> </li>
+                  </div>
+                  <div class="notice notice-info">
+                    <li role="presentation" class="active"><%= link_to("订单管理", admin_orders_path) %></li>
+                  </div>
+                  <div class="notice notice-warning">
+                    <li role="presentation" class="active"><%= link_to("用户管理",  admin_users_path) %></li>
+                  </div>
+                  <div class="notice notice-default">
+                    <li role="presentation" class="active"><%= link_to("资金流水",  admin_bills_path) %></li>
+                  </div>
               </div>
-
-            </div>
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2">
+              <div class="col-md-10 col-md-offset-0 well">
+                <%= render "common/flashes" %>
                 <%= yield %>
-              </div>
-        </div>
+            </div>
       </div>
-
         <%= render "common/footer" %>
-
+        <%= yield :bills_javascript %>
+        <%= yield :payout_javascript %>
     </body>
 </html>

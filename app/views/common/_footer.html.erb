@@ -1,5 +1,37 @@
-<footer class="footer col-md-12 col-md-offset-0">
-  <div class="container">
-    <p class="text-center">&copy2016 Rocket, Inc. All Rights Reserved</p>
+<footer id="footer" class="col-md-12 col-md-offset-0">
+  <div class="def-footer">
+  <div class="help-link">
+    <ul class="list-inline">
+      <li>
+        <%= link_to("关于我们", about_us_path )%>
+      </li>
+  <li>
+    <a href="mailto:talentrocket@163.com?subject=我有问题咨询：">联系我们</a>
+  </li>
+  <li>
+    <%= link_to("服务协议", help_term_path)%>
+  </li>
+  <li>
+    <%= link_to("帮助中心", how_it_works_path)%>
+  </li>
+</ul>
+</div>
+  <div class="copyright-info">
+    <span>&copy2016 Rocket, Inc. All Rights Reserved</span>
   </div>
+</div>
+  <script type='text/javascript'>
+    (function(m, ei, q, i, a, j, s) {
+        m[i] = m[i] || function() {
+            (m[i].a = m[i].a || []).push(arguments)
+        };
+        j = ei.createElement(q),
+            s = ei.getElementsByTagName(q)[0];
+        j.async = true;
+        j.charset = 'UTF-8';
+        j.src = '//static.meiqia.com/dist/meiqia.js';
+        s.parentNode.insertBefore(j, s);
+    })(window, document, 'script', '_MEIQIA');
+    _MEIQIA('entId', 30487);
+</script>
 </footer>

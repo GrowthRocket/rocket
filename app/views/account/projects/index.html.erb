@@ -1,54 +1,37 @@
 <h2>我发起的项目</h2>
-<div class="pull-right">
-    <%= link_to("新建众筹项目", new_account_project_path, :class => "btn btn-success" ) %>
+<% if @projects.size == 0 %>
+<%= render_project_empty_warning %>
+<% else %>
+<div class="account-project-index">
+  <% @projects.each do |project| %>
+    <div class="project-box">
+      <div class="project-title">
+        <h3>
+             <% if project.online? || project.offline? %>
+                  <%= link_to(project.name, project_path(project)) %>
+                <% else %>
+                  <%= link_to(project.name, preview_project_path(project)) %>
+                <% end %>
+        </h3>
+      </div>
+      <hr />
+      <div class="project-info">
+        <div class="project-image">
+          <img src="<%= project.image.large %>" >
+        </div>
+        <div class="project-detail">
+          <%= render_project_status(project) %>
+          <p>筹款目标<span><%= project.fund_goal %></span>&nbsp元</p>
+          <p>回报数量<span><%= link_to(project.plans_count, account_project_plans_path(project)) %></span>&nbsp个</p>
+          <p>动态数量<span><%= link_to(project.posts.count, account_project_posts_path(project))  %></span>&nbsp条</p>
+          <p>支持人数<span><%= project.backer_quantity %></span>&nbsp人</p>
+          <p>筹款进度<span><%= render_project_funding_progress(project) %></span></p>
+        </div>
+      </div>
+      <div class="project-oprate">
+        <%= render_project_operation(project) %>
+      </div>
+    </div>
+  <% end %>
 </div>
-<table class="table table-boldered">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>众筹项目</th>
-            <th>方案数量</th>
-            <th>筹款目标</th>
-            <th>支持人数</th>
-            <th>进度</th>
-            <th>状态</th>
-            <th>操作</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @projects.each do |project| %>
-        <tr>
-            <td>
-                <%= project.id %>
-            </td>
-            <td>
-                <%= link_to(project.name, project_path(project)) %>
-                <br/>
-                <img src="<%= project.image.thumb %>" width="120" height="90">
-            </td>
-            <td>
-                <%= link_to(project.plans_count, account_project_plans_path(project)) %>
-            </td>
-            <td>
-                ¥<%= project.fund_goal %>
-            </td>
-            <td>
-                <%= project.backer_quantity %>
-                人
-            </td>
-            <td>
-                <%= render_project_funding_progress(project) %>
-
-            </td>
-            <td>
-                <%= render_project_status(project) %>
-            </td>
-            <td>
-                <%= link_to("编辑项目", edit_account_project_path(project), :class => "btn btn-xs btn-info") %>
-                <%= link_to("管理筹款方案", account_project_plans_path(project), :class => "btn btn-xs btn-warning") %>
-                <%= link_to("删除", account_project_path(project), :method => :delete, :data => { :confirm => "删除项目后不可恢复，您确定要删除吗?" }, :class => "btn btn-xs btn-danger") %>
-            </td>
-        </tr>
-        <% end %>
-    </tbody>
-</table>
+<% end %>

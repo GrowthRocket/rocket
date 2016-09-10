@@ -1,10 +1,10 @@
-<h2>筹款方案订单管理面板</h2>
+<h2>筹款回报订单管理面板</h2>
 
 <table class="table table-boldered">
     <thead>
       <tr>
-        <th>众筹方案</th>
-        <th>方案价格</th>
+        <th>众筹回报</th>
+        <th>回报价格</th>
         <th>支持数量</th>
         <th>合计金额</th>
         <th>订单时间</th>
@@ -12,6 +12,10 @@
       </tr>
     </thead>
     <tbody>
-      <%= render partial: "order_item", collection: @orders, as: "item" %>
+      <%= render(partial: "order_item", collection: @orders, as: "item") || render_order_empty_warning %>
     </tbody>
   </table>
+  
+  <div class="text-center">
+    <%= will_paginate @projects %>
+  </div>

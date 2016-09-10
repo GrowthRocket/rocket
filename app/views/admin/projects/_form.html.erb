@@ -1,15 +1,20 @@
 <%= simple_form_for [:admin, @project] do |f| %>
 
-  <%= f.input :name, :label =>"项目名称" %>
-  <%= f.trix_editor :description, :label =>"项目描述" %>
-  <%= f.input :fund_goal, :label =>"筹款目标" %>
-  <%= f.input :is_hidden %>
-  <%= f.input :image, :label =>"主题图片" %>
+  <%= f.input :name, :label =>"项目名称" ,input_html: { id: 'edit-input-long-width' }%>
+  <p><strong>项目描述</strong></p>
+  <%= f.trix_editor :description, label: "项目描述", input_html: {class: "form-control"} %>
+  <% if ["new", "create"].include?(controller.action_name) %>
+    <%= f.input :user_email, :label =>"项目发起者" ,input_html: { class: 'edit-input-short-width'},:placeholder => "请填入用户邮箱"%>
+  <% end %>
+  <%= f.input :category_id,:collection => @categories,:label_method => :chs_name,:value_method => :id,:label => "请选择分类",:include_blank => false ,input_html: { class: 'edit-input-short-width'}%>
+  <%= f.input :fund_goal, label: "筹款目标", input_html:{min:1, max:1_000_000} %>
+  <%= f.input :video, :label => "宣传视频（请贴优酷视频公开链接）" ,input_html: { id: 'edit-input-long-width'}%>
+  <%= f.input :image, :label =>"封面图片" %>
 
   <% if ["new", "create"].include?(controller.action_name) %>
     <%= f.submit "创建项目", class: "btn btn-success" %>
   <% else %>
   <%= link_to("放弃更新", admin_projects_path, class: "btn btn-default" ) %>
-    <%= f.submit "提交更新", class: "btn btn-info" %>
+    <%= f.submit "提交更新", class: "btn btn-success" %>
   <% end %>
 <% end %>

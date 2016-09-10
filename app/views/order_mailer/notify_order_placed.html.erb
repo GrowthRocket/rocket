@@ -1,3 +1,57 @@
-你已为<%= @title %> 项目支持了 <%= @order.price%>元。
-<br>
-有了你的帮助，该项目将得以更好的运行，艺术家在此对你表示感谢。
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>支付成功</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body style="margin: 0; padding: 0;">
+        <table  cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+                <td>
+                    <table align="center"  cellpadding="0" cellspacing="0" width="600" style="border: 1px solid #cccccc; border-collapse: collapse;">
+                        <tr>
+                            <td bgcolor="#43CB83" style="padding: 10px 0 10px 0;">
+                               <h1 style="margin-left: 20px; color: #ffffff;">人才火箭</h1>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td bgcolor="#ffffff">
+                                <table  cellpadding="0" cellspacing="0" width="100%">
+                                    <tr>
+                                        <td style="color: #153643; font-family: Arial, sans-serif; font-size: 24px; padding-left:20px; padding-top:15px;">
+                                          <b>支付成功</b>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 20px 0 30px 20px;">
+                                            您好：
+
+                                            <p>您已为&nbsp; <font size="5"><%= @title %></font> &nbsp;项目支持了&nbsp; <font size="5"><%= @order.price%></font> &nbsp;元。</p>
+                                            <p>有了您的帮助，该项目将得以更好的运行，艺术家在此对您表示感谢。</p>
+                                        </td>
+                                    </tr>
+
+                                </table>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td bgcolor="#CCCCCC" style="padding: 20px 30px 20px 30px;">
+                                <table  cellpadding="0" cellspacing="0" width="100%">
+                                    <tr>
+                                        <td width="75%" style="color: #4D394B; font-family: Arial, sans-serif; font-size: 14px; line-height: 25px;">
+                                            &reg; Rocket 2016<br/>
+                                            联系我们
+                                        </td>
+
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

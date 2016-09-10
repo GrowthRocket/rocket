@@ -1,1 +1,213 @@
-<h1>landing page</h1>
+
+<div class="lp-container">
+    <div class="lp-background-img">
+        <div>
+            <h1>
+                下一个火箭项目的助跑平台
+            </h1>
+        </div>
+        <div>
+            <h2>
+                万种筹资，助推才华青年最后一把，催成下一个世界级人才
+            </h2>
+        </div>
+        <div class="lp-action btn">
+            <%= link_to("发起众筹", new_account_project_path) %>
+        </div>
+    </div>
+
+</div>
+
+<div class="lp-pom-block-12">
+    <div class="lp-pom-block-12-color-overlay">
+        <div class="lp-center-block">
+
+            <div class="lp-pom-box-98"></div>
+            <div class="lp-pom-text-99-tall">
+                <h2 id="lp-user-title">
+                    让最懂你的人，助你成就梦想的最后一里
+                </h2>
+
+            </div>
+            <p class="lp-pom-advantages">
+              我们致力成为人才界的 KickStarter / Indiegogo，资助下一个脑力项目、文艺作品、开源项目背后的大神、文豪，摆脱现实最后一套金钱枷锁，专注投入伟大项目的拓荒与腾飞。
+            </p>
+
+            <div class="p-pom-box-47">
+
+              <img src='/images/icon2.png', alt="icon23", style="width:60px;height:60px;margin-top:10px;margin-bottom:10px;">
+              <br>
+              <h3 class="lp-advantage-title">无后顾之忧，全职专心投入创作</h3>
+                  <p >以全职薪金方式，保你心无旁骛投入项目创作. 不再担心自己的创意会被外行人指点限制，尽情挥洒自己的热血与激情。</p>
+
+            </div>
+            <div class="p-pom-box-47">
+
+                <img src='/images/icon3.png' alt="icon23", style="width:80px;height:80px;">
+                <br>
+                <h3 class="lp-advantage-title">急速缩短现实与梦想间的差距</h3>
+
+                  <p>许多激动人心的项目，总是业余时间、或大把启动资金才能启动。在这里，我们助推你最后一把。</p>
+            </div>
+            <div class="p-pom-box-47">
+
+                  <img src='/images/icon1.png' alt="icon23", style="width:80px;height:80px;color:grey;">
+                  <br>
+                  <h3 class="lp-advantage-title">最理解也最支持你的小众天使</h3>
+
+                  <p>这里的投资人，是最懂你的同好粉丝。无须再按下脾气跟外行解释，你可以从这群支持者得到最真诚的反馈、支持与助推。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+<div class="lp-pom-block-13">
+    <div class="lp-center-block-large">
+      <div class="lp-pom-box-98"></div>
+      <div class="lp-pom-text-99">
+          <h3 id="lp-user-title">
+              热门推荐
+          </h3>
+
+      </div>
+        <% @projects.each do |project| %>
+        <div class="lp-container-col">
+            <div class="image">
+                <%= link_to(image_tag(project.image.small, style:"height:200px;"), project_path(project)) %>
+            </div>
+
+            <h4><%= link_to(truncate(project.name, escape: false, length: 21 ), project_path(project), class:"lp-container-title" )%></h4>
+
+            <div class="lp-container-text trix">
+                <%= sanitize(project.description)%>
+            </div>
+
+            <div>
+                  <%= render_progress_landing_page(number_with_precision(project.fund_progress.to_f / project.fund_goal * 100, :precision => 2)) %>
+            <!-- 此处重新定义导航条 -->
+            </div>
+            <div class="lp-text-col">
+                <div class="lp-container-figure">
+                    <%= number_with_precision(project.fund_progress.to_f / project.fund_goal * 100, :precision => 0) %>%
+                    <br>
+                </div>
+                筹款进度
+            </div>
+            <div class="lp-text-col">
+                <div class="lp-container-figure">
+                    <%= project.fund_progress %>元
+                </div>
+                已筹资金
+            </div>
+            <div class="lp-text-col">
+                <div class="lp-container-figure">
+                    <%= project.backer_quantity %>人
+                </div>
+                支持人数
+            </div>
+        </div>
+        <% end %>
+        <div >
+            <%= link_to("查看所有项目", projects_path,class:" btn-bordered")%>
+        </div>
+
+    </div>
+</div>
+
+<div class="lp-pom-block-12">
+  <div class="lp-pom-block-12-color-overlay">
+    <div class="lp-center-block">
+
+
+    <div class="lp-pom-box-98">
+
+    </div>
+<div class="lp-pom-text-99">
+  <h2 id="lp-user-title">
+      听听他们怎么说
+  </h2>
+</div>
+
+
+    <div class="lp-pom-box-82">
+
+      <p class="lp-pom-text-83">
+
+        感谢 @李笑来 的初期支持。让我可以全职投入改变编程教学的下一波革命
+      </p>
+      <div class="p-pom-image-76">
+        <img src="/images/quotes3.png" alt="Project">
+      </div>
+      <div class="lp-pom-box-77"></div>
+      <div class="lp-pom-text-78">
+        <p class="user-name">
+         xdite
+        </p>
+        </div>
+        <div class="lp-pom-text-79">
+          <p class="user-introduction">
+            知名 Ruby on Rails 大神级教练
+          </p>
+        </div>
+
+    </div>
+
+
+    <div class="lp-pom-box-82">
+
+      <p class="lp-pom-text-83">
+
+        感谢 @郭达峰 (Strikingly) 和 @李笑来 的每月支持。让我可以全职投入 VueJS 开发
+      </p>
+      <div class="p-pom-image-76">
+        <img src="/images/quotes3.png" alt="Project">
+      </div>
+      <div class="lp-pom-box-78"></div>
+      <div class="lp-pom-text-78">
+        <p class="user-name">
+         尤小右
+        </p>
+        </div>
+        <div class="lp-pom-text-79">
+          <p class="user-introduction">
+            VueJS创造者
+          </p>
+        </div>
+
+    </div>
+
+    <div class="lp-pom-box-82">
+
+      <p class="lp-pom-text-83">
+
+        感谢 @郭达峰 (Strikingly) 和 @李笑来 的每月支持。让我可以全职投入 VueJS 开发
+      </p>
+      <div class="p-pom-image-76">
+        <img src="/images/quotes3.png" alt="Project">
+      </div>
+      <div class="lp-pom-box-77"></div>
+      <div class="lp-pom-text-78">
+        <p class="user-name">
+         xdite
+        </p>
+        </div>
+        <div class="lp-pom-text-79">
+          <p class="user-introduction">
+            知名 Ruby on Rails 大神级教练
+          </p>
+        </div>
+
+    </div>
+
+
+  </div>
+  </div>
+</div>
+
+<div class="lp-pom-block-32">
+  <p>让万千支持者，助你挣破枷锁，腾空起飞</p>
+  <div class="lp-action btn">
+      <%= link_to("发起众筹", new_account_project_path) %>
+  </div>
+</div>

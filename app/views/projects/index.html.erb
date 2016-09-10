@@ -1,24 +1,34 @@
-<div class="container-fluid">
-  <div class="row">
-  <div class="thumbnail">
-   <img style="width:100%" src="/images/Creator.png"></img>
-   <!-- <div class="well">
-     這裏擺 Hero Image （暫時不能妨礙開發工作）
-   </div> -->
- </div>
+<div class="index-out">
+  <div class="index-banner">
+    <div class="hero-title">
+      <h1>无后顾之忧，全职专心投入创作</h1>
+      <p>我们致力成为人才界的 KickStarter / Indiegogo，资助下一个脑力项目、文艺作品、开源项目背后的大神、文豪，
+        <br />摆脱现实最后一套金钱枷锁，专注投入伟大项目的拓荒与腾飞。</p>
+    </div>
   </div>
-      <div class="row">
-        <% @projects.each do |project| %>
-        <div class="col-md-6 col-md-offset-0 well">
-          <%= link_to(image_tag(project.image.show), project_path(project), class: "thumbnail") %>
-            <h2><%= link_to(project.name, project_path(project)) %></h2>
-            <p>筹集目标金额 ¥ <%= project.fund_goal %></p>
-            <p>已筹到 ¥ <%= project.fund_progress %> &nbsp| &nbsp
-                          <span>进度 <%= number_with_precision(project.fund_progress.to_f / project.fund_goal * 100, :precision => 2) %>%</span>
-</p>
-            <p>当前已有 <%= project.backer_quantity %> 人支持</p>
-            <%= link_to("支持项目", project_plans_path(project), :class => "btn btn-success" ) %>
-        </div>
-        <% end %>
-      </div>
+  <div class="container">
+  			<div class="tabbable-panel">
+  				<div class="tabbable-line">
+  					<ul class="nav nav-tabs ">
+  						<li class="active">
+  							<a href="#tab_default_1" data-toggle="tab">
+  							最新项目</a>
+  						</li>
+  						<li>
+  							<a href="#tab_default_2" data-toggle="tab">
+  							往期项目</a>
+  						</li>
+  					</ul>
+            <!-- <hr /> -->
+  					<div class="tab-content">
+  						<div class="tab-pane active" id="tab_default_1">
+                <%= render "online_projects" %>
+  						</div>
+  						<div class="tab-pane" id="tab_default_2">
+                <%= render "history_projects" %>
+  						</div>
+  					</div>
+  				</div>
+  	</div>
+  </div>
 </div>

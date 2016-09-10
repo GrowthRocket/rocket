@@ -1,25 +1,54 @@
-<h2>我的资料</h2>
+    <div>
+      <h2>我的资料</h2>
+      <div class="row">
+        <div class="col-md-2 col-lg-2" align="center">
+          <img src="<%=current_user.image.mdimage%>" class="normal-head">
+        </div>
+        <div class=" col-md-7 col-lg-7 ">
+          <table class="table table-user-information">
+            <tbody>
+              <tr>
+              <td >用户名</td>
+               <td><%= @user.user_name %></td>
+             </tr>
+              <tr>
+              <td>电子邮箱</td>
+              <td><%= @user.email %></td>
+              </tr>
+              <tr>
+              <td>微博</td>
+              <td><%= @user.weibo %></td>
+              </tr>
+              <tr>
+              <td>个人简介</td>
+              <td><%= @user.description %></td>
+              </tr>
+            </tbody>
+          </table>
+          <div>
+            <%= link_to("修改个人资料", edit_account_user_path(@user), :class => "btn btn-sm btn-default") %>
+            <%= link_to("修改密码", change_password_account_user_path(@user), class: "btn btn-sm btn-default" ) %>
+            <% if @user.aasm_state == "user_registered" %>
+             <% if !current_user.is_admin %>
+              <%= link_to("验证手机", show_verify_phone_number_account_user_path(@user), :class => "btn btn-sm btn-default") %>
+              <% end %>
+            <% elsif @user.aasm_state == "passed_verified" %>
+              <%= link_to("手机已验证", "javascript:void(0)", :class => "btn btn-sm btn-success disabled") %>
+            <% end %>
 
-<table class="table table-boldered">
-  <tbody>
-    <tr>
-    <th >用户名</th>
-     <td><%= @user.user_name %></td>
-   </tr>
-    <tr>
-    <th>电子邮箱</th>
-    <td><%= @user.email %></td>
-    </tr>
-    <tr>
-    <th>注册时间</th>
-    <td><%= @user.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
-    </tr>
-    <tr>
-    <th>我的身份</th>
-    <td>众筹人 ／ 支持者<%#= render_user_level(user) %></td>
-    </tr>
-</tbody>
-</table>
-<div>
-  <%= link_to("修改我的资料", edit_account_user_path(@user), :class => "btn btn-xs btn-info") %>
-</div>
+
+            <%# if @user.aasm_state == "user_registered" %>
+            <%#= link_to("申请实名认证", apply_for_certify_account_user_path(@user), :method => :post, :class => "btn btn-sm btn-info") %>
+            <%# elsif @user.aasm_state == "request_verify" %>
+            <%#= content_tag(:span, "实名认证审核中，请耐心等待...", class: "label label-success") %>
+            <%# elsif @user.aasm_state == "passed_verified" %>
+            <%#= link_to("已实名认证", "#", :class => "btn btn-sm btn-success disabled") %>
+            <%# else %>
+            <%#= link_to("再次申请实名认证", apply_for_certify_account_user_path(@user), :method => :post, :class => "btn btn-sm btn-info") %>
+            <%# end %>
+
+
+          </div>
+        </div>
+      </div>
+    </div>

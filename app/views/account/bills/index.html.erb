@@ -1,0 +1,54 @@
+
+  <!-- <h2>拨款总额 ¥  </h2> -->
+  <h2>已拨款 ¥ <%= number_with_precision(@account.profit, precision: 2) %> </h2>
+  <!-- <h2>待拨款金额 ¥ </h2> -->
+  <p text-align = "center">
+    尊敬的<%= @user.user_name  %>，你当前服务费为10%，以下为你的收入情况。
+  </p>
+  <hr />
+
+  <% if @payments.count == 0 %>
+  <div>
+     <p>暂无收入记录</p>
+  </div>
+
+
+  <% else %>
+  <table class="table table-boldered">
+    <thead>
+      <th>#</th>
+      <th>项目名称</th>
+      <th>支持者姓名</th>
+      <th>回报描述</th>
+      <th>付款金额</th>
+      <th>下单时间</th>
+    </thead>
+
+    <tbody>
+      <% @payments.each_with_index do |payment, index| %>
+      <tr>
+        <td>
+          <%= index + 1 %>
+        </td>
+        <td>
+          <%= link_to(payment.project_name, project_path(payment.project_id) ) %>
+        </td>
+        <td>
+          <%= payment.backer_name%>
+        </td>
+        <td>
+          <!-- TODO 通过payment找到plan的title -->
+          <%= render_payment_plan_description(payment.plan_description) %>
+        </td>
+        <td>
+          <%= payment.amount %>
+        </td>
+        <td>
+          <%= render_order_created_at(payment.created_at)%>
+        </td>
+
+        <% end %>
+    </tbody>
+   </table>
+
+  <% end %>

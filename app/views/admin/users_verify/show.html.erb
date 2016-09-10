@@ -1,0 +1,29 @@
+<div>
+  <h2>
+    <span><%= link_to("待认证用户", admin_users_verify_index_path ) %></span>
+    <span> | 用户认证申请详情</span>
+  </h2>
+</div>
+
+ <p>  用户ID：  <%= @user.id %> </p>
+ <p>  用户名：    <%= @user.user_name %> </p>
+ <p>  邮件地址：    <%= @user.email %> </p>
+ <p>  注册时间：    <%= render_order_created_at(@user.created_at) %> </p>
+ <p>  申请认证时间：    <%= render_order_created_at(@user.created_at)%> </p>
+ <p>身份证正面图片 </p>
+ <%#= image_tag(@user.image.large), user_path(user), class: "thumbnail") %>
+ <p>身份证反面图片   </p>
+ <%#= image_tag(@user.image.large), user_path(user), class: "thumbnail") %>
+ <p>双手持身份证图片   </p>
+ <%#= image_tag(@user.image.large), user_path(user), class: "thumbnail") %>
+<div class="well">
+  <%= link_to("通过认证请求", pass_verify_admin_users_verify_path(@user) , :method => :post, :class => "btn btn-sm btn-success") %>
+</div>
+<div class="well">
+  <p>
+  <%= simple_form_for [:admin,@user] do |f| %>
+  <%= f.input :user_name, label:false, :readonly => true, :placeholder => "请填写拒绝原因" %>
+  <% end %>
+  </p>
+  <%= link_to("拒绝认证请求", reject_verify_admin_users_verify_path(@user) , :method => :post, :class => "btn btn-sm btn-danger") %>
+</div>

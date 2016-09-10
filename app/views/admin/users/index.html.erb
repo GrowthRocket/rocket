@@ -1,12 +1,16 @@
-<h2>用户管理面板</h2>
-
+<div>
+  <h2>
+  <span>所有用户</span>
+  <!-- <span><%#= link_to("待认证用户", admin_users_verify_index_path ) %></span> -->
+  </h2>
+</div>
 <table class="table table-boldered">
   <thead>
     <th>ID</th>
     <th>用户名</th>
     <th>邮箱地址</th>
     <th>注册时间</th>
-    <th>用户类型</th>
+    <th>认证状态</th>
     <th>操作</th>
   </thead>
   <tbody>
@@ -22,18 +26,19 @@
       <%= user.email %>
     </td>
     <td>
-      <%= user.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+      <%= render_order_created_at(user.created_at) %>
     </td>
     <td>
-      管理员 / 众筹人 ／ 支持者
-      <%#= render_user_level(user) %>
+      <%= render_user_status(user) %>
     </td>
     <td>
-      <%= link_to("编辑用户信息", edit_admin_user_path(user), :class => "btn btn-xs btn-info") %>
+      <%= link_to("编辑用户信息", edit_admin_user_path(user), :class => "btn btn-sm btn-default") %>
       <% if !user.is_admin %>
-        <%= link_to("设为管理员", promote_admin_user_path(user) , :method => :post, :class => "btn btn-xs btn-danger") %>
+        <%= link_to("设为管理员", promote_admin_user_path(user) , :method => :post, :data => { :confirm => "确定将该用户权限提升为管理员?" },:class => "btn btn-sm btn-default") %>
       <% else %>
-        <%= link_to("降为非管理员", demote_admin_user_path(user) , :method => :post, :class => "btn btn-xs btn-success") %>
+            <% if user.email != "admin@gmail.com" %>
+        <%= link_to("设为普通用户", demote_admin_user_path(user) , :method => :post, :data => { :confirm => "确定将该用户权限降为普通用户?" },:class => "btn btn-sm btn-default") %>
+            <% end %>
       <% end %>
     </td>
   </tr>

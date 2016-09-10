@@ -1,0 +1,16 @@
+  <div class="input-block">
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div>
+        <%= f.input :email, required: false, autofocus: true,label:false, :placeholder => "电子邮箱" %>
+      </div>
+      <div>
+        <%= f.input :password, required: false,label:false, :placeholder => "密码"  %>
+      </div>
+      <div>
+        <%= f.input :remember_me, inline_label: '记住我', as: :boolean if devise_mapping.rememberable? %>
+        <%= f.button :submit, "登 录", :class => "btn btn-devise btn-block"  %>
+      </div>
+    <% end %>
+    <br />
+    <%= render "devise/shared/links" %>
+  </div>

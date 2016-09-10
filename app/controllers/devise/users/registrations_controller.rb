@@ -1,16 +1,21 @@
 class Devise::Users::RegistrationsController < Devise::RegistrationsController
-# before_action :configure_sign_up_params, only: [:create]
-# before_action :configure_account_update_params, only: [:update]
-
+  # before_action :configure_sign_up_params, only: [:create]
+  # before_action :configure_account_update_params, only: [:update]
+  # before_action :check_geetest, only: [:create]
   # GET /resource/sign_up
   # def new
   #   super
   # end
 
   # POST /resource
-  #  def create
-  #    super
-  #  end
+  def create
+    # if @geetest
+      super
+    # else
+      # flash[:alert] = "请先滑动滑块"
+      # redirect_to new_user_registration_path
+    # end
+  end
 
   # GET /resource/edit
   # def edit
@@ -18,9 +23,51 @@ class Devise::Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
+    prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
+
+    resource_updated = update_resource(resource, account_update_params)
+
+    yield resource if block_given?
+
+    if resource_updated
+      if account_update_params[:password].blank?
+        flash[:alert] = "请输入新密码"
+        redirect_to change_password_account_user_path(resource)
+        return
+      else
+        if is_flashing_format?
+          flash_key =
+            update_needs_confirmation?(resource, prev_unconfirmed_email) ?
+                     :update_needs_confirmation : :updated
+          set_flash_message :notice, flash_key
+        end
+        bypass_sign_in resource, scope: resource_name
+        respond_with resource, location: after_update_path_for(resource)
+      end
+    else
+      clean_up_passwords resource
+      errors = resource.errors.messages
+      puts "#{resource.errors.messages}"
+      if errors[:current_password].present?
+        flash[:alert] = errors[:current_password].first
+        redirect_to change_password_account_user_path(resource)
+        return
+      elsif errors[:password].present?
+        flash[:alert] = errors[:password].first
+        redirect_to change_password_account_user_path(resource)
+        return
+      elsif errors[:password_confirmation].present?
+        flash[:alert] = errors[:password_confirmation].first
+        redirect_to change_password_account_user_path(resource)
+        return
+      end
+
+      redirect_to change_password_account_user_path(resource)
+    end
+
+  end
 
   # DELETE /resource
   # def destroy
@@ -36,7 +83,7 @@ class Devise::Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   #  def configure_sign_up_params
@@ -45,7 +92,7 @@ class Devise::Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
+  #   devise_parameter_sanitizer.permit(:account_update, keys: [:current_password, :password, :password_confirmation])
   # end
 
   # The path used after sign up.
@@ -57,5 +104,7 @@ class Devise::Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-
+  def after_update_path_for(resource_name)
+    account_users_path
+  end
 end

@@ -1,6 +1,6 @@
-require_relative 'boot'
+require_relative "boot"
 
-require 'rails/all'
+require "rails/all"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -13,7 +13,12 @@ module Rocket
     # -- all .rb files in that directory are automatically loaded.
     config.autoload_paths += %W(#{config.root}/app/services)
 
-    config.time_zone = 'Beijing'
+    config.time_zone = "Beijing"
     config.active_record.default_timezone = :local
+    config.generators.test_framework = nil
+    config.i18n.default_locale = :"zh-CN"
+
+
+    # config.serve_static_assets = true
   end
 end

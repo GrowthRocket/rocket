@@ -1,3 +1,30 @@
 // Place all the styles related to the orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.order-new-body{
+  margin:20px auto ;
+  width: 900px;
+  padding: 20px 0;
+  background-color: #ffffff;
+  position:relative;
+}
+
+.order-new-body .form{
+  // margin:20px auto 20px;
+  width: 400px;
+  padding: 20px 0 0;
+  position:relative;
+}
+
+.order-new-body .detail{
+  margin:20px auto 20px;
+  width: 800px;
+  padding: 20px 0 0;
+  position:relative;
+}
+
+.order-new-body p{
+  font-size:16px;
+  font-weight: bold;
+}

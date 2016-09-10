@@ -1,20 +1,52 @@
+
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for mobile display -->
     <div class="navbar-header">
       <!-- <h1><a class="navbar-brand" href="/">人才火箭</a></h1> -->
-      <a class="navbar-brand" href="/">人才火箭</a>
+      <a class="navbar-brand" href="/">
+        <i class="fa fa-rocket fa-lg logo_icon" aria-hidden="true"></i>
+        <span>人才火箭</span>
+      </a>
     </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-left">
+            <%= link_to("发现好项目", projects_path, class:" btn btn-default btn-sm", style:"margin-top:12px;") %>
+            <%= link_to("用户指南", how_it_works_path, class:"btn btn-default btn-sm", style:"margin-top:12px;") %>
+            </ul>
             <ul class="nav navbar-nav navbar-right">
+
               <% if !current_user %>
                 <li><%= link_to("注册", new_user_registration_path) %> </li>
                 <li><%= link_to("登录", new_user_session_path) %></li>
               <% else %>
+
+              <li class="nav-item btn-group" data-behavior="notifications" data-notifications='<%= render template: "notifications/index", formats: [:json] %>'>
+                <a class="dropdown-toggle nav-link notice-ring" type="button" data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <%= fa_icon "bell" %> <span data-behavior="unread-count"></span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu1" data-behavior="notification-items">
+                  <!--
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                  -->
+                </div>
+              </li>
+
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    你好， <%= current_user.email %>
+
+                    <img src="<%=current_user.image.headimage%>" class="nav-img img-circle"/>
+                    <% if current_user.passed_verified? %>
+                    <img class="headverify" src="/images/user-v.png"></img>
+                    <% end %>
+                    你好， <% if current_user.user_name? %>
+                    <%= current_user.user_name %>
+                    <% else %>
+                    <%= current_user.email %>
+                    <% end %>
                   <b class="caret"></b>
                   </a>
                 <ul class="dropdown-menu">
@@ -29,9 +61,14 @@
               </li>
               <% end %>
             </ul>
-            <!-- <form class="navbar-form navbar-right" role="search">
-              <button type="button" class="btn btn-success">发起项目</button>
-            </form> -->
+            <% if !current_user || (current_user && !current_user.admin?) %>
+              <form action="<%= new_account_project_path %>" class="navbar-form navbar-right" role="search">
+                <button type="submit" class="btn lp-action btn sm">发起众筹</button>
+              </form>
+            <% end %>
+            <div class="hidden-sm hidden-xs">
+            <%= render :partial => "projects/search_bar" %>
+          </div>
         </div>
         <!-- /.navbar-collapse -->
     </div>

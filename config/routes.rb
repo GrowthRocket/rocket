@@ -1,16 +1,28 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { registrations: "devise/users/registrations"}
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :welcome
+  root "welcome#index"
+
+  get "/how_it_works", to: "welcome#how_it_works"
+  get "/about_us", to: "welcome#about_us"
+  get "/help_term", to: "welcome#help_term"
 
   namespace :admin do
     resources :orders
+    resources :categories
     resources :projects do
       resources :plans
       member do
         post :publish
-        post :hide
+        post :offline
+      end
+    end
+    resources :projects_verify do
+      member do
+        post :pass_verify
+        post :reject_verify
       end
     end
     resources :users do
@@ -19,15 +31,54 @@ Rails.application.routes.draw do
         post :demote
       end
     end
+    resources :bills do
+      collection do
+        get :show_bill_payments
+        get :payout_index
+        get :show_bill_payouts
+        get :payments_index
+        post :custom_fund_rate
+      end
+      member do
+        post :show_bill_payments_by_project
+        post :payout
+      end
+    end
+    resources :users_verify do
+      member do
+        post :pass_verify
+        post :reject_verify
+      end
+    end
   end
 
   namespace :account do
-    resources :users
-    resources :projects do
-      resources :plans
+    resources :users do
       member do
-        post :publish
-        post :hide
+        post :apply_for_certify
+        post :send_verification_code
+        get :show_verify_phone_number
+        post :verify_phone_number
+        get :change_password
+        post :verify_phone_number_new
+      end
+    end
+    resources :projects do
+      collection do
+        get :demo
+      end
+      resources :posts
+      resources :plans do
+        collection do
+          post :create_plan
+          get :get_plans
+        end
+      end
+      member do
+        post :apply_for_verification
+        post :apply_for_verification_new
+        post :offline
+        post :reject_message
       end
     end
     resources :orders do
@@ -37,15 +88,27 @@ Rails.application.routes.draw do
         post :show_orders_for_one_project
       end
     end
+    resources :bills
   end
 
   resources :plans do
     resources :orders
   end
 
-  root 'projects#index'
+  resources :notifications do
+    collection do
+      post :mark_as_read
+    end
+  end
 
   resources :projects do
     resources :plans
+    collection do
+      get :search
+    end
+    member do
+      get :preview
+    end
   end
+
 end

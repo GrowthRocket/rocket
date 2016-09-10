@@ -1,31 +1,61 @@
+<div class="plans-head">
+  <div>
+    <h1>支持<span><%= @project.user.user_name %></span>的项目</h1>
+  </div>
+  <div>
+    <p><%= render_project_name(@project) %></p>
+  </div>
+  <div class="plans-tips"><p>请选择回报方案</p></div>
 
-<h1>支持方案详情</h1>
+</div>
 
-<h3>请选择您要支持的方案：</h3>
-
-<div class="container-fluid">
-  <div class="row">
-    <% @plans.each do |plan| %>
-
-    <div class="well">
-
+<div class="plans-body">
+  <% @plans.each do |plan| %>
+  <div class="plans-des">
+    <div class="plan-price">
+      <% if plan.plan_type == 1 %>
         <p>
-          <%= plan.title %>
+          ￥<%= plan.price %>
+          <hr>
         </p>
+      <% else %>
         <p>
-          <%= simple_format(plan.description) %>
+          无私奉献
+          <hr>
         </p>
-        <p>
-          限额 <%= plan.plan_goal %>位 | 剩余<%= plan.plan_goal - plan.plan_progress %>位
-        </p>
-        <p>
-          <%= link_to("支持#{plan.price}元", new_plan_order_path(plan), :class => "btn btn-success" ) %>
-        </p>
-
-      </div>
       <% end %>
-</div>
-</div>
 
-<!-- 样式参考 -->
-<!-- <img style="width:100%" src="/uploads/18.png"></img> -->
+  </div>
+  <div>
+      <p>
+              <div>
+                  <%= sanitize(plan.description) %>
+              </div>
+      </p>
+      <% if @project.offline? %>
+      <p>
+          <%= link_to("筹款结束", "#", :class => "reserve-sm-btn btn disabled", disabled: true ) %>
+      </p>
+  <% else %>
+      <% if plan.plan_type == 1 %>
+      <%= link_to("支持TA", new_plan_order_path(plan), :class => "reserve-sm-btn btn" ) %>
+  <% else %>
+      <p>
+          <%= form_tag new_plan_order_path(plan), method: "get", class: "form-inline" do %>
+          <input type="text" name="custom_price" class="form-control" placeholder="请输入自定义金额"/>
+          <% if @project.offline? %>
+          <%= submit_tag "筹款结束", class: "reserve-sm-btn btn disabled ", disabled: true %>
+      <% else %>
+      <p>
+          <%= submit_tag "支持TA", class: "reserve-sm-btn btn" %>
+      </p>
+
+          <% end %>
+          <% end %>
+      </p>
+      <% end %>
+      <% end %>
+  </div>
+</div>
+  <% end %>
+</div>

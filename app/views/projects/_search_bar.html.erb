@@ -1,0 +1,10 @@
+<div class="nav-search  navbar-right">
+  <%= form_tag search_projects_path , method: :get, class: "navbar-form" do %>
+    <div class="form-group">
+      <input type="text" class="form-control" name="q" value="<%= params[:q] %>" placeholder="请输入项目名称...">
+      <button type="submit" class="btn btn-default">
+        <span class="glyphicon glyphicon-search"></span>
+      </button>
+    </div>
+  <% end %>
+</div>
