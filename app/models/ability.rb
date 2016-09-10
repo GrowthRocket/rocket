@@ -10,16 +10,12 @@ class Ability
     elsif user.admin?
       # admin
       can :manage, :all
-      # admin_project_management
-      # user_plan_management
-      # user_post_management(user)
-      # can :read, User
     else
-      #  basic_read_only
+       basic_read_only
       # basic_management
       user_project_management
-      user_plan_management
-      user_post_management(user)
+      user_plan_management(user)
+      user_post_management
       cannot :read, User
       # user_order_management
     end
@@ -34,42 +30,9 @@ class Ability
   # :create: 指 :new 和 :crate
   # all 是指所有 object (resource)
 
-  def admin_project_management
-
-    can :create, Project
-
-    can :read, Project do |project|
-      project.online? || project.offline?
-    end
-    can :search,  Project
-    can %i(edit update), Project do |project|
-      (project.project_created? || project.online? || project.unverified?)
-    end
-
-    can :publish, Project do |project|
-      (project.project_created? || project.unverified?)
-    end
-
-    can :destroy, Project do |project|
-      (project.project_created? || project.online? || project.verifying? || project.unverified?)
-    end
-
-    can :preview, Project do |project|
-      project.project_created? || project.verifying? || project.unverified?
-    end
-
-    can :read, Project do |project|
-      project.verifying?
-    end
-
-    can :offline, Project do |project|
-      project.online?
-    end
-  end
-
   def user_project_management
 
-    can :read, Project
+    # can :read, Project
     can :search,  Project
     can :create, Project
     can :demo, Project
@@ -102,23 +65,17 @@ class Ability
 
   end
 
-  def user_plan_management
+  def user_plan_management(user)
     can :create, Plan
-    can :update, Plan do |plan|
-      plan.project.online?
-    end
-
-    can :read, Plan
+    can :show, Plan
     can :update, Plan
     can :get_plans, Plan
     can :create_plan, Plan
     can :destroy, Plan
   end
 
-  def user_post_management(user)
-    can :read, Post do |post|
-      (post.project.user_id == user.id && post.project.online?)
-    end
+  def user_post_management
+    can :read, Post
 
     can :create, Post
 
@@ -132,8 +89,11 @@ class Ability
 
 
   def basic_read_only
-    can :read,    Project
-    can :list,    Project
+    can :read, Project, aasm_state: "online"
+    can :read, Project, aasm_state: "offline"
+    can :read, Plan, :project => {aasm_state: "online" }
+    can :read, Plan, :project => {aasm_state: "offline" }
+    # can :list,    Project
     can :search,  Project
   end
 
