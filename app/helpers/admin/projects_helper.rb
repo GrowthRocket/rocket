@@ -32,6 +32,8 @@ module Admin::ProjectsHelper
       render partial: "admin/projects/render_online", locals: { project: project }
     elsif project.unverified?
       render partial: "admin/projects/render_unverified", locals: { project: project }
+    else
+      link_to("删除", admin_project_path(project), :method => :delete, :data => { :confirm => "删除项目后不可恢复，您确定要删除吗?" }, :class => "btn btn-sm btn-default")
     end
 
   end
