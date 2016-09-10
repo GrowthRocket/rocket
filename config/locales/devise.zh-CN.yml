@@ -10,12 +10,16 @@ zh-CN:
       models:
         user:
           attributes:
+            email:
+              blank: "邮箱不能为空"
+              taken: "该邮箱已注册过"
             current_password:
               invalid: "原始密码错误"
               blank: "请输入原始密码"
               too_short: "原始密码错误"
             password:
               too_short: "新密码太短，请至少使用 8 个字符"
+              blank: "密码不能为空"
             password_confirmation:
               confirmation: "新密码两次输入不一致"
 
