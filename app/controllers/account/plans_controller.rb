@@ -1,9 +1,10 @@
 class Account::PlansController < AccountController
   before_action :find_project
-  authorize_resource
+  load_and_authorize_resource
 
   def index
     @plans = @project.plans.normal.recent
+    authorize! :index, @plans.first
     set_page_title_and_description("管理回报", view_context.truncate(@project.name, :length => 100))
   end
 

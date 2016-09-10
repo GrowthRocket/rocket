@@ -18,12 +18,12 @@ class ProjectsController < ApplicationController
 
     set_page_title_and_description(@project.name, view_context.truncate(@project.description, :length => 100))
 
-    if @project.online? || @project.offline?
+    # if @project.online? || @project.offline?
       @posts = @project.posts.recent
       @plans = @project.plans.price
-    else
-      redirect_to projects_path
-    end
+    # else
+    #   redirect_to projects_path
+    # end
   end
 
   def preview
