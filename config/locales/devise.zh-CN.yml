@@ -13,6 +13,7 @@ zh-CN:
             email:
               blank: "邮箱不能为空"
               taken: "该邮箱已注册过"
+              invalid: "请输入有效的电子邮件地址"
             current_password:
               invalid: "原始密码错误"
               blank: "请输入原始密码"
