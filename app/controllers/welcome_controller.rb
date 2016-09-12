@@ -12,9 +12,12 @@ class WelcomeController < ApplicationController
   def help_term
     render layout: "about_us"
   end
-  
+
   def about_us
     set_page_title_and_description("关于我们", nil)
+    render layout: "about_us"
+  end
+  def contact_us
     render layout: "about_us"
   end
 end
