@@ -63,7 +63,7 @@
             </ul>
             <% if !current_user || (current_user && !current_user.admin?) %>
               <form action="<%= new_account_project_path %>" class="navbar-form navbar-right" role="search">
-                <button type="submit" class="btn lp-action btn sm">发起众筹</button>
+                <%= link_to("发起众筹", new_account_project_path,:class => "lp-action btn sm") %>
               </form>
             <% end %>
             <div class="hidden-sm hidden-xs">
