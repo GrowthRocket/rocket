@@ -244,7 +244,7 @@
 // config project index
 
 .index-out{
-  min-width:900px;
+  min-width: 1200px;
   margin: auto;
   text-align:center;
 }
@@ -491,7 +491,259 @@
   margin: -15px 0 15px;
 }
 
-.user-info-edit{
+.user-center-detail-block{
   width:400px;
   min-height: 630px;
 }
+
+.project-post-manage{
+  width:400px;
+  min-height: 630px;
+}
+
+// config new search bar
+.header-categories__search {
+	float: right;
+	padding-top: 7px;
+	width: 170px
+}
+
+
+.search-field {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex
+}
+
+.search-field.-size-xl {
+	font-size: 16px;
+	height: 60px
+}
+
+.search-field.-size-l {
+	font-size: 16px;
+	height: 50px
+}
+
+.search-field.-size-m {
+	font-size: 14px;
+	height: 40px
+}
+
+.search-field,.search-field.-size-s {
+	font-size: 16px;
+	height: 30px
+}
+
+@media (min-width: 1025px) {
+	.search-field,.search-field.-size-s {
+		font-size: 13px
+	}
+}
+
+.search-field__input {
+	-webkit-flex: 1 auto;
+	-ms-flex: 1 auto;
+	flex: 1 auto;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	min-width: 0
+}
+
+input.search-field__input-field {
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	box-sizing: border-box;
+	padding: 5px 8px 6px;
+	border: 1px solid #bababa;
+	border-radius: 7px 0 0 7px;
+	border-right: 0;
+	color: gray;
+	-webkit-appearance: none;
+	outline: none;
+	min-width: 0
+}
+
+@media (min-width: 1025px) {
+	.-size-xl input.search-field__input-field {
+		padding: 5px 20px
+	}
+}
+
+@media (min-width: 1025px) {
+	.-size-l input.search-field__input-field {
+		padding: 5px 15px
+	}
+}
+
+.-border-none input.search-field__input-field {
+	border: none
+}
+
+.-border-light input.search-field__input-field {
+	border-color: #dedede
+}
+
+@media (min-width: 1025px) {
+	input.search-field__input-field.is-autosuggest-visible {
+		border-bottom-left-radius: 0
+	}
+}
+
+button.search-field__button {
+	-webkit-flex: 0 0 30px;
+	-ms-flex: 0 0 30px;
+	flex: 0 0 30px;
+	padding: 3px 0 2px;
+	background-color: #fff;
+	color: #999;
+	border-radius: 0 7px 7px 0;
+	border: 1px solid #bababa;
+	border-left: none;
+	font-size: 14px;
+	-webkit-transition: background-color 0.2s;
+	transition: background-color 0.2s
+}
+
+button.search-field__button:hover {
+	background-color: #f5f5f5
+}
+
+button.search-field__button:hover:before {
+	color: #333
+}
+
+button.search-field__button:focus {
+	background-color: #fff
+}
+
+button.search-field__button:active {
+	background-color: #ededed
+}
+
+.-theme-3docean button.search-field__button:hover {
+	color: #ab0f34
+}
+
+.-theme-audiojungle button.search-field__button:hover {
+	color: #9ac130
+}
+
+.-theme-codecanyon button.search-field__button:hover {
+	color: #e78733
+}
+
+.-theme-graphicriver button.search-field__button:hover {
+	color: #308eb1
+}
+
+.-theme-photodune button.search-field__button:hover {
+	color: #0f8c98
+}
+
+.-theme-themeforest button.search-field__button:hover {
+	color: #1abc9c
+}
+
+.-theme-videohive button.search-field__button:hover {
+	color: #e7a802
+}
+
+.-size-l button.search-field__button {
+	-webkit-flex-basis: 45px;
+	-ms-flex-preferred-size: 45px;
+	flex-basis: 45px;
+	font-size: 20px
+}
+
+@media (min-width: 569px) {
+	.-size-l button.search-field__button {
+		-webkit-flex-basis: 70px;
+		-ms-flex-preferred-size: 70px;
+		flex-basis: 70px;
+		font-size: 24px
+	}
+}
+
+.-size-xl button.search-field__button {
+	-webkit-flex-basis: 45px;
+	-ms-flex-preferred-size: 45px;
+	flex-basis: 45px;
+	font-size: 20px
+}
+
+@media (min-width: 569px) {
+	.-size-xl button.search-field__button {
+		-webkit-flex-basis: 80px;
+		-ms-flex-preferred-size: 80px;
+		flex-basis: 80px;
+		font-size: 26px
+	}
+}
+
+.-border-none button.search-field__button {
+	border: none
+}
+
+.-border-light button.search-field__button {
+	border-color: #dedede
+}
+
+.no-flexbox .search-field {
+	display: block;
+	width: 100%
+}
+
+.no-flexbox .search-field:after {
+	content: "";
+	display: table;
+	clear: both
+}
+
+.no-flexbox .search-field.-size-l .search-field__button {
+	width: 18%;
+	max-width: 70px;
+	font-size: 24px
+}
+
+.no-flexbox .search-field.-size-xl .search-field__button {
+	width: 18%;
+	max-width: 80px;
+	font-size: 26px
+}
+
+.no-flexbox .search-field__input {
+	display: block;
+	float: left;
+	width: 85%;
+	height: 100%
+}
+
+@media (max-width: 568px) {
+	.no-flexbox .search-field__input {
+		width: 82%
+	}
+}
+
+.no-flexbox input[type='search']::-ms-clear {
+	height: 0;
+	width: 0
+}
+
+.no-flexbox .search-field__input-field {
+	width: 100%;
+	height: 100%
+}
+
+.no-flexbox .search-field__button {
+	display: block;
+	float: left;
+	height: 100%;
+	width: 15%
+}
+
+// new searchbar end

@@ -1,15 +1,16 @@
+<div class="post-box">
 <h1><%= render_project_name(@project) %>
-    管理动态</h1>
+    项目动态管理</h1>
 <div class="pull-right">
     <%= link_to("发布动态",   new_account_project_post_path(@project), class: "btn btn-default")  %>
 </div>
 <table class="table table-boldered" , style="width: 100%; table-layout: fixed;">
     <thead>
         <tr>
-            <th>#</th>
-            <th>动态内容</th>
-            <th>操作  </th>
-            <th>创建时间</th>
+            <th class="id">#</th>
+            <th class="description">动态内容</th>
+            <th class="oprate">操作  </th>
+            <th class="create-time">创建时间</th>
         </tr>
     </thead>
     <tbody>
@@ -18,7 +19,7 @@
             <td><%= index + 1 %></td>
             <td><%= render_post_description(post) %></td>
             <td>
-                <%= link_to("删除", account_project_post_path(post.project, post), method: :delete,  class: "btn btn-sm btn-danger" , data: {confirm: "确认删除该回报么?"}) %>
+                <%= link_to("删除", account_project_post_path(post.project, post), method: :delete,  class: "btn btn-sm btn-danger" , data: {confirm: "确定删除该动态吗?"}) %>
             </td>
 
             <td><%= render_order_created_at(post.created_at) %></td>
@@ -29,4 +30,5 @@
 
 <div class="text-center">
   <%= will_paginate @projects %>
+</div>
 </div>
