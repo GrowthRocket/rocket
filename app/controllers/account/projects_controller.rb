@@ -7,7 +7,7 @@ class Account::ProjectsController < AccountController
     if params[:category_id]
       @projects = current_user.projects.where(category_id: params[:category_id])
     end
-    set_page_title_and_description("我发起的项目", view_context.truncate(@projects.first.nil? ? "我发起的项目" : @projects.first.name , :length => 100))
+    set_page_title_and_description("我发起的项目", nil)
   end
 
   def new
