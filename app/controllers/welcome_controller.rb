@@ -10,6 +10,7 @@ class WelcomeController < ApplicationController
   end
 
   def help_term
+    set_page_title_and_description("服务协议", nil)
     render layout: "about_us"
   end
 
@@ -18,6 +19,7 @@ class WelcomeController < ApplicationController
     render layout: "about_us"
   end
   def contact_us
+    set_page_title_and_description("联系我们", nil)
     render layout: "about_us"
   end
 end
