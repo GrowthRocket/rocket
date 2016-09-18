@@ -91,6 +91,25 @@ hr{
     border-bottom: 1px solid #CCCCCC;
 }
 
+.navbar-link{
+  font-size: 1em;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-left: 30px;
+  a:link {color: #666};
+  a:visited {color: #666}	;
+  a:hover {color: #43cb83}	;
+  a:active {color: #43cb83};
+  a{
+    margin-left: 12px;
+  }
+}
+
+.logo span{
+  font-size: 22px;
+  font-weight: bold;
+  // color: #43cb83
+}
 
 // config navbar end
 

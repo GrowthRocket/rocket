@@ -17,6 +17,7 @@ module Rocket
     config.active_record.default_timezone = :local
     config.generators.test_framework = nil
     config.i18n.default_locale = :"zh-CN"
+    config.exceptions_app = self.routes
 
 
     # config.serve_static_assets = true

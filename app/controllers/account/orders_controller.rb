@@ -4,7 +4,7 @@ class Account::OrdersController < AccountController
   def index
     @orders = current_user.orders.select("project_id, project_name").group(:project_id, :project_name)
     # @orders = current_user.orders.select("id").where(project_id: @project_ids).distinct
-    set_page_title_and_description("我支持的项目", view_context.truncate(@orders.first .nil? ? "我支持的项目" : @orders.first.project_name, :length => 100))
+    set_page_title_and_description("我支持的项目", nil)
   end
 
   def show_orders_for_one_project

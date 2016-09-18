@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'errors/not_found'
+
+  get 'errors/internal_server_error'
+  match "/404", :to => "errors#not_found", :via => :all
+  match "/500", :to => "errors#internal_server_error", :via => :all
   devise_for :users, controllers: { registrations: "devise/users/registrations"}
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -8,6 +13,7 @@ Rails.application.routes.draw do
   get "/how_it_works", to: "welcome#how_it_works"
   get "/about_us", to: "welcome#about_us"
   get "/help_term", to: "welcome#help_term"
+  get "/contact_us", to: "welcome#contact_us"
 
   namespace :admin do
     resources :orders

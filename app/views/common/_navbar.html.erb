@@ -2,18 +2,18 @@
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for mobile display -->
-    <div class="navbar-header">
+    <div class="navbar-header logo">
       <!-- <h1><a class="navbar-brand" href="/">人才火箭</a></h1> -->
       <a class="navbar-brand" href="/">
-        <i class="fa fa-rocket fa-lg logo_icon" aria-hidden="true"></i>
-        <span>人才火箭</span>
+        <span> <i class="fa fa-rocket fa-lg logo_icon" aria-hidden="true"></i>
+人才火箭</span>
       </a>
     </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav navbar-left">
-            <%= link_to("发现好项目", projects_path, class:" btn btn-default btn-sm", style:"margin-top:12px;") %>
-            <%= link_to("用户指南", how_it_works_path, class:"btn btn-default btn-sm", style:"margin-top:12px;") %>
+          <ul class="nav navbar-nav navbar-left navbar-link">
+            <%= link_to("发现好项目", projects_path, class:" ", style:"margin-top:12px;") %>
+            <%= link_to("用户指南", how_it_works_path, class:"", style:"margin-top:12px;") %>
             </ul>
             <ul class="nav navbar-nav navbar-right">
 
@@ -63,7 +63,7 @@
             </ul>
             <% if !current_user || (current_user && !current_user.admin?) %>
               <form action="<%= new_account_project_path %>" class="navbar-form navbar-right" role="search">
-                <button type="submit" class="btn lp-action btn sm">发起众筹</button>
+                <%= link_to("发起众筹", new_account_project_path,:class => "lp-action btn sm") %>
               </form>
             <% end %>
             <div class="hidden-sm hidden-xs">
